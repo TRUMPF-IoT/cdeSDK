@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <!--
+ SPDX-FileCopyrightText: Copyright (c) 2009-2020 TRUMPF Laser GmbH, authors: C-Labs
+ SPDX-License-Identifier: MPL-2.0
+ -->
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>ea4fffbc-c803-4b10-ba13-1587a1fc0f06</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>TheSenderBase</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)TheSenderTSM.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)TheSenderThing.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)TheSenderBase.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)TheSenderBasePropChange.cs" />
+  </ItemGroup>
+</Project>

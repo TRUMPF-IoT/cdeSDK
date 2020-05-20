@@ -1,0 +1,19 @@
+<Page
+    x:Class="HCXaml.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:HCXaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Canvas>
+            <TextBlock Height="78"  Text="ScopeID" TextWrapping="Wrap" Width="100" FontSize="24" Margin="20,20"/>
+            <TextBox x:Name="tbScopeID" Height="50" Margin="120,20" Text="pass1234" FontSize="24" Width="300"/>
+            <Button x:Name="btnConnect" Content="Connect to CLoud" HorizontalAlignment="Left" Height="50" Margin="450,20" Width="400" Click="BtnConnect_Click"/>
+            <TextBox x:Name="txtMsgText" Margin="20,500" Text="Type Here" Width="400" FontSize="24"/>
+            <Button x:Name="btnSend" Content="Send Message" Height="50" Margin="450,500" Width="400" Click="BtnSend_Click"/>
+            <TextBlock x:Name="lstMessages" Margin="20,80" Width="800" Height="400" />
+    </Canvas>
+</Page>

@@ -1,0 +1,86 @@
+<!--
+ SPDX-FileCopyrightText: 2009-2020 TRUMPF Laser GmbH, authors: C-Labs
+ SPDX-License-Identifier: MPL-2.0
+ -->
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>library</OutputType>
+    <PackageId>cdeSensorTemplateShared</PackageId>
+    <Version>1.0.1.11</Version>
+    <TargetFrameworks>netstandard2.0;net45;net35;net4</TargetFrameworks>
+    <Authors>Markus Horstmann</Authors>
+    <Company>C-Labs</Company>
+    <Copyright>Copyright © 2015-2020 TRUMPF Laser GmbH, authors: C-Labs</Copyright>
+    <PackageDescription>Sensor Template Library for C-DEngine</PackageDescription>
+    <PackageIcon>toplogo-128.png</PackageIcon>
+    <PackageLicenseExpression>MPL-2.0</PackageLicenseExpression>
+
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <ProjectName>$(AssemblyName).$(TargetFramework)</ProjectName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="**\*.cs" buildAction="Compile" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\..\..\toplogo-128.png" Pack="true" PackagePath=""/>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="obj\**" />
+    <Content Remove="obj\**" />
+    <EmbeddedResource Remove="obj\**" />
+    <None Remove="obj\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="ClientBin\SENSORS\CSS\SensorsDark.css" />
+    <None Remove="ClientBin\SENSORS\CSS\SensorsDark.min.css" />
+    <None Remove="ClientBin\SENSORS\CSS\SensorsDark.SCSS" />
+    <None Remove="ClientBin\SENSORS\CSS\SensorsLite.css" />
+    <None Remove="ClientBin\SENSORS\CSS\SensorsLite.min.css" />
+    <None Remove="ClientBin\SENSORS\CSS\SensorsLite.scss" />
+    <None Remove="ClientBin\SENSORS\CSS\SensorStyles.css" />
+    <None Remove="ClientBin\SENSORS\CSS\SensorStyles.min.css" />
+    <None Remove="ClientBin\SENSORS\CSS\SensorStyles.scss" />
+    <None Remove="ClientBin\SENSORS\Images\SensorLogo_156x78.png" />
+    <None Remove="compilerconfig.json" />
+    <None Remove="compilerconfig.json.defaults" />
+    <None Remove="init.ps1" />
+    <None Remove="TheSensorTemplate.projitems" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!--<Content Include="ClientBin\SENSORS\CSS\SensorsDark.css" buildAction="Content"/>-->
+    <Content Include="ClientBin\SENSORS\CSS\SensorsDark.min.css" buildAction="EmbeddedResource" />
+    <Content Include="ClientBin\SENSORS\CSS\SensorsDark.SCSS" buildAction="Content" />
+    <Content Include="ClientBin\SENSORS\CSS\SensorsLite.css" buildAction="Content" />
+    <Content Include="ClientBin\SENSORS\CSS\SensorsLite.min.css" buildAction="EmbeddedResource" />
+    <Content Include="ClientBin\SENSORS\CSS\SensorsLite.scss" buildAction="Content" />
+    <Content Include="ClientBin\SENSORS\CSS\SensorStyles.css" buildAction="Content" />
+    <Content Include="ClientBin\SENSORS\CSS\SensorStyles.min.css" buildAction="EmbeddedResource" />
+    <Content Include="ClientBin\SENSORS\CSS\SensorStyles.scss" buildAction="Content" />
+    <!--<Content Include="ClientBin\SENSORS\Images\SensorLogo_156x78.png" buildAction="EmbeddedResource"/>-->
+    <!--<Content Include="ClientBin\SENSORS\Images\SensorLogo_156x78.png" buildAction="EmbeddedResource"  target="lib/net45" />-->
+    <Content Include="ClientBin\SENSORS\Images\SensorLogo_156x78.png" buildAction="EmbeddedResource" />
+    <!--<Content Include="build\CDESensorTemplateShared.targets" buildAction="build" PackagePath="build" />
+    <Content Include="CDESensorTemplateShared.nuspec">
+      <PackagePath>tools</PackagePath>
+      <buildAction>tools</buildAction>
+    </Content>
+    <Content Include="init.ps1" buildAction="tools" PackagePath="tools" />--> 
+    <!--Package="true" PackagePath="tools"-->
+
+    <!--<Content Include="ClientBin\SENSORS\Images\SensorLogo_156x78.png" buildAction="EmbeddedResource" Package="true" PackagePath="lib" />-->
+    <!--<Content Include="ClientBin\SENSORS\Images\SensorLogo_156x78.png" buildAction="EmbeddedResource" copyToOutput="true" target="contentFiles/any/any/ClientBin/SENSORS/CSS"/>-->
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="C-DEngine" Version="5.*" />
+    <PackageReference Include="jnm2.ReferenceAssemblies.net35" Version="1.0.1">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+</Project>

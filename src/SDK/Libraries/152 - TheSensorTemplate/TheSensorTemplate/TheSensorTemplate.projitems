@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <!--
+ SPDX-FileCopyrightText: Copyright (c) 2009-2020 TRUMPF Laser GmbH, authors: C-Labs
+ SPDX-License-Identifier: MPL-2.0
+ -->
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>7b63a7b2-3276-4b8e-a733-f1af71e8874f</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>TheSensorTemplate</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)TheDefaultSensor.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)TheDefaultSensorUX.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)TheSensorNMI.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)TheSensorTemplate.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\cmyEnergyData.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)ClientBin\SENSORS\Images\SensorLogo_156x78.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="$(MSBuildThisFileDirectory)ClientBin\SENSORS\CSS\SensorsDark.css" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)ClientBin\SENSORS\CSS\SensorsDark.min.css" />
+    <Content Include="$(MSBuildThisFileDirectory)ClientBin\SENSORS\CSS\SensorsLite.css" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)ClientBin\SENSORS\CSS\SensorsLite.min.css" />
+    <Content Include="$(MSBuildThisFileDirectory)ClientBin\SENSORS\CSS\SensorStyles.css" />
+    <Content Include="$(MSBuildThisFileDirectory)ClientBin\SENSORS\CSS\SensorStyles.min.css" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="$(MSBuildThisFileDirectory)ClientBin\SENSORS\CSS\SensorsDark.SCSS" />
+    <None Include="$(MSBuildThisFileDirectory)ClientBin\SENSORS\CSS\SensorsLite.scss" />
+    <None Include="$(MSBuildThisFileDirectory)ClientBin\SENSORS\CSS\SensorStyles.scss" />
+  </ItemGroup>
+</Project>

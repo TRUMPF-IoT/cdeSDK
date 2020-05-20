@@ -1,0 +1,22 @@
+/*
+ * SPDX-FileCopyrightText: 2013-2020 TRUMPF Laser GmbH, authors: C-Labs
+ *
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
+﻿.BaumerLabel {
+  color: black;
+  font-size: 16px;
+  background-color: transparent;
+  text-align: left; }
+
+h1.BaumerLabel {
+  margin-left: 20px;
+  margin-top: 10px; }
+
+.SelDevice {
+  background-color: #fafafa;
+  color: black;
+  font-size: 15px;
+  margin-top: 22px; }
+

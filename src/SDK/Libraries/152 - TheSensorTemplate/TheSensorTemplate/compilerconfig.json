@@ -1,0 +1,10 @@
+[
+  {
+    "outputFile": "ClientBin/SENSORS/CSS/SensorsDark.css",
+    "inputFile": "ClientBin/SENSORS/CSS/SensorsDark.SCSS"
+  },
+  {
+    "outputFile": "ClientBin/SENSORS/CSS/SensorsLite.css",
+    "inputFile": "ClientBin/SENSORS/CSS/SensorsLite.scss"
+  }
+]

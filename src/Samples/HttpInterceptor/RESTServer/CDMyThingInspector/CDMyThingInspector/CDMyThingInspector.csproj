@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <!--
+ SPDX-FileCopyrightText: Copyright (c) 2009-2020 TRUMPF Laser GmbH, authors: C-Labs
+ SPDX-License-Identifier: MPL-2.0
+ -->
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="C-DEngine">
+      <HintPath>C:\Program Files (x86)\C-Labs\C-DEngine SDK\NetStandard\C-DEngine.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

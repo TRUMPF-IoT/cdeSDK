@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>$targetframeworkversion$</TargetFramework>
+    <ProjectName>$safeprojectname$.$(TargetFramework)</ProjectName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="C-DEngine" />
+  </ItemGroup>
+
+</Project>

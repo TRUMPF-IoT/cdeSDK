@@ -1,0 +1,42 @@
+# SPDX-FileCopyrightText: 2013-2020 TRUMPF Laser GmbH, authors: C-Labs
+#
+# SPDX-License-Identifier: MPL-2.0
+
+version: '3.4'
+
+services:
+  mytesthost:
+    image: ${DOCKER_REGISTRY-}mytesthost
+    environment:
+      CDE_SERVICEROUTE: wss://cloud.c-labs.com
+      CDE_STATIONPORT: 8713
+      CDE_STATIONWSPORT: 8714
+      CDE_MYSTATIONURL: http://localhost:8713
+    build:
+      context: .
+      dockerfile: MyTestHost/Dockerfile
+    ports:
+    - "8713:8713"
+    - "8714:8714" # HOST:CONTAINER (These can be the same)
+    volumes:
+    - mytesthost-volume:/app/ClientBin/cache:rw
+
+  mytesthost2:
+    image: ${DOCKER_REGISTRY-}mytesthost2
+    environment:
+      CDE_SERVICEROUTE: wss://cloud.c-labs.com
+      CDE_STATIONPORT: 820
+      CDE_STATIONWSPORT: 8721
+      CDE_MYSTATIONURL: http://localhost:8720
+    build:
+      context: .
+      dockerfile: MyTestHost2/Dockerfile
+    ports:
+    - "8720:8720"
+    - "8721:8721"
+    volumes:
+    - mytesthost2-volume:/app/ClientBin/cache:rw
+
+volumes:
+  mytesthost-volume:
+  mytesthost2-volume:

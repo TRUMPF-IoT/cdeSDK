@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<VSTemplate Version="3.0.0" Type="Item" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" xmlns:sdk="http://schemas.microsoft.com/developer/vstemplate-sdkextension/2010">
+  <TemplateData>
+    <Name>cdeConnectedThingBase</Name>
+    <Description>C-DEngine template for creating a 'thing' with a connectivity block and a status block.</Description>
+    <Icon>cdeConnectedThingBase.ico</Icon>
+    <TemplateID>c1a484db-c118-4427-a698-a4b8351a1351</TemplateID>
+    <ProjectType>CSharp</ProjectType>
+    <RequiredFrameworkVersion>2.0</RequiredFrameworkVersion>
+    <NumberOfParentCategoriesToRollUp>1</NumberOfParentCategoriesToRollUp>
+    <DefaultName>cdeConnectedThingBase.cs</DefaultName>
+  </TemplateData>
+  <TemplateContent>
+    <References>
+      <Reference>
+        <Assembly>System</Assembly>
+      </Reference>
+    </References>
+    <ProjectItem ReplaceParameters="true">cdeConnectedThingBase.cs</ProjectItem>
+  </TemplateContent>
+</VSTemplate>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <!--
+ SPDX-FileCopyrightText: Copyright (c) 2009-2020 TRUMPF Laser GmbH, authors: C-Labs
+ SPDX-License-Identifier: MPL-2.0
+ -->
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>b0e8e621-879d-4589-b881-3e1173adb1dc</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration" />
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)TheCSVParser.cs" />
+  </ItemGroup>
+</Project>
