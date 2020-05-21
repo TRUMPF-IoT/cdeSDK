@@ -2,7 +2,7 @@
 
 Here you can find:
 
-- The [C-DEngine SDK](src/sdk/readme.md), including Visual Studio project templates, message contracts for commonly used plug-ins, and convenience libraries.
+- The [C-DEngine SDK](src/SDK/readme.md), including Visual Studio project templates, message contracts for commonly used plug-ins, and convenience libraries.
 
 - [Samples](src/Samples/readme.md): Lots of great samples to get you started.
 
