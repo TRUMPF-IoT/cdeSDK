@@ -231,3 +231,4 @@ project.assets.json
 /BuildTools/cdePackager
 /BuildTools/signtool.exe
 /src/SDK/Tools/cdeLicenseTool/Licenses/C-DEngine.cdel
+/BuildTools/real.sign
