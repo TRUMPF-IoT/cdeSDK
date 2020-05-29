@@ -61,7 +61,8 @@
 
 
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-    <Exec Command="call &quot;$(TargetPath)&quot; createlicense &quot;$(ProjectDir)Templates\\&quot; &quot;$(ProjectDir)Keys\\sdkdemo.snk&quot; &quot;$(ProjectDir)Licenses\\&quot;" />
+    <Exec Command="&quot;$(TargetPath)&quot; createlicense &quot;$(ProjectDir)Templates\\&quot; &quot;$(ProjectDir)Keys\\sdkdemo.snk&quot; &quot;$(ProjectDir)Licenses\\&quot;" />
+    <Exec Command="xcopy &quot;$(ProjectDir)Licenses\*&quot; &quot;$(TargetDir)Licenses\*&quot; /Y /I /F" />
     <Exec Command="call &quot;$(ProjectDir)..\..\..\..\BuildTools\SignandpackageS.cmd&quot; &quot;$(ProjectDir)Licenses\\&quot; &quot;$(TargetDir)Licenses\\&quot; &quot;&quot; &quot;&quot; &quot;C-DEngine-License.CDES&quot;" />
   </Target>
 
@@ -78,7 +79,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="Licenses\C-DEngine.cdel">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </None>
     <None Update="Licenses\C-DEnginel.cdel">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>

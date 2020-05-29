@@ -4,4 +4,4 @@ set licensetoolpath=%~1
 if "%licensetoolpath%"=="" set licensetoolpath=.\bin\debug\cdelicensetool.exe
 set snkfile=%~2
 if "%snkfile%"=="" set snkfile=.\Keys\sdkdemo.snk 
-%licensetoolpath% createlicense .\Templates\ %snkfile% .\Licenses\
+call %licensetoolpath% createlicense .\Templates\ %snkfile% .\Licenses\
