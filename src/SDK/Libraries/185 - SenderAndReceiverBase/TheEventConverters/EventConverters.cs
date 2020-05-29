@@ -201,7 +201,6 @@ namespace nsTheEventConverters
                                 { "JSON Objects", new JSonObjectEventConverter() },
                                 { "JSON Objects Rooted", new JSonObjectEventConverterWithRoot() },
                                 { "JSON Properties", new JSonPropertyEventConverter() },
-                                { "Axoom IoT Manager", new AxoomIotManagerEventConverter() },
                                 { "CSV", new CSVEventConverter() },
 
 #if INCLUDE_PPMP_EVENTCONVERTER
@@ -245,6 +244,14 @@ namespace nsTheEventConverters
                 catch { };
             }
             return null;
+        }
+
+        public static void AddEventConverter(string eventFormat, IEventConverter converter)
+        {
+            lock (_eventConverterLock)
+            {
+                EventConverters.Add(eventFormat, converter);
+            }
         }
 
         public static IEnumerable<string> GetDisplaynames()
