@@ -14,7 +14,7 @@ using nsCDEngine.BaseClasses;
 using nsCDEngine.Engines.ThingService;
 
 using nsTheEventConverters;
-using nsTheSenderBase;
+//using nsTheSenderBase;
 using System.Runtime.Serialization;
 using nsCDEngine.ViewModels;
 
@@ -44,7 +44,7 @@ namespace nsTheEventConverters
     ///   { "machineid" : NodeId, "linkid" : myThing.FriendlyName, "namespace" : "http://TRUMPF.com/UAInterfaces/MDA" , "identifier" : "Prop2", "servertimestamp": cdeP.cdeCTIM, "sourcetimestamp": cdeP.cdeCTIM,  "value" : 2},
     /// ]
     /// </summary>
-    class JsonOpcUaEventConverter : IEventConverter
+    public class JsonOpcUaEventConverter : IEventConverter
     {
         class JSonOpcArrayElement
         {
@@ -197,7 +197,7 @@ namespace nsTheEventConverters
             return eventPayloadJson;
         }
 
-        public override IEnumerable<object> GetEventData(IEnumerable<TheThingStore> thingUpdates, TheSenderThing senderThing, int maxEventDataSize, bool doNotBatchEvents)
+        public override IEnumerable<object> GetEventData(IEnumerable<TheThingStore> thingUpdates, IThingToConvert senderThing, int maxEventDataSize, bool doNotBatchEvents)
         {
             var eventList = new List<object>();
             foreach (var thingUpdate in thingUpdates)

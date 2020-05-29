@@ -11,14 +11,14 @@ namespace TheCommonMessageContracts
 {
 #pragma warning disable CS0649
 
-    internal class MsgConnectDisconnect
+    public class MsgConnectDisconnect
     {
         public bool? Reconnect { get; set; }
         public bool? Connect { get; set; }
         public bool? AutoConnect { get; set; }
         public int? WaitTimeBeforeReconnect { get; set; }
     }
-    internal class MsgConnectDisconnectResponse
+    public class MsgConnectDisconnectResponse
     {
         public bool Connected { get; set; }
         public string Error { get; set; }

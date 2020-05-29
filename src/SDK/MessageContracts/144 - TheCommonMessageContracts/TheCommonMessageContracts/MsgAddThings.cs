@@ -11,7 +11,7 @@ using nsCDEngine.Engines.ThingService;
 namespace TheCommonMessageContracts
 {
 #pragma warning disable CS0649
-    internal class TheThingToAdd
+    public class TheThingToAdd
     {
         /// <summary>
         /// The cdeMID of the entry in the list of things maintained by the plug-in receiving the message
@@ -58,7 +58,7 @@ namespace TheCommonMessageContracts
         public bool ReplaceExistingThing { get; set; }
     }
 
-    internal class TheThingToAddWithHistory : TheThingToAdd
+    public class TheThingToAddWithHistory : TheThingToAdd
     {
         public uint? SamplingWindow { get; set; }
         [Obsolete("Use SamplingWindow unless targetting older plug-ins")]
@@ -81,7 +81,7 @@ namespace TheCommonMessageContracts
     }
 
 
-    internal class MsgAddThings<T> where T : TheThingToAdd
+    public class MsgAddThings<T> where T : TheThingToAdd
     {
         public MsgAddThings()
         {
@@ -96,13 +96,13 @@ namespace TheCommonMessageContracts
         public List<T> Things { get; set; }
     }
 
-    internal class TheAddThingStatus
+    public class TheAddThingStatus
     {
         public Guid cdeMid;
         public string Error;
     }
 
-    internal class MsgAddThingsResponse<T> where T : TheAddThingStatus
+    public class MsgAddThingsResponse<T> where T : TheAddThingStatus
     {
         public MsgAddThingsResponse()
         {

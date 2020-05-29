@@ -8,7 +8,7 @@ using System.Text;
 
 namespace TheCommonMessageContracts
 {
-    interface IMsgThingResponse
+    public interface IMsgThingResponse
     {
         string Error { get; set; }
     }

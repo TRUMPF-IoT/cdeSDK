@@ -8,7 +8,7 @@ using TheCommonMessageContracts;
 
 namespace nsTheThingToPublish
 {
-    internal class TheThingToPublish : TheThingToAddWithHistory
+    public class TheThingToPublish : TheThingToAddWithHistory
     {
         public string EventFormat { get; set; }
         //public bool ChangeNaNToNull { get; set; }
@@ -28,19 +28,19 @@ namespace nsTheThingToPublish
         public bool DoNotCreate { get; set; }
     }
 
-    internal class MsgAddThingsToPublish : MsgAddThings<TheThingToPublish>
+    public class MsgAddThingsToPublish : MsgAddThings<TheThingToPublish>
     {
         public MsgAddThingsToPublish() : base() { }
         public MsgAddThingsToPublish(TheThingToPublish thingToAdd) : base(thingToAdd) { }
     }
 
-    internal class MsgAddThingsToPublishResponse : MsgAddThingsResponse<TheAddThingStatus>
+    public class MsgAddThingsToPublishResponse : MsgAddThingsResponse<TheAddThingStatus>
     {
         public MsgAddThingsToPublishResponse() : base() { }
         public MsgAddThingsToPublishResponse(TheAddThingStatus thingStatus) : base(thingStatus) { }
     }
 
-    internal class TheTSMToPublish
+    public class TheTSMToPublish
     {
         public Guid cdeMID { get; set; }
         public string SourceEngineName { get; set; }
@@ -54,7 +54,7 @@ namespace nsTheThingToPublish
         public string MQTTTopicTemplate { get; set; }
     }
 
-    internal class MsgAddTSMsToPublish
+    public class MsgAddTSMsToPublish
     {
         public MsgAddTSMsToPublish()
         {
@@ -68,7 +68,7 @@ namespace nsTheThingToPublish
         public List<TheTSMToPublish> TSMs { get; set; }
     }
 
-    internal class MsgAddTSMsToPublishResponse : MsgAddThingsResponse<TheAddThingStatus>
+    public class MsgAddTSMsToPublishResponse : MsgAddThingsResponse<TheAddThingStatus>
     {
         public MsgAddTSMsToPublishResponse() : base() { }
         public MsgAddTSMsToPublishResponse(TheAddThingStatus thingStatus) : base(thingStatus) { }

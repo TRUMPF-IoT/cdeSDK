@@ -179,7 +179,7 @@ namespace nsTheConnectionBase
             }
         }
 
-        internal abstract void UpdateConnectionThing(TConnectionThing currentThing, TConnectionThing newThing);
+        public abstract void UpdateConnectionThing(TConnectionThing currentThing, TConnectionThing newThing);
     }
 
     public class MsgAddConnectionThing<TConnectionThingParam> where TConnectionThingParam : TheConnectionThingParam

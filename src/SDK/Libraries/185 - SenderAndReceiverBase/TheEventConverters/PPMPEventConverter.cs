@@ -15,7 +15,7 @@ using nsCDEngine.Engines.ThingService;
 using System.Runtime.Serialization;
 using nsCDEngine.ViewModels;
 
-using nsTheSenderBase;
+//using nsTheSenderBase;
 
 //#if !NET35
 //using Microsoft.ServiceBus.Messaging;
@@ -38,7 +38,7 @@ namespace nsTheEventConverters
 
     /// <summary>
     /// </summary>
-    class PPMPMeasurementEventConverter : IEventConverter
+    public class PPMPMeasurementEventConverter : IEventConverter
     {
         #region REST Classes per Bosch spec
         public class MeasurementPayload
@@ -125,7 +125,7 @@ namespace nsTheEventConverters
             return eventPayloadJson;
         }
 
-        public override IEnumerable<object> GetEventData(IEnumerable<TheThingStore> thingUpdates, TheSenderThing senderThing, int maxEventDataSize, bool doNotBatchEvents)
+        public override IEnumerable<object> GetEventData(IEnumerable<TheThingStore> thingUpdates, IThingToConvert senderThing, int maxEventDataSize, bool doNotBatchEvents)
         {
             // TODO Optimization: Create time series inside each measurement rather thant a new measurement for each data point
             var eventList = new List<object>();

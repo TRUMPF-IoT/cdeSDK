@@ -2,11 +2,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29102.190
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CDESenderBaseShared", "SDK\Libraries\185 - SenderAndReceiverBase\CDESenderBaseShared\CDESenderBaseShared.csproj", "{E13E0BDA-219B-4505-8AD6-1E1FD18986C2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "cdeSensorTemplate", "SDK\Libraries\152 - TheSensorTemplate\TheSensorTemplate\cdeSensorTemplate.csproj", "{EBA221C1-B2D1-4001-9AD6-8DCD10EE302A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CDESensorTemplate", "SDK\Libraries\152 - TheSensorTemplate\TheSensorTemplate\CDESensorTemplate.csproj", "{EBA221C1-B2D1-4001-9AD6-8DCD10EE302A}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CDECSVFileParserShared", "SDK\Libraries\110 - File Monitor\TheCSVFileParser\CDECSVFileParserShared.csproj", "{FA29E83A-5184-4315-894A-6A07B95FFD20}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "cdeCSVFileParserShared", "SDK\Libraries\110 - File Monitor\TheCSVFileParser\cdeCSVFileParserShared.csproj", "{FA29E83A-5184-4315-894A-6A07B95FFD20}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CDEMeshManagerContractsShared", "SDK\MessageContracts\071 - C-MyMeshManager\TheMeshManagerContracts\CDEMeshManagerContractsShared.csproj", "{19B834C0-0A48-42BB-B538-A556BADFA1DE}"
 EndProject
@@ -44,8 +42,6 @@ Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "MyOPCUAClientAPI", "SDK\Mes
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "MyOPCUAClientContracts", "SDK\MessageContracts\078 - CDMyOPCUAClient\APIs\MyOPCUAClientContracts\MyOPCUAClientContracts.shproj", "{56DD1F1C-6644-4298-A132-C3254096B72E}"
 EndProject
-Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "MyCloudServicesAPI", "SDK\MessageContracts\095 - CDMyCloudServices\MyCloudServicesAPI\MyCloudServicesAPI\MyCloudServicesAPI.shproj", "{958773D4-BC3B-499A-A0A3-7693E1D7B984}"
-EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "TheCommonMessageContracts", "SDK\MessageContracts\144 - TheCommonMessageContracts\TheCommonMessageContracts\TheCommonMessageContracts.shproj", "{5B124834-F6F1-493D-9B3E-FF0F072F8183}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "VSTemplates", "VSTemplates", "{0E73ECE9-B340-4AA3-9A18-BE10AC15CF84}"
@@ -77,22 +73,54 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_Readme", "_Readme", "{9CEE
 		SDK\readme.md = SDK\readme.md
 	EndProjectSection
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "cdeOPCUAClientAPI", "SDK\MessageContracts\078 - CDMyOPCUAClient\APIs\MyOPCUAClientAPI\cdeOPCUAClientAPI.csproj", "{37F9AF8F-D273-4A2B-972A-957E045BD4ED}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "cdeOPCUAClientContracts", "SDK\MessageContracts\078 - CDMyOPCUAClient\APIs\MyOPCUAClientContracts\cdeOPCUAClientContracts.csproj", "{66D00BE3-11EF-4C7F-8643-80EFA08BE3AF}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "TheConnectionBase", "SDK\Libraries\185 - SenderAndReceiverBase\TheConnectionBase\TheConnectionBase.shproj", "{9C8CC825-09B6-4320-A34B-22029F085012}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "TheEventConverters", "SDK\Libraries\185 - SenderAndReceiverBase\TheEventConverters\TheEventConverters.shproj", "{4652F20E-C456-4536-8D2F-85C2422CFC58}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "TheReceiverBase", "SDK\Libraries\185 - SenderAndReceiverBase\TheReceiverBase\TheReceiverBase.shproj", "{D2FB39C4-E828-4184-8E3B-342F61CB154F}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "TheSenderBase", "SDK\Libraries\185 - SenderAndReceiverBase\TheSenderBase\TheSenderBase.shproj", "{EA4FFFBC-C803-4B10-BA13-1587A1FC0F06}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "TheThingMatcher", "SDK\Libraries\185 - SenderAndReceiverBase\TheThingMatcher\TheThingMatcher.shproj", "{3CDEDA4C-C6D3-4255-9324-475E6764431A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "cdeReceiverBaseShared", "SDK\Libraries\185 - SenderAndReceiverBase\TheReceiverBase\cdeReceiverBaseShared.csproj", "{845AC2C7-F95A-4216-B84B-75F47F374EEF}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "cdeConnectionBaseShared", "SDK\Libraries\185 - SenderAndReceiverBase\TheConnectionBase\cdeConnectionBaseShared.csproj", "{2C1F833F-B8F1-4217-9E9D-34F711860A2C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "cdeCommonMessageContractsShared", "SDK\MessageContracts\144 - TheCommonMessageContracts\TheCommonMessageContracts\cdeCommonMessageContractsShared.csproj", "{E74183D8-CC2B-4598-ABA4-538695A1D15C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "cdeEventConvertersShared", "SDK\Libraries\185 - SenderAndReceiverBase\TheEventConverters\cdeEventConvertersShared.csproj", "{F8A38CC0-F3EA-4A16-889D-D6C871C2F798}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "cdeSenderBaseShared", "SDK\Libraries\185 - SenderAndReceiverBase\TheSenderBase\cdeSenderBaseShared.csproj", "{73D62673-E255-48AA-894C-26180B20E323}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SenderAndReceiverBase", "SenderAndReceiverBase", "{E5DC19DA-228B-4F0E-9CF4-D3C60A6C2B62}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "cdeThingMatcher", "SDK\Libraries\185 - SenderAndReceiverBase\TheThingMatcher\cdeThingMatcher.csproj", "{0F2F7A87-9683-4E2B-BDD8-702132C3C9A8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tools", "Tools", "{F32A0417-74E9-4185-9538-DA83B59F7124}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PackagerInstaller", "..\BuildTools\PackagerInstaller\PackagerInstaller.csproj", "{869E2A4C-3B33-4460-B570-91298197E66A}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		SDK\Libraries\185 - SenderAndReceiverBase\TheThingMatcher\TheThingMatcher.projitems*{3cdeda4c-c6d3-4255-9324-475e6764431a}*SharedItemsImports = 13
+		SDK\Libraries\185 - SenderAndReceiverBase\TheEventConverters\TheEventConverters.projitems*{4652f20e-c456-4536-8d2f-85c2422cfc58}*SharedItemsImports = 13
 		SDK\MessageContracts\078 - CDMyOPCUAClient\APIs\MyOPCUAClientContracts\MyOPCUAClientContracts.projitems*{56dd1f1c-6644-4298-a132-c3254096b72e}*SharedItemsImports = 13
 		SDK\MessageContracts\144 - TheCommonMessageContracts\TheCommonMessageContracts\TheCommonMessageContracts.projitems*{5b124834-f6f1-493d-9b3e-ff0f072f8183}*SharedItemsImports = 13
 		SDK\MessageContracts\078 - CDMyOPCUAClient\APIs\MyOPCUAClientAPI\MyOPCUAClientAPI.projitems*{9469b76a-32e9-4917-a9b5-e133e0666cc7}*SharedItemsImports = 13
-		SDK\MessageContracts\095 - CDMyCloudServices\MyCloudServicesAPI\MyCloudServicesAPI\MyCloudServicesAPI.projitems*{958773d4-bc3b-499a-a0a3-7693e1d7b984}*SharedItemsImports = 13
+		SDK\Libraries\185 - SenderAndReceiverBase\TheConnectionBase\TheConnectionBase.projitems*{9c8cc825-09b6-4320-a34b-22029f085012}*SharedItemsImports = 13
+		SDK\Libraries\185 - SenderAndReceiverBase\TheReceiverBase\TheReceiverBase.projitems*{d2fb39c4-e828-4184-8e3b-342f61cb154f}*SharedItemsImports = 13
+		SDK\Libraries\185 - SenderAndReceiverBase\TheSenderBase\TheSenderBase.projitems*{ea4fffbc-c803-4b10-ba13-1587a1fc0f06}*SharedItemsImports = 13
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{E13E0BDA-219B-4505-8AD6-1E1FD18986C2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E13E0BDA-219B-4505-8AD6-1E1FD18986C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E13E0BDA-219B-4505-8AD6-1E1FD18986C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E13E0BDA-219B-4505-8AD6-1E1FD18986C2}.Release|Any CPU.Build.0 = Release|Any CPU
 		{EBA221C1-B2D1-4001-9AD6-8DCD10EE302A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{EBA221C1-B2D1-4001-9AD6-8DCD10EE302A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EBA221C1-B2D1-4001-9AD6-8DCD10EE302A}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -138,19 +166,53 @@ Global
 		{AC4BEFDA-BC10-466C-8469-2D9B219709F2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{AC4BEFDA-BC10-466C-8469-2D9B219709F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AC4BEFDA-BC10-466C-8469-2D9B219709F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{37F9AF8F-D273-4A2B-972A-957E045BD4ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{37F9AF8F-D273-4A2B-972A-957E045BD4ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{37F9AF8F-D273-4A2B-972A-957E045BD4ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{37F9AF8F-D273-4A2B-972A-957E045BD4ED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{66D00BE3-11EF-4C7F-8643-80EFA08BE3AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{66D00BE3-11EF-4C7F-8643-80EFA08BE3AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{66D00BE3-11EF-4C7F-8643-80EFA08BE3AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{66D00BE3-11EF-4C7F-8643-80EFA08BE3AF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{845AC2C7-F95A-4216-B84B-75F47F374EEF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{845AC2C7-F95A-4216-B84B-75F47F374EEF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{845AC2C7-F95A-4216-B84B-75F47F374EEF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{845AC2C7-F95A-4216-B84B-75F47F374EEF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2C1F833F-B8F1-4217-9E9D-34F711860A2C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2C1F833F-B8F1-4217-9E9D-34F711860A2C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2C1F833F-B8F1-4217-9E9D-34F711860A2C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2C1F833F-B8F1-4217-9E9D-34F711860A2C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E74183D8-CC2B-4598-ABA4-538695A1D15C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E74183D8-CC2B-4598-ABA4-538695A1D15C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E74183D8-CC2B-4598-ABA4-538695A1D15C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E74183D8-CC2B-4598-ABA4-538695A1D15C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F8A38CC0-F3EA-4A16-889D-D6C871C2F798}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F8A38CC0-F3EA-4A16-889D-D6C871C2F798}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F8A38CC0-F3EA-4A16-889D-D6C871C2F798}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F8A38CC0-F3EA-4A16-889D-D6C871C2F798}.Release|Any CPU.Build.0 = Release|Any CPU
+		{73D62673-E255-48AA-894C-26180B20E323}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{73D62673-E255-48AA-894C-26180B20E323}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{73D62673-E255-48AA-894C-26180B20E323}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{73D62673-E255-48AA-894C-26180B20E323}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0F2F7A87-9683-4E2B-BDD8-702132C3C9A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0F2F7A87-9683-4E2B-BDD8-702132C3C9A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0F2F7A87-9683-4E2B-BDD8-702132C3C9A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0F2F7A87-9683-4E2B-BDD8-702132C3C9A8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{869E2A4C-3B33-4460-B570-91298197E66A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{869E2A4C-3B33-4460-B570-91298197E66A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{869E2A4C-3B33-4460-B570-91298197E66A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{869E2A4C-3B33-4460-B570-91298197E66A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{E13E0BDA-219B-4505-8AD6-1E1FD18986C2} = {BE921EAC-572E-4DF4-824B-33DE6F58BA52}
 		{EBA221C1-B2D1-4001-9AD6-8DCD10EE302A} = {BE921EAC-572E-4DF4-824B-33DE6F58BA52}
 		{FA29E83A-5184-4315-894A-6A07B95FFD20} = {BE921EAC-572E-4DF4-824B-33DE6F58BA52}
 		{19B834C0-0A48-42BB-B538-A556BADFA1DE} = {ED82BA02-E0A9-4935-BCCC-C3FAD112A4CB}
 		{85560D2C-AD99-4FDA-81F3-EDCC8FBBD036} = {7D441A72-A796-4DC8-8E00-732C7B6F65AE}
 		{9469B76A-32E9-4917-A9B5-E133E0666CC7} = {ED82BA02-E0A9-4935-BCCC-C3FAD112A4CB}
 		{56DD1F1C-6644-4298-A132-C3254096B72E} = {ED82BA02-E0A9-4935-BCCC-C3FAD112A4CB}
-		{958773D4-BC3B-499A-A0A3-7693E1D7B984} = {ED82BA02-E0A9-4935-BCCC-C3FAD112A4CB}
 		{5B124834-F6F1-493D-9B3E-FF0F072F8183} = {ED82BA02-E0A9-4935-BCCC-C3FAD112A4CB}
 		{D31B43A2-D081-40B3-8CA9-035BF7F8F464} = {0E73ECE9-B340-4AA3-9A18-BE10AC15CF84}
 		{83EEABD3-3CCF-48AA-BB33-EF66FF09E8CC} = {0E73ECE9-B340-4AA3-9A18-BE10AC15CF84}
@@ -163,6 +225,21 @@ Global
 		{85351BFA-67F1-4394-A883-328F49587D6E} = {0E73ECE9-B340-4AA3-9A18-BE10AC15CF84}
 		{421320D7-2627-4319-901E-ED399408C8A6} = {0E73ECE9-B340-4AA3-9A18-BE10AC15CF84}
 		{AC4BEFDA-BC10-466C-8469-2D9B219709F2} = {0E73ECE9-B340-4AA3-9A18-BE10AC15CF84}
+		{37F9AF8F-D273-4A2B-972A-957E045BD4ED} = {ED82BA02-E0A9-4935-BCCC-C3FAD112A4CB}
+		{66D00BE3-11EF-4C7F-8643-80EFA08BE3AF} = {ED82BA02-E0A9-4935-BCCC-C3FAD112A4CB}
+		{9C8CC825-09B6-4320-A34B-22029F085012} = {E5DC19DA-228B-4F0E-9CF4-D3C60A6C2B62}
+		{4652F20E-C456-4536-8D2F-85C2422CFC58} = {E5DC19DA-228B-4F0E-9CF4-D3C60A6C2B62}
+		{D2FB39C4-E828-4184-8E3B-342F61CB154F} = {E5DC19DA-228B-4F0E-9CF4-D3C60A6C2B62}
+		{EA4FFFBC-C803-4B10-BA13-1587A1FC0F06} = {E5DC19DA-228B-4F0E-9CF4-D3C60A6C2B62}
+		{3CDEDA4C-C6D3-4255-9324-475E6764431A} = {E5DC19DA-228B-4F0E-9CF4-D3C60A6C2B62}
+		{845AC2C7-F95A-4216-B84B-75F47F374EEF} = {E5DC19DA-228B-4F0E-9CF4-D3C60A6C2B62}
+		{2C1F833F-B8F1-4217-9E9D-34F711860A2C} = {E5DC19DA-228B-4F0E-9CF4-D3C60A6C2B62}
+		{E74183D8-CC2B-4598-ABA4-538695A1D15C} = {ED82BA02-E0A9-4935-BCCC-C3FAD112A4CB}
+		{F8A38CC0-F3EA-4A16-889D-D6C871C2F798} = {E5DC19DA-228B-4F0E-9CF4-D3C60A6C2B62}
+		{73D62673-E255-48AA-894C-26180B20E323} = {E5DC19DA-228B-4F0E-9CF4-D3C60A6C2B62}
+		{E5DC19DA-228B-4F0E-9CF4-D3C60A6C2B62} = {BE921EAC-572E-4DF4-824B-33DE6F58BA52}
+		{0F2F7A87-9683-4E2B-BDD8-702132C3C9A8} = {E5DC19DA-228B-4F0E-9CF4-D3C60A6C2B62}
+		{869E2A4C-3B33-4460-B570-91298197E66A} = {85560D2C-AD99-4FDA-81F3-EDCC8FBBD036}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {75C94C50-175D-4EFC-B610-B4B9A3584DE7}

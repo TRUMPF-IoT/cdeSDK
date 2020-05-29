@@ -6,13 +6,13 @@
 
   <PropertyGroup>
     <OutputType>library</OutputType>
-    <PackageId>cdeSenderBaseShared</PackageId>
+    <PackageId>cdeThingMatcherShared</PackageId>
     <Version>1.0.1.11</Version>
     <TargetFrameworks>netstandard2.0;net45;net35;net4</TargetFrameworks>
     <Authors>Markus Horstmann</Authors>
     <Company>C-Labs</Company>
     <Copyright>Copyright © 2015-2020 TRUMPF Laser GmbH, authors: C-Labs</Copyright>
-    <PackageDescription>SenderBase Library for C-DEngine</PackageDescription>
+    <PackageDescription>Thing Matcher Library for C-DEngine</PackageDescription>
     <PackageIcon>toplogo-128.png</PackageIcon>
 
     <PackageLicenseExpression>MPL-2.0</PackageLicenseExpression>
@@ -22,33 +22,29 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Include="..\**\*.cs" buildAction="Compile">
+    <Compile Remove="**\*.cs" />
+    <Content Include="**\*.cs" buildAction="Compile">
       <!--<Link>SenderBase\TheSenderBase\%(RecursiveDir)%(Filename)%(Extension)</Link>-->
     </Content>
-    <!--<Content Include="..\TheSenderBase\**" buildAction="Compile" />
-    <Content Include="..\TheConnectionBase\**" buildAction="Compile" />
-    <Content Include="..\TheEventConverters\**" buildAction="Compile" />-->
-    <Content Include="..\..\..\MessageContracts\144 - TheCommonMessageContracts\**\*.cs" buildAction="Compile">
-      <!--<Link>SenderBase\TheCommonMessageContracts\%(RecursiveDir)%(Filename)%(Extension)</Link>-->
-    </Content>
-    <Content Include="..\..\..\MessageContracts\078 - CDMyOPCUAClient\APIs\**\*.cs" buildAction="Compile">
-      <!--<Link>SenderBase\TheOPCUAClientAPI\%(RecursiveDir)%(Filename)%(Extension)</Link>-->
-    </Content>
-    <Content Include="..\..\..\MessageContracts\095 - CDMyCloudServices\MyCloudServicesAPI\**\*.cs" buildAction="Compile">
-      <!--<Link>SenderBase\MyCloudServicesAPI\%(RecursiveDir)%(Filename)%(Extension)</Link>-->
-    </Content>
+    <Compile Include="**\*.cs" />
+    <Content Remove="obj\**" />
+   
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="..\..\..\toplogo-128.png" Pack="true" PackagePath=""/>
+    <None Include="..\..\..\toplogo-128.png" Pack="true" PackagePath="" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="C-DEngine" Version="5.*" />
-    <PackageReference Include="jnm2.ReferenceAssemblies.net35" Version="1.0.1">
+    <PackageReference Include="jnm2.ReferenceAssemblies.net35" Version="1.0.1" Condition="'$(TargetFramework)'=='net35'">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)'=='net4'">
+    <PackageReference Include="AsyncBridge" Version="0.1.1.0" />
   </ItemGroup>
 
   <ItemGroup>

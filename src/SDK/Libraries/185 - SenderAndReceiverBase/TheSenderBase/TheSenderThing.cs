@@ -32,7 +32,7 @@ using nsTheThingToPublish;
 namespace nsTheSenderBase
 {
 
-    public class TheSenderThing : TheDataBase
+    public class TheSenderThing : TheDataBase, nsTheEventConverters.IThingToConvert
     {
         public string ThingMID { get { return _thingMid; } set { _thingMid = value; _thing = null; ThingMidAsGuid = TheCommonUtils.CGuid(value); } }
         string _thingMid;
@@ -601,7 +601,7 @@ namespace nsTheSenderBase
             return pendingHistoryLoops?.Where(kv => kv.Value.owner == ownerThing).Select(kv => kv.Value.senderThing).ToList() ?? new List<TheSenderThing>();
         }
 
-        internal HashSet<string> GetPropertiesToSend()
+        public HashSet<string> GetPropertiesToSend()
         {
             HashSet<string> propertiesToSend;
             if (String.IsNullOrEmpty(PropertiesIncluded))

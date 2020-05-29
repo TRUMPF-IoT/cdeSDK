@@ -17,7 +17,7 @@ using CDMyOPCUAClient.Contracts;
 using nsCDEngine.ViewModels;
 using System.Runtime.Serialization;
 
-using nsTheSenderBase;
+//using nsTheSenderBase;
 
 //#if !NET35
 //using Microsoft.ServiceBus.Messaging;
@@ -26,7 +26,12 @@ using nsTheSenderBase;
 
 namespace nsTheEventConverters
 {
-
+    public interface IThingToConvert
+    {
+        bool AddThingIdentity { get; }
+        TheThing GetThing();
+        HashSet<string> GetPropertiesToSend();
+    }
 
     public abstract class IEventConverter
     {
@@ -38,7 +43,7 @@ namespace nsTheEventConverters
         /// <param name="maxEventDataSize">Maximum payload size for each returned object.</param>
         /// <param name="doNotBatchEvents">Do not return multiple events/properties in a single object (i.e. as a JSON array), but use one object per event/property.</param>
         /// <returns></returns>
-        public abstract IEnumerable<object> GetEventData(IEnumerable<TheThingStore> thingUpdates, TheSenderThing senderThing, int maxEventDataSize, bool doNotBatchEvents);
+        public abstract IEnumerable<object> GetEventData(IEnumerable<TheThingStore> thingUpdates, IThingToConvert senderThing, int maxEventDataSize, bool doNotBatchEvents);
 
         //IEnumerable<TSM> GetMessages(TheSenderBase.ThingEvent thingEvent);
         public Func<TheThing, Task<bool>> NewThingCallback { get; set; }
@@ -51,8 +56,7 @@ namespace nsTheEventConverters
         }
 
         public Dictionary<string, object> StaticPropsToAdd;
-
-        public virtual bool UpdatePropertyValuesToSend(TheThingStore thingEvent, bool changeDateTimeOffset, TheSenderThing senderThing, bool skipBaseProps)
+        public virtual bool UpdatePropertyValuesToSend(TheThingStore thingEvent, bool changeDateTimeOffset, IThingToConvert senderThing, bool skipBaseProps)
         {
             if (changeDateTimeOffset)
             {
@@ -155,7 +159,7 @@ namespace nsTheEventConverters
         //public const string strTimeProp = "cdeTime";
         //public const string strTimeMaxProp = "cdeTimeMax";
     }
-    class InvalidTransportEncodingException : Exception
+    public class InvalidTransportEncodingException : Exception
     {
     }
 
@@ -169,7 +173,7 @@ namespace nsTheEventConverters
         //            { "JSON Objects", new JSonObjectEventConverter() },
         //            { "JSON Objects Rooted", new JSonObjectEventConverterWithRoot() },
         //            { "JSON Properties", new JSonPropertyEventConverter() },
-        //            { "MyBrand IoT Manager", new MyBrandIotManagerEventConverter() },
+        //            { "Axoom IoT Manager", new AxoomIotManagerEventConverter() },
         //            { "CSV", new CSVEventConverter() },
         //            { "AppProperties", new AMQPPropertyEventConverter() },
         //            { "JSON OPC Properties", new JsonOpcUaEventConverter() },
@@ -179,7 +183,7 @@ namespace nsTheEventConverters
         //            //{ "JSON Full Things", new JSonFullThingEventConverter() },
         //        };
         private static object _eventConverterLock = new object();
-
+        
         static Dictionary<string, IEventConverter> EventConverters
         {
             get
@@ -197,7 +201,7 @@ namespace nsTheEventConverters
                                 { "JSON Objects", new JSonObjectEventConverter() },
                                 { "JSON Objects Rooted", new JSonObjectEventConverterWithRoot() },
                                 { "JSON Properties", new JSonPropertyEventConverter() },
-                                { "MyBrand IoT Manager", new MyBrandIotManagerEventConverter() },
+                                { "Axoom IoT Manager", new AxoomIotManagerEventConverter() },
                                 { "CSV", new CSVEventConverter() },
 
 #if INCLUDE_PPMP_EVENTCONVERTER
@@ -266,12 +270,12 @@ namespace nsTheEventConverters
     /// Example for a Thing with two integer properties Prop1 = 1 and Prop2 = 2
     /// TODO Update... { "Prop1" : 1, " Prop2" : 2, "cdeThingId" : myThing.cdeMid, "cdeAddress" : myThing.Address, "cdeDeviceType" : myThing.DeviceType, "cdeTime" : myThing.cdeCTIM, "cdeTimeMax" : myThing.cdeCTIM }
     /// </summary>
-    class JSonThingEventConverter : IEventConverter
+    public class JSonThingEventConverter : IEventConverter
     {
         public string DisplayName { get; set; }
         public Func<TheThing, TheThingStore, bool> ApplyUpdateCallback { get; internal set; }
 
-        public override IEnumerable<object> GetEventData(IEnumerable<TheThingStore> thingUpdates, TheSenderThing senderThing, int maxEventDataSize, bool doNotBatchEvents)
+        public override IEnumerable<object> GetEventData(IEnumerable<TheThingStore> thingUpdates, IThingToConvert senderThing, int maxEventDataSize, bool doNotBatchEvents)
         {
             var thingList = new List<object>();
             foreach (var thingUpdate in thingUpdates)
@@ -444,9 +448,9 @@ namespace nsTheEventConverters
     /// Example for a Thing with two integer properties Prop1 = 1 and Prop2 = 2
     /// TODO Update... { "Prop1" : 1, " Prop2" : 2, "cdeThingId" : myThing.cdeMid, "cdeAddress" : myThing.Address, "cdeDeviceType" : myThing.DeviceType, "cdeTime" : myThing.cdeCTIM, "cdeTimeMax" : myThing.cdeCTIM }
     /// </summary>
-    class JSonFullThingEventConverter : IEventConverter
+    public class JSonFullThingEventConverter : IEventConverter
     {
-        public override IEnumerable<object> GetEventData(IEnumerable<TheThingStore> thingUpdates, TheSenderThing senderThing, int maxEventDataSize, bool doNotBatchEvents)
+        public override IEnumerable<object> GetEventData(IEnumerable<TheThingStore> thingUpdates, IThingToConvert senderThing, int maxEventDataSize, bool doNotBatchEvents)
         {
             var thingList = new List<object>();
             foreach (var thingUpdate in thingUpdates)
@@ -550,9 +554,9 @@ namespace nsTheEventConverters
     /// Example for a Thing with two integer properties Prop1 = 1 and Prop2 = 2
     /// { "Prop1" : 1, " Prop2" : 2, "cdeMID" : myThing.cdeMid, "cdeAddress" : myThing.Address, "cdeDeviceType" : myThing.DeviceType, "cdeTime" : myThing.cdeCTIM, "cdeTimeMax" : myThing.cdeCTIM }
     /// </summary>
-    class JSonObjectEventConverter : IEventConverter
+    public class JSonObjectEventConverter : IEventConverter
     {
-        public override IEnumerable<object> GetEventData(IEnumerable<TheThingStore> thingUpdates, TheSenderThing senderThing, int maxEventDataSize, bool doNotBatchEvents)
+        public override IEnumerable<object> GetEventData(IEnumerable<TheThingStore> thingUpdates, IThingToConvert senderThing, int maxEventDataSize, bool doNotBatchEvents)
         {
             var objectList = new List<object>();
             foreach (var thingUpdate in thingUpdates)
@@ -725,9 +729,9 @@ namespace nsTheEventConverters
     /// Example for a Thing with two integer properties Prop1 = 1 and Prop2 = 2
     /// { "Entries"":{ "Prop1" : 1, " Prop2" : 2, "cdeThingId" : myThing.cdeMid, "cdeAddress" : myThing.Address, "cdeDeviceType" : myThing.DeviceType, "cdeTime" : myThing.cdeCTIM, "cdeTimeMax" : myThing.cdeCTIM } }
     /// </summary>
-    class JSonObjectEventConverterWithRoot : IEventConverter
+    public class JSonObjectEventConverterWithRoot : IEventConverter
     {
-        public override IEnumerable<object> GetEventData(IEnumerable<TheThingStore> thingUpdates, TheSenderThing senderThing, int maxEventDataSize, bool doNotBatchEvents)
+        public override IEnumerable<object> GetEventData(IEnumerable<TheThingStore> thingUpdates, IThingToConvert senderThing, int maxEventDataSize, bool doNotBatchEvents)
         {
             var objectList = new List<object>();
             foreach (var thingUpdate in thingUpdates)
@@ -830,7 +834,7 @@ namespace nsTheEventConverters
     ///   { "name" : "Prop2", "value" : 2, "time": cdeP.cdeCTIM}
     /// ]
     /// </summary>
-    class JSonPropertyEventConverter : IEventConverter
+    public class JSonPropertyEventConverter : IEventConverter
     {
         public class JSonArrayElement: Dictionary<string,object>
         {
@@ -964,7 +968,7 @@ namespace nsTheEventConverters
             return eventPayloadJson;
         }
 
-        public override IEnumerable<object> GetEventData(IEnumerable<TheThingStore> thingUpdates, TheSenderThing senderThing, int maxEventDataSize, bool doNotBatchEvents)
+        public override IEnumerable<object> GetEventData(IEnumerable<TheThingStore> thingUpdates, IThingToConvert senderThing, int maxEventDataSize, bool doNotBatchEvents)
         {
             var events = new List<object>();
             foreach (var thingUpdate in thingUpdates)
@@ -1062,9 +1066,9 @@ namespace nsTheEventConverters
 
     }
 
-    class CSVEventConverter : IEventConverter
+    public class CSVEventConverter : IEventConverter
     {
-        public override IEnumerable<object> GetEventData(IEnumerable<TheThingStore> thingUpdates, TheSenderThing senderThing, int maxEventDataSized, bool doNotBatchEvents)
+        public override IEnumerable<object> GetEventData(IEnumerable<TheThingStore> thingUpdates, IThingToConvert senderThing, int maxEventDataSized, bool doNotBatchEvents)
         {
             var eventList = new List<object>();
             foreach (var thingUpdate in thingUpdates)
@@ -1080,7 +1084,7 @@ namespace nsTheEventConverters
             public StringBuilder header;
             public StringBuilder row;
         };
-        string GetThingEventAsCSV(TheThingStore thingEvent, TheSenderThing senderThing)
+        string GetThingEventAsCSV(TheThingStore thingEvent, IThingToConvert senderThing)
         {
             this.UpdatePropertyValuesToSend(thingEvent, false, senderThing, false);
             var eventPayload = thingEvent.PB;

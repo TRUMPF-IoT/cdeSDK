@@ -9,16 +9,15 @@ using nsCDEngine.Engines.ThingService;
 using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
-using TheCommonMessageContracts;
 
 namespace nsTheSenderBase
 {
 #if NET35
-    interface IObservable<T>
+    public interface IObservable<T>
     {
         IDisposable Subscribe(IObserver<T> observer);
     }
-    interface IObserver<T>
+    public interface IObserver<T>
     {
         void OnNext(T value);
         void OnCompleted();
@@ -26,7 +25,7 @@ namespace nsTheSenderBase
     }
 #endif
 
-    class TheThingMatcher : IObservable<TheThing>
+    public class TheThingMatcher : IObservable<TheThing>
     {
         TheThingReference _thingReference;
 

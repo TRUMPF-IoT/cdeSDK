@@ -9,15 +9,15 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
-using TheCommonMessageContracts;
+//using TheCommonMessageContracts;
 
 namespace CDMyOPCUAClient.Contracts
 {
-    internal class TheOPCUAClientEngines
+    public class TheOPCUAClientEngines
     {
         public const string EngineName = "CDMyOPCUAClient.cdeOPCUaClient";
     }
-    internal static class eOPCUAClientDeviceTypes
+    public static class eOPCUAClientDeviceTypes
     {
         public const string RemoteServer = "OPC-UA Remote Server";
     }
@@ -25,7 +25,7 @@ namespace CDMyOPCUAClient.Contracts
     /// <summary>
     /// Definition of the events fired by the OPCUA Client
     /// </summary>
-    internal static class eOPCUAClientEvents
+    public static class eOPCUAClientEvents
     {
         /// <summary>
         /// Fired when the connection is established
@@ -44,14 +44,14 @@ namespace CDMyOPCUAClient.Contracts
 
 
 
-    internal enum ChangeTrigger
+    public enum ChangeTrigger
     {
         Status = 0,
         Value = 1,
         Timestamp = 2,
     }
 
-    internal class TheEventProperty
+    public class TheEventProperty
     {
         public string Name;
         public string CustomTypeId;
@@ -136,7 +136,7 @@ namespace CDMyOPCUAClient.Contracts
 
 //}
 
-internal class TheEventSubscription
+    public class TheEventSubscription
     {
         /// <summary>
         /// Treats the event as a Condition and maintains a list of conditions that are marked with Retain = true
@@ -178,7 +178,7 @@ internal class TheEventSubscription
     }
     
 #pragma warning disable CS0649
-    internal class MsgOPCUACreateTags
+    public class MsgOPCUACreateTags
     {
         public class MethodInfo
         {
@@ -242,7 +242,7 @@ internal class TheEventSubscription
     }
 
 
-    internal class MsgOPCUACreateTagsResponse
+    public class MsgOPCUACreateTagsResponse
     {
         public class TagResult
         {
@@ -253,16 +253,16 @@ internal class TheEventSubscription
         public string Error;
     }
 
-    internal class MsgOPCUABrowse
+    public class MsgOPCUABrowse
     {
     }
-    internal class MsgOPCUABrowseResponse
+    public class MsgOPCUABrowseResponse
     {
         public List<MsgOPCUACreateTags.TagInfo> Tags;
         public string Error;
     }
 
-    internal class MsgOPCUAReadTags
+    public class MsgOPCUAReadTags
     {
         public class TagInfo
         {
@@ -272,7 +272,7 @@ internal class TheEventSubscription
         public List<TagInfo> Tags;
     }
 
-    internal class MsgOPCUAReadTagsResponse
+    public class MsgOPCUAReadTagsResponse
     {
         public class TagResult
         {
@@ -291,40 +291,40 @@ internal class TheEventSubscription
         public bool WaitUntilConnected { get; set; }
     }
 
-    internal class MsgOPCUAConnectResponse
+    public class MsgOPCUAConnectResponse
     {
         public string Error;
     }
 
-    internal class MsgOPCUADisconnect
+    public class MsgOPCUADisconnect
     {
     }
 
-    internal class MsgOPCUADisconnectResponse
+    public class MsgOPCUADisconnectResponse
     {
         public string Error;
     }
 
 
-    internal class MsgOPCUAMethodCall
+    public class MsgOPCUAMethodCall
     {
         public Dictionary<string, object> Arguments;
         public bool ReturnRawJSON;
     }
 
-    internal class MsgOPCUAMethodCallResponse
+    public class MsgOPCUAMethodCallResponse
     {
         public List<object> OutputArguments;
         public string Error;
     }
 
-    internal class TheMethodInfo
+    public class TheMethodInfo
     {
         public string ObjectId;
         public int CallTimeout;
     }
 
-    internal class TheOPCSensorSubscription : TheThing.TheSensorSubscription
+    public class TheOPCSensorSubscription : TheThing.TheSensorSubscription
     {
         public int? QueueSize { get; set; }
         public int? ChangeTrigger { get; set; }

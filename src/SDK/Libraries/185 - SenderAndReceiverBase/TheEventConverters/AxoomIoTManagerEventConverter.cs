@@ -16,7 +16,7 @@ using nsCDEngine.Engines.ThingService;
 using System.Runtime.Serialization;
 using nsCDEngine.ViewModels;
 
-using nsTheSenderBase;
+//using nsTheSenderBase;
 
 //#if !NET35
 //using Microsoft.ServiceBus.Messaging;
@@ -37,16 +37,10 @@ namespace nsTheEventConverters
 {
 
     /// <summary>
-    /// Represents a Thing as a JSON array of objects, where each Thing property maps to a JSON object in that array.
-    /// Example for a Thing with two integer properties Prop1 = 1 and Prop2 = 2
-    /// [
-    ///   { "machineid" : NodeId, "linkid" : myThing.FriendlyName, "namespace" : "http://MyBrand.com/UAInterfaces/MDA" , "identifier" : "Prop1", "servertimestamp": cdeP.cdeCTIM, "sourcetimestamp": cdeP.cdeCTIM,  "value" : 1},
-    ///   { "machineid" : NodeId, "linkid" : myThing.FriendlyName, "namespace" : "http://MyBrand.com/UAInterfaces/MDA" , "identifier" : "Prop2", "servertimestamp": cdeP.cdeCTIM, "sourcetimestamp": cdeP.cdeCTIM,  "value" : 2},
-    /// ]
     /// </summary>
-    class MyBrandIotManagerEventConverter : IEventConverter
+    public class AxoomIotManagerEventConverter : IEventConverter
     {
-        #region REST Classes from MyBrand
+        #region REST Classes from Axoom
         public class ObservMessage
         {
             public object value { get; set; }
@@ -59,20 +53,20 @@ namespace nsTheEventConverters
             public DateTime timestamp { get; set; }
         }
 
-        public class TheMyBrandGateObservation
+        public class TheAxoomGateObservation
         {
             public ObservMessage message { get; set; }
             public DateTime timestamp { get; set; }
             public string signature { get; set; }
         }
-        public class TheMyBrandGateDataStreamObservation
+        public class TheAxoomGateDataStreamObservation
         {
             public string datastream_id { get; set; }
             public List<ObservMessage> observations { get; set; }
         }
-        public class TheMyBrandGateDataStreamObservations
+        public class TheAxoomGateDataStreamObservations
         {
-            public List<TheMyBrandGateDataStreamObservation> datastreams { get; set; }
+            public List<TheAxoomGateDataStreamObservation> datastreams { get; set; }
         }
 
         #endregion
@@ -98,7 +92,7 @@ namespace nsTheEventConverters
         //    public SensorData sensor;
         //}
 
-        IEnumerable<TheMyBrandGateDataStreamObservation> GetObservations(IEnumerable<TheThingStore> thingUpdates, Dictionary<string, List<SensorInfo>> sensorIds)
+        IEnumerable<TheAxoomGateDataStreamObservation> GetObservations(IEnumerable<TheThingStore> thingUpdates, Dictionary<string, List<SensorInfo>> sensorIds)
         {
             var observationsByDataStreamId = new Dictionary<string, List<ObservMessage>>();
             foreach (var thingUpdate in thingUpdates)
@@ -107,7 +101,7 @@ namespace nsTheEventConverters
             }
 
             var observations = observationsByDataStreamId.Select(kv =>
-               new TheMyBrandGateDataStreamObservation
+               new TheAxoomGateDataStreamObservation
                {
                    datastream_id = kv.Key,
                    observations = kv.Value,
@@ -119,7 +113,7 @@ namespace nsTheEventConverters
         {
             public string DataStreamId { get; set; }
             public ePropertyTypes cdeType { get; set; }
-            public string MyBrandType { get; set; }
+            public string AxoomType { get; set; }
         }
 
         void GetObservations(TheThingStore thingUpdate, Dictionary<string, List<ObservMessage>> observationsByDataStreamId, Dictionary<string, List<SensorInfo>> sensorIds)
@@ -195,13 +189,13 @@ namespace nsTheEventConverters
                     if (sensorIds?.TryGetValue(propKV.Key, out sensorInfoList) != true || sensorInfoList == null)
                     {
                         throw new Exception($"No sensor type info available yet for {propKV.Key}");
-                        //TheBaseAssets.MySYSLOG.WriteToLog(95249, new TSM(nameof(MyBrandIotManagerEventConverter), "IoT Sender: ignoring sensors that haven't been cached yet", eMsgLevel.l1_Error, $"{propKV.Key}"));
+                        //TheBaseAssets.MySYSLOG.WriteToLog(95249, new TSM(nameof(AxoomIotManagerEventConverter), "IoT Sender: ignoring sensors that haven't been cached yet", eMsgLevel.l1_Error, $"{propKV.Key}"));
                     }
                     foreach (var sensorInfo in sensorInfoList)
                     {
                         var dataStreamId = sensorInfo.DataStreamId;
                         var propertyType = sensorInfo.cdeType;
-                        var MyBrandType = sensorInfo.MyBrandType;
+                        var AxoomType = sensorInfo.AxoomType;
                         if (!string.IsNullOrEmpty(dataStreamId))
                         {
                             var propValue = propKV.Value;
@@ -227,7 +221,7 @@ namespace nsTheEventConverters
                             {
                                 propValue = TheCommonUtils.CBool(propValue);
                             }
-                            switch (MyBrandType)
+                            switch (AxoomType)
                             {
                                 case "Double":
                                     {
@@ -279,7 +273,7 @@ namespace nsTheEventConverters
                                 case "String":
                                     if (propValue is DateTimeOffset || propValue is DateTime)
                                     {
-                                        propValue = "_" + TheCommonUtils.CStr(propValue); // Workaround for MyBrand IoTHub bug that rejects strings with valid date strings
+                                        propValue = "_" + TheCommonUtils.CStr(propValue); // Workaround for Axoom IoTHub bug that rejects strings with valid date strings
                                     }
                                     else
                                     {
@@ -309,14 +303,14 @@ namespace nsTheEventConverters
                             }
                             else
                             {
-                                TheBaseAssets.MySYSLOG.WriteToLog(95290, TSM.L(eDEBUG_LEVELS.VERBOSE) ? null : new TSM(nameof(MyBrandIotManagerEventConverter), "IoT Sender: dropping property because it is null", eMsgLevel.l1_Error, $"{propKV.Key}"));
+                                TheBaseAssets.MySYSLOG.WriteToLog(95290, TSM.L(eDEBUG_LEVELS.VERBOSE) ? null : new TSM(nameof(AxoomIotManagerEventConverter), "IoT Sender: dropping property because it is null", eMsgLevel.l1_Error, $"{propKV.Key}"));
                             }
                         }
                     }
                 }
             }
         }
-        HashSet<string> reservedProps = new HashSet<string> { "Manufacturer", "SerialNumber", "VendorName", "Model", "__MyBrandSensorIds" };
+        HashSet<string> reservedProps = new HashSet<string> { "Manufacturer", "SerialNumber", "VendorName", "Model", "__AxoomSensorIds" };
 
         //private static object GetTypedValue(StructMemberValue member)
         //{
@@ -349,27 +343,27 @@ namespace nsTheEventConverters
         //}
 
 
-        string SerializeJSonArray(IEnumerable<TheMyBrandGateDataStreamObservation> jsonArray)
+        string SerializeJSonArray(IEnumerable<TheAxoomGateDataStreamObservation> jsonArray)
         {
-            if (!(jsonArray is List<TheMyBrandGateDataStreamObservation>))
+            if (!(jsonArray is List<TheAxoomGateDataStreamObservation>))
             {
-                jsonArray = new List<TheMyBrandGateDataStreamObservation>(jsonArray);
+                jsonArray = new List<TheAxoomGateDataStreamObservation>(jsonArray);
             }
 
-            var MyBrandMessage = new MessageEnvelope
+            var AxoomMessage = new MessageEnvelope
             {
                 timestamp = DateTime.UtcNow,
-                message = new TheMyBrandGateDataStreamObservations { datastreams = jsonArray as List<TheMyBrandGateDataStreamObservation> },
+                message = new TheAxoomGateDataStreamObservations { datastreams = jsonArray as List<TheAxoomGateDataStreamObservation> },
             };
 
-            string eventPayloadJson = TheCommonUtils.SerializeObjectToJSONString(MyBrandMessage);
+            string eventPayloadJson = TheCommonUtils.SerializeObjectToJSONString(AxoomMessage);
             return eventPayloadJson;
         }
 
-        public override IEnumerable<object> GetEventData(IEnumerable<TheThingStore> thingUpdates, TheSenderThing senderThing, int maxEventDataSize, bool doNotBatchEvents)
+        public override IEnumerable<object> GetEventData(IEnumerable<TheThingStore> thingUpdates, IThingToConvert senderThing, int maxEventDataSize, bool doNotBatchEvents)
         {
             Dictionary<string, List<SensorInfo>> sensorIds = null;
-            if (thingUpdates.First().PB.TryGetValue("__MyBrandSensorIds", out var sensorIdsObj))
+            if (thingUpdates.First().PB.TryGetValue("__AxoomSensorIds", out var sensorIdsObj))
             {
                 sensorIds = sensorIdsObj as Dictionary<string, List<SensorInfo>>;
             }
@@ -388,7 +382,7 @@ namespace nsTheEventConverters
             return events;
         }
 
-        IEnumerable<object> GetEvents(IEnumerable<TheMyBrandGateDataStreamObservation> jsonArray, int maxEventDataSize)
+        IEnumerable<object> GetEvents(IEnumerable<TheAxoomGateDataStreamObservation> jsonArray, int maxEventDataSize)
         {
             string eventPayloadJson = SerializeJSonArray(jsonArray);
             //string eventPayloadJson = TheCommonUtils.SerializeObjectToJSONString<List<JSonArrayElement>>(jsonArray as List<JSonArrayElement>);
@@ -405,15 +399,15 @@ namespace nsTheEventConverters
         public override string ProcessEventData(TheThing thing, object evnt, DateTimeOffset defaultTimestamp)
         {
             var json = DecodeEventAsString(evnt);
-            List<TheMyBrandGateObservation> payload = null;
+            List<TheAxoomGateObservation> payload = null;
             string error = null;
             try
             {
-                payload = TheCommonUtils.DeserializeJSONStringToObject<List<TheMyBrandGateObservation>>(json);
+                payload = TheCommonUtils.DeserializeJSONStringToObject<List<TheAxoomGateObservation>>(json);
                 //payload = TheCommonUtils.DeserializeJSONStringToObject<List<JSonArrayElement>>(json);
                 if (payload == null)
                 {
-                    payload = new List<TheMyBrandGateObservation> { TheCommonUtils.DeserializeJSONStringToObject<TheMyBrandGateObservation>(json) };
+                    payload = new List<TheAxoomGateObservation> { TheCommonUtils.DeserializeJSONStringToObject<TheAxoomGateObservation>(json) };
                 }
                 if (payload == null || payload.Count == 0)
                 {

@@ -7,7 +7,7 @@ using System;
 
 namespace CDMyOPCUAClient.Contracts
 {
-    internal class TheOPCUAValue
+    public class TheOPCUAValue
     {
         public object value { get; set; }
         public uint? statusCode { get; set; }
