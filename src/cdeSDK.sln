@@ -2,11 +2,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29102.190
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "cdeSensorTemplate", "SDK\Libraries\152 - TheSensorTemplate\TheSensorTemplate\cdeSensorTemplate.csproj", "{EBA221C1-B2D1-4001-9AD6-8DCD10EE302A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "cdeSensorTemplate", "Libraries\152 - TheSensorTemplate\TheSensorTemplate\cdeSensorTemplate.csproj", "{EBA221C1-B2D1-4001-9AD6-8DCD10EE302A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "cdeCSVFileParserShared", "SDK\Libraries\110 - File Monitor\TheCSVFileParser\cdeCSVFileParserShared.csproj", "{FA29E83A-5184-4315-894A-6A07B95FFD20}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "cdeCSVFileParserShared", "Libraries\110 - File Monitor\TheCSVFileParser\cdeCSVFileParserShared.csproj", "{FA29E83A-5184-4315-894A-6A07B95FFD20}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CDEMeshManagerContractsShared", "SDK\MessageContracts\071 - C-MyMeshManager\TheMeshManagerContracts\CDEMeshManagerContractsShared.csproj", "{19B834C0-0A48-42BB-B538-A556BADFA1DE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CDEMeshManagerContractsShared", "MessageContracts\071 - C-MyMeshManager\TheMeshManagerContracts\CDEMeshManagerContractsShared.csproj", "{19B834C0-0A48-42BB-B538-A556BADFA1DE}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_Build", "_Build", "{7D441A72-A796-4DC8-8E00-732C7B6F65AE}"
 	ProjectSection(SolutionItems) = preProject
@@ -37,85 +37,85 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libraries", "Libraries", "{
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MessageContracts", "MessageContracts", "{ED82BA02-E0A9-4935-BCCC-C3FAD112A4CB}"
 EndProject
-Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "MyOPCUAClientAPI", "SDK\MessageContracts\078 - CDMyOPCUAClient\APIs\MyOPCUAClientAPI\MyOPCUAClientAPI.shproj", "{9469B76A-32E9-4917-A9B5-E133E0666CC7}"
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "MyOPCUAClientAPI", "MessageContracts\078 - CDMyOPCUAClient\APIs\MyOPCUAClientAPI\MyOPCUAClientAPI.shproj", "{9469B76A-32E9-4917-A9B5-E133E0666CC7}"
 EndProject
-Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "MyOPCUAClientContracts", "SDK\MessageContracts\078 - CDMyOPCUAClient\APIs\MyOPCUAClientContracts\MyOPCUAClientContracts.shproj", "{56DD1F1C-6644-4298-A132-C3254096B72E}"
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "MyOPCUAClientContracts", "MessageContracts\078 - CDMyOPCUAClient\APIs\MyOPCUAClientContracts\MyOPCUAClientContracts.shproj", "{56DD1F1C-6644-4298-A132-C3254096B72E}"
 EndProject
-Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "TheCommonMessageContracts", "SDK\MessageContracts\144 - TheCommonMessageContracts\TheCommonMessageContracts\TheCommonMessageContracts.shproj", "{5B124834-F6F1-493D-9B3E-FF0F072F8183}"
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "TheCommonMessageContracts", "MessageContracts\144 - TheCommonMessageContracts\TheCommonMessageContracts\TheCommonMessageContracts.shproj", "{5B124834-F6F1-493D-9B3E-FF0F072F8183}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "VSTemplates", "VSTemplates", "{0E73ECE9-B340-4AA3-9A18-BE10AC15CF84}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Item.cdeConnectedThingBase", "SDK\CDEngineSDKTemplates\CDEngineSDKTemplates.Item.cdeConnectedThingBase\Item.cdeConnectedThingBase.csproj", "{D31B43A2-D081-40B3-8CA9-035BF7F8F464}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Item.cdeConnectedThingBase", "CDEngineSDKTemplates\CDEngineSDKTemplates.Item.cdeConnectedThingBase\Item.cdeConnectedThingBase.csproj", "{D31B43A2-D081-40B3-8CA9-035BF7F8F464}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Item.cdePluginService", "SDK\CDEngineSDKTemplates\CDEngineSDKTemplates.Item.cdePluginService\Item.cdePluginService.csproj", "{83EEABD3-3CCF-48AA-BB33-EF66FF09E8CC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Item.cdePluginService", "CDEngineSDKTemplates\CDEngineSDKTemplates.Item.cdePluginService\Item.cdePluginService.csproj", "{83EEABD3-3CCF-48AA-BB33-EF66FF09E8CC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Item.cdePluginServiceWithThings", "SDK\CDEngineSDKTemplates\CDEngineSDKTemplates.Item.cdePluginServiceWithThings\Item.cdePluginServiceWithThings.csproj", "{7A0CAACB-7DB3-4113-A0B5-E96A58CB26E6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Item.cdePluginServiceWithThings", "CDEngineSDKTemplates\CDEngineSDKTemplates.Item.cdePluginServiceWithThings\Item.cdePluginServiceWithThings.csproj", "{7A0CAACB-7DB3-4113-A0B5-E96A58CB26E6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Item.cdeThing", "SDK\CDEngineSDKTemplates\CDEngineSDKTemplates.Item.cdeThing\Item.cdeThing.csproj", "{549A63EA-54E1-4CDB-8C62-AB7367A21018}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Item.cdeThing", "CDEngineSDKTemplates\CDEngineSDKTemplates.Item.cdeThing\Item.cdeThing.csproj", "{549A63EA-54E1-4CDB-8C62-AB7367A21018}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Project.cdeHostProject", "SDK\CDEngineSDKTemplates\CDEngineSDKTemplates.project.cdeHostProject\Project.cdeHostProject.csproj", "{9A2870C7-6D33-4519-8BED-1D6DAB99A582}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Project.cdeHostProject", "CDEngineSDKTemplates\CDEngineSDKTemplates.project.cdeHostProject\Project.cdeHostProject.csproj", "{9A2870C7-6D33-4519-8BED-1D6DAB99A582}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Project.cdeHostNetCoreProject", "SDK\CDEngineSDKTemplates\CDEngineSDKTemplates.project.cdeHostNetCoreProject\Project.cdeHostNetCoreProject.csproj", "{55871729-710C-4B7E-8A40-8572D30B9698}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Project.cdeHostNetCoreProject", "CDEngineSDKTemplates\CDEngineSDKTemplates.project.cdeHostNetCoreProject\Project.cdeHostNetCoreProject.csproj", "{55871729-710C-4B7E-8A40-8572D30B9698}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VsixBuilder", "SDK\CDEngineSDKTemplates\VsixBuilder\VsixBuilder.csproj", "{A5F76195-69B1-4E7F-BFE5-05A76EF2963E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VsixBuilder", "CDEngineSDKTemplates\VsixBuilder\VsixBuilder.csproj", "{A5F76195-69B1-4E7F-BFE5-05A76EF2963E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "item.cdeThingModel", "SDK\CDEngineSDKTemplates\CDEngineSDKTemplates.Item.cdeThingModel\item.cdeThingModel.csproj", "{C2AF4687-A6E6-4D15-8FD2-D94D1615E465}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "item.cdeThingModel", "CDEngineSDKTemplates\CDEngineSDKTemplates.Item.cdeThingModel\item.cdeThingModel.csproj", "{C2AF4687-A6E6-4D15-8FD2-D94D1615E465}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Project.cdeAppHostWinForms", "SDK\CDEngineSDKTemplates\CDEngineSDKTemplates.project.cdeHostWinForms\Project.cdeAppHostWinForms.csproj", "{85351BFA-67F1-4394-A883-328F49587D6E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Project.cdeAppHostWinForms", "CDEngineSDKTemplates\CDEngineSDKTemplates.project.cdeHostWinForms\Project.cdeAppHostWinForms.csproj", "{85351BFA-67F1-4394-A883-328F49587D6E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Project.CDMyHelloWorldPlugin", "SDK\CDEngineSDKTemplates\CDEngineSDKTemplates.project.CDMyHelloWorldPlugin\Project.CDMyHelloWorldPlugin.csproj", "{421320D7-2627-4319-901E-ED399408C8A6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Project.CDMyHelloWorldPlugin", "CDEngineSDKTemplates\CDEngineSDKTemplates.project.CDMyHelloWorldPlugin\Project.CDMyHelloWorldPlugin.csproj", "{421320D7-2627-4319-901E-ED399408C8A6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Item.cdeEnergyThingBase", "SDK\CDEngineSDKTemplates\CDEngineSDKTemplates.Item.cdeEnergyThingBase\Item.cdeEnergyThingBase.csproj", "{AC4BEFDA-BC10-466C-8469-2D9B219709F2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Item.cdeEnergyThingBase", "CDEngineSDKTemplates\CDEngineSDKTemplates.Item.cdeEnergyThingBase\Item.cdeEnergyThingBase.csproj", "{AC4BEFDA-BC10-466C-8469-2D9B219709F2}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_Readme", "_Readme", "{9CEE4304-9DF7-4B75-83C6-F9A2C2CD1715}"
 	ProjectSection(SolutionItems) = preProject
 		SDK\readme.md = SDK\readme.md
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "cdeOPCUAClientAPI", "SDK\MessageContracts\078 - CDMyOPCUAClient\APIs\MyOPCUAClientAPI\cdeOPCUAClientAPI.csproj", "{37F9AF8F-D273-4A2B-972A-957E045BD4ED}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "cdeOPCUAClientAPI", "MessageContracts\078 - CDMyOPCUAClient\APIs\MyOPCUAClientAPI\cdeOPCUAClientAPI.csproj", "{37F9AF8F-D273-4A2B-972A-957E045BD4ED}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "cdeOPCUAClientContracts", "SDK\MessageContracts\078 - CDMyOPCUAClient\APIs\MyOPCUAClientContracts\cdeOPCUAClientContracts.csproj", "{66D00BE3-11EF-4C7F-8643-80EFA08BE3AF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "cdeOPCUAClientContracts", "MessageContracts\078 - CDMyOPCUAClient\APIs\MyOPCUAClientContracts\cdeOPCUAClientContracts.csproj", "{66D00BE3-11EF-4C7F-8643-80EFA08BE3AF}"
 EndProject
-Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "TheConnectionBase", "SDK\Libraries\185 - SenderAndReceiverBase\TheConnectionBase\TheConnectionBase.shproj", "{9C8CC825-09B6-4320-A34B-22029F085012}"
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "TheConnectionBase", "Libraries\185 - SenderAndReceiverBase\TheConnectionBase\TheConnectionBase.shproj", "{9C8CC825-09B6-4320-A34B-22029F085012}"
 EndProject
-Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "TheEventConverters", "SDK\Libraries\185 - SenderAndReceiverBase\TheEventConverters\TheEventConverters.shproj", "{4652F20E-C456-4536-8D2F-85C2422CFC58}"
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "TheEventConverters", "Libraries\185 - SenderAndReceiverBase\TheEventConverters\TheEventConverters.shproj", "{4652F20E-C456-4536-8D2F-85C2422CFC58}"
 EndProject
-Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "TheReceiverBase", "SDK\Libraries\185 - SenderAndReceiverBase\TheReceiverBase\TheReceiverBase.shproj", "{D2FB39C4-E828-4184-8E3B-342F61CB154F}"
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "TheReceiverBase", "Libraries\185 - SenderAndReceiverBase\TheReceiverBase\TheReceiverBase.shproj", "{D2FB39C4-E828-4184-8E3B-342F61CB154F}"
 EndProject
-Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "TheSenderBase", "SDK\Libraries\185 - SenderAndReceiverBase\TheSenderBase\TheSenderBase.shproj", "{EA4FFFBC-C803-4B10-BA13-1587A1FC0F06}"
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "TheSenderBase", "Libraries\185 - SenderAndReceiverBase\TheSenderBase\TheSenderBase.shproj", "{EA4FFFBC-C803-4B10-BA13-1587A1FC0F06}"
 EndProject
-Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "TheThingMatcher", "SDK\Libraries\185 - SenderAndReceiverBase\TheThingMatcher\TheThingMatcher.shproj", "{3CDEDA4C-C6D3-4255-9324-475E6764431A}"
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "TheThingMatcher", "Libraries\185 - SenderAndReceiverBase\TheThingMatcher\TheThingMatcher.shproj", "{3CDEDA4C-C6D3-4255-9324-475E6764431A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "cdeReceiverBaseShared", "SDK\Libraries\185 - SenderAndReceiverBase\TheReceiverBase\cdeReceiverBaseShared.csproj", "{845AC2C7-F95A-4216-B84B-75F47F374EEF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "cdeReceiverBaseShared", "Libraries\185 - SenderAndReceiverBase\TheReceiverBase\cdeReceiverBaseShared.csproj", "{845AC2C7-F95A-4216-B84B-75F47F374EEF}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "cdeConnectionBaseShared", "SDK\Libraries\185 - SenderAndReceiverBase\TheConnectionBase\cdeConnectionBaseShared.csproj", "{2C1F833F-B8F1-4217-9E9D-34F711860A2C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "cdeConnectionBaseShared", "Libraries\185 - SenderAndReceiverBase\TheConnectionBase\cdeConnectionBaseShared.csproj", "{2C1F833F-B8F1-4217-9E9D-34F711860A2C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "cdeCommonMessageContractsShared", "SDK\MessageContracts\144 - TheCommonMessageContracts\TheCommonMessageContracts\cdeCommonMessageContractsShared.csproj", "{E74183D8-CC2B-4598-ABA4-538695A1D15C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "cdeCommonMessageContractsShared", "MessageContracts\144 - TheCommonMessageContracts\TheCommonMessageContracts\cdeCommonMessageContractsShared.csproj", "{E74183D8-CC2B-4598-ABA4-538695A1D15C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "cdeEventConvertersShared", "SDK\Libraries\185 - SenderAndReceiverBase\TheEventConverters\cdeEventConvertersShared.csproj", "{F8A38CC0-F3EA-4A16-889D-D6C871C2F798}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "cdeEventConvertersShared", "Libraries\185 - SenderAndReceiverBase\TheEventConverters\cdeEventConvertersShared.csproj", "{F8A38CC0-F3EA-4A16-889D-D6C871C2F798}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "cdeSenderBaseShared", "SDK\Libraries\185 - SenderAndReceiverBase\TheSenderBase\cdeSenderBaseShared.csproj", "{73D62673-E255-48AA-894C-26180B20E323}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "cdeSenderBaseShared", "Libraries\185 - SenderAndReceiverBase\TheSenderBase\cdeSenderBaseShared.csproj", "{73D62673-E255-48AA-894C-26180B20E323}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SenderAndReceiverBase", "SenderAndReceiverBase", "{E5DC19DA-228B-4F0E-9CF4-D3C60A6C2B62}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "cdeThingMatcher", "SDK\Libraries\185 - SenderAndReceiverBase\TheThingMatcher\cdeThingMatcher.csproj", "{0F2F7A87-9683-4E2B-BDD8-702132C3C9A8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "cdeThingMatcher", "Libraries\185 - SenderAndReceiverBase\TheThingMatcher\cdeThingMatcher.csproj", "{0F2F7A87-9683-4E2B-BDD8-702132C3C9A8}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tools", "Tools", "{F32A0417-74E9-4185-9538-DA83B59F7124}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PackagerInstaller", "..\BuildTools\PackagerInstaller\PackagerInstaller.csproj", "{869E2A4C-3B33-4460-B570-91298197E66A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "cdeLicenseTool", "SDK\Tools\cdeLicenseTool\cdeLicenseTool.csproj", "{C3287A61-CC6B-46E4-BACB-CC5A1E1581C5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "cdeLicenseTool", "Tools\cdeLicenseTool\cdeLicenseTool.csproj", "{C3287A61-CC6B-46E4-BACB-CC5A1E1581C5}"
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
-		SDK\Libraries\185 - SenderAndReceiverBase\TheThingMatcher\TheThingMatcher.projitems*{3cdeda4c-c6d3-4255-9324-475e6764431a}*SharedItemsImports = 13
-		SDK\Libraries\185 - SenderAndReceiverBase\TheEventConverters\TheEventConverters.projitems*{4652f20e-c456-4536-8d2f-85c2422cfc58}*SharedItemsImports = 13
-		SDK\MessageContracts\078 - CDMyOPCUAClient\APIs\MyOPCUAClientContracts\MyOPCUAClientContracts.projitems*{56dd1f1c-6644-4298-a132-c3254096b72e}*SharedItemsImports = 13
-		SDK\MessageContracts\144 - TheCommonMessageContracts\TheCommonMessageContracts\TheCommonMessageContracts.projitems*{5b124834-f6f1-493d-9b3e-ff0f072f8183}*SharedItemsImports = 13
-		SDK\MessageContracts\078 - CDMyOPCUAClient\APIs\MyOPCUAClientAPI\MyOPCUAClientAPI.projitems*{9469b76a-32e9-4917-a9b5-e133e0666cc7}*SharedItemsImports = 13
-		SDK\Libraries\185 - SenderAndReceiverBase\TheConnectionBase\TheConnectionBase.projitems*{9c8cc825-09b6-4320-a34b-22029f085012}*SharedItemsImports = 13
-		SDK\Libraries\185 - SenderAndReceiverBase\TheReceiverBase\TheReceiverBase.projitems*{d2fb39c4-e828-4184-8e3b-342f61cb154f}*SharedItemsImports = 13
-		SDK\Libraries\185 - SenderAndReceiverBase\TheSenderBase\TheSenderBase.projitems*{ea4fffbc-c803-4b10-ba13-1587a1fc0f06}*SharedItemsImports = 13
+		Libraries\185 - SenderAndReceiverBase\TheThingMatcher\TheThingMatcher.projitems*{3cdeda4c-c6d3-4255-9324-475e6764431a}*SharedItemsImports = 13
+		Libraries\185 - SenderAndReceiverBase\TheEventConverters\TheEventConverters.projitems*{4652f20e-c456-4536-8d2f-85c2422cfc58}*SharedItemsImports = 13
+		MessageContracts\078 - CDMyOPCUAClient\APIs\MyOPCUAClientContracts\MyOPCUAClientContracts.projitems*{56dd1f1c-6644-4298-a132-c3254096b72e}*SharedItemsImports = 13
+		MessageContracts\144 - TheCommonMessageContracts\TheCommonMessageContracts\TheCommonMessageContracts.projitems*{5b124834-f6f1-493d-9b3e-ff0f072f8183}*SharedItemsImports = 13
+		MessageContracts\078 - CDMyOPCUAClient\APIs\MyOPCUAClientAPI\MyOPCUAClientAPI.projitems*{9469b76a-32e9-4917-a9b5-e133e0666cc7}*SharedItemsImports = 13
+		Libraries\185 - SenderAndReceiverBase\TheConnectionBase\TheConnectionBase.projitems*{9c8cc825-09b6-4320-a34b-22029f085012}*SharedItemsImports = 13
+		Libraries\185 - SenderAndReceiverBase\TheReceiverBase\TheReceiverBase.projitems*{d2fb39c4-e828-4184-8e3b-342f61cb154f}*SharedItemsImports = 13
+		Libraries\185 - SenderAndReceiverBase\TheSenderBase\TheSenderBase.projitems*{ea4fffbc-c803-4b10-ba13-1587a1fc0f06}*SharedItemsImports = 13
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

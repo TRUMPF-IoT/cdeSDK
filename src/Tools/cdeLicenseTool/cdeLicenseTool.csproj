@@ -1,0 +1,95 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <!--
+  SPDX-FileCopyrightText: Copyright (c) 2009-2020 TRUMPF Laser GmbH, authors: C-Labs
+  SPDX-License-Identifier: CC0-1.0
+  -->
+
+  <PropertyGroup>
+    <TargetFrameworks>net45</TargetFrameworks>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>cdeLicenseTool</RootNamespace>
+    <AssemblyName>cdeLicenseTool</AssemblyName>
+    <!-- <BaseIntermediateOutputPath>..\StdObj</BaseIntermediateOutputPath> -->
+    <PackageId>cdeLicenseTool</PackageId>
+    <Version>4.302.0$(cdeNugetSuffix)</Version>
+    <Authors>Chris Muench</Authors>
+    <Company>C-Labs</Company>
+    <Product>cdeLicenseTool for $(TargetFramework)$(cdeDebugProductSuffix)</Product>
+    <NeutralLanguage>en</NeutralLanguage>
+    <Copyright>Copyright (C) 2017-2020 C-Labs </Copyright>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <!-- Workaround for placing each DLL into a separate directory when using msbuild's GenerateProjectSpecificOutputFolder -->
+    <ProjectName>$(AssemblyName).$(TargetFramework)</ProjectName>
+    <!-- Workaround for placing the .nupkg into the build's output folder when using msbuild's GenerateProjectSpecificOutputFolder -->
+    <PackageOutputPath>$(OutDir)</PackageOutputPath>
+  </PropertyGroup>
+
+  <Choose>
+    <When Condition="'$(TargetFramework)'=='netcoreapp2.0'">
+      <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+        <DefineConstants>TRACE;DEBUG;NET_STANDARD;NETSTANDARD2_0</DefineConstants>
+      </PropertyGroup>
+      <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+        <DefineConstants>TRACE;RELEASE;NET_STANDARD;NETSTANDARD2_0</DefineConstants>
+      </PropertyGroup>
+    </When>
+    <When Condition="'$(TargetFramework)'=='net45'">
+      <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+        <DefineConstants>TRACE;DEBUG;CDE_NET45</DefineConstants>
+      </PropertyGroup>
+      <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+        <DefineConstants>TRACE;CDE_NET45</DefineConstants>
+      </PropertyGroup>
+    </When>
+    <When Condition="'$(TargetFramework)'=='net40'">
+      <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+        <DefineConstants>TRACE;DEBUG;CDE_NET4</DefineConstants>
+      </PropertyGroup>
+      <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+        <DefineConstants>TRACE;RELEASE;CDE_NET4</DefineConstants>
+      </PropertyGroup>
+    </When>
+    <When Condition="'$(TargetFramework)'=='net35'">
+      <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+        <DefineConstants>TRACE;DEBUG;CDE_NET35</DefineConstants>
+      </PropertyGroup>
+      <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+        <DefineConstants>TRACE;RELEASE;CDE_NET35</DefineConstants>
+      </PropertyGroup>
+    </When>
+  </Choose>
+
+
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="&quot;$(TargetPath)&quot; createlicense &quot;$(ProjectDir)Templates\\&quot; &quot;$(ProjectDir)Keys\\sdkdemo.snk&quot; &quot;$(ProjectDir)Licenses\\&quot;" />
+    <Exec Command="xcopy &quot;$(ProjectDir)Licenses\*&quot; &quot;$(TargetDir)Licenses\*&quot; /Y /I /F" />
+    <Exec Command="call &quot;$(ProjectDir)..\..\..\BuildTools\SignandpackageS.cmd&quot; &quot;$(ProjectDir)Licenses\\&quot; &quot;$(TargetDir)Licenses\\&quot; &quot;&quot; &quot;&quot; &quot;C-DEngine-License.CDES&quot;" />
+  </Target>
+
+  <ItemGroup>
+    <PackageReference Include="C-DEngine" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="System.IO.Compression" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Licenses\C-DEngine-License.CDES">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Licenses\C-DEngine.cdel">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
+    <None Update="Licenses\C-DEnginel.cdel">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
