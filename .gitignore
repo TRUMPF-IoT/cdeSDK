@@ -228,3 +228,5 @@ project.assets.json
 /src/C-DEngine/C-DEngine.xml
 /src/Samples/MyNetCoreHost/cdeHostProject1/Properties/PublishProfiles/FolderProfile.pubxml
 /src/Samples/cdeSamples.sln.GhostDoc.xml
+/BuildTools/cdePackager
+/BuildTools/signtool.exe
