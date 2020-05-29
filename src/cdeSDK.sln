@@ -24,7 +24,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tools", "Tools", "{85560D2C
 		..\BuildTools\SignAndPackage.cmd = ..\BuildTools\SignAndPackage.cmd
 		..\BuildTools\SignAndPackageS.cmd = ..\BuildTools\SignAndPackageS.cmd
 		..\BuildTools\signMeSha.bat = ..\BuildTools\signMeSha.bat
-		..\BuildTools\signtool.exe = ..\BuildTools\signtool.exe
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_Licenses", "_Licenses", "{7BF62557-27C8-4A2B-9A5D-2E8459579695}"
