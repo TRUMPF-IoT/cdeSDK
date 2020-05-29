@@ -167,21 +167,6 @@ namespace nsTheEventConverters
     {
         // Future: Discover and load all types that implement IEventConverter
         private static Dictionary<string, IEventConverter> _eventConverters;
-        //            = new Dictionary<string, IEventConverter>
-        //        {
-        //            { "JSON Things", new JSonThingEventConverter() },
-        //            { "JSON Objects", new JSonObjectEventConverter() },
-        //            { "JSON Objects Rooted", new JSonObjectEventConverterWithRoot() },
-        //            { "JSON Properties", new JSonPropertyEventConverter() },
-        //            { "Axoom IoT Manager", new AxoomIotManagerEventConverter() },
-        //            { "CSV", new CSVEventConverter() },
-        //            { "AppProperties", new AMQPPropertyEventConverter() },
-        //            { "JSON OPC Properties", new JsonOpcUaEventConverter() },
-        //#if !NET35
-        //            { "Bosch PPMP Measurement", new PPMPMeasurementEventConverter() },
-        //#endif
-        //            //{ "JSON Full Things", new JSonFullThingEventConverter() },
-        //        };
         private static object _eventConverterLock = new object();
         
         static Dictionary<string, IEventConverter> EventConverters
@@ -202,7 +187,6 @@ namespace nsTheEventConverters
                                 { "JSON Objects Rooted", new JSonObjectEventConverterWithRoot() },
                                 { "JSON Properties", new JSonPropertyEventConverter() },
                                 { "CSV", new CSVEventConverter() },
-
 #if INCLUDE_PPMP_EVENTCONVERTER
                                 { "Bosch PPMP Measurement", new PPMPMeasurementEventConverter() },
 #endif
