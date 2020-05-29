@@ -105,6 +105,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tools", "Tools", "{F32A0417
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PackagerInstaller", "..\BuildTools\PackagerInstaller\PackagerInstaller.csproj", "{869E2A4C-3B33-4460-B570-91298197E66A}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "cdeLicenseTool", "SDK\Tools\cdeLicenseTool\cdeLicenseTool.csproj", "{C3287A61-CC6B-46E4-BACB-CC5A1E1581C5}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		SDK\Libraries\185 - SenderAndReceiverBase\TheThingMatcher\TheThingMatcher.projitems*{3cdeda4c-c6d3-4255-9324-475e6764431a}*SharedItemsImports = 13
@@ -202,6 +204,10 @@ Global
 		{869E2A4C-3B33-4460-B570-91298197E66A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{869E2A4C-3B33-4460-B570-91298197E66A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{869E2A4C-3B33-4460-B570-91298197E66A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C3287A61-CC6B-46E4-BACB-CC5A1E1581C5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C3287A61-CC6B-46E4-BACB-CC5A1E1581C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C3287A61-CC6B-46E4-BACB-CC5A1E1581C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C3287A61-CC6B-46E4-BACB-CC5A1E1581C5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -240,6 +246,7 @@ Global
 		{E5DC19DA-228B-4F0E-9CF4-D3C60A6C2B62} = {BE921EAC-572E-4DF4-824B-33DE6F58BA52}
 		{0F2F7A87-9683-4E2B-BDD8-702132C3C9A8} = {E5DC19DA-228B-4F0E-9CF4-D3C60A6C2B62}
 		{869E2A4C-3B33-4460-B570-91298197E66A} = {85560D2C-AD99-4FDA-81F3-EDCC8FBBD036}
+		{C3287A61-CC6B-46E4-BACB-CC5A1E1581C5} = {F32A0417-74E9-4185-9538-DA83B59F7124}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {75C94C50-175D-4EFC-B610-B4B9A3584DE7}

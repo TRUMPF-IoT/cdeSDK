@@ -1,0 +1,31 @@
+{
+  "LicenseId": "911AF876-E302-45F5-845C-6B477C27$(GitVersion_Major)$(GitVersion_Minor)",
+  "Description": "C-DEngine License for $(GitVersion_Major).$(GitVersion_Minor)x, unlimited, autoactivated",
+  "CDEVersion": "$(GitVersion_Major).$(GitVersion_Minor)9", // !!! Must be 4 digits after the dot Must also change the LicenseId when changing the version, otherwise it won't get picked up on systems that had a previous license installed. !!!
+  "CDEVersionMin": "$(GitVersion_Major).$(GitVersion_Minor)0",
+  "PluginLicenses": [
+    {
+      "PlugInId": "5737240C-AA66-417C-9B66-3919E18F9F4A", // CDEEngine
+      "DeviceTypes": [
+        ""
+      ],
+      "AllowGlobalThingEntitlements": false
+    }
+  ],
+  "Expiration": "2099-01-01T00:00:00-08:00",
+  "Parameters": [
+    {
+      "Name": "cdeThings",
+      "Value": 2
+    }
+  ],
+  "Properties": [
+    {
+      "Name": "Eval Period",
+      "Value": 32000
+    }
+
+  ],
+  "Signatures": [
+  ]
+}
