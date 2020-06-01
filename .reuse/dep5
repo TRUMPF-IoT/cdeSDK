@@ -3,31 +3,27 @@ Upstream-Name: CDESDK
 Upstream-Contact:  <>
 Source: https://github.com/TRUMPF-IoT/cdeSDK
 
-Files:  src/SDK/toplogo-128.png
+Files:  src/toplogo-128.png
 Copyright: 2009-2020 TRUMPF Laser GmbH, authors: C-Labs
 License: MPL-2.0
 
-Files:  src/Samples/NMITestRelay/CDMyNewNMIDemo/ClientBin/Images/*
+Files:  src/Tools/cdeLicenseTool/Keys/sdkdemo.pub
 Copyright: 2009-2020 TRUMPF Laser GmbH, authors: C-Labs
 License: MPL-2.0
 
-Files:   src/Samples/NMITestRelay/CDMyNewNMIDemo/ClientBin/PSE/CSS/MyNMIStyle.css
+Files:  src/Tools/cdeLicenseTool/Keys/sdkdemo.snk
 Copyright: 2009-2020 TRUMPF Laser GmbH, authors: C-Labs
 License: MPL-2.0
 
-Files:  src/Samples/NMITestRelay/CDMyNewNMIDemo/ClientBin/PSE/PAGES/MyPage.html
+Files:  src/Tools/cdeLicenseTool/Licenses/C-DEngine.cdel
 Copyright: 2009-2020 TRUMPF Laser GmbH, authors: C-Labs
 License: MPL-2.0
 
-Files:  src/Samples/NMITestRelay/CDMyNewNMIDemo/ClientBin/PSE/Videos/bunny.mp4
-Copyright: (c) copyright 2008, Blender Foundation / www.bigbuckbunny.org
-License: CC-BY-3.0
-
-Files:   src/Samples/NMITestRelay/NMITestRelay/app.config
+Files:  src/Tools/cdeLicenseTool/Templates/C-DEngine.cdelt
 Copyright: 2009-2020 TRUMPF Laser GmbH, authors: C-Labs
 License: MPL-2.0
 
-Files:   src/Samples/readme.md
+Files:  src/Tools/cdeLicenseTool/Licenses/C-DEngine-License.CDES
 Copyright: 2009-2020 TRUMPF Laser GmbH, authors: C-Labs
 License: MPL-2.0
 
@@ -39,498 +35,346 @@ Files: src/cdeSDK.sln
 Copyright: 2009-2020 TRUMPF Laser GmbH, authors: C-Labs
 License: MPL-2.0
 
-Files: src/Samples/cdeSamples.sln
+Files:  src/CDEngineSDKTemplates/cdeHostNetCoreProject/cdeHostNetCoreProject/cdeHostNetCoreProject.csproj
 Copyright: 2009-2020 TRUMPF Laser GmbH, authors: C-Labs
 License: MPL-2.0
 
-Files: src/Samples/ChatSamples/HackChatXAML/HCXaml/App.xaml
+Files:  src/CDEngineSDKTemplates/cdeHostNetCoreProject/cdeHostNetCoreProject.csproj
 Copyright: 2009-2020 TRUMPF Laser GmbH, authors: C-Labs
 License: MPL-2.0
 
-Files: src/Samples/ChatSamples/HackChatXAML/HCXaml/Assets/LockScreenLogo.scale-200.png
+Files:  src/CDEngineSDKTemplates/CDEngineSDKTemplates.cdeHostNetCoreProject/cdeHostProject/cdeHostNetCoreProject.csproj
 Copyright: 2009-2020 TRUMPF Laser GmbH, authors: C-Labs
 License: MPL-2.0
 
-Files: src/Samples/ChatSamples/HackChatXAML/HCXaml/Assets/SplashScreen.scale-200.png
+Files: src/CDEngineSDKTemplates/cdeHostNetCoreProject/cdeHostNetCoreProject/__TemplateIcon.ico
 Copyright: 2009-2020 TRUMPF Laser GmbH, authors: C-Labs
 License: MPL-2.0
 
-Files: src/Samples/ChatSamples/HackChatXAML/HCXaml/Assets/Square150x150Logo.scale-200.png
+Files: src/CDEngineSDKTemplates/cdeHostNetCoreProject/cdeHostNetCoreProject/cdeHostNetCoreProject.vstemplate
 Copyright: 2009-2020 TRUMPF Laser GmbH, authors: C-Labs
 License: MPL-2.0
 
-Files: src/Samples/ChatSamples/HackChatXAML/HCXaml/Assets/Square44x44Logo.scale-200.png
+Files: src/CDEngineSDKTemplates/cdeHostNetCoreProject/cdeHostNetCoreProject/cdePlugin.ico
 Copyright: 2009-2020 TRUMPF Laser GmbH, authors: C-Labs
 License: MPL-2.0
 
-Files: src/Samples/ChatSamples/HackChatXAML/HCXaml/Assets/Square44x44Logo.targetsize-24_altform-unplated.png
+Files: src/CDEngineSDKTemplates/cdeHostNetCoreProject/cdeHostNetCoreProject.vstemplate
 Copyright: 2009-2020 TRUMPF Laser GmbH, authors: C-Labs
 License: MPL-2.0
 
-Files: src/Samples/ChatSamples/HackChatXAML/HCXaml/Assets/StoreLogo.png
+Files: src/CDEngineSDKTemplates/cdeHostNetCoreProject/cdeHostNetCoreProject.zip
 Copyright: 2009-2020 TRUMPF Laser GmbH, authors: C-Labs
 License: MPL-2.0
 
-Files: src/Samples/ChatSamples/HackChatXAML/HCXaml/Assets/Wide310x150Logo.scale-200.png
+Files: src/CDEngineSDKTemplates/cdeHostNetCoreProject/cdePlugin.ico
 Copyright: 2009-2020 TRUMPF Laser GmbH, authors: C-Labs
 License: MPL-2.0
 
-Files: src/Samples/ChatSamples/HackChatXAML/HCXaml/MainPage.xaml
+Files: src/CDEngineSDKTemplates/CDEngineSDKTemplates.cdeHostNetCoreProject/cdeHostNetCoreProject.sln
 Copyright: 2009-2020 TRUMPF Laser GmbH, authors: C-Labs
 License: MPL-2.0
 
-Files: src/Samples/ChatSamples/HackChatXAML/HCXaml/Package.appxmanifest
+Files: src/CDEngineSDKTemplates/CDEngineSDKTemplates.cdeHostNetCoreProject/cdeHostProject/cdePlugin.ico
 Copyright: 2009-2020 TRUMPF Laser GmbH, authors: C-Labs
 License: MPL-2.0
 
-Files: src/Samples/ChatSamples/readme.md
+Files: src/CDEngineSDKTemplates/CDEngineSDKTemplates.cdeHostNetCoreProject/cdeHostProject.csproj
 Copyright: 2009-2020 TRUMPF Laser GmbH, authors: C-Labs
 License: MPL-2.0
 
-Files: src/Samples/ChatSamples/WPF/ChatClientWPF/App.config
+Files: src/CDEngineSDKTemplates/CDEngineSDKTemplates.cdeHostNetCoreProject/cdeHostProject.ico
 Copyright: 2009-2020 TRUMPF Laser GmbH, authors: C-Labs
 License: MPL-2.0
 
-Files: src/Samples/ChatSamples/WPF/ChatClientWPF/App.xaml
+Files: src/CDEngineSDKTemplates/CDEngineSDKTemplates.cdeHostNetCoreProject/cdeHostProject.vstemplate
 Copyright: 2009-2020 TRUMPF Laser GmbH, authors: C-Labs
 License: MPL-2.0
 
-Files: src/Samples/ChatSamples/WPF/ChatClientWPF/MainWindow.xaml
+Files: src/CDEngineSDKTemplates/CDEngineSDKTemplates.cdeHostNetCoreProject/cdeHostProjecta.ico
 Copyright: 2009-2020 TRUMPF Laser GmbH, authors: C-Labs
 License: MPL-2.0
 
-Files: src/Samples/ChatSamples/WPF/ChatClientWPF/Properties/Resources.resx
+Files: src/CDEngineSDKTemplates/CDEngineSDKTemplates.cdeHostNetCoreProject/cdePlugin.ICO
 Copyright: 2009-2020 TRUMPF Laser GmbH, authors: C-Labs
 License: MPL-2.0
 
-Files: src/Samples/ChatSamples/WPF/ChatClientWPF/Properties/Settings.settings
+Files: src/CDEngineSDKTemplates/CDEngineSDKTemplates.cdeHostNetCoreProject/ProjectTemplate.csproj
 Copyright: 2009-2020 TRUMPF Laser GmbH, authors: C-Labs
 License: MPL-2.0
 
-Files: src/Samples/HttpInterceptor/AppHostTest/App.config
+Files: src/CDEngineSDKTemplates/CDEngineSDKTemplates.Item.cdeConnectedThingBase/cdeConnectedThingBase.ICO
 Copyright: 2009-2020 TRUMPF Laser GmbH, authors: C-Labs
 License: MPL-2.0
 
-Files: src/Samples/HttpInterceptor/AppHostTest/MainForm.resx
+Files: src/CDEngineSDKTemplates/CDEngineSDKTemplates.Item.cdeConnectedThingBase/cdeConnectedThingBase.vstemplate
 Copyright: 2009-2020 TRUMPF Laser GmbH, authors: C-Labs
 License: MPL-2.0
 
-Files: src/Samples/HttpInterceptor/AppHostTest/Properties/Resources.resx
+Files: src/CDEngineSDKTemplates/CDEngineSDKTemplates.Item.cdeConnectedThingBase/Item.cdeConnectedThingBase.csproj
 Copyright: 2009-2020 TRUMPF Laser GmbH, authors: C-Labs
 License: MPL-2.0
 
-Files: src/Samples/HttpInterceptor/AppHostTest/Properties/Settings.settings
+Files: src/CDEngineSDKTemplates/CDEngineSDKTemplates.Item.cdeEnergyThingBase/cdeEnergyThingBase.ICO
 Copyright: 2009-2020 TRUMPF Laser GmbH, authors: C-Labs
 License: MPL-2.0
 
-Files: src/Samples/HttpInterceptor/RESTClient/RESTClient/App.config
+Files: src/CDEngineSDKTemplates/CDEngineSDKTemplates.Item.cdeEnergyThingBase/cdeEnergyThingBase.vstemplate
 Copyright: 2009-2020 TRUMPF Laser GmbH, authors: C-Labs
 License: MPL-2.0
 
-Files: src/Samples/HttpInterceptor/RESTClient/RESTClient/Form1.resx
+Files: src/CDEngineSDKTemplates/CDEngineSDKTemplates.Item.cdeEnergyThingBase/Item.cdeEnergyThingBase.csproj
 Copyright: 2009-2020 TRUMPF Laser GmbH, authors: C-Labs
 License: MPL-2.0
 
-Files: src/Samples/HttpInterceptor/RESTClient/RESTClient/packages.config
+Files: src/CDEngineSDKTemplates/CDEngineSDKTemplates.Item.cdePluginService/CDEngineSDKTemplates.cdePluginService.ico
 Copyright: 2009-2020 TRUMPF Laser GmbH, authors: C-Labs
 License: MPL-2.0
 
-Files: src/Samples/HttpInterceptor/RESTClient/RESTClient/Properties/Resources.resx
+Files: src/CDEngineSDKTemplates/CDEngineSDKTemplates.Item.cdePluginService/CDEngineSDKTemplates.cdePluginService.vstemplate
 Copyright: 2009-2020 TRUMPF Laser GmbH, authors: C-Labs
 License: MPL-2.0
 
-Files: src/Samples/HttpInterceptor/RESTClient/RESTClient/Properties/Settings.settings
+Files: src/CDEngineSDKTemplates/CDEngineSDKTemplates.Item.cdePluginService/cdePlugin.ICO
 Copyright: 2009-2020 TRUMPF Laser GmbH, authors: C-Labs
 License: MPL-2.0
 
-Files: src/Samples/HttpInterceptor/RESTServer/CDMyRestApiSampleMileRecordHolders/CDMyRestApiSampleMileRecordHolders/CLabsCDEngine.ICO
+Files: src/CDEngineSDKTemplates/CDEngineSDKTemplates.Item.cdePluginService/Item.cdePluginService.csproj
 Copyright: 2009-2020 TRUMPF Laser GmbH, authors: C-Labs
 License: MPL-2.0
 
-Files: src/Samples/HttpInterceptor/RESTServer/CDMyThingInspector/CDMyThingInspector/CLabsCDEngine.ICO
+Files: src/CDEngineSDKTemplates/CDEngineSDKTemplates.Item.cdePluginServiceWithThings/CDEngineSDKTemplates.cdePluginServiceWithThings.ico
 Copyright: 2009-2020 TRUMPF Laser GmbH, authors: C-Labs
 License: MPL-2.0
 
-Files: src/Samples/MyTestHost/.dockerignore
+Files: src/CDEngineSDKTemplates/CDEngineSDKTemplates.Item.cdePluginServiceWithThings/CDEngineSDKTemplatescdePluginServiceWithThings.vstemplate
 Copyright: 2009-2020 TRUMPF Laser GmbH, authors: C-Labs
 License: MPL-2.0
 
-Files: src/Samples/MyTestHost/docker-compose.dcproj
+Files: src/CDEngineSDKTemplates/CDEngineSDKTemplates.Item.cdePluginServiceWithThings/Item.cdePluginServiceWithThings.csproj
 Copyright: 2009-2020 TRUMPF Laser GmbH, authors: C-Labs
 License: MPL-2.0
 
-Files: src/Samples/MyTestHost/MyTestHost/cdePlugin.ICO
+Files: src/CDEngineSDKTemplates/CDEngineSDKTemplates.Item.cdeThing/CDEngineSDKTemplates.cdeThing.ico
 Copyright: 2009-2020 TRUMPF Laser GmbH, authors: C-Labs
 License: MPL-2.0
 
-Files: src/Samples/MyTestHost/MyTestHost/Properties/launchSettings.json
+Files: src/CDEngineSDKTemplates/CDEngineSDKTemplates.Item.cdeThing/CDEngineSDKTemplates.cdeThing.vstemplate
 Copyright: 2009-2020 TRUMPF Laser GmbH, authors: C-Labs
 License: MPL-2.0
 
-Files: src/Samples/MyTestHost/MyTestHost2/cdePlugin.ICO
+Files: src/CDEngineSDKTemplates/CDEngineSDKTemplates.Item.cdeThing/Item.cdeThing.csproj
 Copyright: 2009-2020 TRUMPF Laser GmbH, authors: C-Labs
 License: MPL-2.0
 
-Files: src/Samples/MyTestHost/MyTestHost2/Properties/launchSettings.json
+Files: src/CDEngineSDKTemplates/CDEngineSDKTemplates.Item.cdeThingModel/cdeThingModel.ICO
 Copyright: 2009-2020 TRUMPF Laser GmbH, authors: C-Labs
 License: MPL-2.0
 
-Files: src/Samples/Web2Mesh/AppHostTest/App.config
+Files: src/CDEngineSDKTemplates/CDEngineSDKTemplates.Item.cdeThingModel/cdeThingModel.vstemplate
 Copyright: 2009-2020 TRUMPF Laser GmbH, authors: C-Labs
 License: MPL-2.0
 
-Files: src/Samples/Web2Mesh/AppHostTest/MainForm.resx
+Files: src/CDEngineSDKTemplates/CDEngineSDKTemplates.Item.cdeThingModel/item.cdeThingModel.csproj
 Copyright: 2009-2020 TRUMPF Laser GmbH, authors: C-Labs
 License: MPL-2.0
 
-Files: src/Samples/Web2Mesh/AppHostTest/Properties/Resources.resx
+Files: src/CDEngineSDKTemplates/CDEngineSDKTemplates.project.cdeHostNetCoreProject/cdeHostNetCoreProject.vstemplate
 Copyright: 2009-2020 TRUMPF Laser GmbH, authors: C-Labs
 License: MPL-2.0
 
-Files: src/Samples/Web2Mesh/AppHostTest/Properties/Settings.settings
+Files: src/CDEngineSDKTemplates/CDEngineSDKTemplates.project.cdeHostNetCoreProject/cdePlugin.ico
 Copyright: 2009-2020 TRUMPF Laser GmbH, authors: C-Labs
 License: MPL-2.0
 
-Files:  src/SDK/CDEngineSDKTemplates/cdeHostNetCoreProject/cdeHostNetCoreProject/cdeHostNetCoreProject.csproj
+Files: src/CDEngineSDKTemplates/CDEngineSDKTemplates.project.cdeHostNetCoreProject/Project.cdeHostNetCoreProject.csproj
 Copyright: 2009-2020 TRUMPF Laser GmbH, authors: C-Labs
 License: MPL-2.0
 
-Files:  src/SDK/CDEngineSDKTemplates/cdeHostNetCoreProject/cdeHostNetCoreProject.csproj
+Files: src/CDEngineSDKTemplates/CDEngineSDKTemplates.project.cdeHostNetCoreProject/Project.cdeHostNetCoreProject.sln
 Copyright: 2009-2020 TRUMPF Laser GmbH, authors: C-Labs
 License: MPL-2.0
 
-Files:  src/SDK/CDEngineSDKTemplates/CDEngineSDKTemplates.cdeHostNetCoreProject/cdeHostProject/cdeHostNetCoreProject.csproj
+Files: src/CDEngineSDKTemplates/CDEngineSDKTemplates.project.cdeHostNetCoreProject/Project.cdeHostNetCoreProject.vstemplate
 Copyright: 2009-2020 TRUMPF Laser GmbH, authors: C-Labs
 License: MPL-2.0
 
-Files: src/SDK/CDEngineSDKTemplates/cdeHostNetCoreProject/cdeHostNetCoreProject/__TemplateIcon.ico
+Files: src/CDEngineSDKTemplates/CDEngineSDKTemplates.project.cdeHostNetCoreProject/ProjectTemplate.csproj
 Copyright: 2009-2020 TRUMPF Laser GmbH, authors: C-Labs
 License: MPL-2.0
 
-Files: src/SDK/CDEngineSDKTemplates/cdeHostNetCoreProject/cdeHostNetCoreProject/cdeHostNetCoreProject.vstemplate
+Files: src/CDEngineSDKTemplates/CDEngineSDKTemplates.project.cdeHostProject/cdeHostProject.ico
 Copyright: 2009-2020 TRUMPF Laser GmbH, authors: C-Labs
 License: MPL-2.0
 
-Files: src/SDK/CDEngineSDKTemplates/cdeHostNetCoreProject/cdeHostNetCoreProject/cdePlugin.ico
+Files: src/CDEngineSDKTemplates/CDEngineSDKTemplates.project.cdeHostProject/cdeHostProject.vstemplate
 Copyright: 2009-2020 TRUMPF Laser GmbH, authors: C-Labs
 License: MPL-2.0
 
-Files: src/SDK/CDEngineSDKTemplates/cdeHostNetCoreProject/cdeHostNetCoreProject.vstemplate
+Files: src/CDEngineSDKTemplates/CDEngineSDKTemplates.project.cdeHostProject/cdeHostProjecta.ico
 Copyright: 2009-2020 TRUMPF Laser GmbH, authors: C-Labs
 License: MPL-2.0
 
-Files: src/SDK/CDEngineSDKTemplates/cdeHostNetCoreProject/cdeHostNetCoreProject.zip
+Files: src/CDEngineSDKTemplates/CDEngineSDKTemplates.project.cdeHostProject/cdePlugin.ICO
 Copyright: 2009-2020 TRUMPF Laser GmbH, authors: C-Labs
 License: MPL-2.0
 
-Files: src/SDK/CDEngineSDKTemplates/cdeHostNetCoreProject/cdePlugin.ico
+Files: src/CDEngineSDKTemplates/CDEngineSDKTemplates.project.cdeHostProject/Project.cdeHostProject.csproj
 Copyright: 2009-2020 TRUMPF Laser GmbH, authors: C-Labs
 License: MPL-2.0
 
-Files: src/SDK/CDEngineSDKTemplates/CDEngineSDKTemplates.cdeHostNetCoreProject/cdeHostNetCoreProject.sln
+Files: src/CDEngineSDKTemplates/CDEngineSDKTemplates.project.cdeHostProject/ProjectTemplate.csproj
 Copyright: 2009-2020 TRUMPF Laser GmbH, authors: C-Labs
 License: MPL-2.0
 
-Files: src/SDK/CDEngineSDKTemplates/CDEngineSDKTemplates.cdeHostNetCoreProject/cdeHostProject/cdePlugin.ico
+Files: src/CDEngineSDKTemplates/CDEngineSDKTemplates.project.cdeHostWinForms/App.config
 Copyright: 2009-2020 TRUMPF Laser GmbH, authors: C-Labs
 License: MPL-2.0
 
-Files: src/SDK/CDEngineSDKTemplates/CDEngineSDKTemplates.cdeHostNetCoreProject/cdeHostProject.csproj
+Files: src/CDEngineSDKTemplates/CDEngineSDKTemplates.project.cdeHostWinForms/cdeHostProject.ico
 Copyright: 2009-2020 TRUMPF Laser GmbH, authors: C-Labs
 License: MPL-2.0
 
-Files: src/SDK/CDEngineSDKTemplates/CDEngineSDKTemplates.cdeHostNetCoreProject/cdeHostProject.ico
+Files: src/CDEngineSDKTemplates/CDEngineSDKTemplates.project.cdeHostWinForms/MainForm.resx
 Copyright: 2009-2020 TRUMPF Laser GmbH, authors: C-Labs
 License: MPL-2.0
 
-Files: src/SDK/CDEngineSDKTemplates/CDEngineSDKTemplates.cdeHostNetCoreProject/cdeHostProject.vstemplate
+Files: src/CDEngineSDKTemplates/CDEngineSDKTemplates.project.cdeHostWinForms/Project.cdeAppHostWinForms.csproj
 Copyright: 2009-2020 TRUMPF Laser GmbH, authors: C-Labs
 License: MPL-2.0
 
-Files: src/SDK/CDEngineSDKTemplates/CDEngineSDKTemplates.cdeHostNetCoreProject/cdeHostProjecta.ico
+Files: src/CDEngineSDKTemplates/CDEngineSDKTemplates.project.cdeHostWinForms/Project.cdeAppHostWinForms.vstemplate
 Copyright: 2009-2020 TRUMPF Laser GmbH, authors: C-Labs
 License: MPL-2.0
 
-Files: src/SDK/CDEngineSDKTemplates/CDEngineSDKTemplates.cdeHostNetCoreProject/cdePlugin.ICO
+Files: src/CDEngineSDKTemplates/CDEngineSDKTemplates.project.cdeHostWinForms/ProjectTemplate.csproj
 Copyright: 2009-2020 TRUMPF Laser GmbH, authors: C-Labs
 License: MPL-2.0
 
-Files: src/SDK/CDEngineSDKTemplates/CDEngineSDKTemplates.cdeHostNetCoreProject/ProjectTemplate.csproj
+Files: src/CDEngineSDKTemplates/CDEngineSDKTemplates.project.cdeHostWinForms/Properties/Resources.resx
 Copyright: 2009-2020 TRUMPF Laser GmbH, authors: C-Labs
 License: MPL-2.0
 
-Files: src/SDK/CDEngineSDKTemplates/CDEngineSDKTemplates.Item.cdeConnectedThingBase/cdeConnectedThingBase.ICO
+Files: src/CDEngineSDKTemplates/CDEngineSDKTemplates.project.cdeHostWinForms/Properties/Settings.settings
 Copyright: 2009-2020 TRUMPF Laser GmbH, authors: C-Labs
 License: MPL-2.0
 
-Files: src/SDK/CDEngineSDKTemplates/CDEngineSDKTemplates.Item.cdeConnectedThingBase/cdeConnectedThingBase.vstemplate
+Files: src/CDEngineSDKTemplates/CDEngineSDKTemplates.project.CDMyHelloWorldPlugin/CLabsCDEngine.ico
 Copyright: 2009-2020 TRUMPF Laser GmbH, authors: C-Labs
 License: MPL-2.0
 
-Files: src/SDK/CDEngineSDKTemplates/CDEngineSDKTemplates.Item.cdeConnectedThingBase/Item.cdeConnectedThingBase.csproj
+Files: src/CDEngineSDKTemplates/CDEngineSDKTemplates.project.CDMyHelloWorldPlugin/Project.CDMyHelloWorldPlugin.csproj
 Copyright: 2009-2020 TRUMPF Laser GmbH, authors: C-Labs
 License: MPL-2.0
 
-Files: src/SDK/CDEngineSDKTemplates/CDEngineSDKTemplates.Item.cdeEnergyThingBase/cdeEnergyThingBase.ICO
+Files: src/CDEngineSDKTemplates/CDEngineSDKTemplates.project.CDMyHelloWorldPlugin/Project.CDMyHelloWorldPlugin.sln
 Copyright: 2009-2020 TRUMPF Laser GmbH, authors: C-Labs
 License: MPL-2.0
 
-Files: src/SDK/CDEngineSDKTemplates/CDEngineSDKTemplates.Item.cdeEnergyThingBase/cdeEnergyThingBase.vstemplate
+Files: src/CDEngineSDKTemplates/CDEngineSDKTemplates.project.CDMyHelloWorldPlugin/Project.CDMyHelloWorldPlugin.vstemplate
 Copyright: 2009-2020 TRUMPF Laser GmbH, authors: C-Labs
 License: MPL-2.0
 
-Files: src/SDK/CDEngineSDKTemplates/CDEngineSDKTemplates.Item.cdeEnergyThingBase/Item.cdeEnergyThingBase.csproj
+Files: src/CDEngineSDKTemplates/CDEngineSDKTemplates.project.CDMyHelloWorldPlugin/ProjectTemplate.csproj
 Copyright: 2009-2020 TRUMPF Laser GmbH, authors: C-Labs
 License: MPL-2.0
 
-Files: src/SDK/CDEngineSDKTemplates/CDEngineSDKTemplates.Item.cdePluginService/CDEngineSDKTemplates.cdePluginService.ico
+Files: src/CDEngineSDKTemplates/CDEngineSDKTemplates4/C-DEngine V4.0 - SDK - Getting Started.docx
 Copyright: 2009-2020 TRUMPF Laser GmbH, authors: C-Labs
 License: MPL-2.0
 
-Files: src/SDK/CDEngineSDKTemplates/CDEngineSDKTemplates.Item.cdePluginService/CDEngineSDKTemplates.cdePluginService.vstemplate
+Files: src/CDEngineSDKTemplates/CDEngineSDKTemplates4/C-DEngine V4.0 - SDK - Getting Started.pdf
 Copyright: 2009-2020 TRUMPF Laser GmbH, authors: C-Labs
 License: MPL-2.0
 
-Files: src/SDK/CDEngineSDKTemplates/CDEngineSDKTemplates.Item.cdePluginService/cdePlugin.ICO
+Files: src/CDEngineSDKTemplates/CDEngineSDKTemplates4/C-DEngine.png
 Copyright: 2009-2020 TRUMPF Laser GmbH, authors: C-Labs
 License: MPL-2.0
 
-Files: src/SDK/CDEngineSDKTemplates/CDEngineSDKTemplates.Item.cdePluginService/Item.cdePluginService.csproj
+Files: src/CDEngineSDKTemplates/CDEngineSDKTemplates4/CDEngineSDKTemplates4.csproj
 Copyright: 2009-2020 TRUMPF Laser GmbH, authors: C-Labs
 License: MPL-2.0
 
-Files: src/SDK/CDEngineSDKTemplates/CDEngineSDKTemplates.Item.cdePluginServiceWithThings/CDEngineSDKTemplates.cdePluginServiceWithThings.ico
+Files: src/CDEngineSDKTemplates/CDEngineSDKTemplates4/cdeProjectTemplate.ICO
 Copyright: 2009-2020 TRUMPF Laser GmbH, authors: C-Labs
 License: MPL-2.0
 
-Files: src/SDK/CDEngineSDKTemplates/CDEngineSDKTemplates.Item.cdePluginServiceWithThings/CDEngineSDKTemplatescdePluginServiceWithThings.vstemplate
+Files: src/CDEngineSDKTemplates/CDEngineSDKTemplates4/License.txt
 Copyright: 2009-2020 TRUMPF Laser GmbH, authors: C-Labs
 License: MPL-2.0
 
-Files: src/SDK/CDEngineSDKTemplates/CDEngineSDKTemplates.Item.cdePluginServiceWithThings/Item.cdePluginServiceWithThings.csproj
+Files: src/CDEngineSDKTemplates/CDEngineSDKTemplates4/source.extension.vsixmanifest
 Copyright: 2009-2020 TRUMPF Laser GmbH, authors: C-Labs
 License: MPL-2.0
 
-Files: src/SDK/CDEngineSDKTemplates/CDEngineSDKTemplates.Item.cdeThing/CDEngineSDKTemplates.cdeThing.ico
+Files: src/CDEngineSDKTemplates/VsixBuilder/C-DEngine.png
 Copyright: 2009-2020 TRUMPF Laser GmbH, authors: C-Labs
 License: MPL-2.0
 
-Files: src/SDK/CDEngineSDKTemplates/CDEngineSDKTemplates.Item.cdeThing/CDEngineSDKTemplates.cdeThing.vstemplate
+Files: src/CDEngineSDKTemplates/VsixBuilder/C-DEnginea.png
 Copyright: 2009-2020 TRUMPF Laser GmbH, authors: C-Labs
 License: MPL-2.0
 
-Files: src/SDK/CDEngineSDKTemplates/CDEngineSDKTemplates.Item.cdeThing/Item.cdeThing.csproj
+Files: src/CDEngineSDKTemplates/VsixBuilder/cdeProjectTemplate.ICO
 Copyright: 2009-2020 TRUMPF Laser GmbH, authors: C-Labs
 License: MPL-2.0
 
-Files: src/SDK/CDEngineSDKTemplates/CDEngineSDKTemplates.Item.cdeThingModel/cdeThingModel.ICO
+Files: src/CDEngineSDKTemplates/VsixBuilder/License.txt
 Copyright: 2009-2020 TRUMPF Laser GmbH, authors: C-Labs
 License: MPL-2.0
 
-Files: src/SDK/CDEngineSDKTemplates/CDEngineSDKTemplates.Item.cdeThingModel/cdeThingModel.vstemplate
+Files: src/CDEngineSDKTemplates/VsixBuilder/Resources/Package.ico
 Copyright: 2009-2020 TRUMPF Laser GmbH, authors: C-Labs
 License: MPL-2.0
 
-Files: src/SDK/CDEngineSDKTemplates/CDEngineSDKTemplates.Item.cdeThingModel/item.cdeThingModel.csproj
+Files: src/CDEngineSDKTemplates/VsixBuilder/Resources.resx
 Copyright: 2009-2020 TRUMPF Laser GmbH, authors: C-Labs
 License: MPL-2.0
 
-Files: src/SDK/CDEngineSDKTemplates/CDEngineSDKTemplates.project.cdeHostNetCoreProject/cdeHostNetCoreProject.vstemplate
+Files: src/CDEngineSDKTemplates/VsixBuilder/source.extension.vsixmanifest
 Copyright: 2009-2020 TRUMPF Laser GmbH, authors: C-Labs
 License: MPL-2.0
 
-Files: src/SDK/CDEngineSDKTemplates/CDEngineSDKTemplates.project.cdeHostNetCoreProject/cdePlugin.ico
+Files: src/CDEngineSDKTemplates/VsixBuilder/VsixBuilder.sln
 Copyright: 2009-2020 TRUMPF Laser GmbH, authors: C-Labs
 License: MPL-2.0
 
-Files: src/SDK/CDEngineSDKTemplates/CDEngineSDKTemplates.project.cdeHostNetCoreProject/Project.cdeHostNetCoreProject.csproj
+Files: src/CDEngineSDKTemplates/VsixBuilder/VSPackage.resx
 Copyright: 2009-2020 TRUMPF Laser GmbH, authors: C-Labs
 License: MPL-2.0
 
-Files: src/SDK/CDEngineSDKTemplates/CDEngineSDKTemplates.project.cdeHostNetCoreProject/Project.cdeHostNetCoreProject.sln
+Files: src/CDEngineSDKTemplates/VsixBuilder.sln
 Copyright: 2009-2020 TRUMPF Laser GmbH, authors: C-Labs
 License: MPL-2.0
 
-Files: src/SDK/CDEngineSDKTemplates/CDEngineSDKTemplates.project.cdeHostNetCoreProject/Project.cdeHostNetCoreProject.vstemplate
+Files: src/CDEngineSDKTemplates/VsixBuilder.sln.GhostDoc.xml
 Copyright: 2009-2020 TRUMPF Laser GmbH, authors: C-Labs
 License: MPL-2.0
 
-Files: src/SDK/CDEngineSDKTemplates/CDEngineSDKTemplates.project.cdeHostNetCoreProject/ProjectTemplate.csproj
+Files: src/Libraries/152 - TheSensorTemplate/TheSensorTemplate/ClientBin/SENSORS/CSS/SensorsDark.SCSS
 Copyright: 2009-2020 TRUMPF Laser GmbH, authors: C-Labs
 License: MPL-2.0
 
-Files: src/SDK/CDEngineSDKTemplates/CDEngineSDKTemplates.project.cdeHostProject/cdeHostProject.ico
+Files: src/Libraries/152 - TheSensorTemplate/TheSensorTemplate/ClientBin/SENSORS/Images/SensorLogo_156x78.png
 Copyright: 2009-2020 TRUMPF Laser GmbH, authors: C-Labs
 License: MPL-2.0
 
-Files: src/SDK/CDEngineSDKTemplates/CDEngineSDKTemplates.project.cdeHostProject/cdeHostProject.vstemplate
+Files: src/Libraries/152 - TheSensorTemplate/TheSensorTemplate/compilerconfig.json
 Copyright: 2009-2020 TRUMPF Laser GmbH, authors: C-Labs
 License: MPL-2.0
 
-Files: src/SDK/CDEngineSDKTemplates/CDEngineSDKTemplates.project.cdeHostProject/cdeHostProjecta.ico
+Files: src/Libraries/152 - TheSensorTemplate/TheSensorTemplate/compilerconfig.json.defaults
 Copyright: 2009-2020 TRUMPF Laser GmbH, authors: C-Labs
 License: MPL-2.0
 
-Files: src/SDK/CDEngineSDKTemplates/CDEngineSDKTemplates.project.cdeHostProject/cdePlugin.ICO
+Files: src/Libraries/readme.md
 Copyright: 2009-2020 TRUMPF Laser GmbH, authors: C-Labs
 License: MPL-2.0
 
-Files: src/SDK/CDEngineSDKTemplates/CDEngineSDKTemplates.project.cdeHostProject/Project.cdeHostProject.csproj
+Files: src/MessageContracts/readme.md
 Copyright: 2009-2020 TRUMPF Laser GmbH, authors: C-Labs
 License: MPL-2.0
 
-Files: src/SDK/CDEngineSDKTemplates/CDEngineSDKTemplates.project.cdeHostProject/ProjectTemplate.csproj
-Copyright: 2009-2020 TRUMPF Laser GmbH, authors: C-Labs
-License: MPL-2.0
-
-Files: src/SDK/CDEngineSDKTemplates/CDEngineSDKTemplates.project.cdeHostWinForms/App.config
-Copyright: 2009-2020 TRUMPF Laser GmbH, authors: C-Labs
-License: MPL-2.0
-
-Files: src/SDK/CDEngineSDKTemplates/CDEngineSDKTemplates.project.cdeHostWinForms/cdeHostProject.ico
-Copyright: 2009-2020 TRUMPF Laser GmbH, authors: C-Labs
-License: MPL-2.0
-
-Files: src/SDK/CDEngineSDKTemplates/CDEngineSDKTemplates.project.cdeHostWinForms/MainForm.resx
-Copyright: 2009-2020 TRUMPF Laser GmbH, authors: C-Labs
-License: MPL-2.0
-
-Files: src/SDK/CDEngineSDKTemplates/CDEngineSDKTemplates.project.cdeHostWinForms/Project.cdeAppHostWinForms.csproj
-Copyright: 2009-2020 TRUMPF Laser GmbH, authors: C-Labs
-License: MPL-2.0
-
-Files: src/SDK/CDEngineSDKTemplates/CDEngineSDKTemplates.project.cdeHostWinForms/Project.cdeAppHostWinForms.vstemplate
-Copyright: 2009-2020 TRUMPF Laser GmbH, authors: C-Labs
-License: MPL-2.0
-
-Files: src/SDK/CDEngineSDKTemplates/CDEngineSDKTemplates.project.cdeHostWinForms/ProjectTemplate.csproj
-Copyright: 2009-2020 TRUMPF Laser GmbH, authors: C-Labs
-License: MPL-2.0
-
-Files: src/SDK/CDEngineSDKTemplates/CDEngineSDKTemplates.project.cdeHostWinForms/Properties/Resources.resx
-Copyright: 2009-2020 TRUMPF Laser GmbH, authors: C-Labs
-License: MPL-2.0
-
-Files: src/SDK/CDEngineSDKTemplates/CDEngineSDKTemplates.project.cdeHostWinForms/Properties/Settings.settings
-Copyright: 2009-2020 TRUMPF Laser GmbH, authors: C-Labs
-License: MPL-2.0
-
-Files: src/SDK/CDEngineSDKTemplates/CDEngineSDKTemplates.project.CDMyHelloWorldPlugin/CLabsCDEngine.ico
-Copyright: 2009-2020 TRUMPF Laser GmbH, authors: C-Labs
-License: MPL-2.0
-
-Files: src/SDK/CDEngineSDKTemplates/CDEngineSDKTemplates.project.CDMyHelloWorldPlugin/Project.CDMyHelloWorldPlugin.csproj
-Copyright: 2009-2020 TRUMPF Laser GmbH, authors: C-Labs
-License: MPL-2.0
-
-Files: src/SDK/CDEngineSDKTemplates/CDEngineSDKTemplates.project.CDMyHelloWorldPlugin/Project.CDMyHelloWorldPlugin.sln
-Copyright: 2009-2020 TRUMPF Laser GmbH, authors: C-Labs
-License: MPL-2.0
-
-Files: src/SDK/CDEngineSDKTemplates/CDEngineSDKTemplates.project.CDMyHelloWorldPlugin/Project.CDMyHelloWorldPlugin.vstemplate
-Copyright: 2009-2020 TRUMPF Laser GmbH, authors: C-Labs
-License: MPL-2.0
-
-Files: src/SDK/CDEngineSDKTemplates/CDEngineSDKTemplates.project.CDMyHelloWorldPlugin/ProjectTemplate.csproj
-Copyright: 2009-2020 TRUMPF Laser GmbH, authors: C-Labs
-License: MPL-2.0
-
-Files: src/SDK/CDEngineSDKTemplates/CDEngineSDKTemplates4/C-DEngine V4.0 - SDK - Getting Started.docx
-Copyright: 2009-2020 TRUMPF Laser GmbH, authors: C-Labs
-License: MPL-2.0
-
-Files: src/SDK/CDEngineSDKTemplates/CDEngineSDKTemplates4/C-DEngine V4.0 - SDK - Getting Started.pdf
-Copyright: 2009-2020 TRUMPF Laser GmbH, authors: C-Labs
-License: MPL-2.0
-
-Files: src/SDK/CDEngineSDKTemplates/CDEngineSDKTemplates4/C-DEngine.png
-Copyright: 2009-2020 TRUMPF Laser GmbH, authors: C-Labs
-License: MPL-2.0
-
-Files: src/SDK/CDEngineSDKTemplates/CDEngineSDKTemplates4/CDEngineSDKTemplates4.csproj
-Copyright: 2009-2020 TRUMPF Laser GmbH, authors: C-Labs
-License: MPL-2.0
-
-Files: src/SDK/CDEngineSDKTemplates/CDEngineSDKTemplates4/cdeProjectTemplate.ICO
-Copyright: 2009-2020 TRUMPF Laser GmbH, authors: C-Labs
-License: MPL-2.0
-
-Files: src/SDK/CDEngineSDKTemplates/CDEngineSDKTemplates4/License.txt
-Copyright: 2009-2020 TRUMPF Laser GmbH, authors: C-Labs
-License: MPL-2.0
-
-Files: src/SDK/CDEngineSDKTemplates/CDEngineSDKTemplates4/source.extension.vsixmanifest
-Copyright: 2009-2020 TRUMPF Laser GmbH, authors: C-Labs
-License: MPL-2.0
-
-Files: src/SDK/CDEngineSDKTemplates/VsixBuilder/C-DEngine.png
-Copyright: 2009-2020 TRUMPF Laser GmbH, authors: C-Labs
-License: MPL-2.0
-
-Files: src/SDK/CDEngineSDKTemplates/VsixBuilder/C-DEnginea.png
-Copyright: 2009-2020 TRUMPF Laser GmbH, authors: C-Labs
-License: MPL-2.0
-
-Files: src/SDK/CDEngineSDKTemplates/VsixBuilder/cdeProjectTemplate.ICO
-Copyright: 2009-2020 TRUMPF Laser GmbH, authors: C-Labs
-License: MPL-2.0
-
-Files: src/SDK/CDEngineSDKTemplates/VsixBuilder/License.txt
-Copyright: 2009-2020 TRUMPF Laser GmbH, authors: C-Labs
-License: MPL-2.0
-
-Files: src/SDK/CDEngineSDKTemplates/VsixBuilder/Resources/Package.ico
-Copyright: 2009-2020 TRUMPF Laser GmbH, authors: C-Labs
-License: MPL-2.0
-
-Files: src/SDK/CDEngineSDKTemplates/VsixBuilder/Resources.resx
-Copyright: 2009-2020 TRUMPF Laser GmbH, authors: C-Labs
-License: MPL-2.0
-
-Files: src/SDK/CDEngineSDKTemplates/VsixBuilder/source.extension.vsixmanifest
-Copyright: 2009-2020 TRUMPF Laser GmbH, authors: C-Labs
-License: MPL-2.0
-
-Files: src/SDK/CDEngineSDKTemplates/VsixBuilder/VsixBuilder.sln
-Copyright: 2009-2020 TRUMPF Laser GmbH, authors: C-Labs
-License: MPL-2.0
-
-Files: src/SDK/CDEngineSDKTemplates/VsixBuilder/VSPackage.resx
-Copyright: 2009-2020 TRUMPF Laser GmbH, authors: C-Labs
-License: MPL-2.0
-
-Files: src/SDK/CDEngineSDKTemplates/VsixBuilder.sln
-Copyright: 2009-2020 TRUMPF Laser GmbH, authors: C-Labs
-License: MPL-2.0
-
-Files: src/SDK/CDEngineSDKTemplates/VsixBuilder.sln.GhostDoc.xml
-Copyright: 2009-2020 TRUMPF Laser GmbH, authors: C-Labs
-License: MPL-2.0
-
-Files: src/SDK/Libraries/152 - TheSensorTemplate/TheSensorTemplate/ClientBin/SENSORS/CSS/SensorsDark.SCSS
-Copyright: 2009-2020 TRUMPF Laser GmbH, authors: C-Labs
-License: MPL-2.0
-
-Files: src/SDK/Libraries/152 - TheSensorTemplate/TheSensorTemplate/ClientBin/SENSORS/Images/SensorLogo_156x78.png
-Copyright: 2009-2020 TRUMPF Laser GmbH, authors: C-Labs
-License: MPL-2.0
-
-Files: src/SDK/Libraries/152 - TheSensorTemplate/TheSensorTemplate/compilerconfig.json
-Copyright: 2009-2020 TRUMPF Laser GmbH, authors: C-Labs
-License: MPL-2.0
-
-Files: src/SDK/Libraries/152 - TheSensorTemplate/TheSensorTemplate/compilerconfig.json.defaults
-Copyright: 2009-2020 TRUMPF Laser GmbH, authors: C-Labs
-License: MPL-2.0
-
-Files: src/SDK/Libraries/readme.md
-Copyright: 2009-2020 TRUMPF Laser GmbH, authors: C-Labs
-License: MPL-2.0
-
-Files: src/SDK/MessageContracts/readme.md
-Copyright: 2009-2020 TRUMPF Laser GmbH, authors: C-Labs
-License: MPL-2.0
-
-Files: src/SDK/readme.md
+Files: src/readme.md
 Copyright: 2009-2020 TRUMPF Laser GmbH, authors: C-Labs
 License: MPL-2.0

@@ -1,7 +1,7 @@
 name: .NET Core
 
 # SPDX-FileCopyrightText: Copyright (c) 2009-2020 TRUMPF Laser GmbH, authors: C-Labs
-# SPDX-License-Identifier: MPL-2.0
+# SPDX-License-Identifier: CC0-1.0
 
 on:
   push:
@@ -47,23 +47,20 @@ jobs:
       uses: gittools/actions/gitversion/execute@v0.9.3
 
     - name: Install dependencies
-      run: dotnet restore './src/CDESDK.sln'
+      run: dotnet restore './src/cdeSDK.sln'
 
     # Workaround for gitversiontask lock exception: build a single targetframework first
-    - name: Build CDESenderBaseShared.csproj for netstandard2.0
-      run: dotnet build './src/SDK/Libraries/185 - SenderAndReceiverBase/CDESenderBaseShared/CDESenderBaseShared.csproj' --framework netstandard2.0  --configuration Release --no-restore --disable-parallel
+    - name: Build PackagerInstaller
+      run: dotnet build './BuildTools/PackagerInstaller\PackagerInstaller.csproj' --framework net45 --configuration Release --no-restore --disable-parallel
 
     - name: Build
-      run: dotnet build './src/CDESDK.sln' --configuration Release --no-restore --disable-parallel
+      run: dotnet build './src/cdeSDK.sln' --configuration Release --no-restore --disable-parallel
 
     - name: Test
-      run: dotnet test './src/CDESDK.sln' --configuration Release --no-build --no-restore --verbosity normal
+      run: dotnet test './src/cdeSDK.sln' --configuration Release --no-build --no-restore --verbosity normal
       
-    - name: Build Samples
-      run: dotnet build './src/Samples/cdeSamples.sln' --configuration Debug --disable-parallel
-
     - name: Gather artifacts
-      run: (robocopy .\bin\ .\artifacts\ *.CDEX *.CDEP *.nupkg *.msi *.vsix cdePackager* /s /np) ^& IF %ERRORLEVEL% LEQ 1 exit 0
+      run: (robocopy .\bin\ .\artifacts\ *.CDEX *.CDEP *.nupkg *.snupkg *.msi *.vsix cdePackager* /s /np) ^& IF %ERRORLEVEL% LEQ 1 exit 0
       shell: cmd
 
     - name: Upload artifacts

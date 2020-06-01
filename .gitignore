@@ -1,5 +1,5 @@
 # SPDX-FileCopyrightText: 2009-2020 TRUMPF Laser GmbH, authors: C-Labs
-# SPDX-License-Identifier: MPL-2.0
+# SPDX-License-Identifier: CC0-1.0
 
 /.vs
 /src/.vs
@@ -228,3 +228,7 @@ project.assets.json
 /src/C-DEngine/C-DEngine.xml
 /src/Samples/MyNetCoreHost/cdeHostProject1/Properties/PublishProfiles/FolderProfile.pubxml
 /src/Samples/cdeSamples.sln.GhostDoc.xml
+/BuildTools/cdePackager
+/BuildTools/signtool.exe
+/src/SDK/Tools/cdeLicenseTool/Licenses/C-DEngine.cdel
+/BuildTools/real.sign

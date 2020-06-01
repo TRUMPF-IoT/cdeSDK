@@ -1,0 +1,57 @@
+<!--
+ SPDX-FileCopyrightText: 2009-2020 TRUMPF Laser GmbH, authors: C-Labs
+ SPDX-License-Identifier: MPL-2.0
+ -->
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>library</OutputType>
+    <PackageId>cdeThingMatcherShared</PackageId>
+    <Version>1.0.1.11</Version>
+    <TargetFrameworks>netstandard2.0;net45;net35;net4</TargetFrameworks>
+    <Authors>Markus Horstmann</Authors>
+    <Company>C-Labs</Company>
+    <Copyright>Copyright © 2015-2020 TRUMPF Laser GmbH, authors: C-Labs</Copyright>
+    <PackageDescription>Thing Matcher Library for C-DEngine</PackageDescription>
+    <PackageIcon>toplogo-128.png</PackageIcon>
+
+    <PackageLicenseExpression>MPL-2.0</PackageLicenseExpression>
+
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <ProjectName>$(AssemblyName).$(TargetFramework)</ProjectName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="**\*.cs" />
+    <Content Include="**\*.cs" buildAction="Compile">
+      <!--<Link>SenderBase\TheSenderBase\%(RecursiveDir)%(Filename)%(Extension)</Link>-->
+    </Content>
+    <Compile Include="**\*.cs" />
+    <Content Remove="obj\**" />
+   
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\..\..\toplogo-128.png" Pack="true" PackagePath="" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="C-DEngine" Version="5.*" />
+    <PackageReference Include="jnm2.ReferenceAssemblies.net35" Version="1.0.1" Condition="'$(TargetFramework)'=='net35'">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)'=='net4'">
+    <PackageReference Include="AsyncBridge" Version="0.1.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="obj\**" />
+    <Content Remove="obj\**" />
+    <EmbeddedResource Remove="obj\**" />
+    <None Remove="obj\**" />
+  </ItemGroup>
+
+</Project>

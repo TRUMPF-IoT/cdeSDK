@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <!--
+ SPDX-FileCopyrightText: Copyright (c) 2009-2020 TRUMPF Laser GmbH, authors: C-Labs
+ SPDX-License-Identifier: MPL-2.0
+ -->
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>5b124834-f6f1-493d-9b3e-ff0f072f8183</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>TheCommonMessageContracts</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)IMsgThingResponse.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)MsgAddThings.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)MsgAddThingToPublish.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)MsgConnectDisconnect.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)MsgDeleteThings.cs" />
+  </ItemGroup>
+</Project>
