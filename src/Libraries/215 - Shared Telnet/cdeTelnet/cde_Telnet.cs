@@ -1,4 +1,7 @@
-﻿using System;
+﻿// SPDX-FileCopyrightText: 2009-2020 TRUMPF Laser GmbH, authors: C-Labs
+//
+// SPDX-License-Identifier: MPL-2.0
+using System;
 using System.Text;
 using System.Net.Sockets;
 using System.Threading;
