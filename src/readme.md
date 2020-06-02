@@ -2,6 +2,8 @@
 
 ## Libraries
 
+The [Libraries](Libraries/readme.md) directory contains convenience libraries that provide functionality that is commonly used in C-DEngine plug-ins.
+
 The Libraries are provided as NuGet packages that contain both source code and a DLL. By default, the sources will become part of the consuming project (avoiding dll collisions and conflicts between plugins at the cost of patchability), but you will see warnings about duplicate type definitions.
 
 To consume the code as shared code, without warnings, you can exclude everything but the contentFiles from the package reference, for example:
