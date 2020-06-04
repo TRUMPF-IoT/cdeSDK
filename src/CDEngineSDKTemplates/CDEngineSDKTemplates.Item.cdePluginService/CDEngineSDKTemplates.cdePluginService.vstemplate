@@ -7,7 +7,8 @@
     <TemplateID>4680339b-3bdd-4a5a-873d-0794d0170b63</TemplateID>
     <ProjectType>CSharp</ProjectType>
     <RequiredFrameworkVersion>2.0</RequiredFrameworkVersion>
-    <NumberOfParentCategoriesToRollUp>1</NumberOfParentCategoriesToRollUp>
+    <TemplateGroupID>C-DEngine</TemplateGroupID>
+    <NumberOfParentCategoriesToRollUp>2</NumberOfParentCategoriesToRollUp>
     <DefaultName>cdePluginService.cs</DefaultName>
   </TemplateData>
   <TemplateContent>

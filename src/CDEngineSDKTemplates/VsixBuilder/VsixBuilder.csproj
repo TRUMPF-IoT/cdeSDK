@@ -75,32 +75,37 @@
     <ProjectReference Include="..\CDEngineSDKTemplates.Item.cdeConnectedThingBase\Item.cdeConnectedThingBase.csproj">
       <Project>{d31b43a2-d081-40b3-8ca9-035bf7f8f464}</Project>
       <Name>Item.cdeConnectedThingBase</Name>
-            <VSIXSubPath>ItemTemplates</VSIXSubPath>
+      <VSIXSubPath>ItemTemplates</VSIXSubPath>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <IncludeOutputGroupsInVSIX>TemplateProjectOutputGroup%3b</IncludeOutputGroupsInVSIX>
     </ProjectReference>
     <ProjectReference Include="..\CDEngineSDKTemplates.Item.cdeEnergyThingBase\Item.cdeEnergyThingBase.csproj">
       <Project>{ac4befda-bc10-466c-8469-2d9b219709f2}</Project>
       <Name>Item.cdeEnergyThingBase</Name>
-            <VSIXSubPath>ItemTemplates</VSIXSubPath>
+      <VSIXSubPath>ItemTemplates</VSIXSubPath>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <IncludeOutputGroupsInVSIX>TemplateProjectOutputGroup%3b</IncludeOutputGroupsInVSIX>
     </ProjectReference>
     <ProjectReference Include="..\CDEngineSDKTemplates.Item.cdePluginServiceWithThings\Item.cdePluginServiceWithThings.csproj">
       <Project>{7a0caacb-7db3-4113-a0b5-e96a58cb26e6}</Project>
       <Name>Item.cdePluginServiceWithThings</Name>
-            <VSIXSubPath>ItemTemplates</VSIXSubPath>
+      <VSIXSubPath>ItemTemplates</VSIXSubPath>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <IncludeOutputGroupsInVSIX>TemplateProjectOutputGroup%3b</IncludeOutputGroupsInVSIX>
     </ProjectReference>
     <ProjectReference Include="..\CDEngineSDKTemplates.Item.cdePluginService\Item.cdePluginService.csproj">
       <Project>{83eeabd3-3ccf-48aa-bb33-ef66ff09e8cc}</Project>
       <Name>Item.cdePluginService</Name>
-            <VSIXSubPath>ItemTemplates</VSIXSubPath>
+      <VSIXSubPath>ItemTemplates</VSIXSubPath>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <IncludeOutputGroupsInVSIX>TemplateProjectOutputGroup%3b</IncludeOutputGroupsInVSIX>
     </ProjectReference>
     <ProjectReference Include="..\CDEngineSDKTemplates.Item.cdeThing\Item.cdeThing.csproj">
       <Project>{549a63ea-54e1-4cdb-8c62-ab7367a21018}</Project>
       <Name>Item.cdeThing</Name>
-            <VSIXSubPath>ItemTemplates</VSIXSubPath>
+      <VSIXSubPath>ItemTemplates</VSIXSubPath>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <IncludeOutputGroupsInVSIX>TemplateProjectOutputGroup%3b</IncludeOutputGroupsInVSIX>
     </ProjectReference>
     <ProjectReference Include="..\CDEngineSDKTemplates.project.cdeHostNetCoreProject\Project.cdeHostNetCoreProject.csproj">
       <Project>{30D30964-125A-408E-99DB-77777AEE17DB}</Project>
@@ -109,6 +114,7 @@
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
       <IncludeOutputGroupsInVSIX>TemplateProjectOutputGroup%3b</IncludeOutputGroupsInVSIX>
     </ProjectReference>
+
     <ProjectReference Include="..\CDEngineSDKTemplates.Item.cdeThingModel\item.cdeThingModel.csproj">
       <Project>{C2AF4687-A6E6-4D15-8FD2-D94D1615E465}</Project>
       <Name>item.cdeThingModel</Name>
@@ -116,6 +122,7 @@
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
       <IncludeOutputGroupsInVSIX>TemplateProjectOutputGroup%3b</IncludeOutputGroupsInVSIX>
     </ProjectReference>
+
     <ProjectReference Include="..\CDEngineSDKTemplates.project.cdeHostNetCoreProject\Project.cdeHostNetCoreProject.csproj">
       <Project>{55871729-710C-4B7E-8A40-8572D30B9698}</Project>
       <Name>Project.cdeHostNetCoreProject</Name>

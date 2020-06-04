@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <MinimumVisualStudioVersion>15.0</MinimumVisualStudioVersion>
@@ -82,7 +82,9 @@
     <None Include="CDEngineSDKTemplates.cdePluginServiceWithThings.ico" />
   </ItemGroup>
   <ItemGroup>
-    <VSTemplate Include="CDEngineSDKTemplatescdePluginServiceWithThings.vstemplate" />
+    <VSTemplate Include="CDEngineSDKTemplatescdePluginServiceWithThings.vstemplate">
+      <OutputSubPath>C-DEngine</OutputSubPath>
+    </VSTemplate>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">

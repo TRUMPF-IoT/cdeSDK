@@ -7,7 +7,8 @@
     <TemplateID>14a6dbc2-fa3f-4aec-b5bb-7594cdf5c0a6</TemplateID>
     <ProjectType>CSharp</ProjectType>
     <RequiredFrameworkVersion>2.0</RequiredFrameworkVersion>
-    <NumberOfParentCategoriesToRollUp>1</NumberOfParentCategoriesToRollUp>
+    <TemplateGroupID>C-DEngine</TemplateGroupID>
+    <NumberOfParentCategoriesToRollUp>2</NumberOfParentCategoriesToRollUp>
     <DefaultName>cdeThing.cs</DefaultName>
   </TemplateData>
   <TemplateContent>
