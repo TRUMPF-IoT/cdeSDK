@@ -67,7 +67,7 @@
   </Target>
 
   <ItemGroup>
-    <PackageReference Include="C-DEngine" />
+    <PackageReference Include="C-DEngine" Version="5.*" />
   </ItemGroup>
 
   <ItemGroup>
