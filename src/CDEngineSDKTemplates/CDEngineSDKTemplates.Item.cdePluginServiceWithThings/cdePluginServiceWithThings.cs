@@ -20,7 +20,7 @@ namespace $rootnamespace$
         public const string ThingTypeA = "My Thing Type A";
     }
 
-    class $safeitemrootname$: ICDEPlugin, ICDEThing 
+    class $safeitemrootname$: ThePluginBase 
 	{
         Guid guidEngineID = new Guid("{<<Use Create GUID tool>>}"); // TODO: Set GUID value for InitEngineAssets (in the next block)
         String strFriendlyName = "My Sample Service";               // TODO: Set plugin friendly name for InitEngineAssets (optional)

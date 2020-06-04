@@ -6,8 +6,9 @@
     <Icon>cdeConnectedThingBase.ico</Icon>
     <TemplateID>c1a484db-c118-4427-a698-a4b8351a1351</TemplateID>
     <ProjectType>CSharp</ProjectType>
+    <TemplateGroupID>C-DEngine</TemplateGroupID>
     <RequiredFrameworkVersion>2.0</RequiredFrameworkVersion>
-    <NumberOfParentCategoriesToRollUp>1</NumberOfParentCategoriesToRollUp>
+    <NumberOfParentCategoriesToRollUp>2</NumberOfParentCategoriesToRollUp>
     <DefaultName>cdeConnectedThingBase.cs</DefaultName>
   </TemplateData>
   <TemplateContent>

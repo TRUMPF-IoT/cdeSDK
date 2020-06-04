@@ -7,7 +7,8 @@
     <TemplateID>D4B8F920-9413-48C0-AC9A-3B98B1C8AC8C</TemplateID>
     <ProjectType>CSharp</ProjectType>
     <RequiredFrameworkVersion>2.0</RequiredFrameworkVersion>
-    <NumberOfParentCategoriesToRollUp>1</NumberOfParentCategoriesToRollUp>
+    <TemplateGroupID>C-DEngine</TemplateGroupID>
+    <NumberOfParentCategoriesToRollUp>2</NumberOfParentCategoriesToRollUp>
     <DefaultName>cdeEnergyThingBase.cs</DefaultName>
   </TemplateData>
   <TemplateContent>

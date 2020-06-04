@@ -7,7 +7,8 @@
     <TemplateID>2da30f9c-b788-42bb-b9d1-48c304708f57</TemplateID>
     <ProjectType>CSharp</ProjectType>
     <RequiredFrameworkVersion>2.0</RequiredFrameworkVersion>
-    <NumberOfParentCategoriesToRollUp>1</NumberOfParentCategoriesToRollUp>
+    <TemplateGroupID>C-DEngine</TemplateGroupID>
+    <NumberOfParentCategoriesToRollUp>2</NumberOfParentCategoriesToRollUp>
     <DefaultName>cdePluginServiceWithThings.cs</DefaultName>
   </TemplateData>
   <TemplateContent>
