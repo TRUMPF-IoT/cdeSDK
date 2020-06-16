@@ -32,12 +32,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="C-DEngine">
-      <HintPath>C:\Program Files (x86)\C-Labs\C-DEngine SDK\NET45\C-DEngine.dll</HintPath>
-    </Reference>
-    <Reference Include="CDMyNMIHtml5.dll">
-      <HintPath>C:\Program Files (x86)\C-Labs\C-DEngine SDK\NET45\CDMyNMIHtml5.dll</HintPath>
-    </Reference>
+    <PackageReference Include="C-DEngine" Version="5.106.0" />
+    <PackageReference Include="CDMyNMIHtml5RT" Version="5.106.0" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />

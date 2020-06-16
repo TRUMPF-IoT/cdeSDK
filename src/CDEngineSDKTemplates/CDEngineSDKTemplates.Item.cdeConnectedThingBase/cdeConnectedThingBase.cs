@@ -14,7 +14,8 @@ using nsCDEngine.ViewModels;
 
 namespace $rootnamespace$
 {
-	class $safeitemrootname$: TheThingBase
+    [DeviceType(DeviceType = strDeviceType, Description = "This Thing does...", Capabilities = new[] { eThingCaps.ConfigManagement })]
+    class $safeitemrootname$: TheThingBase
 	{
         // User-interface defintion
         protected TheFormInfo MyStatusForm;
@@ -29,11 +30,16 @@ namespace $rootnamespace$
             get { return TheThing.MemberGetSafePropertyBool(MyBaseThing); }
             set { TheThing.MemberSetSafePropertyBool(MyBaseThing, value); }
         }
+
+        [ConfigProperty]
         public bool AutoConnect
         {
             get { return TheThing.MemberGetSafePropertyBool(MyBaseThing); }
             set { TheThing.MemberSetSafePropertyBool(MyBaseThing, value); }
         }
+
+        //TODO: set your DeviceType
+        public const string strDeviceType = "My Cool Thing Type";
 
         public $safeitemrootname$(TheThing tBaseThing, ICDEPlugin pPluginBase)
         {
@@ -41,8 +47,7 @@ namespace $rootnamespace$
             MyBaseEngine = pPluginBase.GetBaseEngine();
             MyBaseThing.EngineName = MyBaseEngine.GetEngineName();
             MyBaseThing.SetIThingObject(this);
-            //TODO: set your DeviceType
-            MyBaseThing.DeviceType="My Cool Thing Type";
+            MyBaseThing.DeviceType = strDeviceType;
         }
 
         public override bool Init()

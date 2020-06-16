@@ -17,41 +17,24 @@ using nsCDEngine.ViewModels;
 
 namespace $safeprojectname$
 {
+    [EngineAssetInfo(
+            FriendlyName = strFriendlyName,
+            Capabilities = new[] { eThingCaps.ConfigManagement, },
+            EngineID = "{$guid2$}",
+            IsService = true,
+            LongDescription = "This service...",
+            IconUrl = "toplogo-150.png", // TODO Add your own icon
+            Developer = "C-Labs", // TODO Add your own name and URL
+            DeveloperUrl = "http://www.c-labs.com",
+            ManifestFiles = new string[] { }
+     )]
     class cdePluginService1 : ThePluginBase
     {
         // User-interface defintion
         TheDashboardInfo mMyDashboard;
 
-        // TODO: Set GUID value for InitEngineAssets (in the next block)
-        Guid guidEngineID = new Guid("{<<Use Create GUID tool>>}"); 
-    
         // TODO: Set plugin friendly name for InitEngineAssets (optional)
-        String strFriendlyName = "My Hello World Service";              
-
-#region ICDEPlugin - interface methods for service (engine)
-        /// <summary>
-        /// InitEngineAssets - The C-DEngine calls this initialization
-        /// function as part of registering this service (engine)
-        /// </summary>
-        /// <param name="pBase">The C-DEngine creates a base engine object.
-        /// This parameter is a reference to that base engine object.
-        /// We keep a copy because it will be very useful to us.
-        /// </param>
-        public override void InitEngineAssets(IBaseEngine pBase)
-        {
-            base.InitEngineAssets(pBase);
-            MyBaseEngine.SetEngineID(guidEngineID);          // Unique identifier for our service (engine)
-            MyBaseEngine.SetFriendlyName(strFriendlyName);
-
-            MyBaseEngine.SetPluginInfo("This service...",       // Describe plugin for Plugin Store
-                                       0,                       // pPrice - retail price (default = 0)
-                                       null,                    // Custom home page - default = /ServiceID
-                                       "toplogo-150.png",       // pIcon - custom icon.
-                                       "C-Labs",                // pDeveloper - name of the plugin developer.
-                                       "http://www.c-labs.com", // pDeveloperUrl - URL to developer home page.
-                                       new List<string>() { }); // pCategories - Search categories for service.
-        }
-#endregion
+        public const String strFriendlyName = "My Hello World Service";              
 
         public override bool Init()
         {

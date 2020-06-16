@@ -14,11 +14,15 @@ using nsCDEngine.ViewModels;
 
 namespace $rootnamespace$
 {
+    [DeviceType(DeviceType = strDeviceType, Description = "This Thing does...", Capabilities = new[] { /* eThingCaps.ConfigManagement */ })]
 	class $safeitemrootname$: TheThingBase 
     {
          protected IBaseEngine MyBaseEngine;
         // User-interface definition
         TheFormInfo mMyForm;
+
+        //TODO: set your DeviceType
+        public const string strDeviceType = "My Cool Thing Type";
 
         public $safeitemrootname$(TheThing tBaseThing, ICDEPlugin pPluginBase)
         {
@@ -26,8 +30,7 @@ namespace $rootnamespace$
             MyBaseEngine = pPluginBase.GetBaseEngine();
             MyBaseThing.EngineName = MyBaseEngine.GetEngineName();
             MyBaseThing.SetIThingObject(this);
-            //TODO: set your DeviceType
-            MyBaseThing.DeviceType="My Cool Thing Type";
+            MyBaseThing.DeviceType = strDeviceType;
         }
 
         public override bool Init()

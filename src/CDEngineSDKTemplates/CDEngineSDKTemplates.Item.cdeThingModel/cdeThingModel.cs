@@ -17,9 +17,14 @@ using nsCDEngine.Engines.ThingService;
 
 namespace $rootnamespace$
 {
+    [DeviceType(DeviceType = strDeviceType, Description = "This Thing does...", Capabilities = new[] { /* eThingCaps.ConfigManagement */ })]
 	class $safeitemrootname$: TheThingBase 
     {
         IBaseEngine MyBaseEngine;
+
+        //TODO: set your DeviceType
+        public const string strDeviceType = "MyDeviceType";
+
         public $safeitemrootname$(TheThing pThing, ICDEPlugin pPluginBase)
         {
             if (pThing != null)
@@ -29,7 +34,7 @@ namespace $rootnamespace$
             MyBaseThing.SetIThingObject(this);
             MyBaseThing.EngineName = pPluginBase.GetBaseEngine().GetEngineName();
             MyBaseEngine = pPluginBase.GetBaseEngine();
-            MyBaseThing.DeviceType = "MyDeviceType";
+            MyBaseThing.DeviceType = strDeviceType;
         }
 
         public override void Init()

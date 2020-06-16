@@ -18,6 +18,7 @@ using TT = nsCDEngine.Engines.ThingService.TheThing;
 
 namespace $rootnamespace$
 {
+    [DeviceType(DeviceType = strDeviceType, Description = "This Thing does something", Capabilities = new[] { eThingCaps.ConfigManagement })]
 	class $safeitemrootname$: TheThingBase
 	{
         // Base object references 
@@ -36,18 +37,22 @@ namespace $rootnamespace$
             get { return TheThing.MemberGetSafePropertyBool(MyBaseThing); }
             set { TheThing.MemberSetSafePropertyBool(MyBaseThing, value); }
         }
+
+        [ConfigProperty]
         public bool AutoConnect
         {
             get { return TheThing.MemberGetSafePropertyBool(MyBaseThing); }
             set { TheThing.MemberSetSafePropertyBool(MyBaseThing, value); }
         }
 
+        [ConfigProperty]
         public int UpdateInterval
         {
             get { return CU.CInt(TT.MemberGetSafePropertyNumber(MyBaseThing)); }
             set { TT.MemberSetSafePropertyNumber(MyBaseThing, value); }
         }
 
+        [ConfigProperty]
         public int PublishInterval
         {
             get { return CU.CInt(TT.MemberGetSafePropertyNumber(MyBaseThing)); }
@@ -70,14 +75,16 @@ namespace $rootnamespace$
             set { TT.MemberSetSafePropertyNumber(MyBaseThing, value); }
         }
 
+        //TODO: set your DeviceType
+        public string strDeviceType = "My Cool Thing Type";
+
         public $safeitemrootname$(TheThing tBaseThing, ICDEPlugin pPluginBase)
         {
             MyBaseThing = tBaseThing ?? new TheThing();
             MyBaseEngine = pPluginBase.GetBaseEngine();
             MyBaseThing.EngineName = MyBaseEngine.GetEngineName();
             MyBaseThing.SetIThingObject(this);
-            //TODO: set your DeviceType
-            MyBaseThing.DeviceType="My Cool Thing Type";
+            MyBaseThing.DeviceType = strDeviceType;
         }
 
         public override bool Init()
@@ -127,8 +134,8 @@ namespace $rootnamespace$
 
                 tBlock = TheNMIEngine.AddConnectivityBlock(MyBaseThing, MyStatusForm, 120, sinkConnect);
                 tBlock["Group"].SetParent(1);
-                NMI.AddSmartControl(MyBaseThing, MyStatusForm, eFieldType.Number, 130, 2, 0xc0, "Update every (ms)", "UpdateInterval", new nmiCtrlNumber { MinValue = 200, ParentFld = 120 });
-                NMI.AddSmartControl(MyBaseThing, MyStatusForm, eFieldType.Number, 140, 2, 0xc0, "Publish every (sec)", "PublishInterval", new nmiCtrlNumber { MinValue = 0, ParentFld = 120 });
+                NMI.AddSmartControl(MyBaseThing, MyStatusForm, eFieldType.Number, 130, 2, 0xc0, "Update every (ms)", nameof(UpdateInterval), new nmiCtrlNumber { MinValue = 200, ParentFld = 120 });
+                NMI.AddSmartControl(MyBaseThing, MyStatusForm, eFieldType.Number, 140, 2, 0xc0, "Publish every (sec)", nameof(PublishInterval), new nmiCtrlNumber { MinValue = 0, ParentFld = 120 });
 
                 NMI.AddSmartControl(MyBaseThing, MyStatusForm, eFieldType.TileGroup, 10, 0, 0, null, null, new nmiCtrlTileGroup { TileHeight = 7, ParentFld = 1, TileWidth = 6 });
                 NMI.AddSmartControl(MyBaseThing, MyStatusForm, eFieldType.Number, 20, 0, 0, "Current Consumption (Watts)", nameof(Watts), new nmiCtrlNumber { ParentFld = 10 });
