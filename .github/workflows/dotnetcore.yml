@@ -60,7 +60,7 @@ jobs:
       uses: microsoft/setup-msbuild@v1
 
     - name: Build VSIX templates
-      run: msbuild "./src/CDEngineSDKTemplates/VsixBuilder.sln" /p:Configuration=Release;OutDir=..\..\..\bin\Release
+      run: msbuild "./src/CDEngineSDKTemplates/VsixBuilder.sln" /p:Configuration=Release /p:OutDir=..\..\..\bin\Release
 
     - name: Test
       run: dotnet test './src/cdeSDK.sln' --configuration Release --no-build --no-restore --verbosity normal
