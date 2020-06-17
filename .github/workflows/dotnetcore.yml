@@ -56,6 +56,9 @@ jobs:
     - name: Build
       run: dotnet build './src/cdeSDK.sln' --configuration Release --no-restore --disable-parallel
 
+    - name: Build VSIX templates
+      run: msbuild "./src/CDEngineSDKTemplates/VsixBuilder.sln" /p:Configuration=Release;OutDir=..\..\..\bin\Release\
+
     - name: Test
       run: dotnet test './src/cdeSDK.sln' --configuration Release --no-build --no-restore --verbosity normal
       
