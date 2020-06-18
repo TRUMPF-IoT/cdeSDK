@@ -30,11 +30,7 @@ namespace $rootnamespace$
             MyBaseThing.EngineName = MyBaseEngine.GetEngineName();
             MyBaseThing.SetIThingObject(this);
 
-            //TODO 1: Add your DeviceType to the plug-in's e$rootnamespace$DeviceTypes class
-            //TODO 2: Create an instance in e$rootnamespace$.InitService():
-            // case e$rootnamespace$DeviceTypes.$safeitemrootname$:
-            //   TheThingRegistry.RegisterThing(new $safeitemrootname$(tDev, this));
-            //   break;
+            // TODO: Add your DeviceType to the plug-in's e$rootnamespace$DeviceTypes class
             MyBaseThing.DeviceType = e$rootnamespace$DeviceTypes.$safeitemrootname$;
         }
 

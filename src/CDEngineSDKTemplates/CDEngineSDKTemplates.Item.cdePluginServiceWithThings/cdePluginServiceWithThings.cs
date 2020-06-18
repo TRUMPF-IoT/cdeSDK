@@ -4,6 +4,7 @@
 
 ﻿using System;
 using System.Collections.Generic;
+using System.Reflection;
 
 // TODO: Add reference for C-DEngine.dll
 // TODO: Make sure plugin file name starts with either CDMy or C-DMy
@@ -86,10 +87,35 @@ namespace $rootnamespace$
             {
 			    if (!tDev.HasLiveObject)
 				{
+                    // There is no .Net class instance associated with this TheThing: create and register it, so the C-DEngine can find it
                     switch (tDev.DeviceType)
                     {
-                        case e$safeprojectname$DeviceTypes.cdeThingDeviceTypeA:
-                            TheThingRegistry.RegisterThing(new cdeThingDeviceTypeA(tDev, this));
+                        // If your class does not follow the naming convention CDMyPlugin1.<fieldname>, you may need to instantiate it explicitly like this:
+                        //case e$safeprojectname$DeviceTypes.cdeThingDeviceTypeA:
+                        //    TheThingRegistry.RegisterThing(new cdeThingDeviceTypeA(tDev, this));
+                        //    break;
+                        default:
+                            // Assume the e$safeprojectname$DeviceTypes field names match the class names: find the field that corresponds to the TheThing.DeviceType being requested
+                            var fields = typeof(e$safeprojectname$DeviceTypes).GetFields();
+                            foreach (FieldInfo deviceTypeField in fields)
+                            {
+                                var deviceTypeValue = deviceTypeField.GetValue(new e$safeprojectname$DeviceTypes()) as string;
+                                if (deviceTypeValue == null || deviceTypeField.FieldType.FullName != "System.String") continue;
+                                if (deviceTypeValue == tDev.DeviceType)
+                                {
+                                    // Found a matching field: create an instance of the class based on the field's name, and register it with the C-DEngine
+                                    var deviceTypeClass = Type.GetType("$safeprojectname$." + deviceTypeField.Name);
+                                    if (deviceTypeClass == null)
+                                    {
+                                        deviceTypeClass = Type.GetType("$safeprojectname$.ViewModel." + deviceTypeField.Name);
+                                    }
+                                    if (deviceTypeClass != null)
+                                    {
+                                        TheThingRegistry.RegisterThing(Activator.CreateInstance(deviceTypeClass, tDev, this) as ICDEThing);
+                                    }
+                                    break;
+                                }
+                            }
                             break;
                     }
                 }
