@@ -2,7 +2,7 @@
 <VSTemplate Version="3.0.0" Type="Project" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" xmlns:sdk="http://schemas.microsoft.com/developer/vstemplate-sdkextension/2010">
   <TemplateData>
     <Name>Application Host with Windows Forms (.NET Framework)</Name>
-    <Description>A project template that creates an Application Host for use with C-Labs C-DEngine IoT communication relay engine.</Description>
+    <Description>A project template that creates an Application Host for use with C-DEngine IoT communication relay engine.</Description>
     <ProjectType>CSharp</ProjectType>
     <ProjectSubType>
     </ProjectSubType>

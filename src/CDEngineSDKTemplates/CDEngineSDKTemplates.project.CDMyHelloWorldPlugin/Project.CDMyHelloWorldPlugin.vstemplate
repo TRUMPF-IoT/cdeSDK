@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <VSTemplate Version="3.0.0" Type="Project" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" xmlns:sdk="http://schemas.microsoft.com/developer/vstemplate-sdkextension/2010">
   <TemplateData>
-    <Name>Plugin with a single D-Thing for C-Labs C-DEngine (.NET Standard)</Name>
-    <Description>A project template that creates a C-DEngine plugin that offers a single D-Thing instance. The plugin extends the C-Labs C-DEngine IoT communication relay engine.</Description>
+    <Name>Plugin with a single D-Thing for C-DEngine (.NET Standard)</Name>
+    <Description>A project template that creates a C-DEngine plugin that offers a single D-Thing instance. The plugin extends the C-DEngine IoT communication relay engine.</Description>
     <Icon>CLabsCDEngine.ico</Icon>
     <ProjectType>CSharp</ProjectType>
     <ProjectSubType>

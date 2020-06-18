@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <VSTemplate Version="3.0.0" Type="Project" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" xmlns:sdk="http://schemas.microsoft.com/developer/vstemplate-sdkextension/2010">
   <TemplateData>
-    <Name>Console Application Host for C-Labs C-DEngine (.NET Framework)</Name>
-    <Description>A project template that creates a Console Application to host the C-Labs C-DEngine IoT communication relay engine.</Description>
+    <Name>Console Application Host for C-DEngine (.NET Framework)</Name>
+    <Description>A project template that creates a Console Application to host the C-DEngine IoT communication relay engine.</Description>
     <Icon>cdePlugin.ICO</Icon>
     <ProjectType>CSharp</ProjectType>
     <ProjectSubType>
