@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
     <Metadata>
-        <Identity Id="efb7398a-dc38-43ae-9963-e459cd84ae19" Version="5.107.0" Language="en-US" Publisher="C-Labs" />
-        <DisplayName>C-DEngine Visual Studio Templates (5.107.0)</DisplayName>
-        <Description xml:space="preserve">Create components for the C-Labs C-DEngine such as plugins and application hosts.</Description>
+        <Identity Id="efb7398a-dc38-43ae-9963-e459cd84ae19" Version="|%CurrentProject%;GetVsixVersion|" Language="en-US" Publisher="C-Labs" />
+        <DisplayName>C-DEngine Visual Studio Templates (|%CurrentProject%;GetVsixFullVersion|)</DisplayName>
+        <Description xml:space="preserve">Create components for the C-DEngine such as plugins and application hosts.</Description>
         <MoreInfo>http://www.C-Labs.com/docu</MoreInfo>
         <License>License.txt</License>
         <GettingStartedGuide>http://www.c-labs.com/docu</GettingStartedGuide>
