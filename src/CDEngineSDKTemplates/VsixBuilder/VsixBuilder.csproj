@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <!--
  SPDX-FileCopyrightText: Copyright (c) 2009-2020 TRUMPF Laser GmbH, authors: C-Labs
@@ -115,15 +115,6 @@
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
       <IncludeOutputGroupsInVSIX>TemplateProjectOutputGroup%3b</IncludeOutputGroupsInVSIX>
     </ProjectReference>
-
-    <ProjectReference Include="..\CDEngineSDKTemplates.Item.cdeThingModel\item.cdeThingModel.csproj">
-      <Project>{C2AF4687-A6E6-4D15-8FD2-D94D1615E465}</Project>
-      <Name>item.cdeThingModel</Name>
-      <VSIXSubPath>ItemTemplates</VSIXSubPath>
-      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
-      <IncludeOutputGroupsInVSIX>TemplateProjectOutputGroup%3b</IncludeOutputGroupsInVSIX>
-    </ProjectReference>
-
     <ProjectReference Include="..\CDEngineSDKTemplates.project.cdeHostNetCoreProject\Project.cdeHostNetCoreProject.csproj">
       <Project>{55871729-710C-4B7E-8A40-8572D30B9698}</Project>
       <Name>Project.cdeHostNetCoreProject</Name>
@@ -148,6 +139,13 @@
     <ProjectReference Include="..\CDEngineSDKTemplates.project.CDMyHelloWorldPlugin\Project.CDMyHelloWorldPlugin.csproj">
       <Project>{421320D7-2627-4319-901E-ED399408C8A6}</Project>
       <Name>Project.CDMyHelloWorldPlugin</Name>
+      <VSIXSubPath>ProjectTemplates</VSIXSubPath>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <IncludeOutputGroupsInVSIX>TemplateProjectOutputGroup%3b</IncludeOutputGroupsInVSIX>
+    </ProjectReference>
+    <ProjectReference Include="..\CDEngineSDKTemplates.project.CDMyPlugin\Project.CDMyPlugin.csproj">
+      <Project>{3FB2F987-C1E8-4874-93B2-35B7E7E0BF13}</Project>
+      <Name>Project.CDMyPlugin</Name>
       <VSIXSubPath>ProjectTemplates</VSIXSubPath>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
       <IncludeOutputGroupsInVSIX>TemplateProjectOutputGroup%3b</IncludeOutputGroupsInVSIX>

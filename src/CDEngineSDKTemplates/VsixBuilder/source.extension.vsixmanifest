@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
     <Metadata>
-        <Identity Id="efb7398a-dc38-43ae-9963-e459cd84ae19" Version="5.106.0" Language="en-US" Publisher="C-Labs" />
-        <DisplayName>C-DEngine SDK Templates (5.106.0)</DisplayName>
+        <Identity Id="efb7398a-dc38-43ae-9963-e459cd84ae19" Version="5.107.0" Language="en-US" Publisher="C-Labs" />
+        <DisplayName>C-DEngine Visual Studio Templates (5.107.0)</DisplayName>
         <Description xml:space="preserve">Create components for the C-Labs C-DEngine such as plugins and application hosts.</Description>
         <MoreInfo>http://www.C-Labs.com/docu</MoreInfo>
         <License>License.txt</License>
@@ -10,7 +10,7 @@
         <ReleaseNotes>License.txt</ReleaseNotes>
         <Icon>cdeProjectTemplate.ICO</Icon>
         <PreviewImage>C-DEngine.png</PreviewImage>
-        <Tags>C-Labs, C-DEngine, Industrial Automation, IoT, IIOT, Internet of Things</Tags>
+        <Tags>C-Labs, C-DEngine, Industrial Automation, IoT, IIOT, Internet of Things, C#</Tags>
     </Metadata>
     <Installation InstalledByMsi="false">
         <InstallationTarget Id="Microsoft.VisualStudio.Pro" Version="[14.0,)" />
@@ -31,9 +31,9 @@
         <Asset Type="Microsoft.VisualStudio.ItemTemplate" d:Source="Project" d:ProjectName="Item.cdePluginServiceWithThings" d:TargetPath="|Item.cdePluginServiceWithThings;TemplateProjectOutputGroup|" Path="ItemTemplates" d:VsixSubPath="ItemTemplates" />
         <Asset Type="Microsoft.VisualStudio.ItemTemplate" d:Source="Project" d:ProjectName="Item.cdeConnectedThingBase" d:TargetPath="|Item.cdeConnectedThingBase;TemplateProjectOutputGroup|" Path="ItemTemplates" d:VsixSubPath="ItemTemplates" />
         <Asset Type="Microsoft.VisualStudio.ItemTemplate" d:Source="Project" d:ProjectName="Item.cdeEnergyThingBase" d:TargetPath="|Item.cdeEnergyThingBase;TemplateProjectOutputGroup|" Path="ItemTemplates" d:VsixSubPath="ItemTemplates" />
-        <Asset Type="Microsoft.VisualStudio.ItemTemplate" d:Source="Project" d:ProjectName="item.cdeThingModel" d:TargetPath="|item.cdeThingModel;TemplateProjectOutputGroup|" Path="ItemTemplates" d:VsixSubPath="ItemTemplates" />
         <Asset Type="Microsoft.VisualStudio.ProjectTemplate" d:Source="Project" d:ProjectName="Project.CDMyHelloWorldPlugin" d:TargetPath="|Project.CDMyHelloWorldPlugin;TemplateProjectOutputGroup|" Path="ProjectTemplates" d:VsixSubPath="ProjectTemplates" />
         <Asset Type="Microsoft.VisualStudio.ProjectTemplate" d:Source="Project" d:ProjectName="Project.cdeAppHostWinForms" d:TargetPath="|Project.cdeAppHostWinForms;TemplateProjectOutputGroup|" Path="ProjectTemplates" d:VsixSubPath="ProjectTemplates" />
+        <Asset Type="Microsoft.VisualStudio.ProjectTemplate" d:Source="Project" d:ProjectName="Project.CDMyPlugin" d:TargetPath="|Project.CDMyPlugin;TemplateProjectOutputGroup|" Path="ProjectTemplates" d:VsixSubPath="ProjectTemplates" />
     </Assets>
     <Prerequisites>
         <Prerequisite Id="Microsoft.VisualStudio.Component.CoreEditor" Version="[14.0,)" DisplayName="Visual Studio core editor" />

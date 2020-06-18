@@ -12,10 +12,10 @@ using nsCDEngine.Engines.NMIService;
 using nsCDEngine.Engines.ThingService;
 using nsCDEngine.ViewModels;
 
-namespace $rootnamespace$
+namespace $safeprojectname$
 {
-    [DeviceType(DeviceType = e$rootnamespace$DeviceTypes.$safeitemrootname$, Description = "This Thing does...", Capabilities = new[] { eThingCaps.ConfigManagement })]
-    class $safeitemrootname$: TheThingBase
+    [DeviceType(DeviceType = e$safeprojectname$DeviceTypes.cdeThingDeviceTypeA, Description = "This Thing does...", Capabilities = new[] { eThingCaps.ConfigManagement })]
+    class cdeThingDeviceTypeA: TheThingBase
 	{
         // Base object references 
         protected IBaseEngine MyBaseEngine;    // Base engine (service)
@@ -41,19 +41,15 @@ namespace $rootnamespace$
             set { TheThing.MemberSetSafePropertyBool(MyBaseThing, value); }
         }
 
-        public $safeitemrootname$(TheThing tBaseThing, ICDEPlugin pPluginBase)
+        public cdeThingDeviceTypeA(TheThing tBaseThing, ICDEPlugin pPluginBase)
         {
             MyBaseThing = tBaseThing ?? new TheThing();
             MyBaseEngine = pPluginBase.GetBaseEngine();
             MyBaseThing.EngineName = MyBaseEngine.GetEngineName();
             MyBaseThing.SetIThingObject(this);
 
-            //TODO 1: Add your DeviceType to the plug-in's e$rootnamespace$DeviceTypes class
-            //TODO 2: Create an instance in e$rootnamespace$.InitService():
-            // case e$rootnamespace$DeviceTypes.$safeitemrootname$:
-            //   TheThingRegistry.RegisterThing(new $safeitemrootname$(tDev, this));
-            //   break;
-            MyBaseThing.DeviceType = e$rootnamespace$DeviceTypes.$safeitemrootname$;
+        //TODO: Add your DeviceType to the plug-in's e$safeprojectname$DeviceTypes class
+        MyBaseThing.DeviceType = e$safeprojectname$DeviceTypes.cdeThingDeviceTypeA;
         }
 
         public override bool Init()

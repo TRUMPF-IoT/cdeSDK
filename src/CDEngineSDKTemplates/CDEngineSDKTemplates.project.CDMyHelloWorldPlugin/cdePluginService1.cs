@@ -5,29 +5,25 @@
 ﻿using System;
 using System.Collections.Generic;
 
-using nsCDEngine.BaseClasses;
 using nsCDEngine.Engines;
+using nsCDEngine.BaseClasses;
 using nsCDEngine.Engines.NMIService;
 using nsCDEngine.Engines.ThingService;
 using nsCDEngine.ViewModels;
 
-// TODO: Add reference for C-DEngine.dll
-// TODO: Make sure plugin DLL file name starts with either CDMy or C-DMy
-// TODO: Set new GUID engine id value and engine friendly name (see below).
-
 namespace $safeprojectname$
 {
     [EngineAssetInfo(
-            FriendlyName = strFriendlyName,
-            Capabilities = new[] { eThingCaps.ConfigManagement, },
-            EngineID = "{$guid2$}",
-            IsService = true,
-            LongDescription = "This service...",
-            IconUrl = "toplogo-150.png", // TODO Add your own icon
-            Developer = "C-Labs", // TODO Add your own name and URL
-            DeveloperUrl = "http://www.c-labs.com",
-            ManifestFiles = new string[] { }
-     )]
+        FriendlyName = strFriendlyName,
+        Capabilities = new[] { eThingCaps.ConfigManagement, },
+        EngineID = "{$guid2$}",
+        IsService = true,
+        LongDescription = "This service...",
+        IconUrl = "toplogo-150.png", // TODO Add your own icon
+        Developer = "C-Labs", // TODO Add your own name and URL
+        DeveloperUrl = "http://www.c-labs.com",
+        ManifestFiles = new string[] { }
+    )]
     class cdePluginService1 : ThePluginBase
     {
         // User-interface defintion
@@ -43,7 +39,9 @@ namespace $safeprojectname$
                 mIsInitCalled = true;
                 MyBaseThing.RegisterEvent(eEngineEvents.IncomingMessage, HandleMessage);
                 // Additional initialization processing goes here
-
+                // If additional processing could fail or last longer, set status level to 4 and/or consider finishing Init() asynchronously (return false, fire eThingEvent.Initialized when ready)
+                // MyBaseThing.StatusLevel = 4;
+                // MyBaseThing.LastMessage="Service is starting";
                 MyBaseThing.StatusLevel = 1;
                 MyBaseThing.LastMessage = "Hello World service has started.";
                 mIsInitialized = true;

@@ -5,6 +5,7 @@
 ﻿using System;
 
 // TODO: Add reference for C-DEngine.dll
+// TODO: Make sure plugin file name starts with either CDMy or C-DMy
 using nsCDEngine.BaseClasses;
 using nsCDEngine.Engines;
 using nsCDEngine.Engines.NMIService;
@@ -18,8 +19,8 @@ using TT = nsCDEngine.Engines.ThingService.TheThing;
 
 namespace $rootnamespace$
 {
-    [DeviceType(DeviceType = strDeviceType, Description = "This Thing does something", Capabilities = new[] { eThingCaps.ConfigManagement })]
-	class $safeitemrootname$: TheThingBase
+    [DeviceType(DeviceType = e$rootnamespace$DeviceTypes.$safeitemrootname$, Description = "This Thing does...", Capabilities = new[] { eThingCaps.ConfigManagement })]
+    class $safeitemrootname$: TheThingBase
 	{
         // Base object references 
         protected IBaseEngine MyBaseEngine;    // Base engine (service)
@@ -75,16 +76,19 @@ namespace $rootnamespace$
             set { TT.MemberSetSafePropertyNumber(MyBaseThing, value); }
         }
 
-        //TODO: set your DeviceType
-        public string strDeviceType = "My Cool Thing Type";
-
         public $safeitemrootname$(TheThing tBaseThing, ICDEPlugin pPluginBase)
         {
             MyBaseThing = tBaseThing ?? new TheThing();
             MyBaseEngine = pPluginBase.GetBaseEngine();
             MyBaseThing.EngineName = MyBaseEngine.GetEngineName();
             MyBaseThing.SetIThingObject(this);
-            MyBaseThing.DeviceType = strDeviceType;
+
+            //TODO 1: Add your DeviceType to the plug-in's e$rootnamespace$DeviceTypes class
+            //TODO 2: Create an instance in e$rootnamespace$.InitService():
+            // case e$rootnamespace$DeviceTypes.$safeitemrootname$:
+            //   TheThingRegistry.RegisterThing(new $safeitemrootname$(tDev, this));
+            //   break;
+            MyBaseThing.DeviceType = e$rootnamespace$DeviceTypes.$safeitemrootname$;
         }
 
         public override bool Init()

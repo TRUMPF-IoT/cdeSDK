@@ -1,23 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <VSTemplate Version="3.0.0" Type="Project" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" xmlns:sdk="http://schemas.microsoft.com/developer/vstemplate-sdkextension/2010">
   <TemplateData>
-    <Name>Plugin with a single D-Thing for C-Labs C-DEngine (.NET Standard)</Name>
-    <Description>A project template that creates a C-DEngine plugin that offers a single D-Thing instance. The plugin extends the C-Labs C-DEngine IoT communication relay engine.</Description>
+    <Name>Plugin for C-Labs C-DEngine (.NET Standard)</Name>
+    <Description>A project template that creates a C-DEngine plugin that can provide multiple D-Thing instances. The plugin extends the C-Labs C-DEngine IoT communication relay engine.</Description>
     <Icon>CLabsCDEngine.ico</Icon>
     <ProjectType>CSharp</ProjectType>
     <ProjectSubType>
     </ProjectSubType>
     <SortOrder>1000</SortOrder>
     <CreateNewFolder>true</CreateNewFolder>
-    <DefaultName>CDMyHelloWorldPlugin</DefaultName>
+    <DefaultName>CDMyPlugin</DefaultName>
     <ProvideDefaultName>true</ProvideDefaultName>
     <LocationField>Enabled</LocationField>
     <EnableLocationBrowseButton>true</EnableLocationBrowseButton>
     <CreateInPlace>true</CreateInPlace>
   </TemplateData>
   <TemplateContent>
-    <Project TargetFileName="CDMyHelloWorldPlugin.csproj" File="ProjectTemplate.csproj" ReplaceParameters="true">
+    <Project TargetFileName="CDMyPlugin.csproj" File="ProjectTemplate.csproj" ReplaceParameters="true">
       <ProjectItem ReplaceParameters="true" TargetFileName="cdePluginService1.cs">cdePluginService1.cs</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="ViewModel\cdeThingDeviceTypeA.cs">cdeThingDeviceTypeA.cs</ProjectItem>
       <ProjectItem ReplaceParameters="false" TargetFileName="CLabsCDEngine.ICO">CLabsCDEngine.ICO</ProjectItem>
     </Project>
   </TemplateContent>

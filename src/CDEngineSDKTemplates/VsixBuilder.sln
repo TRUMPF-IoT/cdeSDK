@@ -1,4 +1,3 @@
-
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29102.190
@@ -17,13 +16,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Project.cdeHostNetCoreProje
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VsixBuilder", "VsixBuilder\VsixBuilder.csproj", "{A5F76195-69B1-4E7F-BFE5-05A76EF2963E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "item.cdeThingModel", "CDEngineSDKTemplates.Item.cdeThingModel\item.cdeThingModel.csproj", "{C2AF4687-A6E6-4D15-8FD2-D94D1615E465}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Project.cdeAppHostWinForms", "CDEngineSDKTemplates.project.cdeHostWinForms\Project.cdeAppHostWinForms.csproj", "{85351BFA-67F1-4394-A883-328F49587D6E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Project.CDMyHelloWorldPlugin", "CDEngineSDKTemplates.project.CDMyHelloWorldPlugin\Project.CDMyHelloWorldPlugin.csproj", "{421320D7-2627-4319-901E-ED399408C8A6}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Item.cdeEnergyThingBase", "CDEngineSDKTemplates.Item.cdeEnergyThingBase\Item.cdeEnergyThingBase.csproj", "{AC4BEFDA-BC10-466C-8469-2D9B219709F2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Project.CDMyPlugin", "CDEngineSDKTemplates.project.CDMyPlugin\Project.CDMyPlugin.csproj", "{3FB2F987-C1E8-4874-93B2-35B7E7E0BF13}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -59,10 +58,6 @@ Global
 		{A5F76195-69B1-4E7F-BFE5-05A76EF2963E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A5F76195-69B1-4E7F-BFE5-05A76EF2963E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A5F76195-69B1-4E7F-BFE5-05A76EF2963E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C2AF4687-A6E6-4D15-8FD2-D94D1615E465}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C2AF4687-A6E6-4D15-8FD2-D94D1615E465}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C2AF4687-A6E6-4D15-8FD2-D94D1615E465}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C2AF4687-A6E6-4D15-8FD2-D94D1615E465}.Release|Any CPU.Build.0 = Release|Any CPU
 		{85351BFA-67F1-4394-A883-328F49587D6E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{85351BFA-67F1-4394-A883-328F49587D6E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{85351BFA-67F1-4394-A883-328F49587D6E}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -75,6 +70,10 @@ Global
 		{AC4BEFDA-BC10-466C-8469-2D9B219709F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AC4BEFDA-BC10-466C-8469-2D9B219709F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AC4BEFDA-BC10-466C-8469-2D9B219709F2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3FB2F987-C1E8-4874-93B2-35B7E7E0BF13}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3FB2F987-C1E8-4874-93B2-35B7E7E0BF13}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3FB2F987-C1E8-4874-93B2-35B7E7E0BF13}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3FB2F987-C1E8-4874-93B2-35B7E7E0BF13}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
