@@ -14,9 +14,12 @@ using nsCDEngine.ViewModels;
 
 namespace $rootnamespace$
 {
+    [DeviceType(DeviceType = e$rootnamespace$DeviceTypes.$safeitemrootname$, Description = "This Thing does...", Capabilities = new eThingCaps[] { /* eThingCaps.ConfigManagement */ })]
 	class $safeitemrootname$: TheThingBase 
     {
-         protected IBaseEngine MyBaseEngine;
+        // Base object references 
+        protected IBaseEngine MyBaseEngine;    // Base engine (service)
+		
         // User-interface definition
         TheFormInfo mMyForm;
 
@@ -26,8 +29,9 @@ namespace $rootnamespace$
             MyBaseEngine = pPluginBase.GetBaseEngine();
             MyBaseThing.EngineName = MyBaseEngine.GetEngineName();
             MyBaseThing.SetIThingObject(this);
-            //TODO: set your DeviceType
-            MyBaseThing.DeviceType="My Cool Thing Type";
+
+            // TODO: Add your DeviceType to the plug-in's e$rootnamespace$DeviceTypes class
+            MyBaseThing.DeviceType = e$rootnamespace$DeviceTypes.$safeitemrootname$;
         }
 
         public override bool Init()

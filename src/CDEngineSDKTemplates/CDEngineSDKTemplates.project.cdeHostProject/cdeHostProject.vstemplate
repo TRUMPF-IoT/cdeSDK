@@ -1,21 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <VSTemplate Version="3.0.0" Type="Project" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" xmlns:sdk="http://schemas.microsoft.com/developer/vstemplate-sdkextension/2010">
   <TemplateData>
-    <Name>Console Host App for C-Labs C-DEngine (.NET Framework)</Name>
-    <Description>A project template that creates a Console Application to host the C-Labs C-DEngine IoT communication relay engine.</Description>
-    <Icon>cdePlugin.ico</Icon>
+    <Name>Console Application Host for C-DEngine (.NET Framework)</Name>
+    <Description>A project template that creates a Console Application to host the C-DEngine IoT communication relay engine.</Description>
+    <Icon>cdePlugin.ICO</Icon>
     <ProjectType>CSharp</ProjectType>
-    <RequiredFrameworkVersion>2.0</RequiredFrameworkVersion>
+    <ProjectSubType>
+    </ProjectSubType>
     <SortOrder>1000</SortOrder>
-    <TemplateID>1925ea52-27c1-4798-8dc4-cfb37193fbb5</TemplateID>
     <CreateNewFolder>true</CreateNewFolder>
     <DefaultName>cdeHostProject</DefaultName>
     <ProvideDefaultName>true</ProvideDefaultName>
+    <LocationField>Enabled</LocationField>
+    <EnableLocationBrowseButton>true</EnableLocationBrowseButton>
+    <CreateInPlace>true</CreateInPlace>
   </TemplateData>
   <TemplateContent>
-    <Project File="ProjectTemplate.csproj" ReplaceParameters="true">
-      <ProjectItem ReplaceParameters="true" TargetFileName="Properties\AssemblyInfo.cs">AssemblyInfo.cs</ProjectItem>
-      <ProjectItem ReplaceParameters="true" OpenInEditor="true">program.cs</ProjectItem>
+    <Project TargetFileName="cdeHost.csproj" File="ProjectTemplate.csproj" ReplaceParameters="true">
+      <ProjectItem ReplaceParameters="false" TargetFileName="cdePlugin.ICO">cdePlugin.ICO</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="Program.cs">Program.cs</ProjectItem>
     </Project>
   </TemplateContent>
 </VSTemplate>

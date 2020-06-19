@@ -6,24 +6,22 @@
 using System.Collections.Generic;
 using System.Reflection;
 
-// TODO: Add reference for C-DEngine.dll
-// TODO: Make sure plugin file name starts with either CDMy or C-DMy
 using nsCDEngine.BaseClasses;
 using nsCDEngine.Engines;
 using nsCDEngine.Engines.NMIService;
 using nsCDEngine.Engines.ThingService;
 using nsCDEngine.ViewModels;
 
-namespace $rootnamespace$
+namespace $safeprojectname$
 {
-    public class e$safeitemrootname$DeviceTypes : TheDeviceTypeEnum
+    public class e$safeprojectname$DeviceTypes : TheDeviceTypeEnum
     {
         public const string cdeThingDeviceTypeA = "My Device Type A";
     }
 
     [EngineAssetInfo(
-        FriendlyName = "My Sample Service",
-        Capabilities = new[] { eThingCaps.ConfigManagement,  },
+        FriendlyName = strFriendlyName,
+        Capabilities = new[] { eThingCaps.ConfigManagement, },
         EngineID = "{$guid2$}",
         IsService = true,
         LongDescription = "This service...",
@@ -32,8 +30,11 @@ namespace $rootnamespace$
         DeveloperUrl = "http://www.c-labs.com",
         ManifestFiles = new string[] { }
     )]
-    class $safeitemrootname$: ThePluginBase
-	{
+    class cdePluginService1 : ThePluginBase
+    {
+        // TODO: Set plugin friendly name for InitEngineAssets (optional)
+        public const String strFriendlyName = "My Hello World Service";              
+
         public override bool Init()
         {
             if (!mIsInitCalled)
@@ -60,6 +61,7 @@ namespace $rootnamespace$
             return false;
         }
 
+        // User-interface defintion
         TheDashboardInfo mMyDashboard;
 
         public override bool CreateUX()
@@ -70,11 +72,11 @@ namespace $rootnamespace$
 
                 mMyDashboard = TheNMIEngine.AddDashboard(MyBaseThing, new TheDashboardInfo(MyBaseEngine, "My Demo Plugin Screen with Things"));
 
-                var tFlds=TheNMIEngine.CreateEngineForms(MyBaseThing, TheThing.GetSafeThingGuid(MyBaseThing, "MYNAME"), "List of $safeitemrootname$", null, 20, 0x0F, 0xF0, TheNMIEngine.GetNodeForCategory(), "REFFRESHME", true, new e$safeitemrootname$DeviceTypes(), e$safeitemrootname$DeviceTypes.cdeThingDeviceTypeA);
+                var tFlds=TheNMIEngine.CreateEngineForms(MyBaseThing, TheThing.GetSafeThingGuid(MyBaseThing, "MYNAME"), "List of $safeitemrootname$", null, 20, 0x0F, 0xF0, TheNMIEngine.GetNodeForCategory(), "REFFRESHME", true, new e$safeprojectname$DeviceTypes(), e$safeprojectname$DeviceTypes.cdeThingDeviceTypeA);
                 TheFormInfo tForm = tFlds["Form"] as TheFormInfo;
                 tForm.AddButtonText = "Add new $safeitemrootname$";
 
-                TheNMIEngine.RegisterEngine(MyBaseEngine);      //Registers this engine and its resources with the C-DEngine
+                TheNMIEngine.RegisterEngine(MyBaseEngine); //Registers this engine and its resources with the C-DEngine
                 mIsUXInitialized = true;
             }
             return true;
@@ -123,9 +125,9 @@ namespace $rootnamespace$
             MyBaseEngine.SetStatusLevel(-1); //Calculates the current statuslevel of the service/engine
         }
 
-        void OnThingDeleted(ICDEThing pEngine, object pDeletedThing)
+        void OnThingDeleted(ICDEThing pEngine, object pDeletedThing) // CODE REVIEW: Is this really still needed?
         {
-            if (pDeletedThing != null && pDeletedThing is ICDEThing)
+            if (pDeletedThing is ICDEThing)
             {
                 //TODO: Stop Resources, Thread etc associated with this Thing
                 ((ICDEThing)pDeletedThing).FireEvent(eEngineEvents.ShutdownEvent, pEngine, null, false);

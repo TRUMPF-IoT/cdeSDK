@@ -15,39 +15,24 @@ using nsCDEngine.ViewModels;
 
 namespace $rootnamespace$
 {
+    [EngineAssetInfo(
+        FriendlyName = strFriendlyName,
+        Capabilities = new[] { eThingCaps.ConfigManagement, },
+        EngineID = "{$guid2$}",
+        IsService = true,
+        LongDescription = "This service...",
+        IconUrl = "toplogo-150.png", // TODO Add your own icon
+        Developer = "C-Labs", // TODO Add your own name and URL
+        DeveloperUrl = "http://www.c-labs.com",
+        ManifestFiles = new string[] { }
+    )]
 	class $safeitemrootname$: ThePluginBase
     {
         // User-interface defintion
         TheDashboardInfo mMyDashboard;
 
-        Guid guidEngineID = new Guid("{<<Use Create GUID tool>>}"); // TODO: Set GUID value for InitEngineAssets (in the next block)
-        String strFriendlyName = "My Sample Service";               // TODO: Set plugin friendly name for InitEngineAssets (optional)
-
-#region ICDEPlugin - interface methods for service (engine)
-        /// <summary>
-        /// InitEngineAssets - The C-DEngine calls this initialization
-        /// function as part of registering this service (engine)
-        /// </summary>
-        /// <param name="pBase">The C-DEngine creates a base engine object.
-        /// This parameter is a reference to that base engine object.
-        /// We keep a copy because it will be very useful to us.
-        /// </param>
-        public override void InitEngineAssets(IBaseEngine pBase)
-        {
-            base.InitEngineAssets(pBase);
-
-            MyBaseEngine.SetEngineID(guidEngineID);          // Unique identifier for our service (engine)
-            MyBaseEngine.SetFriendlyName(strFriendlyName);
-
-            MyBaseEngine.SetPluginInfo("This service...",       // Describe plugin for Plugin Store
-                                       0,                       // pPrice - retail price (default = 0)
-                                       null,                    // Custom home page - default = /ServiceID
-                                       "toplogo-150.png",       // pIcon - custom icon.
-                                       "C-Labs",                // pDeveloper - name of the plugin developer.
-                                       "http://www.c-labs.com", // pDeveloperUrl - URL to developer home page.
-                                       new List<string>() { }); // pCategories - Search categories for service.
-        }
-#endregion
+        // TODO: Set plugin friendly name for InitEngineAssets (optional)
+        public const String strFriendlyName = "My Sample Service";
 
         public override bool Init()
         {
@@ -72,7 +57,6 @@ namespace $rootnamespace$
             if (!mIsUXInitCalled)
             {
                 mIsUXInitCalled = true;
-                //NUI Definition for All clients
                 mMyDashboard = TheNMIEngine.AddDashboard(MyBaseThing, new TheDashboardInfo(MyBaseEngine, "My Sample Plugin Screens"));
 
                 var tFlds = TheNMIEngine.AddStandardForm(MyBaseThing, "Welcome to my Sample Page");
@@ -81,12 +65,12 @@ namespace $rootnamespace$
                 TheNMIEngine.AddSmartControl(MyBaseThing, tMyForm, eFieldType.SingleEnded, 2, 2, 0, "My Sample Value Is", "SampleProperty", new nmiCtrlSingleEnded() { ParentFld = 1 });
                 TheNMIEngine.AddSmartControl(MyBaseThing, tMyForm, eFieldType.BarChart, 3, 2, 0, "My Sample Value Bar", "SampleProperty", new nmiCtrlBarChart() { ParentFld=1, MaxValue = 255, TileHeight = 2,IsVertical=true, Foreground = "blue" });
 
-                TheNMIEngine.AddAboutButton4(MyBaseThing,mMyDashboard,null, true);
+                TheNMIEngine.AddAboutButton4(MyBaseThing, mMyDashboard, null, true);
                 mIsUXInitialized = true;
             }
             return true;
         }
 
-//TODO: Step 4: Write your Business Logic
+        //TODO: Step 4: Write your Business Logic
     }
 }

@@ -14,7 +14,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Chris Muench")]
 [assembly: AssemblyProduct("cdeConnectedThingBase")]
-[assembly: AssemblyCopyright("Copyright © 2017-2019 C-Labs Corporation. All rights reserved.")]
+[assembly: AssemblyCopyright("Copyright © 2018-2020 TRUMPF Laser GmbH, authors: C-Labs")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

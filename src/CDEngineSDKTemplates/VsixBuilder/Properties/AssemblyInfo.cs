@@ -13,7 +13,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("C-DEngine SDK Templates")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("C-Labs Corporation")]
+[assembly: AssemblyCompany("C-Labs")]
 [assembly: AssemblyProduct("C-DEngine SDK Templates")]
 [assembly: AssemblyCopyright("Copyright © 2014-2020 TRUMPF Laser GmbH, authors: C-Labs")]
 [assembly: AssemblyTrademark("")]

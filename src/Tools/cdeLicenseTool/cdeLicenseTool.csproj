@@ -16,7 +16,7 @@
     <Company>C-Labs</Company>
     <Product>cdeLicenseTool for $(TargetFramework)$(cdeDebugProductSuffix)</Product>
     <NeutralLanguage>en</NeutralLanguage>
-    <Copyright>Copyright (C) 2017-2020 C-Labs </Copyright>
+    <Copyright>Copyright © 2017-2020 TRUMPF Laser GmbH, authors: C-Labs</Copyright>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <!-- Workaround for placing each DLL into a separate directory when using msbuild's GenerateProjectSpecificOutputFolder -->
     <ProjectName>$(AssemblyName).$(TargetFramework)</ProjectName>
