@@ -33,7 +33,7 @@ namespace $safeprojectname$
             TheBaseAssets.MyServiceHostInfo = new TheServiceHostInfo(cdeHostType.Application)
             {
                 // TODO: Generate host service unique ID
-                cdeMID = TheCommonUtils.CGuid("<<CREATE WITH GUID TOOL>>"),
+                cdeMID = TheCommonUtils.CGuid("$guid2$"),
 
                 // TCP/IP Port Assignments
                 MyStationPort = 80,        // Port for REST access to this node. 

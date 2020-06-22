@@ -279,6 +279,26 @@ Files: src/CDEngineSDKTemplates/CDEngineSDKTemplates.project.CDMyHelloWorldPlugi
 Copyright: 2009-2020 TRUMPF Laser GmbH, authors: C-Labs
 License: MPL-2.0
 
+Files: src/CDEngineSDKTemplates/CDEngineSDKTemplates.project.CDMyPlugin/CLabsCDEngine.ico
+Copyright: 2009-2020 TRUMPF Laser GmbH, authors: C-Labs
+License: MPL-2.0
+
+Files: src/CDEngineSDKTemplates/CDEngineSDKTemplates.project.CDMyPlugin/Project.CDMyPlugin.csproj
+Copyright: 2009-2020 TRUMPF Laser GmbH, authors: C-Labs
+License: MPL-2.0
+
+Files: src/CDEngineSDKTemplates/CDEngineSDKTemplates.project.CDMyPlugin/Project.CDMyPlugin.sln
+Copyright: 2009-2020 TRUMPF Laser GmbH, authors: C-Labs
+License: MPL-2.0
+
+Files: src/CDEngineSDKTemplates/CDEngineSDKTemplates.project.CDMyPlugin/Project.CDMyPlugin.vstemplate
+Copyright: 2009-2020 TRUMPF Laser GmbH, authors: C-Labs
+License: MPL-2.0
+
+Files: src/CDEngineSDKTemplates/CDEngineSDKTemplates.project.CDMyPlugin/ProjectTemplate.csproj
+Copyright: 2009-2020 TRUMPF Laser GmbH, authors: C-Labs
+License: MPL-2.0
+
 Files: src/CDEngineSDKTemplates/CDEngineSDKTemplates4/C-DEngine V4.0 - SDK - Getting Started.docx
 Copyright: 2009-2020 TRUMPF Laser GmbH, authors: C-Labs
 License: MPL-2.0

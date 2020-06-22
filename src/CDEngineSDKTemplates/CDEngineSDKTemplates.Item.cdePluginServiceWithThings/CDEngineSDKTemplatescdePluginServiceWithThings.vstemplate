@@ -2,7 +2,7 @@
 <VSTemplate Version="3.0.0" Type="Item" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" xmlns:sdk="http://schemas.microsoft.com/developer/vstemplate-sdkextension/2010">
   <TemplateData>
     <Name>cdePluginServiceWithThings</Name>
-    <Description>Creates a new C-DEngine Plug-In Service (Engine) with Things Class</Description>
+    <Description>Item template for creating a new C-DEngine Plug-In that can offer multi-D-Thing instances and device types. For most cases, the CDMyPlugin project template is an easier starting point, resulting in the same functionality.</Description>
     <Icon>CDEngineSDKTemplates.cdePluginServiceWithThings.ico</Icon>
     <TemplateID>2da30f9c-b788-42bb-b9d1-48c304708f57</TemplateID>
     <ProjectType>CSharp</ProjectType>

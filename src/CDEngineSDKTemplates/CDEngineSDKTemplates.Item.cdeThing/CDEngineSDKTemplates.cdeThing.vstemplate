@@ -2,7 +2,7 @@
 <VSTemplate Version="3.0.0" Type="Item" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" xmlns:sdk="http://schemas.microsoft.com/developer/vstemplate-sdkextension/2010">
   <TemplateData>
     <Name>cdeThing</Name>
-    <Description>Creates a new C-DEngine Thing Class</Description>
+    <Description>Item template for creating a C-DEngine D-Thing device type for use within a multi D-Thing plugin.</Description>
     <Icon>CDEngineSDKTemplates.cdeThing.ico</Icon>
     <TemplateID>14a6dbc2-fa3f-4aec-b5bb-7594cdf5c0a6</TemplateID>
     <ProjectType>CSharp</ProjectType>
