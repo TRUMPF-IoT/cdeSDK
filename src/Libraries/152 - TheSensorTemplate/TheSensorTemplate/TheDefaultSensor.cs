@@ -26,6 +26,7 @@ namespace TheSensorTemplate
         public double StateSensorMinValue { get; set; }
         public double StateSensorSteps { get; set; }
         public double StateSensorAverage { get; set; }
+        public string SensorCategory { get; set; }
 
         public string TargetToken { get; set; }
         public string StationName { get; set; }
@@ -74,7 +75,7 @@ namespace TheSensorTemplate
             IsInCyclic = false;
         }
     }
-    public partial class TheDefaultSensor<T> : ICDEThing where T : TheMetaDataBase, System.ComponentModel.INotifyPropertyChanged, new()
+    public partial class TheDefaultSensor<T> : TheThingBase where T : TheMetaDataBase, System.ComponentModel.INotifyPropertyChanged, new()
     {
         internal TheSensorHistorian<T> MyHistorian;
         protected TheBucketChart<T> mBucket = null;
@@ -109,62 +110,7 @@ namespace TheSensorTemplate
             InitAssets(MyBaseEngine);
         }
 
-        #region - Rare to Override
-        public void SetBaseThing(TheThing pThing)
-        {
-            MyBaseThing = pThing;
-        }
-        public TheThing GetBaseThing()
-        {
-            return MyBaseThing;
-        }
-        public cdeP GetProperty(string pName, bool DoCreate)
-        {
-            return MyBaseThing?.GetProperty(pName, DoCreate);
-        }
-        public cdeP SetProperty(string pName, object pValue)
-        {
-            return MyBaseThing?.SetProperty(pName, pValue);
-        }
-        public void RegisterEvent(string pName, Action<ICDEThing, object> pCallBack)
-        {
-            MyBaseThing?.RegisterEvent(pName, pCallBack);
-        }
-        public void UnregisterEvent(string pName, Action<ICDEThing, object> pCallBack)
-        {
-            MyBaseThing?.UnregisterEvent(pName, pCallBack);
-        }
-        public void FireEvent(string pEventName, ICDEThing sender, object pPara, bool FireAsync)
-        {
-            MyBaseThing?.FireEvent(pEventName, sender, pPara, FireAsync);
-        }
-        public bool HasRegisteredEvents(string pEventName)
-        {
-            if (MyBaseThing != null)
-                return MyBaseThing.HasRegisteredEvents(pEventName);
-            return false;
-        }
-        protected TheThing MyBaseThing;
-        protected bool mIsUXInitCalled;
-        protected bool mIsInit;
-        protected bool mIsUXInit;
-        protected bool mIsInitCalled;
-        public bool IsUXInit()
-        { return mIsUXInit; }
-        public bool IsInit()
-        { return mIsInit; }
-
-        /// <summary>
-        /// Use this to return to the system if you "Thing" is currently Active
-        /// </summary>
-        /// <returns>True if the "Thing" associated with this class is Alive/Active</returns>
-        public bool IsAlive()
-        {
-            return MyBaseThing != null;
-        }
-        #endregion
-
-        public virtual bool Init()
+        public override bool Init()
         {
             if (!mIsInitCalled)
             {
@@ -198,7 +144,7 @@ namespace TheSensorTemplate
                 MyHistorian = new TheSensorHistorian<T>(MyBaseThing, mBucket, tValues, new TimeSpan(0, 0, tSaWi), tDays, false, true, ForceUseRAMStore);
                 MyHistorian.RegisterEvent2("HistorianReady", sinkHistReady);
                 //MyHistorian.Init();
-                mIsInit = true;
+                mIsInitialized = true;
                 if (IsUXReady)
                     CreateUX();
 
@@ -294,19 +240,21 @@ namespace TheSensorTemplate
             TheSensorValue newValue = new TheSensorValue()
             {
                 FriendlyName = MyBaseThing.FriendlyName,
-                StationName = $"Sensor: {MyBaseThing.FriendlyName}",
+                StationName = TheCommonUtils.GenerateFinalStr("%STATIONNAME%"),
                 StateSensorAverage = TheThing.GetSafePropertyNumber(MyBaseThing, "StateSensorAverage"),
                 StateSensorMaxValue = TheThing.GetSafePropertyNumber(MyBaseThing, "StateSensorMaxValue"),
                 StateSensorMinValue = TheThing.GetSafePropertyNumber(MyBaseThing, "StateSensorMinValue"),
                 StateSensorType = TheThing.GetSafePropertyString(MyBaseThing, "StateSensorType"),
                 StateSensorUnit = TheThing.GetSafePropertyString(MyBaseThing, "StateSensorUnit"),
                 StateSensorValueName = TheThing.GetSafePropertyString(MyBaseThing, "StateSensorValueName"),
+                SensorCategory= TheThing.GetSafePropertyString(MyBaseThing, "SensorCategory"),
                 Value = pValue
             };
-            TSM msgEnergy2 = new TSM(eEngineName.ContentService, "NEW_SENSOR_VALUE", TheCommonUtils.SerializeObjectToJSONString(newValue));
+            TSM msgEnergy2 = new TSM("cdeSensors", $"{TheThing.GetSafePropertyString(MyBaseThing, "SensorCategory")}_SENSOR:{MyBaseThing.cdeMID}", TheCommonUtils.SerializeObjectToJSONString(newValue));
             switch (TheThing.GetSafePropertyString(MyBaseThing,"TargetChart"))
             {
                 default:
+                    break;
                 case "Sensor Chart":
                     msgEnergy2.ENG = "CDMyMSSQLStorage.TheStorageService";
                     msgEnergy2.TXT += $":{TheThing.GetSafePropertyString(MyBaseThing, "TargetChart")}";
@@ -338,6 +286,11 @@ namespace TheSensorTemplate
 
         protected virtual void SensorCyclicCalc(long timer)
         {
+            if (TheThing.GetSafePropertyNumber(MyBaseThing, "PublishEvery") > 0)
+            {
+                if ((timer % TheThing.GetSafePropertyNumber(MyBaseThing, "PublishEvery")) == 0)
+                    PublishValue(TheCommonUtils.CDbl(TheThing.GetSafePropertyNumber(MyBaseThing,"QValue")));
+            }
             //MyBaseThing.LastUpdate = DateTimeOffset.Now;
             var tta = TheThing.GetSafePropertyNumber(MyBaseThing, "TimeToAbsent");
             if (tta>0 && DateTimeOffset.Now.Subtract(LastSet).TotalSeconds > tta && MyBaseThing.StatusLevel!=7)
@@ -354,11 +307,19 @@ namespace TheSensorTemplate
             if (tTime>0 && DateTimeOffset.Now.Subtract(LastSet).TotalMilliseconds < tTime)
                 return;
             MyBaseThing.LastUpdate = LastSet = DateTimeOffset.Now;
-            this.SetProperty("QValue", P.Value);
-            if (TheThing.GetSafePropertyBool(MyBaseThing, "IsEnergySensor"))
-                SendEnergyData(TheCommonUtils.CDbl(P.Value),0,0);
+            int tDigits = (int)TheThing.GetSafePropertyNumber(MyBaseThing, "Digits");
+            double tScaleFactor = (int)TheThing.GetSafePropertyNumber(MyBaseThing, "ValScaleFactor");
+            double tSensValue = TheCommonUtils.CDbl(P.Value);
+            if (tScaleFactor != 0)
+                tSensValue /= tScaleFactor;
+            if (tDigits >= 0)
+                this.SetProperty("QValue",decimal.Round((decimal)tSensValue,tDigits,MidpointRounding.AwayFromZero));
+            else
+                this.SetProperty("QValue", tSensValue);
+            if (TheThing.GetSafePropertyBool(MyBaseThing, "IsEnergySensor") || TheThing.GetSafePropertyString(MyBaseThing, "SensorCategory")=="Energy-Sensor")
+                SendEnergyData(tSensValue,0,0);
             if (TheThing.GetSafePropertyBool(MyBaseThing, "PublishValue"))
-                PublishValue(TheCommonUtils.CDbl(P.Value));
+                PublishValue(tSensValue);
             //MyHistorian?.AddHistorianValue(TheCommonUtils.CDbl(P.ToString()));
             if (mBucket != null)
             {
@@ -378,15 +339,11 @@ namespace TheSensorTemplate
             return true;
         }
 
-        public virtual bool Delete()
+        public override bool Delete()
         {
             DoEndMe(this, null);
             MyHistorian.RemoveHistorian(false);
             return true;
-        }
-
-        public virtual void HandleMessage(ICDEThing sender, object pIncoming)
-        {
         }
 
         public virtual bool NewStatusReceived(string pStatus1, string pStatus2)
