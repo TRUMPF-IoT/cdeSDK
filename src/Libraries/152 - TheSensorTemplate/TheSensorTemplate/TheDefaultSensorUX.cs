@@ -28,9 +28,9 @@ namespace TheSensorTemplate
             set { TheThing.MemberSetSafePropertyBool(MyBaseThing, value); }
         }
 
-        public virtual bool CreateUX()
+        public override bool CreateUX()
         {
-            if (!mIsInit)
+            if (!mIsInitialized)
             {
                 IsUXReady = true;
                 TheBaseAssets.MySYSLOG.WriteToLog(500, new TSM(MyBaseThing.EngineName, $"Create UX delays because Init not called for Sensor {MyBaseThing.FriendlyName}", eMsgLevel.l1_Error));
@@ -62,35 +62,44 @@ namespace TheSensorTemplate
                 TheNMIEngine.AddSmartControl(MyBaseThing, tMyForm, eFieldType.SingleEnded, 250, 2, 0, "Product ID", "ProductID", new nmiCtrlTextArea { ParentFld = 210 });
                 TheNMIEngine.AddSmartControl(MyBaseThing, tMyForm, eFieldType.TextArea, 255, 2, 0, "Product Text", "ProductText", new nmiCtrlTextArea { ParentFld = 210 });
                 TheNMIEngine.AddSmartControl(MyBaseThing, tMyForm, eFieldType.SingleEnded, 260, 2, 0, "Serial number", "SerialNumber", new nmiCtrlTextArea { ParentFld = 210 });
+                TheNMIEngine.AddSmartControl(MyBaseThing, tMyForm, eFieldType.SingleEnded, 261, 2, 0, "Sensor Units", "StateSensorUnit", new nmiCtrlNumber { TileWidth = 6, TileHeight = 1, ParentFld = 210 });
+                TheNMIEngine.AddSmartControl(MyBaseThing, tMyForm, eFieldType.SingleEnded, 262, 2, 0, "Sensor Value Name", "StateSensorValueName", new nmiCtrlNumber { TileWidth = 6, TileHeight = 1, ParentFld = 210 });
 
                 TheNMIEngine.AddSmartControl(MyBaseThing, tMyForm, eFieldType.CollapsibleGroup, 400, 6, 0, "Sensor Settings...", null, new nmiCtrlCollapsibleGroup { ParentFld = 210, IsSmall = true, DoClose = true });
-                TheNMIEngine.AddSmartControl(MyBaseThing, tMyForm, eFieldType.SingleCheck, 410, 2, 0, "Disable Sensor", nameof(IsDisabled), new nmiCtrlSingleCheck { ParentFld = 400, TileWidth = 3 });
-                TheNMIEngine.AddSmartControl(MyBaseThing, tMyForm, eFieldType.SingleCheck, 415, 2, 0, "Is Energy Sensor", "IsEnergySensor", new nmiCtrlSingleCheck { ParentFld = 400, TileWidth = 3 });
-                TheNMIEngine.AddSmartControl(MyBaseThing, tMyForm, eFieldType.SingleCheck, 416, 2, 0, "Publish Sensor Value", "PublishValue", new nmiCtrlSingleCheck { ParentFld = 400, TileWidth = 3 });
-                TheNMIEngine.AddSmartControl(MyBaseThing, tMyForm, eFieldType.SingleCheck, 417, 2, 0, "Alarm is Low", "IsLowAlarm", new nmiCtrlSingleCheck { ParentFld = 400, TileWidth = 3 });
-                TheNMIEngine.AddSmartControl(MyBaseThing, tMyForm, eFieldType.ComboBox, 418, 2, 0, "Target Chart", "TargetChart", new nmiCtrlComboBox { ParentFld = 400, TileWidth = 6, Options="Sensor Chart", DefaultValue="Sensor Chart" });
-                TheNMIEngine.AddSmartControl(MyBaseThing, tMyForm, eFieldType.Number, 421, 2, 0, "Min Value", "StateSensorMinValue", new nmiCtrlNumber { TileWidth = 6, TileHeight = 1, MinValue = int.MinValue, ParentFld = 400 });
-                TheNMIEngine.AddSmartControl(MyBaseThing, tMyForm, eFieldType.Number, 422, 2, 0, "Max Value", "StateSensorMaxValue", new nmiCtrlNumber { TileWidth = 6, TileHeight = 1, ParentFld = 400, MinValue = int.MinValue });
-                TheNMIEngine.AddSmartControl(MyBaseThing, tMyForm, eFieldType.SingleEnded, 423, 2, 0, "Sensor Units", "StateSensorUnit", new nmiCtrlNumber { TileWidth = 6, TileHeight = 1, ParentFld = 400 });
-                TheNMIEngine.AddSmartControl(MyBaseThing, tMyForm, eFieldType.Number, 424, 2, 0, "Threshold", "StateSensorAverage", new nmiCtrlNumber { TileWidth = 6, TileHeight = 1, ParentFld = 400, MinValue = int.MinValue });
-                TheNMIEngine.AddSmartControl(MyBaseThing, tMyForm, eFieldType.SingleEnded, 425, 2, 0, "Sensor Value Name", "StateSensorValueName", new nmiCtrlNumber { TileWidth = 6, TileHeight = 1, ParentFld = 400 });
-                TheNMIEngine.AddSmartControl(MyBaseThing, tMyForm, eFieldType.Number, 426, 2, 0, "Bucket Steps", "StateSensorSteps", new nmiCtrlNumber { TileWidth = 6, TileHeight = 1, ParentFld = 400 });
-                TheNMIEngine.AddSmartControl(MyBaseThing, tMyForm, eFieldType.Number, 427, 2, 0, "Update Throttle (ms)", "UpdateThrottle", new nmiCtrlNumber { TileWidth = 6, TileHeight = 1, ParentFld = 400 });
-                TheNMIEngine.AddSmartControl(MyBaseThing, tMyForm, eFieldType.Number, 428, 2, 0, "Time Until Absent (sec)", "TimeToAbsent", new nmiCtrlNumber { TileWidth = 6, TileHeight = 1, ParentFld = 400 });
+                
+                TheNMIEngine.AddSmartControl(MyBaseThing, tMyForm, eFieldType.TileGroup, 401, 6, 0, null, null, new nmiCtrlTileGroup { ParentFld = 400, TileWidth=6, TileHeight=3 });
+                TheNMIEngine.AddSmartControl(MyBaseThing, tMyForm, eFieldType.SingleCheck, 402, 2, 0, "Publish Sensor Value", "PublishValue", new nmiCtrlSingleCheck { ParentFld = 401, TileWidth = 3 });
+                TheNMIEngine.AddSmartControl(MyBaseThing, tMyForm, eFieldType.Number, 403, 2, 0, "Publish Every (sec)", "PublishEvery", new nmiCtrlNumber { TileWidth = 3, TileHeight = 1, MinValue = 0, ParentFld = 401 });
+                TheNMIEngine.AddSmartControl(MyBaseThing, tMyForm, eFieldType.ComboBox, 404, 2, 0, "Sensor Category", "SensorCategory", new nmiCtrlComboBox { Options = ";Energy-Sensor;Energy-Power;Energy-Current;Energy-Voltage;Temperature;Humidity", ParentFld = 401, TileWidth = 6 });
+                TheNMIEngine.AddSmartControl(MyBaseThing, tMyForm, eFieldType.ComboBox, 405, 2, 0, "Target Chart", "TargetChart", new nmiCtrlComboBox { ParentFld = 401, TileWidth = 6, Options = "none;Sensor Chart" });
+
+                TheNMIEngine.AddSmartControl(MyBaseThing, tMyForm, eFieldType.TileGroup, 410, 6, 0, null, null, new nmiCtrlTileGroup { ParentFld = 400, TileWidth = 6, TileHeight = 3 });
+                TheNMIEngine.AddSmartControl(MyBaseThing, tMyForm, eFieldType.Number, 411, 2, 0, "Min Value", "StateSensorMinValue", new nmiCtrlNumber { TileWidth = 3, TileHeight = 1, MinValue = int.MinValue, ParentFld = 410 });
+                TheNMIEngine.AddSmartControl(MyBaseThing, tMyForm, eFieldType.Number, 412, 2, 0, "Max Value", "StateSensorMaxValue", new nmiCtrlNumber { TileWidth = 3, TileHeight = 1, ParentFld = 410, MinValue = int.MinValue });
+                TheNMIEngine.AddSmartControl(MyBaseThing, tMyForm, eFieldType.Number, 414, 2, 0, "Threshold", "StateSensorAverage", new nmiCtrlNumber { TileWidth = 3, TileHeight = 1, ParentFld = 410, MinValue = int.MinValue });
+                TheNMIEngine.AddSmartControl(MyBaseThing, tMyForm, eFieldType.SingleCheck, 415, 2, 0, "Alarm is Low", "IsLowAlarm", new nmiCtrlSingleCheck { ParentFld = 410, TileWidth = 3 });
+                TheNMIEngine.AddSmartControl(MyBaseThing, tMyForm, eFieldType.Number, 416, 2, 0, "Digits", "Digits", new nmiCtrlNumber { DefaultValue = "0", TileWidth = 3, TileHeight = 1, ParentFld = 410 });
+                TheNMIEngine.AddSmartControl(MyBaseThing, tMyForm, eFieldType.Number, 417, 2, 0, "Scale Factor", "ValScaleFactor", new nmiCtrlNumber { DefaultValue = "0", TileWidth = 3, TileHeight = 1, ParentFld = 410 });
+
+                TheNMIEngine.AddSmartControl(MyBaseThing, tMyForm, eFieldType.TileGroup, 420, 6, 0, null, null, new nmiCtrlTileGroup { ParentFld = 400, TileWidth = 4, TileHeight = 3 });
+                TheNMIEngine.AddSmartControl(MyBaseThing, tMyForm, eFieldType.Number, 426, 2, 0, "Bucket Steps", "StateSensorSteps", new nmiCtrlNumber { TileWidth = 3, TileHeight = 1, ParentFld = 420 });
+                TheNMIEngine.AddSmartControl(MyBaseThing, tMyForm, eFieldType.Number, 427, 2, 0, "Update Throttle (ms)", "UpdateThrottle", new nmiCtrlNumber { TileWidth = 3, TileHeight = 1, ParentFld = 420 });
+                TheNMIEngine.AddSmartControl(MyBaseThing, tMyForm, eFieldType.Number, 428, 2, 0, "Time Until Absent (sec)", "TimeToAbsent", new nmiCtrlNumber { TileWidth = 3, TileHeight = 1, ParentFld = 420 });
 
                 TheNMIEngine.AddSmartControl(MyBaseThing, tMyForm, eFieldType.CollapsibleGroup, 430, 6, 0, "Advanced Settings...", null, new nmiCtrlCollapsibleGroup { ParentFld = 400, IsSmall = true, DoClose = true });
-                TheNMIEngine.AddSmartControl(MyBaseThing, tMyForm, eFieldType.SingleCheck, 431, 2, 0xC0, "Replicate", "IsGlobal", new nmiCtrlNumber { ParentFld = 430, TileWidth = 6 });
-                TheNMIEngine.AddSmartControl(MyBaseThing, tMyForm, eFieldType.Number, 432, 2, 0, "Calc Aggregation (sec)", "CalcAggregation", new nmiCtrlNumber { TileWidth = 6, TileHeight = 1, LabelFontSize=16, ParentFld = 430, DefaultValue="30" });
-                TheNMIEngine.AddSmartControl(MyBaseThing, tMyForm, eFieldType.Number, 433, 2, 0, "Bucket Calculation Interval (ms)", "BucketCalcInterval", new nmiCtrlNumber { TileWidth = 6, TileHeight = 1, LabelFontSize = 16, ParentFld = 430, DefaultValue = "3000" });
+                TheNMIEngine.AddSmartControl(MyBaseThing, tMyForm, eFieldType.SingleCheck, 431, 2, 0, "Disable Sensor", nameof(IsDisabled), new nmiCtrlSingleCheck { ParentFld = 430, TileWidth = 3 });
+                TheNMIEngine.AddSmartControl(MyBaseThing, tMyForm, eFieldType.SingleCheck, 432, 2, 0xC0, "Replicate", "IsGlobal", new nmiCtrlNumber { ParentFld = 430, TileWidth = 3 });
+                TheNMIEngine.AddSmartControl(MyBaseThing, tMyForm, eFieldType.Number, 433, 2, 0, "Calc Aggregation (sec)", "CalcAggregation", new nmiCtrlNumber { TileWidth = 6, TileHeight = 1, LabelFontSize=16, ParentFld = 430, DefaultValue="30" });
+                TheNMIEngine.AddSmartControl(MyBaseThing, tMyForm, eFieldType.Number, 434, 2, 0, "Bucket Calculation Interval (ms)", "BucketCalcInterval", new nmiCtrlNumber { TileWidth = 6, TileHeight = 1, LabelFontSize = 16, ParentFld = 430, DefaultValue = "3000" });
 
-                TheNMIEngine.AddSmartControl(MyBaseThing, tMyForm, eFieldType.Number, 434, 2, 0, "History Retain (days)", "HistoryRetain", new nmiCtrlNumber { TileWidth = 6, TileHeight = 1, LabelFontSize = 16, ParentFld = 430, DefaultValue = "7" });
-                TheNMIEngine.AddSmartControl(MyBaseThing, tMyForm, eFieldType.Number, 435, 2, 0, "History Sample Period (sec)", "HistorySamplePeriod", new nmiCtrlNumber { TileWidth = 6, TileHeight = 1, LabelFontSize = 16, ParentFld = 430, DefaultValue = "1" });
-                TheNMIEngine.AddSmartControl(MyBaseThing, tMyForm, eFieldType.SingleEnded, 436, 2, 0, "History Fields", "HistoryFields", new nmiCtrlNumber { TileWidth = 6, TileHeight = 1, ParentFld = 430, DefaultValue = "QValue;QValue_Ave;QValue_Min;QValue_Max" });
+                TheNMIEngine.AddSmartControl(MyBaseThing, tMyForm, eFieldType.Number, 435, 2, 0, "History Retain (days)", "HistoryRetain", new nmiCtrlNumber { TileWidth = 6, TileHeight = 1, LabelFontSize = 16, ParentFld = 430, DefaultValue = "7" });
+                TheNMIEngine.AddSmartControl(MyBaseThing, tMyForm, eFieldType.Number, 436, 2, 0, "History Sample Period (sec)", "HistorySamplePeriod", new nmiCtrlNumber { TileWidth = 6, TileHeight = 1, LabelFontSize = 16, ParentFld = 430, DefaultValue = "1" });
+                TheNMIEngine.AddSmartControl(MyBaseThing, tMyForm, eFieldType.SingleEnded, 437, 2, 0, "History Fields", "HistoryFields", new nmiCtrlNumber { TileWidth = 6, TileHeight = 1, ParentFld = 430, DefaultValue = "QValue;QValue_Ave;QValue_Min;QValue_Max" });
 
 
                 DoCreateUX(tMyForm);
                 SensorForm = tMyForm;
-                mIsUXInit = true;
+                mIsUXInitialized = true;
             }
             return true;
         }
