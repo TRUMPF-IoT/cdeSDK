@@ -20,7 +20,7 @@ namespace nsTheEventConverters
     class AMQPPropertyEventConverter : IEventConverter
     {
 
-        public override IEnumerable<object> GetEventData(IEnumerable<TheThingStore> thingUpdates, TheSenderThing senderThing, int maxEventDataSize, bool doNotBatchEvents)
+        public override IEnumerable<object> GetEventData(IEnumerable<TheThingStore> thingUpdates, IThingToConvert senderThing, int maxEventDataSize, bool doNotBatchEvents)
         {
             var eventList = new List<object>();
             foreach (var thingUpdate in thingUpdates)
