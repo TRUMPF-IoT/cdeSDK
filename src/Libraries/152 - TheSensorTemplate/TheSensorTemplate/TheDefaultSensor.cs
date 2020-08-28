@@ -308,7 +308,7 @@ namespace TheSensorTemplate
                 return;
             MyBaseThing.LastUpdate = LastSet = DateTimeOffset.Now;
             int tDigits = (int)TheThing.GetSafePropertyNumber(MyBaseThing, "Digits");
-            double tScaleFactor = (int)TheThing.GetSafePropertyNumber(MyBaseThing, "ValScaleFactor");
+            double tScaleFactor = TheCommonUtils.CDbl(TheThing.GetSafePropertyNumber(MyBaseThing, "ValScaleFactor"));
             double tSensValue = TheCommonUtils.CDbl(P.Value);
             if (tScaleFactor != 0)
                 tSensValue /= tScaleFactor;
