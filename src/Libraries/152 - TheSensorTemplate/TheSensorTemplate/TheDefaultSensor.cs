@@ -327,7 +327,7 @@ namespace TheSensorTemplate
                 if (tTime > 0 && DateTimeOffset.Now.Subtract(LastBucketSet).TotalMilliseconds < tTime)
                     return;
                 LastBucketSet = DateTimeOffset.Now;
-                int tVal = TheCommonUtils.CInt(P);
+                int tVal = TheCommonUtils.CInt(tSensValue);
                 mBucket.FeedValue(tVal);
                 TheThing.SetSafePropertyString(MyBaseThing, "BucketChart", mBucket.GetBucketArray());
             }
