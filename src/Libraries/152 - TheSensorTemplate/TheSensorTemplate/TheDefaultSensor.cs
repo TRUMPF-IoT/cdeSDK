@@ -308,7 +308,7 @@ namespace TheSensorTemplate
                 return;
             MyBaseThing.LastUpdate = LastSet = DateTimeOffset.Now;
             int tDigits = (int)TheThing.GetSafePropertyNumber(MyBaseThing, "Digits");
-            double tScaleFactor = (int)TheThing.GetSafePropertyNumber(MyBaseThing, "ValScaleFactor");
+            double tScaleFactor = TheCommonUtils.CDbl(TheThing.GetSafePropertyNumber(MyBaseThing, "ValScaleFactor"));
             double tSensValue = TheCommonUtils.CDbl(P.Value);
             if (tScaleFactor != 0)
                 tSensValue /= tScaleFactor;
@@ -327,7 +327,7 @@ namespace TheSensorTemplate
                 if (tTime > 0 && DateTimeOffset.Now.Subtract(LastBucketSet).TotalMilliseconds < tTime)
                     return;
                 LastBucketSet = DateTimeOffset.Now;
-                int tVal = TheCommonUtils.CInt(P);
+                int tVal = TheCommonUtils.CInt(tSensValue);
                 mBucket.FeedValue(tVal);
                 TheThing.SetSafePropertyString(MyBaseThing, "BucketChart", mBucket.GetBucketArray());
             }
