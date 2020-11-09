@@ -89,7 +89,7 @@ namespace nsTheSenderBase
             set
             {
                 TheThing.SetSafePropertyNumber(MyBaseThing, "PropertiesPerSecond", value);
-                TheThing.SetSafePropertyNumber(MyBaseThing, "QValue", value);
+                //TheThing.SetSafePropertyNumber(MyBaseThing, "QValue", value);
             }
         }
 
