@@ -307,13 +307,15 @@ namespace TheSensorTemplate
             if (tTime>0 && DateTimeOffset.Now.Subtract(LastSet).TotalMilliseconds < tTime)
                 return;
             MyBaseThing.LastUpdate = LastSet = DateTimeOffset.Now;
-            int tDigits = (int)TheThing.GetSafePropertyNumber(MyBaseThing, "Digits");
             double tScaleFactor = TheCommonUtils.CDbl(TheThing.GetSafePropertyNumber(MyBaseThing, "ValScaleFactor"));
             double tSensValue = TheCommonUtils.CDbl(P.Value);
             if (tScaleFactor != 0)
                 tSensValue /= tScaleFactor;
-            if (tDigits >= 0)
-                this.SetProperty("QValue",decimal.Round((decimal)tSensValue,tDigits,MidpointRounding.AwayFromZero));
+            if (MyBaseThing.GetProperty("Digits", false) != null)
+            {
+                int tDigits = (int)TheThing.GetSafePropertyNumber(MyBaseThing, "Digits");
+                this.SetProperty("QValue", decimal.Round((decimal)tSensValue, tDigits, MidpointRounding.AwayFromZero));
+            }
             else
                 this.SetProperty("QValue", tSensValue);
             if (TheThing.GetSafePropertyBool(MyBaseThing, "IsEnergySensor") || TheThing.GetSafePropertyString(MyBaseThing, "SensorCategory")=="Energy-Sensor")

@@ -78,8 +78,8 @@ namespace TheSensorTemplate
                 TheNMIEngine.AddSmartControl(MyBaseThing, tMyForm, eFieldType.Number, 412, 2, 0, "Max Value", "StateSensorMaxValue", new nmiCtrlNumber { TileWidth = 3, TileHeight = 1, ParentFld = 410, MinValue = int.MinValue });
                 TheNMIEngine.AddSmartControl(MyBaseThing, tMyForm, eFieldType.Number, 414, 2, 0, "Threshold", "StateSensorAverage", new nmiCtrlNumber { TileWidth = 3, TileHeight = 1, ParentFld = 410, MinValue = int.MinValue });
                 TheNMIEngine.AddSmartControl(MyBaseThing, tMyForm, eFieldType.SingleCheck, 415, 2, 0, "Alarm is Low", "IsLowAlarm", new nmiCtrlSingleCheck { ParentFld = 410, TileWidth = 3 });
-                TheNMIEngine.AddSmartControl(MyBaseThing, tMyForm, eFieldType.Number, 416, 2, 0, "Digits", "Digits", new nmiCtrlNumber { DefaultValue = "0", TileWidth = 3, TileHeight = 1, ParentFld = 410 });
-                TheNMIEngine.AddSmartControl(MyBaseThing, tMyForm, eFieldType.Number, 417, 2, 0, "Scale Factor", "ValScaleFactor", new nmiCtrlNumber { DefaultValue = "0", TileWidth = 3, TileHeight = 1, ParentFld = 410 });
+                TheNMIEngine.AddSmartControl(MyBaseThing, tMyForm, eFieldType.Number, 416, 2, 0, "Digits", "Digits", new nmiCtrlNumber { TileWidth = 3, TileHeight = 1, ParentFld = 410 });
+                TheNMIEngine.AddSmartControl(MyBaseThing, tMyForm, eFieldType.Number, 417, 2, 0, "Value Divider", "ValScaleFactor", new nmiCtrlNumber { DefaultValue = "0", TileWidth = 3, TileHeight = 1, ParentFld = 410 });
 
                 TheNMIEngine.AddSmartControl(MyBaseThing, tMyForm, eFieldType.TileGroup, 420, 6, 0, null, null, new nmiCtrlTileGroup { ParentFld = 400, TileWidth = 4, TileHeight = 3 });
                 TheNMIEngine.AddSmartControl(MyBaseThing, tMyForm, eFieldType.Number, 426, 2, 0, "Bucket Steps", "StateSensorSteps", new nmiCtrlNumber { TileWidth = 3, TileHeight = 1, ParentFld = 420 });
