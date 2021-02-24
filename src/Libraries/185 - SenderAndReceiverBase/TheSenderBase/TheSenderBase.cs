@@ -1745,7 +1745,7 @@ namespace nsTheSenderBase
                 {
                     // Use the same connection for all events in the batch to guarantee ordering (if so selected)
                     // If no ordering selected, the SendEvent method will get a new connection for each event for maximum performance.
-                    var myClient = GetNextConnection();
+                    var myClient = GetNextConnection(senderThing);
                     try
                     {
                         var updatesPerBatch = SenderUpdatesPerBatch;
@@ -2166,6 +2166,10 @@ namespace nsTheSenderBase
 
 
         protected abstract object GetNextConnection();
+        protected virtual object GetNextConnection(TheSenderThing thing)
+        {
+            return GetNextConnection();
+        }
 
         protected class SendEventResults
         {
