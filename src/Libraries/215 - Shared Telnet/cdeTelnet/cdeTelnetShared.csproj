@@ -59,8 +59,12 @@
 
   <ItemGroup>
     <Compile Remove="**\*.cs" />
-    <Content Include="**\*.cs" buildAction="Compile" />
-  <Compile Include="**\*.cs" />
+    <Content Include="**\*.cs" buildAction="Compile" PackagePath="content\Shared\$(PackageId)"/>
+    <Content Include="**\*.cs" buildAction="Compile" PackagePath ="contentFiles\cs\netstandard2.0\Shared\$(PackageId)"/>
+    <Content Include="**\*.cs" buildAction="Compile" PackagePath ="contentFiles\cs\net45\Shared\$(PackageId)"/>
+    <Content Include="**\*.cs" buildAction="Compile" PackagePath ="contentFiles\cs\net35\Shared\$(PackageId)"/>
+    <Content Include="**\*.cs" buildAction="Compile" PackagePath ="contentFiles\cs\net4\Shared\$(PackageId)"/>
+    <Compile Include="**\*.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\..\toplogo-128.png" Pack="true" PackagePath=""/>

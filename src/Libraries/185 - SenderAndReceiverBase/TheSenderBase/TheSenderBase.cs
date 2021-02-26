@@ -210,11 +210,48 @@ namespace nsTheSenderBase
                         }
                         else
                         {
-                            foreach (var thingToAdd in request.Things)
-                            {
-                                var thingStatus = AddThingToPublish(thingToAdd);
-                                responseMsg.ThingStatus.Add(thingStatus);
-                            }
+                                foreach (var thingToAdd in request.Things)
+                                {
+                                    var subscription = new TheThing.TheThingSubscription
+                                    {
+                                        AddThingIdentity = thingToAdd.AddThingIdentity,
+                                        SubscriptionId = thingToAdd.cdeMID,
+                                        SamplingWindow = thingToAdd.SamplingWindow,
+                                        ContinueMatching = thingToAdd.ContinueMatching,
+                                        CooldownPeriod = thingToAdd.CooldownPeriod,
+                                        ThingReference = new TheThingReference
+                                        {
+                                            EngineName = thingToAdd.EngineName,
+                                            DeviceType = thingToAdd.DeviceType,
+                                            FriendlyName = thingToAdd.FriendlyName,
+                                            ThingMID = TheCommonUtils.CGuid(thingToAdd.ThingMID),
+                                            PropertiesToMatch = thingToAdd.PropertiesToMatch,
+                                        },
+                                        EventFormat = thingToAdd.EventFormat,
+                                        TargetName = thingToAdd.TargetName,
+                                        TargetType = thingToAdd.TargetType,
+                                        TargetUnit = thingToAdd.TargetUnit,
+                                        StaticProperties = thingToAdd.StaticProperties,
+                                        PropertiesExcluded = thingToAdd.PropertiesExcluded,
+                                        PropertiesIncluded = thingToAdd.PropertiesIncluded,
+                                        ForceAllProperties = thingToAdd.ForceAllProperties,
+                                        ForceConfigProperties = thingToAdd.ForceConfigProperties,
+                                        IgnoreExistingHistory = thingToAdd.IgnoreExistingHistory,
+                                        IgnorePartialFailure = thingToAdd.IgnorePartialFailure,
+                                        KeepDurableHistory = thingToAdd.KeepDurableHistory,
+                                        MaxHistoryCount = thingToAdd.MaxHistoryCount,
+                                        MaxHistoryTime = thingToAdd.MaxHistoryTime,
+                                        PreserveOrder = thingToAdd.PreserveOrder,
+                                        PartitionKey = thingToAdd.PartitionKey,
+                                        ReplaceExistingThing = thingToAdd.ReplaceExistingThing,
+                                        SendInitialValues = thingToAdd.SendInitialValues,
+                                        SendUnchangedValue = thingToAdd.SendUnchangedValue,
+                                        TokenExpirationInHours = thingToAdd.TokenExpirationInHours,
+                                        //ExtensionData = thingToAdd.ExtensionData,
+                                    };
+                                    var thingStatus = AddThingSubscription(subscription);
+                                    responseMsg.ThingStatus.Add(thingStatus);
+                                }
                         }
                         RegisterSenderThingsForSend();
                         }
@@ -323,90 +360,20 @@ namespace nsTheSenderBase
 
         protected virtual List<TheThing.TheThingSubscription> GetThingSubscriptions(bool? bGeneralize)
         {
-            return MySenderThings.TheValues.Select(st => GetSubscriptionInfoFromSenderThing(st, bGeneralize)).ToList();
+            return MySenderThings.TheValues.Select(st => st.GetSubscriptionInfo(bGeneralize)).ToList();
         }
 
-#pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
-        protected virtual async Task AddOrUpdateThingSubscription(TheThing.MsgSubscribeToThingsResponse responseMsg, TheThing.TheThingSubscription subscription)
-#pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
+        protected virtual Task AddOrUpdateThingSubscription(TheThing.MsgSubscribeToThingsResponse responseMsg, TheThing.TheThingSubscription subscription)
         {
-            // TODO Use TheThingSubscription as the primary structure and keep TheThingToPublish only for backwards compat
-            var thingToAdd = new TheThingToPublish
-            {
-                AddThingIdentity = subscription.AddThingIdentity ?? false,
-                cdeMID = subscription.SubscriptionId ?? Guid.Empty,
-                SamplingWindow = subscription.SamplingWindow,
-                ContinueMatching = subscription.ContinueMatching ?? false,
-                CooldownPeriod = subscription.CooldownPeriod,
-                EngineName = subscription.ThingReference?.EngineName,
-                DeviceType = subscription.ThingReference?.DeviceType,
-                FriendlyName = subscription.ThingReference?.FriendlyName,
-                EventFormat = subscription.EventFormat,
-                ThingMID = subscription.ThingReference?.ThingMID?.ToString(),
-                TargetName = subscription.TargetName,
-                TargetType = subscription.TargetType,
-                TargetUnit = subscription.TargetUnit,
-                StaticProperties = subscription.StaticProperties,
-                PropertiesExcluded = subscription.PropertiesExcluded,
-                PropertiesIncluded = subscription.PropertiesIncluded,
-                PropertiesToMatch = subscription.ThingReference?.PropertiesToMatch,
-                ForceAllProperties = subscription.ForceAllProperties,
-                IgnoreExistingHistory = subscription.IgnoreExistingHistory,
-                IgnorePartialFailure = subscription.IgnorePartialFailure ?? false,
-                KeepDurableHistory = subscription.KeepDurableHistory ?? false,
-                MaxHistoryCount = subscription.MaxHistoryCount ?? 0,
-                MaxHistoryTime = subscription.MaxHistoryTime ?? 0,
-                PreserveOrder = subscription.PreserveOrder ?? false,
-                PartitionKey = subscription.PartitionKey,
-                ReplaceExistingThing = subscription.ReplaceExistingThing ?? false,
-                SendInitialValues = subscription.SendInitialValues,
-                SendUnchangedValue = subscription.SendUnchangedValue ?? false,
-                TokenExpirationInHours = subscription.TokenExpirationInHours,
-                //ExtensionData = subscription.ExtensionData,
-            };
-            var thingStatus = AddThingToPublish(thingToAdd);
+            var thingStatus = AddThingSubscription(subscription);
             subscription.SubscriptionId = thingStatus.cdeMid;
             responseMsg.SubscriptionStatus.Add(new TheThing.TheThingSubscriptionStatus { Error = thingStatus.Error, Subscription = subscription });
+            return TheCommonUtils.TaskFromResult(0);
         }
-
+        [Obsolete("Override or call TheSenderThing.GetSubscriptionInfo instead.", true)]
         virtual protected TheThing.TheThingSubscription GetSubscriptionInfoFromSenderThing(TSenderThing st, bool? bGeneralize)
         {
-            var sub = new TheThing.TheThingSubscription
-            {
-                SubscriptionId = st.cdeMID,
-                AddThingIdentity = st.AddThingIdentity,
-                SamplingWindow = st.ChangeBufferTimeBucketSize,
-                ContinueMatching = st.ContinueMatching,
-                CooldownPeriod = st.ChangeBufferLatency,
-                ThingReference = new TheThingReference
-                {
-                    ThingMID = TheCommonUtils.CGuid(st.ThingMID) != Guid.Empty ? (Guid?)TheCommonUtils.CGuid(st.ThingMID) : null,
-                    EngineName = st.EngineName,
-                    DeviceType = st.DeviceType,
-                    FriendlyName = st.FriendlyName,
-                    PropertiesToMatch = TheSenderThing.CStringToDict(st.PropertiesToMatch),
-                },
-
-                EventFormat = st.EventFormat,
-                // ForceAllProperties = st.ForceAllProperties, // TODO: add the logic and field to TheSenderThing
-                IgnoreExistingHistory = st.IgnoreExistingHistory,
-                IgnorePartialFailure = st.IgnorePartialFailure,
-                KeepDurableHistory = st.KeepDurableHistory,
-                MaxHistoryCount = st.MaxHistoryCount,
-                MaxHistoryTime = st.MaxHistoryTime,
-                PartitionKey = st.PartitionKey,
-                PreserveOrder = st.PreserveOrder,
-                PropertiesExcluded = TheCommonUtils.CStringToList(st.PropertiesExcluded, ','),
-                PropertiesIncluded = TheCommonUtils.CStringToList(st.PropertiesIncluded, ','),
-                SendInitialValues = st.SendInitialValues,
-                SendUnchangedValue = st.SendUnchangedValue,
-                StaticProperties = TheSenderThing.CStringToDict(st.StaticProperties),
-                TargetName = st.TargetName,
-                TargetType = st.TargetType,
-                TargetUnit = st.TargetUnit,
-                TokenExpirationInHours = st.TokenExpirationInHours,
-            };
-            return sub;
+            throw new NotImplementedException("Override or call TheSenderThing.GetSubscriptionInfo instead.");
         }
 
         private void DoHandleMessage<requestT, responseT>(TSM requestTSM, Action<requestT, responseT> handler) 
@@ -451,7 +418,7 @@ namespace nsTheSenderBase
                     MySenderThings.MyRecordsRWLock.RunUnderUpgradeableReadLock(() =>
                     {
                         MySenderThings.RemoveAnItem(deletedItem, (sr) => { });
-                    }); // TODO: Check if it's ok.
+                    });
                 }
                 catch (Exception e)
                 {
@@ -471,15 +438,14 @@ namespace nsTheSenderBase
             }
         }
 
-        // TODO: Test if it already supports update scenario
-        private TheAddThingStatus AddThingToPublish(TheThingToPublish thingToPublish)
+        private TheAddThingStatus AddThingSubscription(TheThing.TheThingSubscription subscription)
         {
-            var status = new TheAddThingStatus { cdeMid = thingToPublish.cdeMID };
+            var status = new TheAddThingStatus { cdeMid = subscription.SubscriptionId ?? Guid.Empty, };
 
             TSenderThing currentSenderThing = null;
-            if (thingToPublish.ReplaceExistingThing == true)
+            if (subscription.ReplaceExistingThing == true)
             {
-                var thingMidToPublish = TheCommonUtils.CGuid(thingToPublish.ThingMID);
+                var thingMidToPublish = TheCommonUtils.CGuid(subscription.ThingReference?.ThingMID?.ToString());
                 if (thingMidToPublish != Guid.Empty)
                 {
                     var existingThings = MySenderThings.MyMirrorCache.GetEntriesByFunc(s => TheCommonUtils.CGuid(s.ThingMID) == thingMidToPublish);
@@ -495,17 +461,17 @@ namespace nsTheSenderBase
             }
             else
             {
-                currentSenderThing = MySenderThings.MyMirrorCache.GetEntryByID(thingToPublish.cdeMID);
+                currentSenderThing = MySenderThings.MyMirrorCache.GetEntryByID(subscription.SubscriptionId ?? Guid.Empty);
             }
 
             if (String.IsNullOrEmpty(status.Error))
             {
                 var newSenderThing = new TSenderThing();
-                newSenderThing.Initialize(thingToPublish);
+                newSenderThing.Initialize(subscription);
                 if (!newSenderThing.IsEqual(currentSenderThing))
                 {
                     bool wasConnected = IsConnected;
-                    if (currentSenderThing != null && thingToPublish.DoNotCreate) // CODE REVIEW (note to self): what exactly are the DoNotCreate semantics?
+                    if (currentSenderThing != null)
                     {
                         MySenderThings.RemoveAnItem(currentSenderThing, null);
 
@@ -1702,7 +1668,7 @@ namespace nsTheSenderBase
         {
             try
             {
-                var senderInfo = senderTaskInfoObj as SenderTaskInfo;
+                var senderInfo = senderTaskInfoObj as TheSenderThing.SenderTaskInfo;
 
                 var senderThing = senderInfo?.senderThing as TSenderThing;
                 if (senderThing == null)
@@ -1745,7 +1711,7 @@ namespace nsTheSenderBase
                 {
                     // Use the same connection for all events in the batch to guarantee ordering (if so selected)
                     // If no ordering selected, the SendEvent method will get a new connection for each event for maximum performance.
-                    var myClient = GetNextConnection();
+                    var myClient = GetNextConnection(senderThing);
                     try
                     {
                         var updatesPerBatch = SenderUpdatesPerBatch;
@@ -2166,6 +2132,10 @@ namespace nsTheSenderBase
 
 
         protected abstract object GetNextConnection();
+        protected virtual object GetNextConnection(TSenderThing senderThing)
+        {
+            return GetNextConnection();
+        }
 
         protected class SendEventResults
         {
@@ -2184,7 +2154,7 @@ namespace nsTheSenderBase
 
         protected TheStorageMirror<TSenderTSM> MySenderTSMs = null;
 
-        public static string CreateStringFromTemplate(string template, TheSenderBase<TSenderThing, TSenderTSM> sender, TheSenderThing senderThing, TheThingStore thingEventToSend)
+        public static string CreateStringFromTemplate(string template, TheSenderBase<TSenderThing, TSenderTSM> sender, TSenderThing senderThing, TheThingStore thingEventToSend)
         {
             TheThing thingBeingSent = senderThing?.GetThing()?.GetBaseThing();
 
