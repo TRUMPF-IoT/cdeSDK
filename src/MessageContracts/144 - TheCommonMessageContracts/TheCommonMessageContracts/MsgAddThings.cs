@@ -73,6 +73,7 @@ namespace TheCommonMessageContracts
         /// Considers all properties, not just sensor properties, even if the thing is a sensor container
         /// </summary>
         public bool? ForceAllProperties { get; set; }
+        public bool? ForceConfigProperties { get; set; }
         public List<string> PropertiesExcluded { get; set; }
         public Dictionary<string, object> StaticProperties { get; set; }
         public bool KeepDurableHistory { get; set; }

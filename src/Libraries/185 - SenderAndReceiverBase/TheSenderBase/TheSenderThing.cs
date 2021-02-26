@@ -75,7 +75,7 @@ namespace nsTheSenderBase
             }
             return _thing;
         }
-        
+
         public bool IsTemplate()
         {
             return TheCommonUtils.CGuid(ThingMID) == Guid.Empty;
@@ -102,7 +102,7 @@ namespace nsTheSenderBase
                 && PreserveOrder == senderThingToAdd.PreserveOrder
                 && SendUnchangedValue == senderThingToAdd.SendUnchangedValue
                 && SendInitialValues == senderThingToAdd.SendInitialValues
-                && IgnoreExistingHistory== senderThingToAdd.IgnoreExistingHistory
+                && IgnoreExistingHistory == senderThingToAdd.IgnoreExistingHistory
                 && TokenExpirationInHours == senderThingToAdd.TokenExpirationInHours
                 && KeepDurableHistory == senderThingToAdd.KeepDurableHistory
                 && MaxHistoryCount == senderThingToAdd.MaxHistoryCount
@@ -121,7 +121,7 @@ namespace nsTheSenderBase
         /// </summary>
         /// <param name="senderThing"></param>
         /// <returns></returns>
-        internal bool IsMatching(TheSenderThing senderThing)
+        internal virtual bool IsMatching(TheSenderThing senderThing)
         {
             return ThingMidAsGuid == senderThing.ThingMidAsGuid
                 && StaticProperties == senderThing.StaticProperties
@@ -186,6 +186,16 @@ namespace nsTheSenderBase
             }
         }
         Dictionary<string, object> _staticProperties;
+        /// <summary>
+        /// If the thing supports the sensor model, only sensors will be consumed (unless
+        //  otherwise filtered out, i.e. PropertiesToExclude). This flag forces all properties
+        //  to be considered, not just sensors.
+        /// </summary>
+        public bool? ForceAllProperties { get; set; }
+        /// <summary>
+        /// Also include config properties for things that suppor the sensor model.
+        /// </summary>
+        public bool? ForceConfigProperties { get; set; }
 
         public bool AddThingIdentity { get; set; }
         public bool KeepDurableHistory { get; set; }
@@ -219,7 +229,7 @@ namespace nsTheSenderBase
             }
         }
         Dictionary<string, object> _propertiesToMatch;
-        public Dictionary<string, object> GetPropertiesToMatch()
+        public virtual Dictionary<string, object> GetPropertiesToMatch()
         {
             var props = _propertiesToMatch;
             if (!string.IsNullOrEmpty(EngineName))
@@ -244,7 +254,7 @@ namespace nsTheSenderBase
         public string FriendlyName { get; set; }
         public string DeviceType { get; set; }// Used by some senders to indicate all things of a certain engine name/devicetype - ThingMid must be null/empty
 
-        public List<string> GetPropsIncluded()
+        public virtual List<string> GetPropsIncluded()
         {
             return GetPropertiesAsList(PropertiesIncluded).Select(p => p.Split(new char[] { ';' }, 2)[0]).ToList();
         }
@@ -253,7 +263,7 @@ namespace nsTheSenderBase
             return GetPropertiesAsList(PropertiesIncluded).Select(p => p.Split(new char[] { ';' })).ToList();
         }
 
-        public List<string> GetPropsExcluded() { return GetPropertiesAsList(PropertiesExcluded); }
+        public virtual List<string> GetPropsExcluded() { return GetPropertiesAsList(PropertiesExcluded); }
         public Dictionary<string, object> GetStaticProps() { return _staticProperties ?? new Dictionary<string, object>(); }
         private static List<string> GetPropertiesAsList(string propertiesCommaSeparated)
         {
@@ -270,7 +280,7 @@ namespace nsTheSenderBase
         /// </summary>
         /// <param name="senderThing"></param>
         /// <returns></returns>
-        internal bool DoesInclude(TheSenderThing senderThing)
+        internal virtual bool DoesInclude(TheSenderThing senderThing)
         {
             var result =
                    IsMatching(senderThing)
@@ -278,11 +288,11 @@ namespace nsTheSenderBase
             return result;
         }
 
-        public TheHistoryParameters GetHistoryParameters()
+        public virtual TheHistoryParameters GetHistoryParameters()
         {
             var historyParams = new TheHistoryParameters
             {
-                TokenExpiration = this.TokenExpirationInHours.HasValue ? new TimeSpan?(new TimeSpan((int) this.TokenExpirationInHours, 0, 0)) : null,
+                TokenExpiration = this.TokenExpirationInHours.HasValue ? new TimeSpan?(new TimeSpan((int)this.TokenExpirationInHours, 0, 0)) : null,
                 MaxCount = this.MaxHistoryCount,
                 MaxAge = new TimeSpan(0, 0, 0, 0, (int)this.MaxHistoryTime),
                 Properties = this.GetPropsIncluded(),
@@ -339,11 +349,47 @@ namespace nsTheSenderBase
             return result;
         }
 
+        #region Constructor, Initializers and converters
         public TheSenderThing() : base()
         {
         }
 
-        // Override if new properties in a derived class need to be initialized from a TheThingToPublish
+        // Override if new properties in a derived class need to be initialized from a TheThingSubscription
+
+        internal void Initialize(TheThing.TheThingSubscription subscription)
+        {
+            cdeMID = subscription.SubscriptionId ?? Guid.Empty;
+            AddThingIdentity = subscription.AddThingIdentity ?? false;
+            this.ChangeBufferTimeBucketSize = subscription.SamplingWindow ?? 0;
+            ContinueMatching = subscription.ContinueMatching ?? false;
+            ChangeBufferLatency = subscription.CooldownPeriod ?? 0;
+            EngineName = subscription.ThingReference?.EngineName;
+            DeviceType = subscription.ThingReference?.DeviceType;
+            FriendlyName = subscription.ThingReference?.FriendlyName;
+            EventFormat = subscription.EventFormat;
+            ThingMID = subscription.ThingReference?.ThingMID?.ToString();
+            TargetName = subscription.TargetName;
+            TargetType = subscription.TargetType;
+            TargetUnit = subscription.TargetUnit;
+            StaticProperties = CDictToString(subscription.StaticProperties);
+            PropertiesExcluded = TheCommonUtils.CListToString(subscription.PropertiesExcluded, ",");
+            PropertiesIncluded = TheCommonUtils.CListToString(subscription.PropertiesIncluded, ",");
+            PropertiesToMatch = CDictToString(subscription.ThingReference?.PropertiesToMatch);
+
+            ForceAllProperties = subscription.ForceAllProperties;
+            ForceConfigProperties = subscription.ForceConfigProperties;
+            IgnoreExistingHistory = subscription.IgnoreExistingHistory;
+            IgnorePartialFailure = subscription.IgnorePartialFailure ?? false;
+            KeepDurableHistory = subscription.KeepDurableHistory ?? false;
+            MaxHistoryCount = subscription.MaxHistoryCount ?? 0;
+            MaxHistoryTime = subscription.MaxHistoryTime ?? 0;
+            PreserveOrder = subscription.PreserveOrder ?? false;
+            PartitionKey = subscription.PartitionKey;
+            SendInitialValues = subscription.SendInitialValues;
+            SendUnchangedValue = subscription.SendUnchangedValue ?? false;
+            TokenExpirationInHours = subscription.TokenExpirationInHours;
+        }
+
         internal virtual void Initialize(TheThingToPublish senderThingToAdd)
         {
             cdeMID = senderThingToAdd.cdeMID;
@@ -432,12 +478,55 @@ namespace nsTheSenderBase
             senderThing.CloneBase(this);
         }
 
+        virtual internal TheThing.TheThingSubscription GetSubscriptionInfo(bool? bGeneralize)
+        {
+            var sub = new TheThing.TheThingSubscription
+            {
+                SubscriptionId = this.cdeMID,
+                AddThingIdentity = this.AddThingIdentity,
+                SamplingWindow = this.ChangeBufferTimeBucketSize,
+                ContinueMatching = this.ContinueMatching,
+                CooldownPeriod = this.ChangeBufferLatency,
+                ThingReference = new TheThingReference()
+                {
+                    ThingMID = (bGeneralize == false && TheCommonUtils.CGuid(this.ThingMID) != Guid.Empty) ? (Guid?)TheCommonUtils.CGuid(this.ThingMID) : null,
+                    EngineName = this.EngineName,
+                    DeviceType = this.DeviceType,
+                    FriendlyName = this.FriendlyName,
+                    PropertiesToMatch = TheSenderThing.CStringToDict(this.PropertiesToMatch),
+                },
+
+                EventFormat = this.EventFormat,
+                ForceAllProperties = this.ForceAllProperties,
+                ForceConfigProperties = this.ForceConfigProperties,
+                IgnoreExistingHistory = this.IgnoreExistingHistory,
+                IgnorePartialFailure = this.IgnorePartialFailure,
+                KeepDurableHistory = this.KeepDurableHistory,
+                MaxHistoryCount = this.MaxHistoryCount,
+                MaxHistoryTime = this.MaxHistoryTime,
+                PartitionKey = this.PartitionKey,
+                PreserveOrder = this.PreserveOrder,
+                PropertiesExcluded = TheCommonUtils.CStringToList(this.PropertiesExcluded, ','),
+                PropertiesIncluded = TheCommonUtils.CStringToList(this.PropertiesIncluded, ','),
+                SendInitialValues = this.SendInitialValues,
+                SendUnchangedValue = this.SendUnchangedValue,
+                StaticProperties = TheSenderThing.CStringToDict(this.StaticProperties),
+                TargetName = this.TargetName,
+                TargetType = this.TargetType,
+                TargetUnit = this.TargetUnit,
+                TokenExpirationInHours = this.TokenExpirationInHours,
+            };
+            return sub;
+        }
+        #endregion
+
+
         static string CDictToString(Dictionary<string, object> dict)
         {
             if (dict == null) return null;
 
             var dictString = dict.Aggregate("", (s, kv) => $"{s},{kv.Key}={TheCommonUtils.CStr(kv.Value)}");
-            if (dictString.Length >0)
+            if (dictString.Length > 0)
             {
                 dictString = dictString.Substring(1);
             }
@@ -489,7 +578,7 @@ namespace nsTheSenderBase
                     int count = 0;
                     const int timePerLoop = 1000;
                     const int timeout = 1 * 60;
-                    while (!masterToken.Value.IsCancellationRequested 
+                    while (!masterToken.Value.IsCancellationRequested
                         && previousTaskInfo.task.Status != TaskStatus.Canceled
                         && previousTaskInfo.task.Status != TaskStatus.Faulted
                         && previousTaskInfo.task.Status != TaskStatus.RanToCompletion
@@ -550,7 +639,7 @@ namespace nsTheSenderBase
         }
 
         IDisposable _thingMatcherSubscription;
-        public bool StartSender(TheThing myBaseThing, TheSenderThing senderClone, Func<object,Task> senderLoop, CancellationToken masterToken)
+        public bool StartSender(TheThing myBaseThing, TheSenderThing senderClone, Func<object, Task> senderLoop, CancellationToken masterToken)
         {
             if (pendingHistoryLoops.TryGetValue(cdeMID, out var previousTaskInfo))
             {
@@ -586,16 +675,6 @@ namespace nsTheSenderBase
             }
         }
 
-        //static internal TheSenderThing GetSenderThingForToken(Guid historyToken)
-        //{
-        //    var senderTaskInfoKV = pendingHistoryLoops?.FirstOrDefault(kv => kv.Value.senderThing.HistoryToken == historyToken);
-        //    return senderTaskInfoKV?.Value?.senderThing;
-        //}
-        //static internal TheSenderThing GetMatchingSenderThing(TheSenderThing senderThing)
-        //{
-        //    var senderTaskInfoKV = pendingHistoryLoops?.FirstOrDefault(kv => kv.Value.senderThing.IsMatching(senderThing));
-        //    return senderTaskInfoKV?.Value?.senderThing;
-        //}
         static internal IEnumerable<TheSenderThing> GetRunningSenderThings(TheThing ownerThing)
         {
             return pendingHistoryLoops?.Where(kv => kv.Value.owner == ownerThing).Select(kv => kv.Value.senderThing).ToList() ?? new List<TheSenderThing>();
@@ -603,38 +682,38 @@ namespace nsTheSenderBase
 
         public HashSet<string> GetPropertiesToSend()
         {
-            HashSet<string> propertiesToSend;
+            HashSet<string> propertyNamesToSend;
             if (String.IsNullOrEmpty(PropertiesIncluded))
             {
-                propertiesToSend = new HashSet<string>(GetThing().GetBaseThing().GetAllProperties(10).Select(p => p.Name));
+                var propsToSend = GetThing().GetBaseThing().GetAllProperties(10).AsEnumerable();
+                if (GetThing().Capabilities.Contains(eThingCaps.SensorContainer) || GetThing().Capabilities.Contains(eThingCaps.ConfigManagement))
+                {
+                    propsToSend = propsToSend.Where(p => ForceAllProperties ?? false || p.IsSensor || (ForceConfigProperties??false && p.IsConfig));
+                }
+                propertyNamesToSend = new HashSet<string>(propsToSend.Select(p => p.Name));
+
             }
             else
             {
-                propertiesToSend = new HashSet<string>(GetPropsIncluded());
+                propertyNamesToSend = new HashSet<string>(GetPropsIncluded());
             }
             if (!string.IsNullOrEmpty(PropertiesExcluded))
             {
                 foreach (var propName in GetPropsExcluded())
                 {
-                    propertiesToSend.Remove(propName);
+                    propertyNamesToSend.Remove(propName);
                 }
             }
-            return propertiesToSend;
+            return propertyNamesToSend;
         }
 
-        //public bool IsSending()
-        //{
+        internal class SenderTaskInfo
+        {
+            public Task task;
+            public TheThing owner; // Sender that owns the senderThing
+            public TheSenderThing senderThing;
+            public CancellationTokenSource cancelSource;
+        }
 
-        //    return _senderLoopCancel != null && !_senderLoopCancel.IsCancellationRequested;
-        //}
     }
-
-    class SenderTaskInfo
-    {
-        public Task task;
-        public TheThing owner; // Sender that owns the senderThing
-        public TheSenderThing senderThing;
-        public CancellationTokenSource cancelSource;
-    }
-
 }
