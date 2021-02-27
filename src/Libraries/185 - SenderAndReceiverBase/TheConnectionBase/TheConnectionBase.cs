@@ -278,10 +278,6 @@ namespace nsTheConnectionBase
                 }
             });
             tc["Group"].SetParent(1);
-
-            // Azure Thing Link (added below)
-            // KPI Link (added below)
-            //TheNMIEngine.AddSmartControl(MyBaseThing, MyForm, eFieldType.TextArea, 13, 0, 0, "Last-Msg", "LastMessage", new ThePropertyBag() { "TileHeight=2", "TileWidth=6" });
         }
 
         public bool Delete()

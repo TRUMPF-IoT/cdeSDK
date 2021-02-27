@@ -16,6 +16,5 @@
     <Compile Include="$(MSBuildThisFileDirectory)TheSenderTSM.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)TheSenderThing.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)TheSenderBase.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)TheSenderBasePropChange.cs" />
   </ItemGroup>
 </Project>

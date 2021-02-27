@@ -92,7 +92,6 @@ namespace nsTheSenderBase
                 && ChangeNaNToNull == senderThingToAdd.ChangeNaNToNull
                 && Disable == senderThingToAdd.Disable
                 && PartitionKey == senderThingToAdd.PartitionKey
-                && RetryLastValueOnly == senderThingToAdd.RetryLastValueOnly
                 && EventFormat == senderThingToAdd.EventFormat
                 && StaticProperties == senderThingToAdd.StaticProperties
                 && AddThingIdentity == senderThingToAdd.AddThingIdentity
@@ -129,7 +128,6 @@ namespace nsTheSenderBase
                 && SendInitialValues == senderThing.SendInitialValues
                 && IgnoreExistingHistory == senderThing.IgnoreExistingHistory
                 && TokenExpirationInHours == senderThing.TokenExpirationInHours
-                && RetryLastValueOnly == senderThing.RetryLastValueOnly
                 && PreserveOrder == senderThing.PreserveOrder
                 && MaxHistoryTime == senderThing.MaxHistoryTime
                 && MaxHistoryCount == senderThing.MaxHistoryCount
@@ -147,7 +145,6 @@ namespace nsTheSenderBase
         public bool PreserveOrder { get; set; }
         public uint ChangeBufferLatency { get; set; } // CooldownPeriod: keep old name for storage mirror compatibility
         public uint ChangeBufferTimeBucketSize { get; set; } // SamplingWindow: keep old name for storage mirror compatibility
-        public bool RetryLastValueOnly { get; set; }
         public bool SendUnchangedValue { get; set; }
         public bool? SendInitialValues { get; set; }
         public bool? IgnoreExistingHistory { get; set; }
@@ -411,7 +408,6 @@ namespace nsTheSenderBase
             ChangeNaNToNull = false;
             Disable = false;
             PartitionKey = senderThingToAdd.PartitionKey;
-            RetryLastValueOnly = false;
             EventFormat = senderThingToAdd.EventFormat;
             if (!string.IsNullOrEmpty(senderThingToAdd.ThingMID))
             {
@@ -463,7 +459,6 @@ namespace nsTheSenderBase
             PreserveOrder = senderThing.PreserveOrder;
             PropertiesExcluded = senderThing.PropertiesExcluded;
             PropertiesIncluded = senderThing.PropertiesIncluded;
-            RetryLastValueOnly = senderThing.RetryLastValueOnly;
             SendUnchangedValue = senderThing.SendUnchangedValue;
             SendInitialValues = senderThing.SendInitialValues;
             IgnoreExistingHistory = senderThing.IgnoreExistingHistory;
@@ -686,9 +681,9 @@ namespace nsTheSenderBase
             if (String.IsNullOrEmpty(PropertiesIncluded))
             {
                 var propsToSend = GetThing().GetBaseThing().GetAllProperties(10).AsEnumerable();
-                if (GetThing().Capabilities.Contains(eThingCaps.SensorContainer) || GetThing().Capabilities.Contains(eThingCaps.ConfigManagement))
+                if (ForceAllProperties != true && (GetThing().Capabilities.Contains(eThingCaps.SensorContainer) || GetThing().Capabilities.Contains(eThingCaps.ConfigManagement)))
                 {
-                    propsToSend = propsToSend.Where(p => ForceAllProperties ?? false || p.IsSensor || (ForceConfigProperties??false && p.IsConfig));
+                    propsToSend = propsToSend.Where(p => p.IsSensor || ((ForceConfigProperties == true) && p.IsConfig));
                 }
                 propertyNamesToSend = new HashSet<string>(propsToSend.Select(p => p.Name));
 
