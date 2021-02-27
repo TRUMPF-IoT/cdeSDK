@@ -681,9 +681,9 @@ namespace nsTheSenderBase
             if (String.IsNullOrEmpty(PropertiesIncluded))
             {
                 var propsToSend = GetThing().GetBaseThing().GetAllProperties(10).AsEnumerable();
-                if (GetThing().Capabilities.Contains(eThingCaps.SensorContainer) || GetThing().Capabilities.Contains(eThingCaps.ConfigManagement))
+                if (ForceAllProperties != true && (GetThing().Capabilities.Contains(eThingCaps.SensorContainer) || GetThing().Capabilities.Contains(eThingCaps.ConfigManagement)))
                 {
-                    propsToSend = propsToSend.Where(p => ForceAllProperties ?? false || p.IsSensor || (ForceConfigProperties??false && p.IsConfig));
+                    propsToSend = propsToSend.Where(p => p.IsSensor || ((ForceConfigProperties == true) && p.IsConfig));
                 }
                 propertyNamesToSend = new HashSet<string>(propsToSend.Select(p => p.Name));
 
