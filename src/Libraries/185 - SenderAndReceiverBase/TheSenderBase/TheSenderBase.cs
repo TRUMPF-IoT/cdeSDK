@@ -177,9 +177,6 @@ namespace nsTheSenderBase
             set { TheThing.SetSafePropertyNumber(MyBaseThing, nameof(SenderRetryPeriod), value); }
         }
 
-        // Set in derived class to not get senderbase KPIs in the NMI
-        public bool DoNotAddSenderBaseKPIs { get; private set; }
-
         #endregion
 
         public override async void HandleMessage(ICDEThing sender, object pIncoming)
@@ -923,6 +920,15 @@ namespace nsTheSenderBase
 
         IEnumerable<string> registeredEngines = new List<string>();
 
+        protected bool UXNoKPIs;
+        protected bool UXNoAdvancedConfig;
+        protected bool UXNoThingForm;
+        protected bool UXNoTSMForm;
+        protected bool UXNoPartitionKey;
+        protected bool UXNoMQTTTopicTemplate;
+        protected bool UXNoSendAsFile;
+        protected bool UXNoSendEntireTSM;
+
         protected TheFormInfo tSenderThingsForm;
         protected TheFormInfo tSenderTSMsForm;
         public override void CreateUXBase(string formTitle)
@@ -941,7 +947,7 @@ namespace nsTheSenderBase
             ts["FriendlyName"].Header = "Connection Name";
 
             // Group: KPIs (Subgroup of Device Status group)
-            if (!DoNotAddSenderBaseKPIs)
+            if (!UXNoKPIs)
             {
                 TheNMIEngine.AddSmartControl(MyBaseThing, tMyForm, eFieldType.CollapsibleGroup, 202, 2, 0, "KPIs", null, new nmiCtrlCollapsibleGroup() { DoClose = true, ParentFld = 3, TileWidth = 6, IsSmall = true });//() { "TileWidth=6", "Format=Advanced Configurations", "Style=font-size:26px;text-align: left" });
                 TheNMIEngine.AddSmartControl(MyBaseThing, tMyForm, eFieldType.Number, 203, 0, 0, "Events Sent", nameof(EventsSentSinceStart), new ThePropertyBag() { "ParentFld=202", "TileHeight=1", "TileWidth=6", "FldWidth=4" });
@@ -994,16 +1000,19 @@ namespace nsTheSenderBase
                 TheCommCore.PublishToOriginator(pMsg.Message, new TSM(eEngineName.NMIService, "NMI_TOAST", "Disconnecting..."));
             });
 
-
-            // Group: Advanced Configuration (Collapsible Group Field Order = 40)
-            TheNMIEngine.AddSmartControl(MyBaseThing, tMyForm, eFieldType.CollapsibleGroup, 40, 2, 0xC0, "Advanced Configurations...", null, ThePropertyBag.Create(new nmiCtrlCollapsibleGroup() { ParentFld = 1, TileWidth = 6, DoClose = true, IsSmall = true }));//() { "TileWidth=6", "Format=Advanced Configurations", "Style=font-size:26px;text-align: left" });
-            TheNMIEngine.AddSmartControl(MyBaseThing, tMyForm, eFieldType.SingleCheck, 44, 2, 0xC0, "Preserve Order for all Things", nameof(PreserveSendOrderAllThings), new ThePropertyBag() { "ParentFld=40", "TileWidth=3", "TileHeight=1" });
-            TheNMIEngine.AddSmartControl(MyBaseThing, tMyForm, eFieldType.SingleCheck, 80, 2, 0xC0, "Merge matching Sender Things", nameof(MergeSenderThings), new ThePropertyBag() { "ParentFld=40", "TileWidth=3", "TileHeight=1" });
-            TheNMIEngine.AddSmartControl(MyBaseThing, tMyForm, eFieldType.Number, 85, 2, 0xC0, "Max Updates per batch", nameof(SenderUpdatesPerBatch), new nmiCtrlNumber { LabelFontSize = 16, ParentFld = 40, TileHeight = 1, TileWidth = 3 });
-            TheNMIEngine.AddSmartControl(MyBaseThing, tMyForm, eFieldType.Number, 87, 2, 0xC0, "Send Retry Period (ms)", nameof(SenderRetryPeriod), new nmiCtrlNumber { LabelFontSize = 16, ParentFld = 40, TileHeight = 1, TileWidth = 3 });
-            AddClearHistoryButton(tMyForm, 89, 40);
+            if (!UXNoAdvancedConfig)
+            {
+                // Group: Advanced Configuration (Collapsible Group Field Order = 40)
+                TheNMIEngine.AddSmartControl(MyBaseThing, tMyForm, eFieldType.CollapsibleGroup, 40, 2, 0xC0, "Advanced Configurations...", null, ThePropertyBag.Create(new nmiCtrlCollapsibleGroup() { ParentFld = 1, TileWidth = 6, DoClose = true, IsSmall = true }));//() { "TileWidth=6", "Format=Advanced Configurations", "Style=font-size:26px;text-align: left" });
+                TheNMIEngine.AddSmartControl(MyBaseThing, tMyForm, eFieldType.SingleCheck, 44, 2, 0xC0, "Preserve Order for all Things", nameof(PreserveSendOrderAllThings), new ThePropertyBag() { "ParentFld=40", "TileWidth=3", "TileHeight=1" });
+                TheNMIEngine.AddSmartControl(MyBaseThing, tMyForm, eFieldType.SingleCheck, 80, 2, 0xC0, "Merge matching Sender Things", nameof(MergeSenderThings), new ThePropertyBag() { "ParentFld=40", "TileWidth=3", "TileHeight=1" });
+                TheNMIEngine.AddSmartControl(MyBaseThing, tMyForm, eFieldType.Number, 85, 2, 0xC0, "Max Updates per batch", nameof(SenderUpdatesPerBatch), new nmiCtrlNumber { LabelFontSize = 16, ParentFld = 40, TileHeight = 1, TileWidth = 3 });
+                TheNMIEngine.AddSmartControl(MyBaseThing, tMyForm, eFieldType.Number, 87, 2, 0xC0, "Send Retry Period (ms)", nameof(SenderRetryPeriod), new nmiCtrlNumber { LabelFontSize = 16, ParentFld = 40, TileHeight = 1, TileWidth = 3 });
+                AddClearHistoryButton(tMyForm, 89, 40);
+            }
 
             // TheSenderThings Form: User accesses by clicking "Show Sender Thing List" button (added below)
+            if (!UXNoThingForm)
             {
                 // Form for the Things for which events are to be sent to the cloud
                 string tDataSource = "TheSenderThings";
@@ -1013,29 +1022,31 @@ namespace nsTheSenderBase
                 tSenderThingsForm = TheNMIEngine.AddForm(new TheFormInfo(TheThing.GetSafeThingGuid(MyBaseThing, "SenderThings_ID"), eEngineName.NMIService, "Sender: Things to Publish", tDataSource) { AddButtonText = "Add New Thing", TileHeight = 10, TileWidth = -1 });
                 // TheNMIEngine.AddFormToThingUX(MyBaseThing, tSenderThingsForm, "CMyTable", "Sender Thing List", 1, 3, 0xF0, null, null, new ThePropertyBag() { "Visibility=false" });
                 TheNMIEngine.AddFields(tSenderThingsForm, new List<TheFieldInfo> {
-                    new TheFieldInfo() { FldOrder=11,DataItem=nameof(TheSenderThing.Disable),Flags=2,Type=eFieldType.SingleCheck,Header="Disable",FldWidth=3,  DefaultValue="false" },
-                    new TheFieldInfo() { FldOrder=12,DataItem=nameof(TheSenderThing.ThingMID),Flags=2, cdeA = 0xC0, Type=eFieldType.ThingPicker,Header="Thing to Send",FldWidth=3,  PropertyBag=new nmiCtrlThingPicker() { IncludeEngines=true, IncludeRemotes=true } },
-                    new TheFieldInfo() { FldOrder=13,DataItem=nameof(TheSenderThing.EventFormat),Flags=2,Type=eFieldType.ComboBox,Header="Event Serializer",FldWidth=3,  PropertyBag=new ThePropertyBag() {"Options="+ TheEventConverters.GetDisplayNamesAsSemicolonSeperatedList() }, DefaultValue = TheEventConverters.GetDisplayName(typeof(JSonPropertyEventConverter)) },
-                    new TheFieldInfo() { FldOrder=14,DataItem=nameof(TheSenderThing.ChangeNaNToNull),Flags=2,Type=eFieldType.SingleCheck,Header="Change NaN to Null for double/float",FldWidth=3,  DefaultValue="false" },
-                    new TheFieldInfo() { FldOrder=15,DataItem=nameof(TheSenderThing.PreserveOrder),Flags=2,Type=eFieldType.SingleCheck,Header="Preserve Order Per Thing",FldWidth=3,  DefaultValue="false" },
-                    new TheFieldInfo() { FldOrder=16,DataItem=nameof(TheSenderThing.PartitionKey),Flags=2,Type=eFieldType.ComboBox,Header="Partition Key for EventHub",FldWidth=3,  PropertyBag=new ThePropertyBag() {"Options="+ TheSenderThing.PartitionKeyChoices.Aggregate ("", (a,p) => a+p+";").TrimEnd(';') } },
-                    new TheFieldInfo() { FldOrder=17,DataItem=nameof(TheSenderThing.ChangeBufferTimeBucketSize),Flags=2,Type=eFieldType.Number,Header="Sampling Window(in ms)",FldWidth=3,  DefaultValue="100" },
-                    new TheFieldInfo() { FldOrder=18,DataItem=nameof(TheSenderThing.ChangeBufferLatency),Flags=2,Type=eFieldType.Number,Header="Change buffer latency (in ms)",FldWidth=3,  DefaultValue="100" },
-                    new TheFieldInfo() { FldOrder=20,DataItem=nameof(TheSenderThing.RetryLastValueOnly),Flags=2,Type=eFieldType.SingleCheck,Header="Drop old values on error",FldWidth=3,  DefaultValue="false" },
-                    new TheFieldInfo() { FldOrder=22,DataItem=nameof(TheSenderThing.KeepDurableHistory),Flags=2,Type=eFieldType.SingleCheck,Header="Durable Update History",FldWidth=3,  DefaultValue="true" },
-                    new TheFieldInfo() { FldOrder=23,DataItem=nameof(TheSenderThing.MaxHistoryCount),Flags=2,Type=eFieldType.Number,Header="Max History Item Count",FldWidth=3,  DefaultValue="0" },
-                    new TheFieldInfo() { FldOrder=24,DataItem=nameof(TheSenderThing.MaxHistoryTime),Flags=2,Type=eFieldType.Number,Header="Max History Time (ms)",FldWidth=3,  DefaultValue="0" },
-                    new TheFieldInfo() { FldOrder=25,DataItem=nameof(TheSenderThing.PropertiesIncluded),Flags=2,Type=eFieldType.PropertyPicker,Header="Properties to Include",FldWidth=3,  DefaultValue="", PropertyBag=new nmiCtrlPropertyPicker{ ThingFld=12, AllowMultiSelect=true } },
-                    new TheFieldInfo() { FldOrder=26,DataItem=nameof(TheSenderThing.PropertiesExcluded),Flags=2,Type=eFieldType.PropertyPicker,Header="Properties to Exclude",FldWidth=3,  DefaultValue="",PropertyBag=new nmiCtrlPropertyPicker{ ThingFld=12, AllowMultiSelect=true } },
-                    new TheFieldInfo() { FldOrder=27,DataItem=nameof(TheSenderThing.StaticProperties),Flags=2,Type=eFieldType.SingleEnded,Header="Properties to Add",FldWidth=3,  DefaultValue="" },
-                    new TheFieldInfo() { FldOrder=28,DataItem=nameof(TheSenderThing.AddThingIdentity),Flags=2,Type=eFieldType.SingleCheck,Header="Send Thing Identity",FldWidth=3 },
-                    new TheFieldInfo() { FldOrder=29,DataItem=nameof(TheSenderThing.SendUnchangedValue),Flags=2,Type=eFieldType.SingleCheck,Header="Send value if unchanged",FldWidth=3,  DefaultValue="false" },
-                    new TheFieldInfo() { FldOrder=30,DataItem=nameof(TheSenderThing.SendInitialValues),Flags=2,Type=eFieldType.SingleCheck,Header="Send initial values",FldWidth=3,  DefaultValue="false" },
-                    new TheFieldInfo() { FldOrder=31,DataItem=nameof(TheSenderThing.IgnoreExistingHistory),Flags=2,Type=eFieldType.SingleCheck,Header="Ignore existing History",FldWidth=3,  DefaultValue="false" },
-                    new TheFieldInfo() { FldOrder=32,DataItem=nameof(TheSenderThing.TokenExpirationInHours),Flags=2,Type=eFieldType.Number,Header="Token Lifetime (hours)",FldWidth=3,  DefaultValue="0" },
+                    new TheFieldInfo() { FldOrder=110,DataItem=nameof(TheSenderThing.Disable),Flags=2,Type=eFieldType.SingleCheck,Header="Disable",FldWidth=3,  DefaultValue="false" },
+                    new TheFieldInfo() { FldOrder=120,DataItem=nameof(TheSenderThing.ThingMID),Flags=2, cdeA = 0xC0, Type=eFieldType.ThingPicker,Header="Thing to Send",FldWidth=3,  PropertyBag=new nmiCtrlThingPicker() { IncludeEngines=true, IncludeRemotes=true } },
+                    new TheFieldInfo() { FldOrder=130,DataItem=nameof(TheSenderThing.EventFormat),Flags=2,Type=eFieldType.ComboBox,Header="Event Serializer",FldWidth=3,  PropertyBag=new ThePropertyBag() {"Options="+ TheEventConverters.GetDisplayNamesAsSemicolonSeperatedList() }, DefaultValue = TheEventConverters.GetDisplayName(typeof(JSonPropertyEventConverter)) },
+                    //new TheFieldInfo() { FldOrder=140,DataItem=nameof(TheSenderThing.ChangeNaNToNull),Flags=2,Type=eFieldType.SingleCheck,Header="Change NaN to Null for double/float",FldWidth=3,  DefaultValue="false" },
+                    new TheFieldInfo() { FldOrder=150,DataItem=nameof(TheSenderThing.PreserveOrder),Flags=2,Type=eFieldType.SingleCheck,Header="Preserve Order Per Thing",FldWidth=3,  DefaultValue="false" },
+                    UXNoPartitionKey ? null : new TheFieldInfo() { FldOrder=160,DataItem=nameof(TheSenderThing.PartitionKey),Flags=2,Type=eFieldType.ComboBox,Header="Partition Key for EventHub",FldWidth=3,  PropertyBag=new ThePropertyBag() {"Options="+ TheSenderThing.PartitionKeyChoices.Aggregate ("", (a,p) => a+p+";").TrimEnd(';') } },
+                    new TheFieldInfo() { FldOrder=170,DataItem=nameof(TheSenderThing.ChangeBufferTimeBucketSize),Flags=2,Type=eFieldType.Number,Header="Sampling Window(in ms)",FldWidth=3,  DefaultValue="100" },
+                    new TheFieldInfo() { FldOrder=180,DataItem=nameof(TheSenderThing.ChangeBufferLatency),Flags=2,Type=eFieldType.Number,Header="Change buffer latency (in ms)",FldWidth=3,  DefaultValue="100" },
+                    //new TheFieldInfo() { FldOrder=200,DataItem=nameof(TheSenderThing.RetryLastValueOnly),Flags=2,Type=eFieldType.SingleCheck,Header="Drop old values on error",FldWidth=3,  DefaultValue="false" },
+                    new TheFieldInfo() { FldOrder=220,DataItem=nameof(TheSenderThing.KeepDurableHistory),Flags=2,Type=eFieldType.SingleCheck,Header="Durable Update History",FldWidth=3,  DefaultValue="true" },
+                    new TheFieldInfo() { FldOrder=230,DataItem=nameof(TheSenderThing.MaxHistoryCount),Flags=2,Type=eFieldType.Number,Header="Max History Item Count",FldWidth=3,  DefaultValue="0" },
+                    new TheFieldInfo() { FldOrder=240,DataItem=nameof(TheSenderThing.MaxHistoryTime),Flags=2,Type=eFieldType.Number,Header="Max History Time (ms)",FldWidth=3,  DefaultValue="0" },
+                    new TheFieldInfo() { FldOrder=250,DataItem=nameof(TheSenderThing.PropertiesIncluded),Flags=2,Type=eFieldType.PropertyPicker,Header="Properties to Include",FldWidth=3,  DefaultValue="", PropertyBag=new nmiCtrlPropertyPicker{ ThingFld=12, AllowMultiSelect=true } },
+                    new TheFieldInfo() { FldOrder=260,DataItem=nameof(TheSenderThing.PropertiesExcluded),Flags=2,Type=eFieldType.PropertyPicker,Header="Properties to Exclude",FldWidth=3,  DefaultValue="",PropertyBag=new nmiCtrlPropertyPicker{ ThingFld=12, AllowMultiSelect=true } },
+                    new TheFieldInfo() { FldOrder=270,DataItem=nameof(TheSenderThing.StaticProperties),Flags=2,Type=eFieldType.SingleEnded,Header="Properties to Add",FldWidth=3,  DefaultValue="" },
+                    new TheFieldInfo() { FldOrder=274,DataItem=nameof(TheSenderThing.ForceAllProperties),Flags=2,Type=eFieldType.SingleEnded,Header="Force all Properties",FldWidth=3,  DefaultValue="" },
+                    new TheFieldInfo() { FldOrder=277,DataItem=nameof(TheSenderThing.ForceConfigProperties),Flags=2,Type=eFieldType.SingleEnded,Header="Force Config Properties",FldWidth=3,  DefaultValue="" },
+                    new TheFieldInfo() { FldOrder=280,DataItem=nameof(TheSenderThing.AddThingIdentity),Flags=2,Type=eFieldType.SingleCheck,Header="Send Thing Identity",FldWidth=3 },
+                    new TheFieldInfo() { FldOrder=290,DataItem=nameof(TheSenderThing.SendUnchangedValue),Flags=2,Type=eFieldType.SingleCheck,Header="Send value if unchanged",FldWidth=3,  DefaultValue="false" },
+                    new TheFieldInfo() { FldOrder=300,DataItem=nameof(TheSenderThing.SendInitialValues),Flags=2,Type=eFieldType.SingleCheck,Header="Send initial values",FldWidth=3,  DefaultValue="false" },
+                    new TheFieldInfo() { FldOrder=310,DataItem=nameof(TheSenderThing.IgnoreExistingHistory),Flags=2,Type=eFieldType.SingleCheck,Header="Ignore existing History",FldWidth=3,  DefaultValue="false" },
+                    new TheFieldInfo() { FldOrder=320,DataItem=nameof(TheSenderThing.TokenExpirationInHours),Flags=2,Type=eFieldType.Number,Header="Token Lifetime (hours)",FldWidth=3,  DefaultValue="0" },
                 });
 
-                TheNMIEngine.AddTableButtons(tSenderThingsForm, false, 100);
+                TheNMIEngine.AddTableButtons(tSenderThingsForm, false, 10000);
 
                 // Add link to Sender Thing list to Connection form
                 // TheNMIEngine.AddSmartControl(MyBaseThing, tMyForm, eFieldType.TileButton, 18, 2, 0xF0, "Show Sender Thing List", null, new nmiCtrlTileButton() { OnClick = $"TTS:{tSenderThingsForm.cdeMID}", ClassName = "cdeTransitButton", ParentFld = 1, NoTE = true });
@@ -1046,6 +1057,7 @@ namespace nsTheSenderBase
             }
 
             // The Sender TSMs Form: User accesses by clicking the "Show Sender TSM List" button.
+            if (!UXNoTSMForm)
             {
 
                 // Form for the Things for which events are to be sent to the cloud
@@ -1063,9 +1075,9 @@ namespace nsTheSenderBase
                     new TheFieldInfo() { FldOrder=26,DataItem = nameof(TheSenderTSM.AckTXTTemplate),Flags=2,Type=eFieldType.SingleEnded,Header="Template for Ack TXT",FldWidth=3,  DefaultValue="" },
                     new TheFieldInfo() { FldOrder=27,DataItem = nameof(TheSenderTSM.AckPLSTemplate),Flags=2,Type=eFieldType.SingleEnded,Header="Template for Ack PLS",FldWidth=3,  DefaultValue="" },
                     new TheFieldInfo() { FldOrder=28,DataItem = nameof(TheSenderTSM.AckToAll),Flags=2,Type=eFieldType.SingleCheck,Header="Ack to All",FldWidth=3, },
-                    new TheFieldInfo() { FldOrder=30,DataItem = nameof(TheSenderTSM.MQTTTopicTemplate),Flags=2,Type=eFieldType.SingleEnded,Header="MQTT Topic Template",FldWidth=3,  DefaultValue="" },
-                    new TheFieldInfo() { FldOrder=35,DataItem = nameof(TheSenderTSM.SendAsFile),Flags=2,Type=eFieldType.SingleCheck,Header="Send as File",FldWidth=3,  DefaultValue="" },
-                    new TheFieldInfo() { FldOrder=40,DataItem = nameof(TheSenderTSM.SerializeTSM),Flags=2,Type=eFieldType.SingleCheck,Header="Send entire TSM",FldWidth=3,  DefaultValue="" },
+                    UXNoMQTTTopicTemplate ? null : new TheFieldInfo() { FldOrder=30,DataItem = nameof(TheSenderTSM.MQTTTopicTemplate),Flags=2,Type=eFieldType.SingleEnded,Header="MQTT Topic Template",FldWidth=3,  DefaultValue="" },
+                    UXNoSendAsFile ? null : new TheFieldInfo() { FldOrder=35,DataItem = nameof(TheSenderTSM.SendAsFile),Flags=2,Type=eFieldType.SingleCheck,Header="Send as File",FldWidth=3,  DefaultValue="" },
+                    UXNoSendEntireTSM ? null : new TheFieldInfo() { FldOrder=40,DataItem = nameof(TheSenderTSM.SerializeTSM),Flags=2,Type=eFieldType.SingleCheck,Header="Send entire TSM",FldWidth=3,  DefaultValue="" },
                 });
 
                 TheNMIEngine.AddTableButtons(tSenderTSMsForm, false, 100);
