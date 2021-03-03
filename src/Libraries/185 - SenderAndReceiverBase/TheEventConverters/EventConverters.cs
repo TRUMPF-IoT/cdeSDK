@@ -30,7 +30,7 @@ namespace nsTheEventConverters
     {
         bool AddThingIdentity { get; }
         TheThing GetThing();
-        HashSet<string> GetPropertiesToSend();
+        HashSet<string> GetPropertiesToSend(bool useCached);
     }
 
     public abstract class IEventConverter
@@ -112,7 +112,7 @@ namespace nsTheEventConverters
                         sampledThing.ClonePropertyValues(schemaThing);
 
                         // Only include the properties that are being sent
-                        var propertyList = senderThing.GetPropertiesToSend();
+                        var propertyList = senderThing.GetPropertiesToSend(true);
                         if (propertyList != null)
                         {
                             foreach (var prop in schemaThing.GetAllProperties(10))

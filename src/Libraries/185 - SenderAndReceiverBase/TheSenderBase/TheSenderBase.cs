@@ -1778,7 +1778,7 @@ namespace nsTheSenderBase
                                                 TheBaseAssets.MySYSLOG.WriteToLog(95221, TSM.L(eDEBUG_LEVELS.FULLVERBOSE) ? null : new TSM(MyBaseThing.EngineName, $"{MyBaseThing.DeviceType} '{MyBaseThing.FriendlyName}' '{thingToSample.FriendlyName}'({thingToSample.cdeMID}): Sending thing", eMsgLevel.l6_Debug, $"{thingUpdate.PB.Count} - {thingUpdate.cdeCTIM}"));
                                                 TheBaseAssets.MySYSLOG.WriteToLog(98264, TSM.L(eDEBUG_LEVELS.FULLVERBOSE) ? null : new TSM(MyBaseThing.EngineName, $"{MyBaseThing.DeviceType} '{MyBaseThing.FriendlyName}' '{thingToSample.FriendlyName}'({thingToSample.cdeMID}): Sending thing", eMsgLevel.l3_ImportantMessage, GetThingStoreAsString(thingUpdate)));
 
-                                                var thingUpdateToSend = thingUpdate.CloneForThingSnapshot(null, false, null, null, true);
+                                                var thingUpdateToSend = thingUpdate.CloneForThingSnapshot(null, false, null, true);
                                                 thingUpdateToSend.cdeMID = thingToSample.cdeMID;
                                                 foreach (var nv in staticProperties)
                                                 {

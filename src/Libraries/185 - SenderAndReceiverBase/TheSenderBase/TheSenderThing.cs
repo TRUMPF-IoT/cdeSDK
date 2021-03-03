@@ -98,10 +98,12 @@ namespace nsTheSenderBase
                 && TheCommonUtils.CGuid(ThingMID) == TheCommonUtils.CGuid(senderThingToAdd.ThingMID)
                 && PropertiesIncluded == senderThingToAdd.PropertiesIncluded
                 && PropertiesExcluded == senderThingToAdd.PropertiesExcluded
+                && (ForceAllProperties ?? false) == (senderThingToAdd.ForceAllProperties ?? false)
+                && (ForceConfigProperties ?? false) == (senderThingToAdd.ForceConfigProperties ?? false)
                 && PreserveOrder == senderThingToAdd.PreserveOrder
                 && SendUnchangedValue == senderThingToAdd.SendUnchangedValue
-                && SendInitialValues == senderThingToAdd.SendInitialValues
-                && IgnoreExistingHistory == senderThingToAdd.IgnoreExistingHistory
+                && (SendInitialValues ?? false) == (senderThingToAdd.SendInitialValues ?? false)
+                && (IgnoreExistingHistory ?? false) == (senderThingToAdd.IgnoreExistingHistory ?? false)
                 && TokenExpirationInHours == senderThingToAdd.TokenExpirationInHours
                 && KeepDurableHistory == senderThingToAdd.KeepDurableHistory
                 && MaxHistoryCount == senderThingToAdd.MaxHistoryCount
@@ -125,7 +127,7 @@ namespace nsTheSenderBase
             return ThingMidAsGuid == senderThing.ThingMidAsGuid
                 && StaticProperties == senderThing.StaticProperties
                 && SendUnchangedValue == senderThing.SendUnchangedValue
-                && SendInitialValues == senderThing.SendInitialValues
+                && (SendInitialValues ?? false) == (senderThing.SendInitialValues ?? false)
                 && IgnoreExistingHistory == senderThing.IgnoreExistingHistory
                 && TokenExpirationInHours == senderThing.TokenExpirationInHours
                 && PreserveOrder == senderThing.PreserveOrder
@@ -287,13 +289,25 @@ namespace nsTheSenderBase
 
         public virtual TheHistoryParameters GetHistoryParameters()
         {
+            var propsIncluded = this.GetPropsIncluded();
+            if (!propsIncluded?.Any() == true)
+            {
+                propsIncluded = null;
+            }
+            var propsExcluded = this.GetPropsExcluded();
+            if (!propsExcluded?.Any() == true)
+            {
+                propsExcluded = null;
+            }
             var historyParams = new TheHistoryParameters
             {
                 TokenExpiration = this.TokenExpirationInHours.HasValue ? new TimeSpan?(new TimeSpan((int)this.TokenExpirationInHours, 0, 0)) : null,
                 MaxCount = this.MaxHistoryCount,
                 MaxAge = new TimeSpan(0, 0, 0, 0, (int)this.MaxHistoryTime),
-                Properties = this.GetPropsIncluded(),
-                PropertiesToExclude = this.GetPropsExcluded(),
+                Properties = propsIncluded,
+                PropertiesToExclude = propsExcluded,
+                FilterToConfigProperties = (GetThing()?.Capabilities.Contains(eThingCaps.ConfigManagement) ?? false) && ForceAllProperties != true && ForceConfigProperties == true,
+                FilterToSensorProperties = (GetThing()?.Capabilities.Contains(eThingCaps.SensorContainer) ?? false) && ForceAllProperties != true,
                 SamplingWindow = new TimeSpan(0, 0, 0, 0, (int)this.ChangeBufferTimeBucketSize),
                 CooldownPeriod = new TimeSpan(0, 0, 0, 0, (int)this.ChangeBufferLatency),
                 ReportUnchangedProperties = this.SendUnchangedValue,
@@ -420,6 +434,8 @@ namespace nsTheSenderBase
             PropertiesIncluded = senderThingToAdd.PropertiesIncluded != null ? TheCommonUtils.CListToString(senderThingToAdd.PropertiesIncluded, ",") : null;
             PropertiesExcluded = senderThingToAdd.PropertiesExcluded != null ? TheCommonUtils.CListToString(senderThingToAdd.PropertiesExcluded, ",") : null;
             PropertiesToMatch = CDictToString(senderThingToAdd.PropertiesToMatch);
+            ForceAllProperties = senderThingToAdd.ForceAllProperties;
+            ForceConfigProperties = senderThingToAdd.ForceConfigProperties;
             AddThingIdentity = senderThingToAdd.AddThingIdentity;
             StaticProperties = CDictToString(senderThingToAdd.StaticProperties);
             PreserveOrder = false;
@@ -460,6 +476,8 @@ namespace nsTheSenderBase
             PropertiesExcluded = senderThing.PropertiesExcluded;
             PropertiesIncluded = senderThing.PropertiesIncluded;
             SendUnchangedValue = senderThing.SendUnchangedValue;
+            ForceAllProperties = senderThing.ForceAllProperties;
+            ForceConfigProperties = senderThing.ForceConfigProperties;
             SendInitialValues = senderThing.SendInitialValues;
             IgnoreExistingHistory = senderThing.IgnoreExistingHistory;
             TokenExpirationInHours = senderThing.TokenExpirationInHours;
@@ -675,30 +693,28 @@ namespace nsTheSenderBase
             return pendingHistoryLoops?.Where(kv => kv.Value.owner == ownerThing).Select(kv => kv.Value.senderThing).ToList() ?? new List<TheSenderThing>();
         }
 
+        HashSet<string> _propertiesToSendCached;
+        public HashSet<string> GetPropertiesToSend(bool useCached)
+        {
+            if (_propertiesToSendCached == null)
+            {
+                _propertiesToSendCached = GetPropertiesToSend();
+            }
+            return _propertiesToSendCached;
+        }
         public HashSet<string> GetPropertiesToSend()
         {
             HashSet<string> propertyNamesToSend;
-            if (String.IsNullOrEmpty(PropertiesIncluded))
+            var matchingProperties = GetThing()?.GetMatchingProperties(GetHistoryParameters());
+            if (matchingProperties != null)
             {
-                var propsToSend = GetThing().GetBaseThing().GetAllProperties(10).AsEnumerable();
-                if (ForceAllProperties != true && (GetThing().Capabilities.Contains(eThingCaps.SensorContainer) || GetThing().Capabilities.Contains(eThingCaps.ConfigManagement)))
-                {
-                    propsToSend = propsToSend.Where(p => p.IsSensor || ((ForceConfigProperties == true) && p.IsConfig));
-                }
-                propertyNamesToSend = new HashSet<string>(propsToSend.Select(p => p.Name));
-
+                propertyNamesToSend = new HashSet<string>(matchingProperties);
             }
             else
             {
-                propertyNamesToSend = new HashSet<string>(GetPropsIncluded());
+                propertyNamesToSend = new HashSet<string>();
             }
-            if (!string.IsNullOrEmpty(PropertiesExcluded))
-            {
-                foreach (var propName in GetPropsExcluded())
-                {
-                    propertyNamesToSend.Remove(propName);
-                }
-            }
+            _propertiesToSendCached = propertyNamesToSend;
             return propertyNamesToSend;
         }
 
