@@ -108,6 +108,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "cdeTelnetShared", "Librarie
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Project.CDMyPlugin", "CDEngineSDKTemplates\CDEngineSDKTemplates.project.CDMyPlugin\Project.CDMyPlugin.csproj", "{3FB2F987-C1E8-4874-93B2-35B7E7E0BF13}"
 EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "TheWebConnect", "Libraries\199 - CDE-WebConnect\TheWebConnect\TheWebConnect.shproj", "{9CCD5C30-05CA-4FA6-98C9-E3E881C1692E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "cdeWebConnect", "Libraries\199 - CDE-WebConnect\TheWebConnect\cdeWebConnect.csproj", "{2BA62F57-77D9-4BB7-8159-8B3D66B1CD37}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		Libraries\185 - SenderAndReceiverBase\TheThingMatcher\TheThingMatcher.projitems*{3cdeda4c-c6d3-4255-9324-475e6764431a}*SharedItemsImports = 13
@@ -116,6 +120,7 @@ Global
 		MessageContracts\144 - TheCommonMessageContracts\TheCommonMessageContracts\TheCommonMessageContracts.projitems*{5b124834-f6f1-493d-9b3e-ff0f072f8183}*SharedItemsImports = 13
 		MessageContracts\078 - CDMyOPCUAClient\APIs\MyOPCUAClientAPI\MyOPCUAClientAPI.projitems*{9469b76a-32e9-4917-a9b5-e133e0666cc7}*SharedItemsImports = 13
 		Libraries\185 - SenderAndReceiverBase\TheConnectionBase\TheConnectionBase.projitems*{9c8cc825-09b6-4320-a34b-22029f085012}*SharedItemsImports = 13
+		Libraries\199 - CDE-WebConnect\TheWebConnect\TheWebConnect.projitems*{9ccd5c30-05ca-4fa6-98c9-e3e881c1692e}*SharedItemsImports = 13
 		Libraries\185 - SenderAndReceiverBase\TheReceiverBase\TheReceiverBase.projitems*{d2fb39c4-e828-4184-8e3b-342f61cb154f}*SharedItemsImports = 13
 		Libraries\185 - SenderAndReceiverBase\TheSenderBase\TheSenderBase.projitems*{ea4fffbc-c803-4b10-ba13-1587a1fc0f06}*SharedItemsImports = 13
 	EndGlobalSection
@@ -213,6 +218,10 @@ Global
 		{3FB2F987-C1E8-4874-93B2-35B7E7E0BF13}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{3FB2F987-C1E8-4874-93B2-35B7E7E0BF13}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3FB2F987-C1E8-4874-93B2-35B7E7E0BF13}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2BA62F57-77D9-4BB7-8159-8B3D66B1CD37}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2BA62F57-77D9-4BB7-8159-8B3D66B1CD37}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2BA62F57-77D9-4BB7-8159-8B3D66B1CD37}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2BA62F57-77D9-4BB7-8159-8B3D66B1CD37}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -253,6 +262,8 @@ Global
 		{C3287A61-CC6B-46E4-BACB-CC5A1E1581C5} = {F32A0417-74E9-4185-9538-DA83B59F7124}
 		{4AB3ADF1-CFDD-4F59-A740-0E09ED7296B4} = {BE921EAC-572E-4DF4-824B-33DE6F58BA52}
 		{3FB2F987-C1E8-4874-93B2-35B7E7E0BF13} = {0E73ECE9-B340-4AA3-9A18-BE10AC15CF84}
+		{9CCD5C30-05CA-4FA6-98C9-E3E881C1692E} = {BE921EAC-572E-4DF4-824B-33DE6F58BA52}
+		{2BA62F57-77D9-4BB7-8159-8B3D66B1CD37} = {BE921EAC-572E-4DF4-824B-33DE6F58BA52}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {75C94C50-175D-4EFC-B610-B4B9A3584DE7}
