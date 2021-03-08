@@ -1,9 +1,10 @@
-﻿using nsCDEngine.BaseClasses;
+﻿// SPDX-FileCopyrightText: 2009-2020 TRUMPF Laser GmbH, authors: C-Labs
+//
+// SPDX-License-Identifier: MPL-2.0
+using nsCDEngine.BaseClasses;
 using nsCDEngine.Communication;
 using nsCDEngine.ViewModels;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace TheWebConnect
 {
