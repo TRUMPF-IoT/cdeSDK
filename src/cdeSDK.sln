@@ -119,7 +119,6 @@ EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		Libraries\185 - SenderAndReceiverBase\TheThingMatcher\TheThingMatcher.projitems*{3cdeda4c-c6d3-4255-9324-475e6764431a}*SharedItemsImports = 13
-		MessageContracts\034 - EnergyModel\cdeEnergyData\cdeEnergyData.projitems*{4208d570-0999-4c9d-9a86-7580119a50a6}*SharedItemsImports = 13
 		Libraries\185 - SenderAndReceiverBase\TheEventConverters\TheEventConverters.projitems*{4652f20e-c456-4536-8d2f-85c2422cfc58}*SharedItemsImports = 13
 		MessageContracts\078 - CDMyOPCUAClient\APIs\MyOPCUAClientContracts\MyOPCUAClientContracts.projitems*{56dd1f1c-6644-4298-a132-c3254096b72e}*SharedItemsImports = 13
 		MessageContracts\144 - TheCommonMessageContracts\TheCommonMessageContracts\TheCommonMessageContracts.projitems*{5b124834-f6f1-493d-9b3e-ff0f072f8183}*SharedItemsImports = 13
