@@ -112,9 +112,14 @@ Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "TheWebConnect", "Libraries\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "cdeWebConnect", "Libraries\199 - CDE-WebConnect\TheWebConnect\cdeWebConnect.csproj", "{2BA62F57-77D9-4BB7-8159-8B3D66B1CD37}"
 EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "cdeEnergyData", "MessageContracts\034 - EnergyModel\cdeEnergyData\cdeEnergyData.shproj", "{4208D570-0999-4C9D-9A86-7580119A50A6}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "cdeEnergyContractsShared", "MessageContracts\034 - EnergyModel\cdeEnergyData\cdeEnergyContractsShared.csproj", "{DE3D7742-BCA2-4432-AEA1-50466618A940}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		Libraries\185 - SenderAndReceiverBase\TheThingMatcher\TheThingMatcher.projitems*{3cdeda4c-c6d3-4255-9324-475e6764431a}*SharedItemsImports = 13
+		MessageContracts\034 - EnergyModel\cdeEnergyData\cdeEnergyData.projitems*{4208d570-0999-4c9d-9a86-7580119a50a6}*SharedItemsImports = 13
 		Libraries\185 - SenderAndReceiverBase\TheEventConverters\TheEventConverters.projitems*{4652f20e-c456-4536-8d2f-85c2422cfc58}*SharedItemsImports = 13
 		MessageContracts\078 - CDMyOPCUAClient\APIs\MyOPCUAClientContracts\MyOPCUAClientContracts.projitems*{56dd1f1c-6644-4298-a132-c3254096b72e}*SharedItemsImports = 13
 		MessageContracts\144 - TheCommonMessageContracts\TheCommonMessageContracts\TheCommonMessageContracts.projitems*{5b124834-f6f1-493d-9b3e-ff0f072f8183}*SharedItemsImports = 13
@@ -222,6 +227,10 @@ Global
 		{2BA62F57-77D9-4BB7-8159-8B3D66B1CD37}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2BA62F57-77D9-4BB7-8159-8B3D66B1CD37}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2BA62F57-77D9-4BB7-8159-8B3D66B1CD37}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DE3D7742-BCA2-4432-AEA1-50466618A940}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DE3D7742-BCA2-4432-AEA1-50466618A940}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DE3D7742-BCA2-4432-AEA1-50466618A940}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DE3D7742-BCA2-4432-AEA1-50466618A940}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -264,6 +273,8 @@ Global
 		{3FB2F987-C1E8-4874-93B2-35B7E7E0BF13} = {0E73ECE9-B340-4AA3-9A18-BE10AC15CF84}
 		{9CCD5C30-05CA-4FA6-98C9-E3E881C1692E} = {BE921EAC-572E-4DF4-824B-33DE6F58BA52}
 		{2BA62F57-77D9-4BB7-8159-8B3D66B1CD37} = {BE921EAC-572E-4DF4-824B-33DE6F58BA52}
+		{4208D570-0999-4C9D-9A86-7580119A50A6} = {ED82BA02-E0A9-4935-BCCC-C3FAD112A4CB}
+		{DE3D7742-BCA2-4432-AEA1-50466618A940} = {ED82BA02-E0A9-4935-BCCC-C3FAD112A4CB}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {75C94C50-175D-4EFC-B610-B4B9A3584DE7}

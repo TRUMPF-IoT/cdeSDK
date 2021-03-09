@@ -1,0 +1,35 @@
+ <!--
+ SPDX-FileCopyrightText: 2009-2020 TRUMPF Laser GmbH, authors: C-Labs
+ SPDX-License-Identifier: MPL-2.0
+ -->
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>library</OutputType>
+    <PackageId>cdeEnergyContractsShared</PackageId>
+    <Version>1.0.1.11</Version>
+    <TargetFrameworks>netstandard2.0;net45</TargetFrameworks>
+    <Authors>Chris Muench</Authors>
+    <Company>C-Labs</Company>
+    <Copyright>Copyright © 2015-2020 TRUMPF Laser GmbH, authors: C-Labs</Copyright>
+    <PackageLicenseExpression>MPL-2.0</PackageLicenseExpression>
+    <PackageDescription>Energy message contracts</PackageDescription>
+    <PackageIcon>toplogo-128.png</PackageIcon>
+
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <ProjectName>$(AssemblyName).$(TargetFramework)</ProjectName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\..\..\toplogo-128.png" Pack="true" PackagePath=""/>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="C-DEngine" Version="5.*" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="cdeEnergyData.projitems" />
+  </ItemGroup>
+
+</Project>
