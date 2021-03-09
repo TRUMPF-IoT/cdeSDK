@@ -1,0 +1,37 @@
+<!--
+ SPDX-FileCopyrightText: 2009-2020 TRUMPF Laser GmbH, authors: C-Labs
+ SPDX-License-Identifier: MPL-2.0
+ -->
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>library</OutputType>
+    <PackageId>cdeWebConnect</PackageId>
+    <Version>1.0.1.11</Version>
+    <TargetFrameworks>netstandard2.0;net45</TargetFrameworks>
+    <Authors>Chris Muench</Authors>
+    <Company>C-Labs</Company>
+    <Copyright>Copyright © 2015-2020 TRUMPF Laser GmbH, authors: C-Labs</Copyright>
+    <PackageDescription>Web-Connect Library for C-DEngine</PackageDescription>
+    <PackageIcon>toplogo-128.png</PackageIcon>
+    <PackageLicenseExpression>MPL-2.0</PackageLicenseExpression>
+
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <ProjectName>$(AssemblyName).$(TargetFramework)</ProjectName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="TheWebConnect.projitems" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\..\..\toplogo-128.png" Link="toplogo-128.png">
+      <PackagePath></PackagePath>
+      <Pack>true</Pack>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="C-DEngine" Version="5.*" />
+  </ItemGroup>
+</Project>
