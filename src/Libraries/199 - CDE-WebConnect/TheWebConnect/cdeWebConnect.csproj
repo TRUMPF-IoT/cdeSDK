@@ -25,6 +25,22 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Remove="**\*.cs" />
+    <Compile Remove="obj\**" />
+    <Content Include="**\*.cs" buildAction="Compile" PackagePath="content\Shared\$(PackageId)" />
+    <Content Include="**\*.cs" buildAction="Compile" PackagePath="contentFiles\cs\netstandard2.0\Shared\$(PackageId)" />
+    <Content Include="**\*.cs" buildAction="Compile" PackagePath="contentFiles\cs\net45\Shared\$(PackageId)" />
+    <Compile Include="**\*.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="obj\**" />
+    <Content Remove="obj\**" />
+    <EmbeddedResource Remove="obj\**" />
+    <None Remove="obj\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Include="..\..\..\toplogo-128.png" Link="toplogo-128.png">
       <PackagePath></PackagePath>
       <Pack>true</Pack>
