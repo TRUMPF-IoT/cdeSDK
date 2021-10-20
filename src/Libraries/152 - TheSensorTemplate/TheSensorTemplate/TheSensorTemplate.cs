@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2009-2020 TRUMPF Laser GmbH, authors: C-Labs
+// SPDX-FileCopyrightText: 2009-2021 TRUMPF Laser GmbH, authors: C-Labs
 //
 // SPDX-License-Identifier: MPL-2.0
 
@@ -11,6 +11,7 @@ using nsCDEngine.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Threading.Tasks;
 
 namespace TheSensorTemplate
 {
@@ -151,12 +152,32 @@ namespace TheSensorTemplate
             }
         }
 
+        public Task<List<T>> GetValuesAsync()
+        {
+            if (MySensorHistory.IsRAMStore)
+            {
+                var sensorHistory = MySensorHistory;
+                if (sensorHistory == null || sensorHistory.Count == 0) return null;
+                return TheCommonUtils.TaskFromResult(sensorHistory.TheValues);
+            }
+            TaskCompletionSource<List<T>> tcs = new TaskCompletionSource<List<T>>();
+            void callback(TheStorageMirror<T>.StoreResponse resp)
+            {
+                tcs.TrySetResult(resp?.MyRecords);
+            }
+            MySensorHistory.GetRecords(callback,true);
+            return tcs.Task;
+        }
+
         internal List<T> GetValues()
         {
-            var sensorHistory = MySensorHistory;
-            if (sensorHistory == null || sensorHistory.Count == 0) return null;
-
-            return sensorHistory.TheValues;
+            if (MySensorHistory.IsRAMStore)
+            {
+                var sensorHistory = MySensorHistory;
+                if (sensorHistory == null || sensorHistory.Count == 0) return null;
+                return sensorHistory.TheValues;
+            }
+            return GetValuesAsync().Result;
         }
         public cdeConcurrentDictionary<string, TheFieldInfo> CreateHistoryTrendUX(TheFormInfo pForm, int pFldOrder, int pParent, string pGroupTitle, string pChartTitle, string pValName, bool HideScale = false, bool OnlyShowValue = false, ThePropertyBag pChartBag = null)
         {

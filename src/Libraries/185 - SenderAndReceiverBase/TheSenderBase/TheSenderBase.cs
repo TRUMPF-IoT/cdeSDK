@@ -1004,10 +1004,10 @@ namespace nsTheSenderBase
             {
                 // Group: Advanced Configuration (Collapsible Group Field Order = 40)
                 TheNMIEngine.AddSmartControl(MyBaseThing, tMyForm, eFieldType.CollapsibleGroup, 40, 2, 0xC0, "Advanced Configurations...", null, ThePropertyBag.Create(new nmiCtrlCollapsibleGroup() { ParentFld = 1, TileWidth = 6, DoClose = true, IsSmall = true }));//() { "TileWidth=6", "Format=Advanced Configurations", "Style=font-size:26px;text-align: left" });
-                TheNMIEngine.AddSmartControl(MyBaseThing, tMyForm, eFieldType.SingleCheck, 44, 2, 0xC0, "Preserve Order for all Things", nameof(PreserveSendOrderAllThings), new ThePropertyBag() { "ParentFld=40", "TileWidth=2", "TileHeight=1" });
-                TheNMIEngine.AddSmartControl(MyBaseThing, tMyForm, eFieldType.SingleCheck, 80, 2, 0xC0, "Merge matching Sender Things", nameof(MergeSenderThings), new ThePropertyBag() { "ParentFld=40", "TileWidth=2", "TileHeight=1" });
-                TheNMIEngine.AddSmartControl(MyBaseThing, tMyForm, eFieldType.Number, 85, 2, 0xC0, "Max Updates per batch", nameof(SenderUpdatesPerBatch), new nmiCtrlNumber { LabelFontSize = 16, ParentFld = 40, TileHeight = 1, TileWidth = 3 });
-                TheNMIEngine.AddSmartControl(MyBaseThing, tMyForm, eFieldType.Number, 87, 2, 0xC0, "Send Retry Period (ms)", nameof(SenderRetryPeriod), new nmiCtrlNumber { LabelFontSize = 16, ParentFld = 40, TileHeight = 1, TileWidth = 3 });
+                TheNMIEngine.AddSmartControl(MyBaseThing, tMyForm, eFieldType.SingleCheck, 44, 2, 0xC0, "Preserve Order for all Things", nameof(PreserveSendOrderAllThings), new ThePropertyBag() { "ParentFld=40", "TileWidth=3" });
+                TheNMIEngine.AddSmartControl(MyBaseThing, tMyForm, eFieldType.SingleCheck, 80, 2, 0xC0, "Merge matching Sender Things", nameof(MergeSenderThings), new ThePropertyBag() { "ParentFld=40", "TileWidth=3" });
+                TheNMIEngine.AddSmartControl(MyBaseThing, tMyForm, eFieldType.Number, 85, 2, 0xC0, "Max Updates per batch", nameof(SenderUpdatesPerBatch), new nmiCtrlNumber { LabelFontSize = 16, ParentFld = 40, TileWidth = 3 });
+                TheNMIEngine.AddSmartControl(MyBaseThing, tMyForm, eFieldType.Number, 87, 2, 0xC0, "Send Retry Period (ms)", nameof(SenderRetryPeriod), new nmiCtrlNumber { LabelFontSize = 16, ParentFld = 40, TileWidth = 3 });
                 AddClearHistoryButton(tMyForm, 89, 40);
             }
 
@@ -1068,7 +1068,7 @@ namespace nsTheSenderBase
                 tSenderTSMsForm = TheNMIEngine.AddForm(new TheFormInfo(TheThing.GetSafeThingGuid(MyBaseThing, "SenderTSMs_ID"), eEngineName.NMIService, "Sender: TSMs to Publish", tDataSource) { AddButtonText = "Add New TSM", TileHeight = 10, TileWidth = -1 });
                 // TheNMIEngine.AddFormToThingUX(MyBaseThing, tSenderTSMsForm, "CMyTable", "Sender TSM List", 1, 3, 0xF0, null, null, new ThePropertyBag() { "Visibility=false" });
                 TheNMIEngine.AddFields(tSenderTSMsForm, new List<TheFieldInfo> {
-                    new TheFieldInfo() { FldOrder=11,DataItem="Disable",Flags=2,Type=eFieldType.SingleCheck,Header="Disable",FldWidth=3,  DefaultValue="false" },
+                    new TheFieldInfo() { FldOrder=11,DataItem="Disable",Flags=2,Type=eFieldType.SingleCheck,Header="Disable",FldWidth=1,  DefaultValue="false" },
                     new TheFieldInfo() { FldOrder=20,DataItem = nameof(TheSenderTSM.SourceEngineName),Flags=2,Type=eFieldType.SingleEnded,Header="Source Engine Name",FldWidth=2,  DefaultValue="" },
                     new TheFieldInfo() { FldOrder=22,DataItem = nameof(TheSenderTSM.TargetEngineName),Flags=2,Type=eFieldType.SingleEnded,Header="Target Engine Name",FldWidth=2,  DefaultValue="" },
                     new TheFieldInfo() { FldOrder=25,DataItem = nameof(TheSenderTSM.TXTPattern),Flags=2,Type=eFieldType.SingleEnded,Header="Pattern for TXTs Include",FldWidth=2,  DefaultValue="" },

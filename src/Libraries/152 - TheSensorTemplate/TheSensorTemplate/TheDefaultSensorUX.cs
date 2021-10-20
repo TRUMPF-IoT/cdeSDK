@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2009-2020 TRUMPF Laser GmbH, authors: C-Labs
+// SPDX-FileCopyrightText: 2009-2021 TRUMPF Laser GmbH, authors: C-Labs
 //
 // SPDX-License-Identifier: MPL-2.0
 
@@ -139,7 +139,7 @@ namespace TheSensorTemplate
                 {
                     "NoTE=true", "ParentFld=12040", $"SubTitle={tQVN}", $"SetSeries={{\"name\": \"{tQVN}\"}}",
                     "TileWidth=6", "TileHeight=4", "ControlType=Stack Chart",
-                    $"XAxis={{ \"categories\": {mBucket.GetBuckets()} }}", $"iValue={mBucket.GetBucketArray()}"
+                    $"XAxis={{ \"categories\": {mBucket?.GetBuckets()} }}", $"iValue={mBucket?.GetBucketArray()}"
                 });
 
             TheSensorNMI.CreateDeviceDetails(MyBaseThing, tMyForm, 12060, 12000, null); // new List<string> { $"{tQVN},{tQV}" });
@@ -214,9 +214,12 @@ namespace TheSensorTemplate
                 LiveChartFld?.SetUXProperty(Guid.Empty, $"MaxValue={TheThing.GetSafePropertyString(MyBaseThing, "StateSensorMaxValue")}:;:MinValue={TheThing.GetSafePropertyString(MyBaseThing, "StateSensorMinValue")}");
                 GaugeFld?.SetUXProperty(Guid.Empty, $"MaxValue={TheThing.GetSafePropertyString(MyBaseThing, "StateSensorMaxValue")}:;:MinValue={TheThing.GetSafePropertyString(MyBaseThing, "StateSensorMinValue")}");
 
-                mBucket = new TheBucketChart<T>((int)TheThing.GetSafePropertyNumber(MyBaseThing, "StateSensorMinValue"), (int)TheThing.GetSafePropertyNumber(MyBaseThing, "StateSensorMaxValue"), (int)TheThing.GetSafePropertyNumber(MyBaseThing, "StateSensorSteps"), true);
-                BucketChartFld?.SetUXProperty(Guid.Empty, $"XAxis={{ \"categories\": {mBucket.GetBuckets()} }}");
-                TheThing.SetSafePropertyString(MyBaseThing, "BucketChart", mBucket.GetBucketArray());
+                if (mBucket != null)
+                {
+                    mBucket = new TheBucketChart<T>((int)TheThing.GetSafePropertyNumber(MyBaseThing, "StateSensorMinValue"), (int)TheThing.GetSafePropertyNumber(MyBaseThing, "StateSensorMaxValue"), (int)TheThing.GetSafePropertyNumber(MyBaseThing, "StateSensorSteps"), true);
+                    BucketChartFld?.SetUXProperty(Guid.Empty, $"XAxis={{ \"categories\": {mBucket.GetBuckets()} }}");
+                    TheThing.SetSafePropertyString(MyBaseThing, "BucketChart", mBucket.GetBucketArray());
+                }
             }
         }
     }
