@@ -2333,21 +2333,37 @@ namespace nsTheSenderBase
                     }
                     else if (partName.StartsWith("PLSValue") && !string.IsNullOrEmpty(tsmToSend.PLS))
                     {
-                        var valueName = partName.Substring("PLSValue".Length);
-                        if (!string.IsNullOrEmpty(valueName))
+                        var plsValueParams = partName.Substring("PLSValue".Length);
+                        if (!string.IsNullOrEmpty(plsValueParams))
                         {
                             try
                             {
-                                if (plsParsed == null)
+                                var valueNames = plsValueParams.Split(':');
+                                if(valueNames.Length > 0)
                                 {
-                                    plsParsed = TheCommonUtils.DeserializeJSONStringToObject<object>(tsmToSend.PLS);
-                                }
-                                if (plsParsed != null)
-                                {
-                                    var plsValue = TheCommonUtils.GetJSONValueByPath(plsParsed, valueName)?.ToString();
-                                    if (!string.IsNullOrEmpty(plsValue))
+                                    if (plsParsed == null)
                                     {
-                                        topic += TheCommonUtils.CStr(plsValue);
+                                        plsParsed = TheCommonUtils.DeserializeJSONStringToObject<object>(tsmToSend.PLS);
+                                    }
+
+                                    if (plsParsed != null)
+                                    {
+                                        var parsedObject = plsParsed;
+                                        for(var i = 0; i < valueNames.Length; i++)
+                                        {
+                                            var plsValue = TheCommonUtils.GetJSONValueByPath(parsedObject, valueNames[i])?.ToString();
+                                            if (string.IsNullOrEmpty(plsValue)) break;
+                                            
+                                            if(i == valueNames.Length - 1)
+                                            {
+                                                topic += TheCommonUtils.CStr(plsValue);
+                                            }
+                                            else
+                                            {
+                                                parsedObject = TheCommonUtils.DeserializeJSONStringToObject<object>(plsValue);
+                                                if (parsedObject == null) break;
+                                            }
+                                        }
                                     }
                                 }
                             }
