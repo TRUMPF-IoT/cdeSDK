@@ -41,7 +41,7 @@ namespace $safeprojectname$
             {
                 mIsInitCalled = true;
                 MyBaseThing.StatusLevel = 4;
-                MyBaseThing.LastMessage = "Service has started";
+                SetMessage("Service has started", DateTimeOffset.Now);
 
                 MyBaseThing.RegisterEvent(eEngineEvents.IncomingMessage, HandleMessage);
                 MyBaseEngine.RegisterEvent(eEngineEvents.ThingDeleted, OnThingDeleted);
@@ -113,7 +113,7 @@ namespace $safeprojectname$
                                     }
                                     if (deviceTypeClass != null)
                                     {
-                                        TheThingRegistry.RegisterThing(Activator.CreateInstance(deviceTypeClass, tDev, this) as ICDEThing);
+                                        TheThingRegistry.RegisterThing(Activator.CreateInstance(deviceTypeClass, tDev, this.GetBaseEngine()) as ICDEThing);
                                     }
                                     break;
                                 }

@@ -41,10 +41,10 @@ namespace $safeprojectname$
             set { TheThing.MemberSetSafePropertyBool(MyBaseThing, value); }
         }
 
-        public cdeThingDeviceTypeA(TheThing tBaseThing, ICDEPlugin pPluginBase)
+        public cdeThingDeviceTypeA(TheThing tBaseThing, IBaseEngine pPluginBase)
         {
             MyBaseThing = tBaseThing ?? new TheThing();
-            MyBaseEngine = pPluginBase.GetBaseEngine();
+            MyBaseEngine = pPluginBase;
             MyBaseThing.EngineName = MyBaseEngine.GetEngineName();
             MyBaseThing.SetIThingObject(this);
 
@@ -58,6 +58,8 @@ namespace $safeprojectname$
             {
                 mIsInitCalled = true;
                 IsConnected = false;
+                MyBaseThing.StatusLevel = 0;
+                SetMessage("Service is ready", DateTimeOffset.Now);
                 MyBaseEngine.RegisterEvent(eEngineEvents.ShutdownEvent, DoEndMe);
                 DoInit();
                 if (AutoConnect)
@@ -114,11 +116,11 @@ namespace $safeprojectname$
 
         public virtual void Connect(TheProcessMessage pMsg)
         {
-
+            MyBaseThing.StatusLevel = 1;
         }
         public virtual void Disconnect(TheProcessMessage pMsg)
         {
-
+            MyBaseThing.StatusLevel = 0;
         }
 
         public override bool Delete()

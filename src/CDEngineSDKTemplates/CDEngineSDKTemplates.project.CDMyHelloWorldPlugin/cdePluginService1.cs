@@ -43,7 +43,7 @@ namespace $safeprojectname$
                 // MyBaseThing.StatusLevel = 4;
                 // MyBaseThing.LastMessage="Service is starting";
                 MyBaseThing.StatusLevel = 1;
-                MyBaseThing.LastMessage = "Hello World service has started.";
+                SetMessage("Hello World service has started.", DateTimeOffset.Now);
                 mIsInitialized = true;
                 MyBaseEngine.ProcessInitialized();
             }

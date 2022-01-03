@@ -39,7 +39,7 @@ namespace $rootnamespace$
             if (!mIsInitCalled)
             {
                 mIsInitCalled = true;
-                MyBaseThing.LastMessage = "Thing has started";
+                SetMessage("Thing has started", DateTimeOffset.Now);
                 MyBaseThing.StatusLevel = 1;
                 mIsInitialized = true;
             }
