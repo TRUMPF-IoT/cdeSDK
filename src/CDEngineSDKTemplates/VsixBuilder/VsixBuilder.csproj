@@ -122,13 +122,6 @@
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
       <IncludeOutputGroupsInVSIX>TemplateProjectOutputGroup%3b</IncludeOutputGroupsInVSIX>
     </ProjectReference>
-    <ProjectReference Include="..\CDEngineSDKTemplates.project.cdeHostProject\Project.cdeHostProject.csproj">
-      <Project>{fae3f4f5-b1b4-49b9-8e79-9a371a36cc13}</Project>
-      <Name>Project.cdeHostProject</Name>
-      <VSIXSubPath>ProjectTemplates</VSIXSubPath>
-      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
-      <IncludeOutputGroupsInVSIX>TemplateProjectOutputGroup%3b</IncludeOutputGroupsInVSIX>
-    </ProjectReference>
     <ProjectReference Include="..\CDEngineSDKTemplates.project.cdeHostWinForms\Project.cdeAppHostWinForms.csproj">
       <Project>{85351BFA-67F1-4394-A883-328F49587D6E}</Project>
       <Name>Project.cdeAppHostWinForms</Name>

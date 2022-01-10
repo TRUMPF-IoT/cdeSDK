@@ -40,7 +40,7 @@ namespace $rootnamespace$
             {
                 mIsInitCalled = true;
                 MyBaseThing.StatusLevel = 4;
-                MyBaseThing.LastMessage = "Service has started";
+                SetMessage("Service has started", DateTimeOffset.Now);
 
                 MyBaseThing.RegisterEvent(eEngineEvents.IncomingMessage, HandleMessage);
                 MyBaseEngine.RegisterEvent(eEngineEvents.ThingDeleted, OnThingDeleted);

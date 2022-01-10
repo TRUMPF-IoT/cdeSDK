@@ -93,6 +93,8 @@ namespace $rootnamespace$
             {
                 mIsInitCalled = true;
                 IsConnected = false;
+                SetMessage("Thing Ready", DateTimeOffset.Now);
+                MyBaseThing.StatusLevel = 0;
                 MyBaseEngine.RegisterEvent(eEngineEvents.ShutdownEvent, DoEndMe);
                 TheThing.SetSafePropertyString(MyBaseThing, "StateSensorValueName", "Current Consumption");
                 TheThing.SetSafePropertyString(MyBaseThing, "StateSensorUnit", "Watts");
@@ -171,13 +173,17 @@ namespace $rootnamespace$
                 Disconnect(pMsg);
         }
 
+
         public virtual void Connect(TheProcessMessage pMsg)
         {
-
+            SetMessage("Thing Connected", DateTimeOffset.Now);
+            MyBaseThing.StatusLevel = 1;
         }
+
         public virtual void Disconnect(TheProcessMessage pMsg)
         {
-
+            SetMessage("Thing Disconnected", DateTimeOffset.Now);
+            MyBaseThing.StatusLevel = 0;
         }
 
         public override bool Delete()
