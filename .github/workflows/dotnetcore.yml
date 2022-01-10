@@ -66,7 +66,7 @@ jobs:
       run: dotnet build './src/cdeSDK.sln' --configuration Release --no-restore --disable-parallel  /nowarn:nu5105
 
     - name: setup-msbuild
-      uses: microsoft/setup-msbuild@v1
+      uses: microsoft/setup-msbuild@v1.1
 
     - name: Build VSIX templates
       run: msbuild "./src/CDEngineSDKTemplates/VsixBuilder.sln" /p:Configuration=Release /p:OutDir=..\..\..\bin\Release
