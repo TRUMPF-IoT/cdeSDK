@@ -13,7 +13,8 @@ on:
 jobs:
   build:
 
-    runs-on: windows-latest
+    # TODO Change back to windows-latest once it include VS2022 (needed for VSIX)
+    runs-on: windows-2022
 
     steps:
     - uses: actions/checkout@v2
