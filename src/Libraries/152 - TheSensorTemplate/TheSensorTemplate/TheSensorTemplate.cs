@@ -61,7 +61,7 @@ namespace TheSensorTemplate
                 SamplingWindow = pSamplePeriod, 
                 MaintainHistoryStore = true,
                 MaxAge = new TimeSpan(KeepForDays, 0, 0, 0),
-                Persistent = !TheCommonUtils.IsNetCore(),
+                Persistent = true,
                 Properties = TheCommonUtils.CStringToList(propertyName, ';'), 
                 OwnerName = friendlyName,
                 HistoryStoreParameters = new TheStorageMirrorParameters
