@@ -46,4 +46,6 @@
     <None Remove="cdeEnergyData.projitems" />
   </ItemGroup>
 
+  <Import Project="..\cdeEnergyModel\cdeEnergyModel.projitems" Label="Shared" />
+
 </Project>
