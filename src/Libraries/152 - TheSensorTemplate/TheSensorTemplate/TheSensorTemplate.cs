@@ -51,6 +51,7 @@ namespace TheSensorTemplate
             var description = TheThing.GetSafePropertyString(sender, "StoreDescription");
             if (string.IsNullOrEmpty(description))
                 description = $"Stores history records for the Sensor Historian of {friendlyName}";
+            bool persistentCache = TheCDEngines.MyIStorageService == null || ForceUseRAMStore;
             historyParams = new TheHistoryParameters
             {
                 ComputeAvg = bComputeMiniStats,
@@ -61,15 +62,16 @@ namespace TheSensorTemplate
                 SamplingWindow = pSamplePeriod, 
                 MaintainHistoryStore = true,
                 MaxAge = new TimeSpan(KeepForDays, 0, 0, 0),
-                Persistent = true,
+                Persistent = true, // Ensure that no updates are lost during startup
+                TokenExpiration = new TimeSpan(0, 1, 0, 0), // Queue is drained into history store in normal operation: no need to buffer for longer than 1 hour
                 Properties = TheCommonUtils.CStringToList(propertyName, ';'), 
                 OwnerName = friendlyName,
                 HistoryStoreParameters = new TheStorageMirrorParameters
                 {
-                    IsRAMStore = TheCDEngines.MyIStorageService==null || ForceUseRAMStore,
-                    IsCached = TheCDEngines.MyIStorageService == null || ForceUseRAMStore,
+                    IsRAMStore = persistentCache,
+                    IsCached = persistentCache,
                     CacheStoreInterval = new TimeSpan(0, 0, 0, 60, 0), // CODE REVIEW: OK to store only every minute instead of 10s?
-                    IsCachePersistent = TheCDEngines.MyIStorageService == null || ForceUseRAMStore,
+                    IsCachePersistent = persistentCache,
                     UseSafeSave = !DontUseSafeSafeStore,
                     TrackInsertionOrder = true,
                     FriendlyName = friendlyName,
