@@ -85,6 +85,8 @@ namespace TheSensorTemplate
             get { return TheThing.GetSafePropertyBool(MyBaseThing, "IsConnected"); }
             set { TheThing.SetSafePropertyBool(MyBaseThing, "IsConnected", value); }
         }
+
+        [ConfigProperty]
         public bool AutoConnect
         {
             get { return TheThing.GetSafePropertyBool(MyBaseThing, "AutoConnect"); }
