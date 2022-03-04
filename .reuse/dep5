@@ -399,11 +399,15 @@ Files: src/readme.md
 Copyright: 2009-2022 TRUMPF Laser GmbH, authors: C-Labs
 License: MPL-2.0
 
-Files: src/Libraries/34 - EnergyModel/cdeEnergyModel.shproj
+Files: src/MessageContracts/34 - EnergyModel/cdeEnergyModel.shproj
 Copyright: 2009-2022 TRUMPF Laser GmbH, authors: C-Labs
 License: MPL-2.0
 
-Files: src/Libraries/34 - EnergyModel/cdeEnergyModel.projitems
+Files: src/MessageContracts/34 - EnergyModel/cdeEnergyModel.cs
+Copyright: 2009-2022 TRUMPF Laser GmbH, authors: C-Labs
+License: MPL-2.0
+
+Files: src/MessageContracts/34 - EnergyModel/cdeEnergyModel.projitems
 Copyright: 2009-2022 TRUMPF Laser GmbH, authors: C-Labs
 License: MPL-2.0
 
