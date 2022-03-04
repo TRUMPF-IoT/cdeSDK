@@ -34,6 +34,20 @@
     <EmbeddedResource Remove="obj\**" />
     <None Remove="obj\**" />
   </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="cdeEnergyModel.cs" />
+    <Compile Remove="cmyEnergyData.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="cdeEnergyModel.cs" />
+    <Content Remove="cdeEnergyModel.cs" />
+    <Content Remove="cdeEnergyModel.cs" />
+    <Content Remove="cmyEnergyData.cs" />
+    <Content Remove="cmyEnergyData.cs" />
+    <Content Remove="cmyEnergyData.cs" />
+  </ItemGroup>
   <ItemGroup>
     <None Include="..\..\..\toplogo-128.png" Pack="true" PackagePath="" />
   </ItemGroup>
