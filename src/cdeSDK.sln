@@ -1,6 +1,6 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.29102.190
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32120.378
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "cdeSensorTemplate", "Libraries\152 - TheSensorTemplate\TheSensorTemplate\cdeSensorTemplate.csproj", "{EBA221C1-B2D1-4001-9AD6-8DCD10EE302A}"
 EndProject
@@ -114,9 +114,15 @@ Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "cdeEnergyData", "MessageCon
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "cdeEnergyContractsShared", "MessageContracts\034 - EnergyModel\cdeEnergyData\cdeEnergyContractsShared.csproj", "{DE3D7742-BCA2-4432-AEA1-50466618A940}"
 EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "cdeNMIHelper", "Libraries\324 - NMIHelper\cdeNMIHelper\cdeNMIHelper.shproj", "{0A36CC69-09A8-42FB-A17E-B1EE39656F85}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "cdeEnergyModel", "MessageContracts\034 - EnergyModel\cdeEnergyModel\cdeEnergyModel.shproj", "{3EE1FFDA-231D-40B8-9441-EF2D3481730F}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		Libraries\324 - NMIHelper\cdeNMIHelper\cdeNMIHelper.projitems*{0a36cc69-09a8-42fb-a17e-b1ee39656f85}*SharedItemsImports = 13
 		Libraries\185 - SenderAndReceiverBase\TheThingMatcher\TheThingMatcher.projitems*{3cdeda4c-c6d3-4255-9324-475e6764431a}*SharedItemsImports = 13
+		MessageContracts\034 - EnergyModel\cdeEnergyModel\cdeEnergyModel.projitems*{3ee1ffda-231d-40b8-9441-ef2d3481730f}*SharedItemsImports = 13
 		Libraries\185 - SenderAndReceiverBase\TheEventConverters\TheEventConverters.projitems*{4652f20e-c456-4536-8d2f-85c2422cfc58}*SharedItemsImports = 13
 		MessageContracts\078 - CDMyOPCUAClient\APIs\MyOPCUAClientContracts\MyOPCUAClientContracts.projitems*{56dd1f1c-6644-4298-a132-c3254096b72e}*SharedItemsImports = 13
 		MessageContracts\144 - TheCommonMessageContracts\TheCommonMessageContracts\TheCommonMessageContracts.projitems*{5b124834-f6f1-493d-9b3e-ff0f072f8183}*SharedItemsImports = 13
@@ -124,6 +130,7 @@ Global
 		Libraries\185 - SenderAndReceiverBase\TheConnectionBase\TheConnectionBase.projitems*{9c8cc825-09b6-4320-a34b-22029f085012}*SharedItemsImports = 13
 		Libraries\199 - CDE-WebConnect\TheWebConnect\TheWebConnect.projitems*{9ccd5c30-05ca-4fa6-98c9-e3e881c1692e}*SharedItemsImports = 13
 		Libraries\185 - SenderAndReceiverBase\TheReceiverBase\TheReceiverBase.projitems*{d2fb39c4-e828-4184-8e3b-342f61cb154f}*SharedItemsImports = 13
+		MessageContracts\034 - EnergyModel\cdeEnergyModel\cdeEnergyModel.projitems*{de3d7742-bca2-4432-aea1-50466618a940}*SharedItemsImports = 5
 		Libraries\185 - SenderAndReceiverBase\TheSenderBase\TheSenderBase.projitems*{ea4fffbc-c803-4b10-ba13-1587a1fc0f06}*SharedItemsImports = 13
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -268,6 +275,8 @@ Global
 		{2BA62F57-77D9-4BB7-8159-8B3D66B1CD37} = {BE921EAC-572E-4DF4-824B-33DE6F58BA52}
 		{4208D570-0999-4C9D-9A86-7580119A50A6} = {ED82BA02-E0A9-4935-BCCC-C3FAD112A4CB}
 		{DE3D7742-BCA2-4432-AEA1-50466618A940} = {ED82BA02-E0A9-4935-BCCC-C3FAD112A4CB}
+		{0A36CC69-09A8-42FB-A17E-B1EE39656F85} = {BE921EAC-572E-4DF4-824B-33DE6F58BA52}
+		{3EE1FFDA-231D-40B8-9441-EF2D3481730F} = {BE921EAC-572E-4DF4-824B-33DE6F58BA52}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {75C94C50-175D-4EFC-B610-B4B9A3584DE7}

@@ -10,7 +10,7 @@
     <TargetFrameworks>netstandard2.0;net45</TargetFrameworks>
     <Authors>Chris Muench</Authors>
     <Company>C-Labs</Company>
-    <Copyright>Copyright © 2015-2020 TRUMPF Laser GmbH, authors: C-Labs</Copyright>
+    <Copyright>Copyright © 2015-2022 TRUMPF Laser GmbH, authors: C-Labs</Copyright>
     <PackageLicenseExpression>MPL-2.0</PackageLicenseExpression>
     <PackageDescription>Energy message contracts</PackageDescription>
     <PackageIcon>toplogo-128.png</PackageIcon>
@@ -34,6 +34,16 @@
     <EmbeddedResource Remove="obj\**" />
     <None Remove="obj\**" />
   </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="cdeEnergyModel.cs" />
+    <Compile Remove="cmyEnergyData.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="cdeEnergyModel.cs" />
+    <Content Remove="cmyEnergyData.cs" />
+  </ItemGroup>
   <ItemGroup>
     <None Include="..\..\..\toplogo-128.png" Pack="true" PackagePath="" />
   </ItemGroup>
@@ -45,5 +55,7 @@
   <ItemGroup>
     <None Remove="cdeEnergyData.projitems" />
   </ItemGroup>
+
+  <Import Project="..\cdeEnergyModel\cdeEnergyModel.projitems" Label="Shared" />
 
 </Project>
