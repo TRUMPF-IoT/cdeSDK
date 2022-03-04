@@ -406,3 +406,11 @@ License: MPL-2.0
 Files: src/Libraries/34 - EnergyModel/cdeEnergyModel.projitems
 Copyright: 2009-2022 TRUMPF Laser GmbH, authors: C-Labs
 License: MPL-2.0
+
+Files: src/Libraries/324 - NMIHelper/cdeNMIHelper/cdeNMIHelper.projitems
+Copyright: 2009-2022 TRUMPF Laser GmbH, authors: C-Labs
+License: MPL-2.0
+
+Files: src/Libraries/324 - NMIHelper/cdeNMIHelper/cdeNMIHelper.shproj
+Copyright: 2009-2022 TRUMPF Laser GmbH, authors: C-Labs
+License: MPL-2.0
