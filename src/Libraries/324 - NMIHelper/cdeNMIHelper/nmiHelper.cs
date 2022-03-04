@@ -2,6 +2,7 @@
 //
 // SPDX-License-Identifier: MPL-2.0
 
+using nsCDEngine.Engines.NMIService;
 using NMI = nsCDEngine.Engines.NMIService.TheNMIEngine;
 using TT = nsCDEngine.Engines.ThingService.TheThing;
 
@@ -9,7 +10,7 @@ namespace cdeNMIHelper
 {
     public static class nmiHelper
     {
-        public static TheFieldInfo AddLineEdit(TheThing MyBaseThing, TheFormInfo pForm, eFieldType pType, int StartFld, int ParentFld, int flg, string pLabel, string pUpdateName, int Width, ThePropertyBag pBag = null)
+        public static TheFieldInfo AddLineEdit(TT MyBaseThing, TheFormInfo pForm, eFieldType pType, int StartFld, int ParentFld, int flg, string pLabel, string pUpdateName, int Width, ThePropertyBag pBag = null)
         {
             NMI.AddSmartControl(MyBaseThing, pForm, eFieldType.TileGroup, StartFld, 0, 0, null, null, new nmiCtrlTileGroup { ParentFld = ParentFld, TileWidth = Width, TileHeight = 1 });
             NMI.AddSmartControl(MyBaseThing, pForm, eFieldType.SmartLabel, StartFld + 1, 0, 0, null, null, new nmiCtrlSmartLabel { Style = "width:80%; font-size:16px; text-align:left", TileFactorY = 4, NoTE = true, Text = pLabel, ParentFld = StartFld, TileWidth = Width });
@@ -19,7 +20,7 @@ namespace cdeNMIHelper
             return fld;
         }
 
-        public static TheFieldInfo Add4x2Edit(TheThing MyBaseThing, TheFormInfo pForm, eFieldType pType, int StartFld, int ParentFld, int flg, string pLabel, string pUpdateName, ThePropertyBag pBag = null)
+        public static TheFieldInfo Add4x2Edit(TT MyBaseThing, TheFormInfo pForm, eFieldType pType, int StartFld, int ParentFld, int flg, string pLabel, string pUpdateName, ThePropertyBag pBag = null)
         {
             NMI.AddSmartControl(MyBaseThing, pForm, eFieldType.TileGroup, StartFld, 0, 0, null, null, new nmiCtrlTileGroup { ParentFld = ParentFld, TileWidth = 6 });
             NMI.AddSmartControl(MyBaseThing, pForm, eFieldType.SmartLabel, StartFld + 1, 0, 0, null, null, new nmiCtrlSmartLabel { Style = "width:80%; font-size:20px; text-align:left; padding:20px;", NoTE = true, Text = pLabel, ParentFld = StartFld, TileWidth = 4 });
@@ -29,7 +30,7 @@ namespace cdeNMIHelper
             return fld;
         }
 
-        public static TheFieldInfo AddSpeedGauge(TheThing MyBaseThing, TheFormInfo tMyForm, int pFldNumber, int pParentFld, string Label, string Units, string UpdateName, int MinVal, int MaxVal, int errLevel, int Wid = 4, bool invertRange = false)
+        public static TheFieldInfo AddSpeedGauge(TT MyBaseThing, TheFormInfo tMyForm, int pFldNumber, int pParentFld, string Label, string Units, string UpdateName, int MinVal, int MaxVal, int errLevel, int Wid = 4, bool invertRange = false)
         {
             string Plotband = $"PlotBand=[{{ \"from\": {MinVal}, \"to\": {errLevel}, \"color\": \"#FF000088\" }}, {{ \"from\": {errLevel}, \"to\": {MaxVal}, \"color\": \"#00FF0044\" }}]";
             if (invertRange)
@@ -41,7 +42,7 @@ namespace cdeNMIHelper
                     $"MaxValue={MaxVal}",
                     $"SubTitle={Units}",
                     Plotband,
-                    $"SetSeries={{ \"name\": \"{Label}\",\"data\": [{TheThing.GetSafePropertyNumber(MyBaseThing,UpdateName)}],\"tooltip\": {{ \"valueSuffix\": \" {Units}\"}}}}",
+                    $"SetSeries={{ \"name\": \"{Label}\",\"data\": [{TT.GetSafePropertyNumber(MyBaseThing,UpdateName)}],\"tooltip\": {{ \"valueSuffix\": \" {Units}\"}}}}",
                 $"Value={TT.GetSafePropertyNumber(MyBaseThing,UpdateName)}"
                      });
         }
