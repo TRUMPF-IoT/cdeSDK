@@ -493,6 +493,28 @@ namespace nsTheSenderBase
 
         virtual internal TheThing.TheThingSubscription GetSubscriptionInfo(bool? bGeneralize)
         {
+            TheThingReference thingReference;
+            var tThing = GetThing();
+            if (tThing != null)
+            {
+                thingReference = new TheThingReference(tThing);
+                if (bGeneralize == true)
+                {
+                    thingReference.ThingMID = null;
+                }
+            }
+            else
+            {
+                thingReference = new TheThingReference()
+                {
+                    ThingMID = (bGeneralize == false && TheCommonUtils.CGuid(this.ThingMID) != Guid.Empty) ? (Guid?)TheCommonUtils.CGuid(this.ThingMID) : null,
+                    EngineName = this.EngineName,
+                    DeviceType = this.DeviceType,
+                    FriendlyName = this.FriendlyName,
+                    PropertiesToMatch = TheSenderThing.CStringToDict(this.PropertiesToMatch),
+                };
+            }
+
             var sub = new TheThing.TheThingSubscription
             {
                 SubscriptionId = this.cdeMID,
@@ -500,14 +522,7 @@ namespace nsTheSenderBase
                 SamplingWindow = this.ChangeBufferTimeBucketSize,
                 ContinueMatching = this.ContinueMatching,
                 CooldownPeriod = this.ChangeBufferLatency,
-                ThingReference = new TheThingReference()
-                {
-                    ThingMID = (bGeneralize == false && TheCommonUtils.CGuid(this.ThingMID) != Guid.Empty) ? (Guid?)TheCommonUtils.CGuid(this.ThingMID) : null,
-                    EngineName = this.EngineName,
-                    DeviceType = this.DeviceType,
-                    FriendlyName = this.FriendlyName,
-                    PropertiesToMatch = TheSenderThing.CStringToDict(this.PropertiesToMatch),
-                },
+                ThingReference = thingReference,
 
                 EventFormat = this.EventFormat,
                 ForceAllProperties = this.ForceAllProperties,
