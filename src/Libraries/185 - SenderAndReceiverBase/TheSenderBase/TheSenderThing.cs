@@ -376,6 +376,22 @@ namespace nsTheSenderBase
             ChangeBufferLatency = subscription.CooldownPeriod ?? 0;
             EngineName = subscription.ThingReference?.EngineName;
             DeviceType = subscription.ThingReference?.DeviceType;
+            if (!string.IsNullOrEmpty(subscription.ThingReference?.ID))
+            {
+                if (subscription.ThingReference.ThingMID == null)
+                {
+                    var matchingThing = subscription.ThingReference?.GetMatchingThing();
+                    if (matchingThing != null)
+                    {
+                        subscription.ThingReference.ThingMID = matchingThing.cdeMID;
+                    }
+                }
+                if (subscription.ThingReference.PropertiesToMatch == null)
+                {
+                    subscription.ThingReference.PropertiesToMatch = new Dictionary<string, object>();
+                }
+                subscription.ThingReference.PropertiesToMatch[nameof(subscription.ThingReference.ID)] = subscription.ThingReference.ID;
+            }
             FriendlyName = subscription.ThingReference?.FriendlyName;
             EventFormat = subscription.EventFormat;
             ThingMID = subscription.ThingReference?.ThingMID?.ToString();
