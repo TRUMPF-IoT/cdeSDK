@@ -57,6 +57,7 @@ namespace nsTheSenderBase
 
         #region ThingProperties
 
+        [ConfigProperty]
         public bool PreserveSendOrderAllThings
         {
             get { return TheThing.GetSafePropertyBool(MyBaseThing, nameof(PreserveSendOrderAllThings)); }
@@ -160,17 +161,20 @@ namespace nsTheSenderBase
             set { TheThing.SetSafePropertyDate(MyBaseThing, nameof(LastSendAttemptTime), value); }
         }
 
+        [ConfigProperty(DefaultValue = 3)]
         public int PoisonEventRetryCount
         {
             get { return (int)TheThing.GetSafePropertyNumber(MyBaseThing, nameof(PoisonEventRetryCount)); }
             set { TheThing.SetSafePropertyNumber(MyBaseThing, nameof(PoisonEventRetryCount), value); }
         }
 
+        [ConfigProperty(DefaultValue = 100)]
         public int SenderUpdatesPerBatch
         {
             get { return (int)TheThing.GetSafePropertyNumber(MyBaseThing, nameof(SenderUpdatesPerBatch)); }
             set { TheThing.SetSafePropertyNumber(MyBaseThing, nameof(SenderUpdatesPerBatch), value); }
         }
+        [ConfigProperty(DefaultValue =30000)]
         public int SenderRetryPeriod
         {
             get { return (int)TheThing.GetSafePropertyNumber(MyBaseThing, nameof(SenderRetryPeriod)); }
@@ -1034,8 +1038,8 @@ namespace nsTheSenderBase
                     new TheFieldInfo() { FldOrder=220,DataItem=nameof(TheSenderThing.KeepDurableHistory),Flags=2,Type=eFieldType.SingleCheck,Header="Durable Update History",FldWidth=1,  DefaultValue="true" },
                     new TheFieldInfo() { FldOrder=230,DataItem=nameof(TheSenderThing.MaxHistoryCount),Flags=2,Type=eFieldType.Number,Header="Max History Item Count",FldWidth=2,  DefaultValue="0" },
                     new TheFieldInfo() { FldOrder=240,DataItem=nameof(TheSenderThing.MaxHistoryTime),Flags=2,Type=eFieldType.Number,Header="Max History Time (ms)",FldWidth=2,  DefaultValue="0" },
-                    new TheFieldInfo() { FldOrder=250,DataItem=nameof(TheSenderThing.PropertiesIncluded),Flags=2,Type=eFieldType.PropertyPicker,Header="Properties to Include",FldWidth=3,  DefaultValue="", PropertyBag=new nmiCtrlPropertyPicker{ ThingFld=12, AllowMultiSelect=true } },
-                    new TheFieldInfo() { FldOrder=260,DataItem=nameof(TheSenderThing.PropertiesExcluded),Flags=2,Type=eFieldType.PropertyPicker,Header="Properties to Exclude",FldWidth=3,  DefaultValue="",PropertyBag=new nmiCtrlPropertyPicker{ ThingFld=12, AllowMultiSelect=true } },
+                    new TheFieldInfo() { FldOrder=250,DataItem=nameof(TheSenderThing.PropertiesIncluded),Flags=2,Type=eFieldType.PropertyPicker,Header="Properties to Include",FldWidth=3,  DefaultValue="", PropertyBag=new nmiCtrlPropertyPicker{ ThingFld=120, AllowMultiSelect=true, Separator = ","  } },
+                    new TheFieldInfo() { FldOrder=260,DataItem=nameof(TheSenderThing.PropertiesExcluded),Flags=2,Type=eFieldType.PropertyPicker,Header="Properties to Exclude",FldWidth=3,  DefaultValue="",PropertyBag=new nmiCtrlPropertyPicker{ ThingFld=120, AllowMultiSelect=true, Separator = "," } },
                     new TheFieldInfo() { FldOrder=270,DataItem=nameof(TheSenderThing.StaticProperties),Flags=2,Type=eFieldType.SingleEnded,Header="Properties to Add",FldWidth=3,  DefaultValue="" },
                     new TheFieldInfo() { FldOrder=274,DataItem=nameof(TheSenderThing.ForceAllProperties),Flags=2,Type=eFieldType.SingleCheck,Header="Force all Properties",FldWidth=1,  DefaultValue="" },
                     new TheFieldInfo() { FldOrder=277,DataItem=nameof(TheSenderThing.ForceConfigProperties),Flags=2,Type=eFieldType.SingleCheck,Header="Force Config Properties",FldWidth=1,  DefaultValue="" },
