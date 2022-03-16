@@ -2,7 +2,7 @@
 //
 // SPDX-License-Identifier: MPL-2.0
 
-﻿/*********************************************************************
+/*********************************************************************
 *
 * Project Name" 185-SenderBase
 *
@@ -16,28 +16,24 @@
 *               "FldOrder" for UX 10 to 
 *********************************************************************/
 //#define TESTDIRECTUPDATES
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-using System.Threading.Tasks;
-using System.Threading;
-
-using nsCDEngine.Engines;
 using nsCDEngine.BaseClasses;
 using nsCDEngine.Communication;
-using nsCDEngine.ViewModels;
-using nsCDEngine.Engines.StorageService;
+using nsCDEngine.Engines;
 using nsCDEngine.Engines.NMIService;
+using nsCDEngine.Engines.StorageService;
 using nsCDEngine.Engines.ThingService;
+using nsCDEngine.ViewModels;
 using nsTheConnectionBase;
-using TheCommonMessageContracts;
-using System.Text.RegularExpressions;
-
 using nsTheEventConverters;
 using nsTheThingToPublish;
+using System;
+using System.Collections.Generic;
 using System.Globalization;
+using System.Linq;
+using System.Text.RegularExpressions;
+using System.Threading;
+using System.Threading.Tasks;
+using TheCommonMessageContracts;
 
 
 namespace nsTheSenderBase
@@ -200,13 +196,13 @@ namespace nsTheSenderBase
                         try
                         {
 
-                        var request = TheCommRequestResponse.ParseRequestMessageJSON<MsgAddThingsToPublish>(pMsg.Message);
-                        if (request == null)
-                        {
-                            responseMsg.Error = "Error parsing request message";
-                        }
-                        else
-                        {
+                            var request = TheCommRequestResponse.ParseRequestMessageJSON<MsgAddThingsToPublish>(pMsg.Message);
+                            if (request == null)
+                            {
+                                responseMsg.Error = "Error parsing request message";
+                            }
+                            else
+                            {
                                 foreach (var thingToAdd in request.Things)
                                 {
                                     var subscription = new TheThing.TheThingSubscription
@@ -249,8 +245,8 @@ namespace nsTheSenderBase
                                     var thingStatus = AddThingSubscription(subscription);
                                     responseMsg.ThingStatus.Add(thingStatus);
                                 }
-                        }
-                        RegisterSenderThingsForSend();
+                            }
+                            RegisterSenderThingsForSend();
                         }
                         catch (Exception ex)
                         {
@@ -373,7 +369,7 @@ namespace nsTheSenderBase
             throw new NotImplementedException("Override or call TheSenderThing.GetSubscriptionInfo instead.");
         }
 
-        private void DoHandleMessage<requestT, responseT>(TSM requestTSM, Action<requestT, responseT> handler) 
+        private void DoHandleMessage<requestT, responseT>(TSM requestTSM, Action<requestT, responseT> handler)
             where requestT : class, new()
             where responseT : class, TheThing.IMsgResponse, new()
         {
@@ -659,7 +655,7 @@ namespace nsTheSenderBase
                         await TheCommonUtils.TaskDelayOneEye(30000, 100).ConfigureAwait(false); ;
                         while (!IsConnected && AutoConnect && TheBaseAssets.MasterSwitch)
                         {
-                            
+
                             if (!MyBaseThing.cdePendingConfig)
                             {
                                 Connect();
@@ -1034,8 +1030,8 @@ namespace nsTheSenderBase
                     new TheFieldInfo() { FldOrder=220,DataItem=nameof(TheSenderThing.KeepDurableHistory),Flags=2,Type=eFieldType.SingleCheck,Header="Durable Update History",FldWidth=1,  DefaultValue="true" },
                     new TheFieldInfo() { FldOrder=230,DataItem=nameof(TheSenderThing.MaxHistoryCount),Flags=2,Type=eFieldType.Number,Header="Max History Item Count",FldWidth=2,  DefaultValue="0" },
                     new TheFieldInfo() { FldOrder=240,DataItem=nameof(TheSenderThing.MaxHistoryTime),Flags=2,Type=eFieldType.Number,Header="Max History Time (ms)",FldWidth=2,  DefaultValue="0" },
-                    new TheFieldInfo() { FldOrder=250,DataItem=nameof(TheSenderThing.PropertiesIncluded),Flags=2,Type=eFieldType.PropertyPicker,Header="Properties to Include",FldWidth=3,  DefaultValue="", PropertyBag=new nmiCtrlPropertyPicker{ ThingFld=12, AllowMultiSelect=true } },
-                    new TheFieldInfo() { FldOrder=260,DataItem=nameof(TheSenderThing.PropertiesExcluded),Flags=2,Type=eFieldType.PropertyPicker,Header="Properties to Exclude",FldWidth=3,  DefaultValue="",PropertyBag=new nmiCtrlPropertyPicker{ ThingFld=12, AllowMultiSelect=true } },
+                    new TheFieldInfo() { FldOrder=250,DataItem=nameof(TheSenderThing.PropertiesIncluded),Flags=2,Type=eFieldType.PropertyPicker,Header="Properties to Include",FldWidth=3,  DefaultValue="", PropertyBag=new nmiCtrlPropertyPicker{ ThingFld=120, AllowMultiSelect=true, Separator="," } },
+                    new TheFieldInfo() { FldOrder=260,DataItem=nameof(TheSenderThing.PropertiesExcluded),Flags=2,Type=eFieldType.PropertyPicker,Header="Properties to Exclude",FldWidth=3,  DefaultValue="",PropertyBag=new nmiCtrlPropertyPicker{ ThingFld=120, AllowMultiSelect=true, Separator="," } },
                     new TheFieldInfo() { FldOrder=270,DataItem=nameof(TheSenderThing.StaticProperties),Flags=2,Type=eFieldType.SingleEnded,Header="Properties to Add",FldWidth=3,  DefaultValue="" },
                     new TheFieldInfo() { FldOrder=274,DataItem=nameof(TheSenderThing.ForceAllProperties),Flags=2,Type=eFieldType.SingleCheck,Header="Force all Properties",FldWidth=1,  DefaultValue="" },
                     new TheFieldInfo() { FldOrder=277,DataItem=nameof(TheSenderThing.ForceConfigProperties),Flags=2,Type=eFieldType.SingleCheck,Header="Force Config Properties",FldWidth=1,  DefaultValue="" },
@@ -2339,7 +2335,7 @@ namespace nsTheSenderBase
                             try
                             {
                                 var valueNames = plsValueParams.Split(':');
-                                if(valueNames.Length > 0)
+                                if (valueNames.Length > 0)
                                 {
                                     if (plsParsed == null)
                                     {
@@ -2349,12 +2345,12 @@ namespace nsTheSenderBase
                                     if (plsParsed != null)
                                     {
                                         var parsedObject = plsParsed;
-                                        for(var i = 0; i < valueNames.Length; i++)
+                                        for (var i = 0; i < valueNames.Length; i++)
                                         {
                                             var plsValue = TheCommonUtils.GetJSONValueByPath(parsedObject, valueNames[i])?.ToString();
                                             if (string.IsNullOrEmpty(plsValue)) break;
-                                            
-                                            if(i == valueNames.Length - 1)
+
+                                            if (i == valueNames.Length - 1)
                                             {
                                                 topic += TheCommonUtils.CStr(plsValue);
                                             }
@@ -2565,5 +2561,5 @@ namespace nsTheSenderBase
         }
 
     }
-  
+
 }
