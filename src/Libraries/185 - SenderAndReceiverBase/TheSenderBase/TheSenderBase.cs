@@ -1304,8 +1304,11 @@ namespace nsTheSenderBase
                         if (MergeSenderThings)
                         {
                             // Merge sender things to minimize the set of history tokens/sender loops
-                            DoMergeSenderThings(nextSenderThing, configuredSenderThings);
-
+                            var mergedSender = DoMergeSenderThings(nextSenderThing, configuredSenderThings);
+                            if (mergedSender != null)
+                            {
+                                orphanedSenders.RemoveAll(rs => rs.cdeMID == mergedSender.cdeMID);
+                            }
                             var sendersRemoved = orphanedSenders.RemoveAll(rs => rs.IsMatching(nextSenderThing));
                             if (sendersRemoved > 1)
                             {
@@ -1427,13 +1430,14 @@ namespace nsTheSenderBase
             }
         }
 
-        private void DoMergeSenderThings(TSenderThing senderThing, List<TSenderThing> configuredSenderThings)
+        private TSenderThing DoMergeSenderThings(TSenderThing senderThing, List<TSenderThing> configuredSenderThings)
         {
             TSenderThing mergedSenderThing = null;
             var matchingThings = GetMatchingSenderThings(senderThing, configuredSenderThings).ToList();
             if (!matchingThings.Any())
             {
                 RegisterSenderThingForSendInternal(senderThing, true);
+                mergedSenderThing = senderThing;
             }
             else
             {
@@ -1534,6 +1538,7 @@ namespace nsTheSenderBase
                     MySenderThings.UpdateItem(senderThing);
                 }
             }
+            return mergedSenderThing;
         }
 
         /// <summary>
