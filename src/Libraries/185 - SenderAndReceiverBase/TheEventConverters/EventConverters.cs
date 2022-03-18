@@ -264,7 +264,7 @@ namespace nsTheEventConverters
     public class JSonThingEventConverter : IEventConverter
     {
         public string DisplayName { get; set; }
-        public Func<TheThing, TheThingStore, bool> ApplyUpdateCallback { get; internal set; }
+        public Func<TheThing, TheThingStore, bool> ApplyUpdateCallback { get; set; }
 
         public override IEnumerable<object> GetEventData(IEnumerable<TheThingStore> thingUpdates, IThingToConvert senderThing, int maxEventDataSize, bool doNotBatchEvents)
         {
