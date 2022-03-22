@@ -70,7 +70,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_Readme", "_Readme", "{9CEE
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "cdeOPCUAClientAPI", "MessageContracts\078 - CDMyOPCUAClient\APIs\MyOPCUAClientAPI\cdeOPCUAClientAPI.csproj", "{37F9AF8F-D273-4A2B-972A-957E045BD4ED}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "cdeOPCUAClientContracts", "MessageContracts\078 - CDMyOPCUAClient\APIs\MyOPCUAClientContracts\cdeOPCUAClientContracts.csproj", "{66D00BE3-11EF-4C7F-8643-80EFA08BE3AF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "cdeOPCUAClientContractsShared", "MessageContracts\078 - CDMyOPCUAClient\APIs\MyOPCUAClientContracts\cdeOPCUAClientContractsShared.csproj", "{66D00BE3-11EF-4C7F-8643-80EFA08BE3AF}"
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "TheConnectionBase", "Libraries\185 - SenderAndReceiverBase\TheConnectionBase\TheConnectionBase.shproj", "{9C8CC825-09B6-4320-A34B-22029F085012}"
 EndProject
@@ -94,7 +94,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "cdeSenderBaseShared", "Libr
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SenderAndReceiverBase", "SenderAndReceiverBase", "{E5DC19DA-228B-4F0E-9CF4-D3C60A6C2B62}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "cdeThingMatcher", "Libraries\185 - SenderAndReceiverBase\TheThingMatcher\cdeThingMatcher.csproj", "{0F2F7A87-9683-4E2B-BDD8-702132C3C9A8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "cdeThingMatcherShared", "Libraries\185 - SenderAndReceiverBase\TheThingMatcher\cdeThingMatcherShared.csproj", "{0F2F7A87-9683-4E2B-BDD8-702132C3C9A8}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tools", "Tools", "{F32A0417-74E9-4185-9538-DA83B59F7124}"
 EndProject
