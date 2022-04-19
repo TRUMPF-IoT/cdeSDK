@@ -32,6 +32,7 @@ namespace cdeEnergyBase
         public const string EnergyTankUpdate = "EnergyTankUpdate";
     }
 
+    [OPCUAType(UATypeNodeId = "nsu=http://c-labs.com/UA/EnergyDevices;i=1001")]
     public class TheEnergyBase : TheThingBase
     {
         [ConfigProperty]
@@ -41,16 +42,19 @@ namespace cdeEnergyBase
             set { TT.MemberSetSafePropertyNumber(MyBaseThing, value); }
         }
 
+        [OPCUAProperty(UABrowseName = "CurrentPower")]
         public double Watts
         {
             get { return CU.CDbl(TT.MemberGetSafePropertyNumber(MyBaseThing)); }
             set { TT.MemberSetSafePropertyNumber(MyBaseThing, value); }
         }
+        [OPCUAProperty(UABrowseName = "CurrentVolt")]
         public double Volts
         {
             get { return CU.CDbl(TT.MemberGetSafePropertyNumber(MyBaseThing)); }
             set { TT.MemberSetSafePropertyNumber(MyBaseThing, value); }
         }
+        [OPCUAProperty(UABrowseName = "CurrentAmps")]
         public double Ampere
         {
             get { return CU.CDbl(TT.MemberGetSafePropertyNumber(MyBaseThing)); }
@@ -59,6 +63,7 @@ namespace cdeEnergyBase
 
         public override bool Init()
         {
+            TT.SetSafePropertyNumber(MyBaseThing, "ManufacturingCarbonFootprint", 0.001); //1KG if not specified
             TheCDEngines.RegisterNewMiniRelay("EnergyMessages");
             return base.Init();
         }
