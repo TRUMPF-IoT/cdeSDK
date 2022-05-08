@@ -1,13 +1,12 @@
-﻿using CDMyEnergy.ViewModels;
+﻿// SPDX-FileCopyrightText: 2009-2021 TRUMPF Laser GmbH, authors: C-Labs
+//
+// SPDX-License-Identifier: MPL-2.0
+using CDMyEnergy.ViewModels;
 using nsCDEngine.BaseClasses;
 using nsCDEngine.Engines;
 using nsCDEngine.Engines.ThingService;
-using nsCDEngine.ViewModels;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using CU = nsCDEngine.BaseClasses.TheCommonUtils;
-using NMI = nsCDEngine.Engines.NMIService.TheNMIEngine;
 using TCC = nsCDEngine.Communication.TheCommCore;
 using TT = nsCDEngine.Engines.ThingService.TheThing;
 
@@ -25,7 +24,7 @@ namespace cdeEnergyBase
 
     public class eEnergyMessages
     {
-        public const string EnergyStorageUpdate="EnergyStorageUpdate";
+        public const string EnergyStorageUpdate = "EnergyStorageUpdate";
         public const string EnergyProducerUpdate = "EnergyStoragProducerUpdate";
         public const string EnergyConsumerUpdate = "EnergyConsumerUpdate";
         public const string EnergyBreakerUpdate = "EnergyBreakerUpdate";
@@ -33,6 +32,7 @@ namespace cdeEnergyBase
         public const string EnergyTankUpdate = "EnergyTankUpdate";
     }
 
+    [OPCUAType(UATypeNodeId = "nsu=http://c-labs.com/UA/EnergyDevices;i=1001")]
     public class TheEnergyBase : TheThingBase
     {
         [ConfigProperty]
@@ -42,16 +42,19 @@ namespace cdeEnergyBase
             set { TT.MemberSetSafePropertyNumber(MyBaseThing, value); }
         }
 
+        [OPCUAProperty(UABrowseName = "CurrentPower")]
         public double Watts
         {
             get { return CU.CDbl(TT.MemberGetSafePropertyNumber(MyBaseThing)); }
             set { TT.MemberSetSafePropertyNumber(MyBaseThing, value); }
         }
+        [OPCUAProperty(UABrowseName = "CurrentVolt")]
         public double Volts
         {
             get { return CU.CDbl(TT.MemberGetSafePropertyNumber(MyBaseThing)); }
             set { TT.MemberSetSafePropertyNumber(MyBaseThing, value); }
         }
+        [OPCUAProperty(UABrowseName = "CurrentAmps")]
         public double Ampere
         {
             get { return CU.CDbl(TT.MemberGetSafePropertyNumber(MyBaseThing)); }
@@ -60,15 +63,16 @@ namespace cdeEnergyBase
 
         public override bool Init()
         {
+            TT.SetSafePropertyNumber(MyBaseThing, "ManufacturingCarbonFootprint", 0.001); //1KG if not specified
             TheCDEngines.RegisterNewMiniRelay("EnergyMessages");
             return base.Init();
         }
 
         private DateTimeOffset LastPublish = DateTimeOffset.MinValue;
 
-        public virtual void SendEnergyData(eEnergyThingCaps pSenderType, TheEnergyData LastEnergyData, bool Force=false)
+        public virtual void SendEnergyData(eEnergyThingCaps pSenderType, TheEnergyData LastEnergyData, bool Force = false)
         {
-            if (LastEnergyData==null || (Force ==false && (PublishInterval == 0 || DateTimeOffset.Now.Subtract(LastPublish).TotalSeconds < PublishInterval))) 
+            if (LastEnergyData == null || (Force == false && (PublishInterval == 0 || DateTimeOffset.Now.Subtract(LastPublish).TotalSeconds < PublishInterval)))
                 return;
             LastPublish = DateTimeOffset.Now;
             LastEnergyData.Time = DateTime.Now;
