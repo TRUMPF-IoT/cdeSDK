@@ -50,7 +50,6 @@ namespace cdeTelnet
             }
         }
 
-#if !CDE_NET35 && !CDE_NET4
         /// <summary>
         /// Connects to a telnet server and starts a polling thread
         /// </summary>
@@ -71,8 +70,6 @@ namespace cdeTelnet
             }
             return false;
         }
-#endif
-#if !CDE_CORE   //Legacy Sync methods 
         /// <summary>
         /// Connects to a telnet server and starts a polling thread
         /// </summary>
@@ -93,7 +90,6 @@ namespace cdeTelnet
             }
             return false;
         }
-#endif
 
         /// <summary>
         /// Disconnects from the server

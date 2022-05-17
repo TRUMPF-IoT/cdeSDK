@@ -8,10 +8,10 @@
     <OutputType>library</OutputType>
     <PackageId>cdeOPCUAClientAPIShared</PackageId>
     <Version>1.0.1.11</Version>
-    <TargetFrameworks>netstandard2.0;net45;net35</TargetFrameworks>
+    <TargetFrameworks>netstandard2.0</TargetFrameworks>
     <Authors>Markus Horstmann</Authors>
     <Company>C-Labs</Company>
-    <Copyright>Copyright © 2015-2020 TRUMPF Laser GmbH, authors: C-Labs</Copyright>
+    <Copyright>Copyright © 2015-2022 TRUMPF Laser GmbH, authors: C-Labs</Copyright>
     <PackageLicenseExpression>MPL-2.0</PackageLicenseExpression>
     <PackageDescription>OPC UA Client API</PackageDescription>
     <PackageIcon>toplogo-128.png</PackageIcon>
