@@ -9,10 +9,10 @@
     <OutputType>library</OutputType>
     <PackageId>cdeTelnetShared</PackageId>
     <Version>1.0.1.11</Version>
-    <TargetFrameworks>netstandard2.0;net45;net35</TargetFrameworks>
+    <TargetFrameworks>netstandard2.0</TargetFrameworks>
     <Authors>Chris Muench</Authors>
     <Company>C-Labs</Company>
-    <Copyright>Copyright © 2015-2020 TRUMPF Laser GmbH, authors: C-Labs</Copyright>
+    <Copyright>Copyright © 2015-2022 TRUMPF Laser GmbH, authors: C-Labs</Copyright>
     <PackageLicenseExpression>MPL-2.0</PackageLicenseExpression>
     <PackageDescription>Telnet Code for C-DEngine</PackageDescription>
     <PackageIcon>toplogo-128.png</PackageIcon>
@@ -21,41 +21,12 @@
     <ProjectName>$(AssemblyName).$(TargetFramework)</ProjectName>
   </PropertyGroup>
   
-    <Choose>
-    <When Condition="'$(TargetFramework)'=='netstandard2.0'">
       <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
         <DefineConstants>CDE_NEWPROJECTSYSTEM;TRACE;DEBUG;CDE_SYSLOG;CDE_STANDARD;NET_STANDARD;NETSTANDARD2_0</DefineConstants>
       </PropertyGroup>
       <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
         <DefineConstants>CDE_NEWPROJECTSYSTEM;TRACE;RELEASE;CDE_SYSLOG;CDE_STANDARD;CDE_SERVICE;NET_STANDARD;NETSTANDARD2_0</DefineConstants>
       </PropertyGroup>
-    </When>
-    <When Condition="'$(TargetFramework)'=='net45'">
-      <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-        <DefineConstants>CDE_NEWPROJECTSYSTEM;TRACE;DEBUG;CDE_NET45;CDE_EVENTLOG;CDE_SYSLOG</DefineConstants>
-      </PropertyGroup>
-      <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-        <DefineConstants>CDE_NEWPROJECTSYSTEM;TRACE;CDE_NET45;CDE_EVENTLOG;CDE_SYSLOG</DefineConstants>
-      </PropertyGroup>
-    </When>
-    <When Condition="'$(TargetFramework)'=='net40'">
-      <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-        <DefineConstants>CDE_NEWPROJECTSYSTEM;TRACE;DEBUG;CDE_SYSLOG;CDE_NET4</DefineConstants>
-      </PropertyGroup>
-      <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-        <DefineConstants>CDE_NEWPROJECTSYSTEM;TRACE;RELEASE;CDE_SYSLOG;CDE_NET4</DefineConstants>
-      </PropertyGroup>
-    </When>
-    <When Condition="'$(TargetFramework)'=='net35'">
-      <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-        <DefineConstants>CDE_NEWPROJECTSYSTEM;TRACE;DEBUG;CDE_SYSLOG;CDE_NET35</DefineConstants>
-      </PropertyGroup>
-      <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-        <DefineConstants>CDE_NEWPROJECTSYSTEM;TRACE;RELEASE;CDE_SYSLOG;CDE_NET35</DefineConstants>
-      </PropertyGroup>
-    </When>
-
-  </Choose>
 
   <ItemGroup>
     <Compile Remove="**\*.cs" />
