@@ -190,11 +190,7 @@ namespace cdeTelnet
             tcpClient = new TcpClient();
             bufferReceived = new byte[8192];
             bytesReceived = 0;
-#if CDE_CORE   //Legacy Sync methods 
-            ConnectAsync(host, port);  
-#else
             Connect(host, port);
-#endif
         }
 
         public void Dispose()
@@ -206,15 +202,10 @@ namespace cdeTelnet
         {
             if (disposing)
             {
-#if CDE_CORE //Dispose instead close
-                if (tcpClient != null) tcpClient.Dispose();
-#else
                 if (tcpClient != null) tcpClient.Close();
-#endif
             }
         }
 
-#if !CDE_NET35 && !CDE_NET4
         public async System.Threading.Tasks.Task<bool> ConnectAsync(string host, int port)
         {
             try
@@ -234,9 +225,7 @@ namespace cdeTelnet
             }
             return tcpClient.Connected;
         }
-#endif
 
-#if !CDE_CORE   //Legacy Sync methods 
         public bool Connect(string host, int port)
         {
             try
@@ -256,7 +245,6 @@ namespace cdeTelnet
             }
             return tcpClient.Connected;
         }
-#endif
 
         public bool Disconnect()
         {
@@ -264,13 +252,8 @@ namespace cdeTelnet
             {
                 if (tcpClient.Connected)
                 {
-#if CDE_CORE    //Dispose instead close
-                    networkStream.Dispose();
-                    tcpClient.Dispose();
-#else
                     networkStream.Close();
                     tcpClient.Close();
-#endif
                 }
             }
             catch (Exception e)
