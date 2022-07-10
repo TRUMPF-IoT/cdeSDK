@@ -1,7 +1,11 @@
 // SPDX-FileCopyrightText: 2009-2020 TRUMPF Laser GmbH, authors: C-Labs
 //
 // SPDX-License-Identifier: MPL-2.0
-
+using nsCDEngine.BaseClasses;
+using nsCDEngine.Engines;
+using nsCDEngine.Engines.NMIService;
+using nsCDEngine.Engines.ThingService;
+using nsCDEngine.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Reflection;
@@ -122,10 +126,9 @@ break;
 
         void OnThingDeleted(ICDEThing pEngine, object pDeletedThing)
 {
-    if (pDeletedThing != null && pDeletedThing is ICDEThing)
+    if (pDeletedThing is ICDEThing thing)
     {
-        //TODO: Stop Resources, Thread etc associated with this Thing
-        ((ICDEThing)pDeletedThing).FireEvent(eEngineEvents.ShutdownEvent, pEngine, null, false);
+        thing.FireEvent(eEngineEvents.ShutdownEvent, pEngine, null, false);
     }
 }
 
