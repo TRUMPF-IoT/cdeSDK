@@ -12,7 +12,7 @@ using TT = nsCDEngine.Engines.ThingService.TheThing;
 
 namespace cdeEnergyBase
 {
-    public enum eEnergyThingCaps : int
+    public enum eEnergyThingCaps 
     {
         EnergyProducer = 400,
         EnergyConsumer = 401,
@@ -22,7 +22,9 @@ namespace cdeEnergyBase
         EnergyTank = 405
     }
 
-    public class eEnergyMessages
+#pragma warning disable S101 // Types should be named in PascalCase
+    public static class eEnergyMessages //NOSONAR - C-Labs Convention
+#pragma warning restore S101 // Types should be named in PascalCase
     {
         public const string EnergyStorageUpdate = "EnergyStorageUpdate";
         public const string EnergyProducerUpdate = "EnergyStoragProducerUpdate";
@@ -39,6 +41,19 @@ namespace cdeEnergyBase
         public int PublishInterval
         {
             get { return CU.CInt(TT.MemberGetSafePropertyNumber(MyBaseThing)); }
+            set { TT.MemberSetSafePropertyNumber(MyBaseThing, value); }
+        }
+
+        [OPCUAProperty(UABrowseName = "CarbonFootprintAtPurchase")]
+        public double CFAP
+        {
+            get { return CU.CDbl(TT.MemberGetSafePropertyNumber(MyBaseThing)); }
+            set { TT.MemberSetSafePropertyNumber(MyBaseThing, value); }
+        }
+        [OPCUAProperty(UABrowseName = "CarbonFootprintAtRuntime")]
+        public double CFAR
+        {
+            get { return CU.CDbl(TT.MemberGetSafePropertyNumber(MyBaseThing)); }
             set { TT.MemberSetSafePropertyNumber(MyBaseThing, value); }
         }
 
@@ -63,7 +78,7 @@ namespace cdeEnergyBase
 
         public override bool Init()
         {
-            TT.SetSafePropertyNumber(MyBaseThing, "ManufacturingCarbonFootprint", 0.001); //1KG if not specified
+            CFAP = 1; //1KG if not specified
             TheCDEngines.RegisterNewMiniRelay("EnergyMessages");
             return base.Init();
         }
@@ -72,7 +87,7 @@ namespace cdeEnergyBase
 
         public virtual void SendEnergyData(eEnergyThingCaps pSenderType, TheEnergyData LastEnergyData, bool Force = false)
         {
-            if (LastEnergyData == null || (Force == false && (PublishInterval == 0 || DateTimeOffset.Now.Subtract(LastPublish).TotalSeconds < PublishInterval)))
+            if (LastEnergyData == null || (!Force && (PublishInterval == 0 || DateTimeOffset.Now.Subtract(LastPublish).TotalSeconds < PublishInterval)))
                 return;
             LastPublish = DateTimeOffset.Now;
             LastEnergyData.Time = DateTime.Now;
@@ -96,7 +111,7 @@ namespace cdeEnergyBase
                     tMessageTxt = eEnergyMessages.EnergyTankUpdate;
                     break;
             }
-            LastEnergyData.StationName = $"{tMessageTxt}: {MyBaseThing.FriendlyName}"; ;
+            LastEnergyData.StationName = $"{tMessageTxt}: {MyBaseThing.FriendlyName}"; 
             TSM msgEnergy2 = new TSM("EnergyMessages", $"{tMessageTxt}:{MyBaseThing.cdeMID}", CU.SerializeObjectToJSONString(LastEnergyData));
             msgEnergy2.SetNoDuplicates(true);
             TCC.PublishCentral(msgEnergy2, true);
