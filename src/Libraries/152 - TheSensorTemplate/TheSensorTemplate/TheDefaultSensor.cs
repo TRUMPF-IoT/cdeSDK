@@ -12,6 +12,8 @@ using nsCDEngine.Engines.ThingService;
 using System.Collections.Generic;
 using TheSensorTemplate;
 using System.Linq;
+using System.Security.Cryptography;
+using CDMyEnergy.ViewModels;
 
 namespace TheSensorTemplate
 {
@@ -93,13 +95,13 @@ namespace TheSensorTemplate
             set { TheThing.SetSafePropertyBool(MyBaseThing, "AutoConnect", value); }
         }
 
-        public TheDefaultSensor()
-        {
-        }
-
         public static void InitAssets(IBaseEngine pBaseEngine)
         {
             pBaseEngine.RegisterCSS("/SENSORS/CSS/SensorsDark.min.css", "/SENSORS/CSS/SensorsLite.min.css", null);
+        }
+
+        public TheDefaultSensor()
+        {
         }
 
         public TheDefaultSensor(TheThing tBaseThing, ICDEPlugin pPluginBase)
@@ -120,6 +122,7 @@ namespace TheSensorTemplate
                 IsConnected = false;
                 MyBaseThing.StatusLevel = 0;
                 MyBaseThing.LastMessage = "Offline";
+                TheCDEngines.RegisterNewMiniRelay("EnergyMessages");
                 DoInit();
                 cdeP p = GetProperty(TheThing.GetSafePropertyString(MyBaseThing, "StateSensorValue"), true);
                 p.RegisterEvent(eThingEvents.PropertyChanged, sinkQValChanged);
@@ -180,7 +183,6 @@ namespace TheSensorTemplate
             {
                 MyBaseThing.ID = Guid.NewGuid().ToString();
             }
-            //TheThing.SetSafePropertyNumber(MyBaseThing, "StateSensorMinValue", 0);
             if (TheThing.GetSafePropertyNumber(MyBaseThing, "StateSensorAverage") == 0)
                 TheThing.SetSafePropertyNumber(MyBaseThing, "StateSensorAverage", 50);
             if (TheThing.GetSafePropertyNumber(MyBaseThing, "StateSensorMaxValue") == 0)
@@ -218,7 +220,6 @@ namespace TheSensorTemplate
                 if (StartSensor())
                 {
                     MyBaseThing.StatusLevel = 4;
-                    //MyBaseThing.LastMessage = "Sensor connected";
                     IsConnected = true;
                 }
             }
@@ -230,7 +231,6 @@ namespace TheSensorTemplate
                 if (StopSensor())
                 {
                     MyBaseThing.StatusLevel = 0;
-                    //MyBaseThing.LastMessage = "Sensor disconnected";
                     IsConnected = false;
                 }
             }
@@ -268,9 +268,9 @@ namespace TheSensorTemplate
         }
 
 
-        public void SendEnergyData(double pWatts, double pVolts, double pAmps)
+        public void SendEnergyData(string EnergyDeviceType, double pWatts, double pVolts, double pAmps)
         {
-            CDMyEnergy.ViewModels.TheEnergyData LastEnergyData = new CDMyEnergy.ViewModels.TheEnergyData()
+            TheEnergyData LastEnergyData = new TheEnergyData()
             {
                 Watts = pWatts,
                 Volts = pVolts,
@@ -279,10 +279,30 @@ namespace TheSensorTemplate
                 StationID = MyBaseThing.cdeMID,
                 Time = DateTime.Now
             };
-            TSM msgEnergy2 = new TSM("CDMyEnergy.TheCDMyEnergyEngine", "NEWENERGYREADING", TheCommonUtils.SerializeObjectToJSONString<CDMyEnergy.ViewModels.TheEnergyData>(LastEnergyData));
+            TSM msgEnergy2 = new TSM("EnergyMessages", $"{EnergyNames[EnergyDeviceType]}:{MyBaseThing.cdeMID}", TheCommonUtils.SerializeObjectToJSONString(LastEnergyData));
             msgEnergy2.SetNoDuplicates(true);
             TheCommCore.PublishCentral(msgEnergy2, true);
         }
+
+        private static class eEnergyMessages //NOSONAR - C-Labs Convention
+#pragma warning restore S101 // Types should be named in PascalCase
+        {
+            public const string EnergyStorageUpdate = "EnergyStorageUpdate";
+            public const string EnergyProducerUpdate = "EnergyStoragProducerUpdate";
+            public const string EnergyConsumerUpdate = "EnergyConsumerUpdate";
+            public const string EnergyTransformerUpdate = "EnergyTransformerUpdate";
+            public const string EnergyBreakerUpdate = "EnergyBreakerUpdate";
+            public const string EnergyPanelUpdate = "EnergyPanelUpdate";
+            public const string EnergyTankUpdate = "EnergyTankUpdate";
+        }
+
+        private static Dictionary<string, string> EnergyNames = new Dictionary<string, string>
+        {
+            { "Energy Storage", eEnergyMessages.EnergyStorageUpdate } ,
+            { "Energy Producer", eEnergyMessages.EnergyProducerUpdate } ,
+            { "Energy Consumer", eEnergyMessages.EnergyConsumerUpdate } ,
+            { "Energy Transformer", eEnergyMessages.EnergyTransformerUpdate }
+        };
 
         #region virtual functions
 
@@ -318,8 +338,8 @@ namespace TheSensorTemplate
                 this.SetProperty("QValue",decimal.Round((decimal)tSensValue,tDigits,MidpointRounding.AwayFromZero));
             else
                 this.SetProperty("QValue", tSensValue);
-            if (TheThing.GetSafePropertyBool(MyBaseThing, "IsEnergySensor") || TheThing.GetSafePropertyString(MyBaseThing, "SensorCategory")=="Energy-Sensor")
-                SendEnergyData(tSensValue,0,0);
+            if (TheThing.GetSafePropertyBool(MyBaseThing, "IsEnergySensor"))
+                SendEnergyData(TheThing.GetSafePropertyString(MyBaseThing, "SensorCategory"),tSensValue,0,0);
             if (TheThing.GetSafePropertyBool(MyBaseThing, "PublishValue"))
                 PublishValue(tSensValue);
             //MyHistorian?.AddHistorianValue(TheCommonUtils.CDbl(P.ToString()));

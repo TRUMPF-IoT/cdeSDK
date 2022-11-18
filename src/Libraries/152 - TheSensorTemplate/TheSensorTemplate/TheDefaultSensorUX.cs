@@ -70,7 +70,7 @@ namespace TheSensorTemplate
                 TheNMIEngine.AddSmartControl(MyBaseThing, tMyForm, eFieldType.TileGroup, 401, 6, 0, null, null, new nmiCtrlTileGroup { ParentFld = 400, TileWidth=6, TileHeight=3 });
                 TheNMIEngine.AddSmartControl(MyBaseThing, tMyForm, eFieldType.SingleCheck, 402, 2, 0, "Publish Sensor Value", "PublishValue", new nmiCtrlSingleCheck { ParentFld = 401, TileWidth = 3 });
                 TheNMIEngine.AddSmartControl(MyBaseThing, tMyForm, eFieldType.Number, 403, 2, 0, "Publish Every (sec)", "PublishEvery", new nmiCtrlNumber { TileWidth = 3, TileHeight = 1, MinValue = 0, ParentFld = 401 });
-                TheNMIEngine.AddSmartControl(MyBaseThing, tMyForm, eFieldType.ComboBox, 404, 2, 0, "Sensor Category", "SensorCategory", new nmiCtrlComboBox { Options = ";Energy-Sensor;Energy-Power;Energy-Current;Energy-Voltage;Temperature;Humidity", ParentFld = 401, TileWidth = 6 });
+                TheNMIEngine.AddSmartControl(MyBaseThing, tMyForm, eFieldType.ComboBox, 404, 2, 0, "Sensor Category", "SensorCategory", new nmiCtrlComboBox { Options = ";Energy Storage;Energy Producer;Energy Consumer;Energy Transformer;Temperature;Humidity", ParentFld = 401, TileWidth = 6 });
                 TheNMIEngine.AddSmartControl(MyBaseThing, tMyForm, eFieldType.ComboBox, 405, 2, 0, "Target Chart", "TargetChart", new nmiCtrlComboBox { ParentFld = 401, TileWidth = 6, Options = "none;Sensor Chart" });
 
                 TheNMIEngine.AddSmartControl(MyBaseThing, tMyForm, eFieldType.TileGroup, 410, 6, 0, null, null, new nmiCtrlTileGroup { ParentFld = 400, TileWidth = 6, TileHeight = 3 });

@@ -17,7 +17,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)TheDefaultSensorUX.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)TheSensorNMI.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)TheSensorTemplate.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\cmyEnergyData.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)ClientBin\SENSORS\Images\SensorLogo_156x78.png" />
