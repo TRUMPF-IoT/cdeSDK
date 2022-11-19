@@ -21,15 +21,15 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Include="**\*.cs" buildAction="Compile" PackagePath="content\Shared\$(PackageId)"/>
-    <Content Include="**\*.cs" buildAction="Compile" PackagePath ="contentFiles\cs\netstandard2.0\Shared\$(PackageId)"/>
-    <Content Include="**\*.cs" buildAction="Compile" PackagePath ="contentFiles\cs\net45\Shared\$(PackageId)"/>
-    <Content Include="**\*.cs" buildAction="Compile" PackagePath ="contentFiles\cs\net35\Shared\$(PackageId)"/>
-    <Content Include="**\*.cs" buildAction="Compile" PackagePath ="contentFiles\cs\net4\Shared\$(PackageId)"/>
+    <Content Include="**\*.cs" buildAction="Compile" PackagePath="content\Shared\$(PackageId)" />
+    <Content Include="**\*.cs" buildAction="Compile" PackagePath="contentFiles\cs\netstandard2.0\Shared\$(PackageId)" />
+    <Content Include="**\*.cs" buildAction="Compile" PackagePath="contentFiles\cs\net45\Shared\$(PackageId)" />
+    <Content Include="**\*.cs" buildAction="Compile" PackagePath="contentFiles\cs\net35\Shared\$(PackageId)" />
+    <Content Include="**\*.cs" buildAction="Compile" PackagePath="contentFiles\cs\net4\Shared\$(PackageId)" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="..\..\..\toplogo-128.png" Pack="true" PackagePath=""/>
+    <None Include="..\..\..\toplogo-128.png" Pack="true" PackagePath="" />
   </ItemGroup>
 
   <ItemGroup>
@@ -86,5 +86,8 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\MessageContracts\034 - EnergyModel\cdeEnergyData\cdeEnergyContractsShared.csproj" />
   </ItemGroup>
 </Project>
