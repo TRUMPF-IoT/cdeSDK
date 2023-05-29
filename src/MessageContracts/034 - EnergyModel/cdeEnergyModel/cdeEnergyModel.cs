@@ -16,14 +16,15 @@ using cdeEnergyBase;
 
 namespace cdeEnergyBase
 {
-    public enum eEnergyThingCaps 
+    public enum eEnergyThingCaps
     {
         EnergyProducer = 400,
         EnergyConsumer = 401,
         EnergyStorage = 402,
         EnergyBreaker = 403,
         EnergyPanel = 404,
-        EnergyTank = 405
+        EnergyTank = 405,
+        PowerSensor = 406
     }
 
 #pragma warning disable S101 // Types should be named in PascalCase

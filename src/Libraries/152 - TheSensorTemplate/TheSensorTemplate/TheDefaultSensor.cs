@@ -291,6 +291,7 @@ namespace TheSensorTemplate
             public const string EnergyProducerUpdate = "EnergyStoragProducerUpdate";
             public const string EnergyConsumerUpdate = "EnergyConsumerUpdate";
             public const string EnergyTransformerUpdate = "EnergyTransformerUpdate";
+            public const string PowerSensor = "PowerSensorUpdate";
             public const string EnergyBreakerUpdate = "EnergyBreakerUpdate";
             public const string EnergyPanelUpdate = "EnergyPanelUpdate";
             public const string EnergyTankUpdate = "EnergyTankUpdate";
@@ -301,7 +302,8 @@ namespace TheSensorTemplate
             { "Energy Storage", eEnergyMessages.EnergyStorageUpdate } ,
             { "Energy Producer", eEnergyMessages.EnergyProducerUpdate } ,
             { "Energy Consumer", eEnergyMessages.EnergyConsumerUpdate } ,
-            { "Energy Transformer", eEnergyMessages.EnergyTransformerUpdate }
+            { "Energy Transformer", eEnergyMessages.EnergyTransformerUpdate },
+            { "Power Sensor", eEnergyMessages.PowerSensor}
         };
 
         #region virtual functions
