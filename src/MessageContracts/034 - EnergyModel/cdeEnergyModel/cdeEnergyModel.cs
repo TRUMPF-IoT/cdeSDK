@@ -64,17 +64,17 @@ namespace cdeEnergyBase
         }
     }
 
-    [OPCUAType(UATypeNodeId = "nsu=http://c-labs.com/UA/EnergyDevices;i=1001")]
+    [OPCUAType(UATypeNodeId = "nsu=http://c-labs.com/UA/Energy;i=1001")]
     public class TheEnergyBase : TheThingBase
     {
-        public static readonly List<TheEnergyDeviceInfo> EnergyDevices = new List<TheEnergyDeviceInfo>
+        public static readonly List<TheEnergyDeviceInfo> Energy = new List<TheEnergyDeviceInfo>
         {
-            new TheEnergyDeviceInfo ( "Energy Storage", eEnergyMessages.EnergyStorageUpdate, "nsu=http://c-labs.com/UA/EnergyDevices;i=1002" ) ,
-            new TheEnergyDeviceInfo ( "Energy Producer", eEnergyMessages.EnergyProducerUpdate, "nsu=http://c-labs.com/UA/EnergyDevices;i=1004"),
-            new TheEnergyDeviceInfo( "Energy Consumer", eEnergyMessages.EnergyConsumerUpdate , "nsu=http://c-labs.com/UA/EnergyDevices;i=1001"),
-            new TheEnergyDeviceInfo( "Energy Transformer", eEnergyMessages.EnergyTransformerUpdate , "nsu=http://c-labs.com/UA/EnergyDevices;i=1021"),
-            new TheEnergyDeviceInfo("Energy Sensor", eEnergyMessages.EnergySensorUpdate , "nsu=http://c-labs.com/UA/EnergyDevices;i=1013"),
-            new TheEnergyDeviceInfo("Energy Distributor", eEnergyMessages.EnergyDistributionUpdate , "nsu=http://c-labs.com/UA/EnergyDevices;i=1000")
+            new TheEnergyDeviceInfo ( "Energy Storage", eEnergyMessages.EnergyStorageUpdate, "nsu=http://c-labs.com/UA/Energy;i=1002" ) ,
+            new TheEnergyDeviceInfo ( "Energy Producer", eEnergyMessages.EnergyProducerUpdate, "nsu=http://c-labs.com/UA/Energy;i=1004"),
+            new TheEnergyDeviceInfo( "Energy Consumer", eEnergyMessages.EnergyConsumerUpdate , "nsu=http://c-labs.com/UA/Energy;i=1001"),
+            new TheEnergyDeviceInfo( "Energy Transformer", eEnergyMessages.EnergyTransformerUpdate , "nsu=http://c-labs.com/UA/Energy;i=1021"),
+            new TheEnergyDeviceInfo("Energy Sensor", eEnergyMessages.EnergySensorUpdate , "nsu=http://c-labs.com/UA/Energy;i=1013"),
+            new TheEnergyDeviceInfo("Energy Distributor", eEnergyMessages.EnergyDistributionUpdate , "nsu=http://c-labs.com/UA/Energy;i=1000")
         };
 
         [ConfigProperty]
