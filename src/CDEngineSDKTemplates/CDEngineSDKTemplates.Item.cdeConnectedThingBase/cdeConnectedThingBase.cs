@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2009-2020 TRUMPF Laser GmbH, authors: C-Labs
+// SPDX-FileCopyrightText: 2009-2023 TRUMPF Laser GmbH, authors: C-Labs
 //
 // SPDX-License-Identifier: MPL-2.0
 using nsCDEngine.BaseClasses;
@@ -21,7 +21,7 @@ class $safeitemrootname$: TheThingBase
         // Base object references 
         protected IBaseEngine MyBaseEngine;    // Base engine (service)
 
-// User-interface defintion
+// User-interface definition
 protected TheFormInfo MyStatusForm;
 protected TheDashPanelInfo MyStatusFormDashPanel;
 
