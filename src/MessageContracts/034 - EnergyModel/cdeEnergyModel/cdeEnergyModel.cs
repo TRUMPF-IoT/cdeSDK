@@ -16,7 +16,7 @@ using cdeEnergyBase;
 
 namespace cdeEnergyBase
 {
-    public enum eEnergyThingCaps
+    public enum eEnergyThingCaps 
     {
         EnergyProducer = 400,
         EnergyConsumer = 401,
@@ -24,7 +24,9 @@ namespace cdeEnergyBase
         EnergyBreaker = 403,
         EnergyPanel = 404,
         EnergyTank = 405,
-        PowerSensor = 406
+        EnergyTransformer = 406,
+        EnergyDistributor = 407,
+        EnergySensor = 408
     }
 
 #pragma warning disable S101 // Types should be named in PascalCase
@@ -64,7 +66,39 @@ namespace cdeEnergyBase
         }
     }
 
-    [OPCUAType(UATypeNodeId = "nsu=http://c-labs.com/UA/Energy;i=1001")]
+    public abstract class TheEnergyPlugin: TheEnergyBase, ICDEPlugin
+    {
+        /// <summary>
+        /// Pointer to the IBaseEngine of this Plugin
+        /// </summary>
+        protected IBaseEngine MyBaseEngine;
+        /// <summary>
+        /// Returns the BaseEngine of this plugin (called by the C-DEngine during startup)
+        /// </summary>
+        /// <returns></returns>
+        public virtual IBaseEngine GetBaseEngine()
+        {
+            return MyBaseEngine;
+        }
+        /// <summary>
+        /// This method is called by The C-DEngine during initialization in order to register this service
+        /// You must add several calls to this method for the plugin to work correctly:
+        /// MyBaseEngine.SetFriendlyName("Friendly name of your plugin");
+        /// MyBaseEngine.SetEngineID(new Guid("{a fixed guid you create with the GUID Tool}"));
+        /// MyBaseEngine.SetPluginInfo(...All Information of the plugin for the Store...);
+        /// </summary>
+        /// <param name="pBase">The C-DEngine is creating a Host for this engine and hands it to the Plugin Service</param>
+        public virtual void InitEngineAssets(IBaseEngine pBase)
+        {
+            MyBaseEngine = pBase;
+            MyBaseEngine.SetEngineName(GetType().FullName);
+            MyBaseEngine.SetEngineType(GetType());
+            MyBaseEngine.SetEngineService(true);
+        }
+    }
+
+    [OPCUAVariable(cdePName = "IsOnline", UATypeNodeId = "nsu=http://c-labs.com/UA/Energy;i=6028", UAMandatory = true)]
+    [OPCUAVariable(cdePName = "StatusLevel", UATypeNodeId = "nsu=http://c-labs.com/UA/Energy;i=6056", UAMandatory = true)]
     public class TheEnergyBase : TheThingBase
     {
         public static readonly List<TheEnergyDeviceInfo> Energy = new List<TheEnergyDeviceInfo>
@@ -77,6 +111,50 @@ namespace cdeEnergyBase
             new TheEnergyDeviceInfo("Energy Distributor", eEnergyMessages.EnergyDistributionUpdate , "nsu=http://c-labs.com/UA/Energy;i=1000")
         };
 
+        [OPCUAProperty(UATypeNodeId = "nsu=http://c-labs.com/UA/Energy;i=6056", UAMandatory = true)]
+        public virtual string Status
+        {
+            get 
+            {
+                string t = "";
+                switch (MyBaseThing.StatusLevel)
+                {
+                    case 0: t = "Not Running"; break;
+                    case 1: t = "Running"; break;
+                    case 2: t = "Warning"; break;
+                    case 3: t = "Error"; break;
+                    case 4: t = "Ramp Up"; break;
+                    case 5: t = "Maintenance"; break;
+                    case 6: t = "Shutdown"; break;
+                    case 7: t = "Unknown"; break;
+                }
+                return t;
+            }
+        }
+
+        [ConfigProperty]
+        [OPCUAProperty(UATypeNodeId = "nsu=http://c-labs.com/UA/Energy;i=6014", UAMandatory = true)]
+        public string Address
+        {
+            get { return MyBaseThing.Address; }
+            set { MyBaseThing.Address=value; }
+        }
+        [ConfigProperty]
+        [OPCUAProperty(UATypeNodeId = "nsu=http://c-labs.com/UA/Energy;i=6037", UAMandatory = true)]
+        public string FriendlyName
+        {
+            get { return MyBaseThing.FriendlyName; }
+            set { MyBaseThing.FriendlyName = value; }
+        }
+
+        [ConfigProperty]
+        [OPCUAProperty(UATypeNodeId = "nsu=http://c-labs.com/UA/Energy;i=6041", UAMandatory = true)]
+        public string Description
+        {
+            get { return TT.MemberGetSafePropertyString(MyBaseThing); }
+            set { TT.MemberSetSafePropertyString(MyBaseThing, value); }
+        }
+
         [ConfigProperty]
         public int PublishInterval
         {
@@ -84,20 +162,20 @@ namespace cdeEnergyBase
             set { TT.MemberSetSafePropertyNumber(MyBaseThing, value); }
         }
 
-        [OPCUAProperty(UABrowseName = "CarbonFootprintAtPurchase")]
+        [OPCUAProperty(UATypeNodeId = "nsu=http://c-labs.com/UA/Energy;i=6023", UAMandatory = true)]
         public double CFAP
         {
             get { return CU.CDbl(TT.MemberGetSafePropertyNumber(MyBaseThing)); }
             set { TT.MemberSetSafePropertyNumber(MyBaseThing, value); }
         }
-        [OPCUAProperty(UABrowseName = "CarbonFootprintAtRuntime")]
+        [OPCUAProperty(UATypeNodeId = "nsu=http://c-labs.com/UA/Energy;i=6012", UAMandatory = true)]
         public double CFAR
         {
             get { return CU.CDbl(TT.MemberGetSafePropertyNumber(MyBaseThing)); }
             set { TT.MemberSetSafePropertyNumber(MyBaseThing, value); }
         }
 
-        [OPCUAProperty(UABrowseName = "CurrentPower")]
+        [OPCUAProperty(UABrowseName = "CurrentWatts")]
         public double Watts
         {
             get { return CU.CDbl(TT.MemberGetSafePropertyNumber(MyBaseThing)); }
@@ -123,7 +201,15 @@ namespace cdeEnergyBase
             MyBaseThing.RegisterProperty(nameof(Watts));
             MyBaseThing.RegisterProperty(nameof(Volts));
             MyBaseThing.RegisterProperty(nameof(Ampere));
+            var tS = GetProperty("StatusLevel", true);
+            tS.RegisterEvent(eThingEvents.PropertySet, sinkStatusChanged);
+            sinkStatusChanged(tS);
             return base.Init();
+        }
+
+        public virtual void sinkStatusChanged(cdeP prop)
+        {
+            SetProperty("IsOnline", (IsInit() && CU.CInt(prop.GetValue()) < 3));
         }
 
         private DateTimeOffset LastPublish = DateTimeOffset.MinValue;

@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2009-2020 TRUMPF Laser GmbH, authors: C-Labs
+// SPDX-FileCopyrightText: 2009-2023 TRUMPF Laser GmbH, authors: C-Labs
 //
 // SPDX-License-Identifier: MPL-2.0
 using nsCDEngine.BaseClasses;
@@ -8,18 +8,19 @@ using nsCDEngine.Engines.ThingService;
 using nsCDEngine.ViewModels;
 using System;
 
-// TODO: Add reference for C-DEngine.dll
-// TODO: Make sure plugin file name starts with either CDMy or C-DMy
 using NMI = nsCDEngine.Engines.NMIService.TheNMIEngine;
+using CU = nsCDEngine.BaseClasses.TheCommonUtils;
+using TCC = nsCDEngine.Communication.TheCommCore;
+using TT = nsCDEngine.Engines.ThingService.TheThing;
 
 namespace $rootnamespace$
 {
     [EngineAssetInfo(
-        FriendlyName = strFriendlyName,
+        FriendlyName = "My Sample Service", //TODO give friendly name
         Capabilities = new[] { eThingCaps.ConfigManagement, },
         EngineID = "{$guid2$}",
         IsService = true,
-        LongDescription = "This service...",
+        LongDescription = "This service...", //TODO describe your service
         IconUrl = "toplogo-150.png", // TODO Add your own icon
         Developer = "C-Labs", // TODO Add your own name and URL
         DeveloperUrl = "http://www.c-labs.com",
@@ -27,11 +28,7 @@ namespace $rootnamespace$
     )]
 class $safeitemrootname$: ThePluginBase
     {
-        // User-interface defintion
         TheDashboardInfo mMyDashboard;
-
-// TODO: Set plugin friendly name for InitEngineAssets (optional)
-public const String strFriendlyName = "My Sample Service";
 
 public override bool Init()
 {
@@ -39,13 +36,8 @@ public override bool Init()
     {
         mIsInitCalled = true;
         MyBaseThing.RegisterEvent(eEngineEvents.IncomingMessage, HandleMessage);
-        // Additional initialization processing goes here
-        // If additional processing could fail or last longer, set status level to 4 and/or consider finishing Init() asynchronously (return false, fire eThingEvent.Initialized when ready)
-        // MyBaseThing.StatusLevel = 4;
-        // MyBaseThing.LastMessage="Service is starting";
-        MyBaseThing.StatusLevel = 1;
-        MyBaseThing.LastMessage = "Service has started";
-        mIsInitialized = true;
+        SetMessage("Service has Started", 1, DateTimeOffset.Now);
+        base.Init();
         MyBaseEngine.ProcessInitialized();
     }
     return true;
@@ -69,7 +61,5 @@ public override bool CreateUX()
     }
     return true;
 }
-
-//TODO: Step 4: Write your Business Logic
 }
 }
