@@ -94,6 +94,15 @@ namespace cdeEnergyBase
             MyBaseEngine.SetEngineName(GetType().FullName);
             MyBaseEngine.SetEngineType(GetType());
             MyBaseEngine.SetEngineService(true);
+            MyBaseEngine.RegisterEvent(eEngineEvents.ThingDeleted, OnThingDeleted);
+        }
+
+        public virtual void OnThingDeleted(ICDEThing pEngine, object pDeletedThing)
+        {
+            if (pDeletedThing is ICDEThing _)
+            {
+                TCC.PublishCentral(new TSM(eEngineName.ContentService, "ENERGY_DEVICE_UPDATED"), true);
+            }
         }
     }
 
@@ -202,9 +211,10 @@ namespace cdeEnergyBase
             MyBaseThing.RegisterProperty(nameof(Volts));
             MyBaseThing.RegisterProperty(nameof(Ampere));
             var tS = GetProperty("StatusLevel", true);
+            mIsInitialized = true;
             tS.RegisterEvent(eThingEvents.PropertySet, sinkStatusChanged);
             sinkStatusChanged(tS);
-            return base.Init();
+            return true;
         }
 
         public virtual void sinkStatusChanged(cdeP prop)
