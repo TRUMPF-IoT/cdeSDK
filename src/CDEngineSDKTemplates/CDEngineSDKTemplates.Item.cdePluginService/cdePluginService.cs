@@ -38,6 +38,7 @@ public override bool Init()
         MyBaseThing.RegisterEvent(eEngineEvents.IncomingMessage, HandleMessage);
         SetMessage("Service has Started", 1, DateTimeOffset.Now);
         base.Init();
+        mIsInitialized = true;
     }
     return true;
 }

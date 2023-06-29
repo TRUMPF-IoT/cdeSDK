@@ -54,6 +54,7 @@ class $safeitemrootname$: ThePluginBase
 
                     // Declare the thing initialized 
                     mIsInitialized = true; // For future IsInit() calls
+                    base.Init();
                     FireEvent(eThingEvents.Initialized, this, true, true); // Notify the C-DEngine and other plug-ins that the thing is initialized
                     MyBaseEngine.ProcessInitialized(); //Set the status of the Base Engine according to the status of the Things it manages
                 });
