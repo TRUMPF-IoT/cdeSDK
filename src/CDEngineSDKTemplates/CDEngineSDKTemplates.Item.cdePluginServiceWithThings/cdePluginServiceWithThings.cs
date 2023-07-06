@@ -10,7 +10,6 @@ using System;
 using System.Collections.Generic;
 using System.Reflection;
 
-// TODO: Add reference for C-DEngine.dll
 // TODO: Make sure plugin file name starts with either CDMy or C-DMy
 using NMI = nsCDEngine.Engines.NMIService.TheNMIEngine;
 using TT = nsCDEngine.Engines.ThingService.TheThing;
@@ -52,10 +51,10 @@ class $safeitemrootname$: ThePluginBase
                     // Perform any long-running initialization (i.e. network access, file access) here that must finish before other plug-ins or the C-DEngine can use the plug-in
                     InitServices();
 
-                    // Declare the thing initialized 
-                    mIsInitialized = true; // For future IsInit() calls
-                    base.Init();
-                    FireEvent(eThingEvents.Initialized, this, true, true); // Notify the C-DEngine and other plug-ins that the thing is initialized
+            // Declare the thing initialized 
+            base.Init();
+            mIsInitialized = true;
+            FireEvent(eThingEvents.Initialized, this, true, true); // Notify the C-DEngine and other plug-ins that the thing is initialized
                     MyBaseEngine.ProcessInitialized(); //Set the status of the Base Engine according to the status of the Things it manages
                 });
     }

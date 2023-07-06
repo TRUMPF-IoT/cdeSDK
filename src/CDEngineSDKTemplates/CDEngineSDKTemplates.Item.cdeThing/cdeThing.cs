@@ -8,7 +8,6 @@ using nsCDEngine.Engines.ThingService;
 using nsCDEngine.ViewModels;
 using System;
 
-// TODO: Add reference for C-DEngine.dll
 // TODO: Make sure plugin file name starts with either CDMy or C-DMy
 using NMI = nsCDEngine.Engines.NMIService.TheNMIEngine;
 
@@ -39,8 +38,8 @@ public override bool Init()
     if (!mIsInitCalled)
     {
         mIsInitCalled = true;
-        SetMessage("Thing has started", DateTimeOffset.Now);
-        MyBaseThing.StatusLevel = 1;
+        SetMessage("Thing has started",1, DateTimeOffset.Now);
+        base.Init();
         mIsInitialized = true;
     }
     return true;

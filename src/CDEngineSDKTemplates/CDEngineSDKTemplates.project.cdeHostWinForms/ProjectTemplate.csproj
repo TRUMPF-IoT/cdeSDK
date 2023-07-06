@@ -32,8 +32,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="C-DEngine" Version="5.106.0" />
-    <PackageReference Include="CDMyNMIHtml5RT" Version="5.106.0" />
+    <PackageReference Include="C-DEngine" Version="5.*" />
+    <PackageReference Include="CDMyNMIHtml5RT" Version="5.*" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
