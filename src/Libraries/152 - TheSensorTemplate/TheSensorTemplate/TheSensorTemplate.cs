@@ -156,7 +156,7 @@ namespace TheSensorTemplate
 
         public Task<List<T>> GetValuesAsync()
         {
-            if (MySensorHistory.IsRAMStore)
+            if (MySensorHistory?.IsRAMStore==true)
             {
                 var sensorHistory = MySensorHistory;
                 if (sensorHistory == null || sensorHistory.Count == 0) return null;
@@ -167,19 +167,19 @@ namespace TheSensorTemplate
             {
                 tcs.TrySetResult(resp?.MyRecords);
             }
-            MySensorHistory.GetRecords(callback,true);
+            MySensorHistory?.GetRecords(callback,true);
             return tcs.Task;
         }
 
         internal List<T> GetValues()
         {
-            if (MySensorHistory.IsRAMStore)
+            if (MySensorHistory?.IsRAMStore==true)
             {
                 var sensorHistory = MySensorHistory;
-                if (sensorHistory == null || sensorHistory.Count == 0) return null;
+                if (sensorHistory == null || sensorHistory.Count == 0) return new List<T>();
                 return sensorHistory.TheValues;
             }
-            return GetValuesAsync().Result;
+            return GetValuesAsync()?.Result;
         }
         public cdeConcurrentDictionary<string, TheFieldInfo> CreateHistoryTrendUX(TheFormInfo pForm, int pFldOrder, int pParent, string pGroupTitle, string pChartTitle, string pValName, bool HideScale = false, bool OnlyShowValue = false, ThePropertyBag pChartBag = null)
         {

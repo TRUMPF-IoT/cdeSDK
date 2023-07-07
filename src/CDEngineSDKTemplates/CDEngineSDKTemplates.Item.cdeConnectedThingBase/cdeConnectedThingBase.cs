@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2009-2020 TRUMPF Laser GmbH, authors: C-Labs
+// SPDX-FileCopyrightText: 2009-2023 TRUMPF Laser GmbH, authors: C-Labs
 //
 // SPDX-License-Identifier: MPL-2.0
 using nsCDEngine.BaseClasses;
@@ -8,7 +8,6 @@ using nsCDEngine.Engines.ThingService;
 using nsCDEngine.ViewModels;
 using System;
 
-// TODO: Add reference for C-DEngine.dll
 // TODO: Make sure plugin file name starts with either CDMy or C-DMy
 using NMI = nsCDEngine.Engines.NMIService.TheNMIEngine;
 using TT = nsCDEngine.Engines.ThingService.TheThing;
@@ -21,7 +20,7 @@ class $safeitemrootname$: TheThingBase
         // Base object references 
         protected IBaseEngine MyBaseEngine;    // Base engine (service)
 
-// User-interface defintion
+// User-interface definition
 protected TheFormInfo MyStatusForm;
 protected TheDashPanelInfo MyStatusFormDashPanel;
 
@@ -59,12 +58,12 @@ public override bool Init()
     {
         mIsInitCalled = true;
         IsConnected = false;
-        SetMessage("Thing Ready", DateTimeOffset.Now);
-        MyBaseThing.StatusLevel = 0;
+        SetMessage("Thing Ready", 0, DateTimeOffset.Now);
         MyBaseEngine.RegisterEvent(eEngineEvents.ShutdownEvent, DoEndMe);
         DoInit();
         if (AutoConnect)
             Connect(null);
+        base.Init();
         mIsInitialized = true;
     }
     return true;

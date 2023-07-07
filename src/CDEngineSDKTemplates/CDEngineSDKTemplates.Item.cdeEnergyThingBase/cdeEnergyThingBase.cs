@@ -101,6 +101,7 @@ public override bool Init()
         DoInit();
         if (AutoConnect)
             Connect(null);
+        base.Init();
         mIsInitialized = true;
     }
     return true;

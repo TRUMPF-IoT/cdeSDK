@@ -1,5 +1,5 @@
 <!--
- SPDX-FileCopyrightText: 2009-2020 TRUMPF Laser GmbH, authors: C-Labs
+ SPDX-FileCopyrightText: 2009-2023 TRUMPF Laser GmbH, authors: C-Labs
  SPDX-License-Identifier: MPL-2.0
  -->
 <Project Sdk="Microsoft.NET.Sdk">
@@ -10,7 +10,7 @@
     <TargetFrameworks>netstandard2.0</TargetFrameworks>
     <Authors>Chris Muench</Authors>
     <Company>C-Labs</Company>
-    <Copyright>Copyright © 2015-2022 TRUMPF Laser GmbH, authors: C-Labs</Copyright>
+    <Copyright>Copyright © 2015-2023 TRUMPF Laser GmbH, authors: C-Labs</Copyright>
     <PackageLicenseExpression>MPL-2.0</PackageLicenseExpression>
     <PackageDescription>Energy message contracts</PackageDescription>
     <PackageIcon>toplogo-128.png</PackageIcon>
@@ -49,7 +49,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="C-DEngine" Version="5.*" />
+    <PackageReference Include="C-DEngine" Version="5.*-*" />
   </ItemGroup>
 
   <ItemGroup>

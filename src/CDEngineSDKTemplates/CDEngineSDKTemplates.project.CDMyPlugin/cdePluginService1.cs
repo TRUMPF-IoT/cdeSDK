@@ -1,11 +1,20 @@
-// SPDX-FileCopyrightText: 2009-2020 TRUMPF Laser GmbH, authors: C-Labs
+// SPDX-FileCopyrightText: 2009-2023 TRUMPF Laser GmbH, authors: C-Labs
 //
 // SPDX-License-Identifier: MPL-2.0
 
 using System;
 using System.Collections.Generic;
 using System.Reflection;
+using nsCDEngine.BaseClasses;
+using nsCDEngine.Engines;
+using nsCDEngine.Engines.NMIService;
+using nsCDEngine.Engines.ThingService;
+using nsCDEngine.ViewModels;
+
 using NMI = nsCDEngine.Engines.NMIService.TheNMIEngine;
+using CU = nsCDEngine.BaseClasses.TheCommonUtils;
+using TCC = nsCDEngine.Communication.TheCommCore;
+using TT = nsCDEngine.Engines.ThingService.TheThing;
 
 namespace $safeprojectname$
 {
@@ -35,8 +44,7 @@ class cdePluginService1 : ThePluginBase
         if (!mIsInitCalled)
         {
             mIsInitCalled = true;
-            MyBaseThing.StatusLevel = 4;
-            SetMessage("Service has started", DateTimeOffset.Now);
+            SetMessage("Service has started",4, DateTimeOffset.Now);
 
             MyBaseThing.RegisterEvent(eEngineEvents.IncomingMessage, HandleMessage);
             MyBaseEngine.RegisterEvent(eEngineEvents.ThingDeleted, OnThingDeleted);
@@ -47,16 +55,17 @@ class cdePluginService1 : ThePluginBase
                     // Perform any long-running initialization (i.e. network access, file access) here that must finish before other plug-ins or the C-DEngine can use the plug-in
                     InitServices();
 
-                    // Declare the thing initialized 
-                    mIsInitialized = true; // For future IsInit() calls
-                    FireEvent(eThingEvents.Initialized, this, true, true); // Notify the C-DEngine and other plug-ins that the thing is initialized
+                // Declare the thing initialized 
+                base.Init();
+                mIsInitialized = true;
+                FireEvent(eThingEvents.Initialized, this, true, true); // Notify the C-DEngine and other plug-ins that the thing is initialized
                     MyBaseEngine.ProcessInitialized(); //Set the status of the Base Engine according to the status of the Things it manages
                 });
         }
         return false;
     }
 
-    // User-interface defintion
+    // User-interface definition
     TheDashboardInfo mMyDashboard;
 
     public override bool CreateUX()
