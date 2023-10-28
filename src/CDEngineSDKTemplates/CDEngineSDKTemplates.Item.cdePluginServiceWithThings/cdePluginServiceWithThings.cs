@@ -83,8 +83,8 @@ public override bool CreateUX()
 
 void InitServices()
 {
-    List<TheThing> tDevList = TheThingRegistry.GetThingsOfEngine(MyBaseThing.EngineName);
-    foreach (TheThing tDev in tDevList)
+    List<TT> tDevList = TheThingRegistry.GetThingsOfEngine(MyBaseThing.EngineName);
+    foreach (TT tDev in tDevList)
     {
         if (!tDev.HasLiveObject)
         {
@@ -123,16 +123,6 @@ break;
             }
             MyBaseEngine.SetStatusLevel(-1); //Calculates the current statuslevel of the service/engine
         }
-
-        void OnThingDeleted(ICDEThing pEngine, object pDeletedThing)
-{
-    if (pDeletedThing is ICDEThing thing)
-    {
-        thing.FireEvent(eEngineEvents.ShutdownEvent, pEngine, null, false);
-    }
-}
-
-//TODO: Step 4: Write your Business Logic
 
 #region Message Handling
 public override void HandleMessage(ICDEThing sender, object pIncoming)
