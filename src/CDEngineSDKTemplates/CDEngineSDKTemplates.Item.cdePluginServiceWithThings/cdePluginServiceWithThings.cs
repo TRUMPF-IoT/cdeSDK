@@ -43,7 +43,6 @@ class $safeitemrootname$: ThePluginBase
         SetMessage("Service has started", DateTimeOffset.Now);
 
         MyBaseThing.RegisterEvent(eEngineEvents.IncomingMessage, HandleMessage);
-        MyBaseEngine.RegisterEvent(eEngineEvents.ThingDeleted, OnThingDeleted);
 
         // If not lengthy initialized you can remove cdeRunasync and call this synchronously
         TheCommonUtils.cdeRunAsync(MyBaseEngine.GetEngineName() + " Init Services", true, (o) =>

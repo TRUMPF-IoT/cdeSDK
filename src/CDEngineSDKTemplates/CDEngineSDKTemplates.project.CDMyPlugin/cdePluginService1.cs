@@ -47,7 +47,6 @@ class cdePluginService1 : ThePluginBase
             SetMessage("Service has started",4, DateTimeOffset.Now);
 
             MyBaseThing.RegisterEvent(eEngineEvents.IncomingMessage, HandleMessage);
-            MyBaseEngine.RegisterEvent(eEngineEvents.ThingDeleted, OnThingDeleted);
 
             // If not lengthy initialized you can remove cdeRunasync and call this synchronously
             CU.cdeRunAsync(MyBaseEngine.GetEngineName() + " Init Services", true, (o) =>
