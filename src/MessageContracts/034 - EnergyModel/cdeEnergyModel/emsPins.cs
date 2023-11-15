@@ -1,4 +1,7 @@
-﻿using nsCDEngine.Engines.ThingService;
+﻿// SPDX-FileCopyrightText: 2009-2023 TRUMPF Laser GmbH, authors: C-Labs
+//
+// SPDX-License-Identifier: MPL-2.0
+using nsCDEngine.Engines.ThingService;
 using System.Collections.Generic;
 
 namespace cdeEnergyBase
