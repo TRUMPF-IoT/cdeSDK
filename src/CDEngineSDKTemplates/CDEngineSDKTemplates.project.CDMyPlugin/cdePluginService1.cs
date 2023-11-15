@@ -75,7 +75,7 @@ class cdePluginService1 : ThePluginBase
 
             mMyDashboard = NMI.AddDashboard(MyBaseThing, new TheDashboardInfo(MyBaseEngine, "My Demo Plugin Screen with Things"));
 
-            var tFlds = NMI.CreateEngineForms(MyBaseThing, TheThing.GetSafeThingGuid(MyBaseThing, "MYNAME"), "List of $safeitemrootname$", null, 20, 0x0F, 0xF0, NMI.GetNodeForCategory(), "REFFRESHME", true, new e$safeprojectname$DeviceTypes(), e$safeprojectname$DeviceTypes.cdeThingDeviceTypeA);
+            var tFlds = NMI.CreateEngineForms(MyBaseThing, TT.GetSafeThingGuid(MyBaseThing, "MYNAME"), "List of $safeitemrootname$", null, 20, 0x0F, 0xF0, NMI.GetNodeForCategory(), "REFFRESHME", true, new e$safeprojectname$DeviceTypes(), e$safeprojectname$DeviceTypes.cdeThingDeviceTypeA);
             TheFormInfo tForm = tFlds["Form"] as TheFormInfo;
             tForm.AddButtonText = "Add new $safeitemrootname$";
 
