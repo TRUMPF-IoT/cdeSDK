@@ -37,7 +37,7 @@ namespace $safeprojectname$
 class cdePluginService1 : ThePluginBase
 {
     // TODO: Set plugin friendly name for InitEngineAssets (optional)
-    public const String strFriendlyName = "My Hello World Service";
+    public const string strFriendlyName = "My Hello World Service";
 
     public override bool Init()
     {
@@ -47,10 +47,9 @@ class cdePluginService1 : ThePluginBase
             SetMessage("Service has started",4, DateTimeOffset.Now);
 
             MyBaseThing.RegisterEvent(eEngineEvents.IncomingMessage, HandleMessage);
-            MyBaseEngine.RegisterEvent(eEngineEvents.ThingDeleted, OnThingDeleted);
 
             // If not lengthy initialized you can remove cdeRunasync and call this synchronously
-            TheCommonUtils.cdeRunAsync(MyBaseEngine.GetEngineName() + " Init Services", true, (o) =>
+            CU.cdeRunAsync(MyBaseEngine.GetEngineName() + " Init Services", true, (o) =>
             {
                     // Perform any long-running initialization (i.e. network access, file access) here that must finish before other plug-ins or the C-DEngine can use the plug-in
                     InitServices();
@@ -76,7 +75,7 @@ class cdePluginService1 : ThePluginBase
 
             mMyDashboard = NMI.AddDashboard(MyBaseThing, new TheDashboardInfo(MyBaseEngine, "My Demo Plugin Screen with Things"));
 
-            var tFlds = NMI.CreateEngineForms(MyBaseThing, TheThing.GetSafeThingGuid(MyBaseThing, "MYNAME"), "List of $safeitemrootname$", null, 20, 0x0F, 0xF0, NMI.GetNodeForCategory(), "REFFRESHME", true, new e$safeprojectname$DeviceTypes(), e$safeprojectname$DeviceTypes.cdeThingDeviceTypeA);
+            var tFlds = NMI.CreateEngineForms(MyBaseThing, TT.GetSafeThingGuid(MyBaseThing, "MYNAME"), "List of $safeitemrootname$", null, 20, 0x0F, 0xF0, NMI.GetNodeForCategory(), "REFFRESHME", true, new e$safeprojectname$DeviceTypes(), e$safeprojectname$DeviceTypes.cdeThingDeviceTypeA);
             TheFormInfo tForm = tFlds["Form"] as TheFormInfo;
             tForm.AddButtonText = "Add new $safeitemrootname$";
 
@@ -88,8 +87,8 @@ class cdePluginService1 : ThePluginBase
 
     void InitServices()
     {
-        List<TheThing> tDevList = TheThingRegistry.GetThingsOfEngine(MyBaseThing.EngineName);
-        foreach (TheThing tDev in tDevList)
+        List<TT> tDevList = TheThingRegistry.GetThingsOfEngine(MyBaseThing.EngineName);
+        foreach (TT tDev in tDevList)
         {
             if (!tDev.HasLiveObject)
             {
@@ -98,7 +97,7 @@ class cdePluginService1 : ThePluginBase
                 {
                     // If your class does not follow the naming convention CDMyPlugin1.<fieldname>, you may need to instantiate it explicitly like this:
                     //case e$safeprojectname$DeviceTypes.cdeThingDeviceTypeA:
-                    //    TheThingRegistry.RegisterThing(new cdeThingDeviceTypeA(tDev, this));
+                    //    TheThingRegistry.RegisterThing(new cdeThingDeviceTypeA(tDev, this.GetBaseEngine()));
                     //    break;
                     default:
                         // Assume the e$safeprojectname$DeviceTypes field names match the class names: find the field that corresponds to the TheThing.DeviceType being requested
@@ -128,17 +127,6 @@ class cdePluginService1 : ThePluginBase
         }
         MyBaseEngine.SetStatusLevel(-1); //Calculates the current statuslevel of the service/engine
     }
-
-    void OnThingDeleted(ICDEThing pEngine, object pDeletedThing) // CODE REVIEW: Is this really still needed?
-    {
-        if (pDeletedThing is ICDEThing)
-        {
-            //TODO: Stop Resources, Thread etc associated with this Thing
-            ((ICDEThing)pDeletedThing).FireEvent(eEngineEvents.ShutdownEvent, pEngine, null, false);
-        }
-    }
-
-    //TODO: Step 4: Write your Business Logic
 
     #region Message Handling
     public override void HandleMessage(ICDEThing sender, object pIncoming)

@@ -116,6 +116,13 @@ Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "cdeNMIHelper", "Libraries\3
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "cdeEnergyModel", "MessageContracts\034 - EnergyModel\cdeEnergyModel\cdeEnergyModel.shproj", "{3EE1FFDA-231D-40B8-9441-EF2D3481730F}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "cdePackager", "cdePackager", "{A055FA5C-A748-4450-88EA-B02E4C757335}"
+	ProjectSection(SolutionItems) = preProject
+		..\BuildTools\cdePackager\C-DEngine.dll = ..\BuildTools\cdePackager\C-DEngine.dll
+		..\BuildTools\cdePackager\cdePackager.exe = ..\BuildTools\cdePackager\cdePackager.exe
+		..\BuildTools\cdePackager\cdePackagerTask.dll = ..\BuildTools\cdePackager\cdePackagerTask.dll
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -260,6 +267,7 @@ Global
 		{DE3D7742-BCA2-4432-AEA1-50466618A940} = {ED82BA02-E0A9-4935-BCCC-C3FAD112A4CB}
 		{0A36CC69-09A8-42FB-A17E-B1EE39656F85} = {BE921EAC-572E-4DF4-824B-33DE6F58BA52}
 		{3EE1FFDA-231D-40B8-9441-EF2D3481730F} = {BE921EAC-572E-4DF4-824B-33DE6F58BA52}
+		{A055FA5C-A748-4450-88EA-B02E4C757335} = {7D441A72-A796-4DC8-8E00-732C7B6F65AE}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {75C94C50-175D-4EFC-B610-B4B9A3584DE7}

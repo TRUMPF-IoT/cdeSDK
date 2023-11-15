@@ -2,18 +2,15 @@
 //
 // SPDX-License-Identifier: MPL-2.0
 
-﻿using System;
-using nsCDEngine.Engines;
+using cdeEnergyBase;
 using nsCDEngine.BaseClasses;
 using nsCDEngine.Communication;
-using nsCDEngine.ViewModels;
-using nsCDEngine.Engines.NMIService;
+using nsCDEngine.Engines;
 using nsCDEngine.Engines.ThingService;
+using nsCDEngine.ViewModels;
+using System;
 using System.Collections.Generic;
-using TheSensorTemplate;
 using System.Linq;
-using System.Security.Cryptography;
-using CDMyEnergy.ViewModels;
 
 namespace TheSensorTemplate
 {
