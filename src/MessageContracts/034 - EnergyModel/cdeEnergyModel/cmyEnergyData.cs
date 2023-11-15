@@ -1,11 +1,11 @@
 ﻿// SPDX-FileCopyrightText: 2009-2020 TRUMPF Laser GmbH, authors: C-Labs
 //
 // SPDX-License-Identifier: MPL-2.0
-using System;
-using nsCDEngine.ViewModels;
 using nsCDEngine.BaseClasses;
+using nsCDEngine.ViewModels;
+using System;
 
-namespace CDMyEnergy.ViewModels
+namespace cdeEnergyBase
 {
     #region Energy Data
     /// <summary>
@@ -22,7 +22,7 @@ namespace CDMyEnergy.ViewModels
                 Record = "Record";
                 Time = DateTime.Now;
                 Watts = RND.NextDouble() * 100;
-                SolarEnergy = RND.NextDouble() * 100;
+                SolarPower = RND.NextDouble() * 100;
                 WattHours = RND.NextDouble() * 100;
                 this.Amps = RND.NextDouble() * 100;
                 this.Cost = RND.NextDouble() * 100;
@@ -74,7 +74,7 @@ namespace CDMyEnergy.ViewModels
         }
 
         private double mySolarEnergy;
-        public double SolarEnergy
+        public double SolarPower
         {
             get { return mySolarEnergy; }
             set

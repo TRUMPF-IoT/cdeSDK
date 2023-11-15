@@ -1,18 +1,15 @@
-﻿// SPDX-FileCopyrightText: 2009-2023 TRUMPF Laser GmbH, authors: C-Labs
+﻿// SPDX-FileCopyrightText: 2009-2021 TRUMPF Laser GmbH, authors: C-Labs
 //
 // SPDX-License-Identifier: MPL-2.0
-using CDMyEnergy.ViewModels;
 using nsCDEngine.BaseClasses;
 using nsCDEngine.Engines;
 using nsCDEngine.Engines.ThingService;
+using nsCDEngine.ViewModels;
 using System;
+using System.Collections.Generic;
 using CU = nsCDEngine.BaseClasses.TheCommonUtils;
 using TCC = nsCDEngine.Communication.TheCommCore;
 using TT = nsCDEngine.Engines.ThingService.TheThing;
-using NMI = nsCDEngine.Engines.NMIService.TheNMIEngine;
-using System.Collections.Generic;
-using nsCDEngine.ViewModels;
-using cdeEnergyBase;
 
 namespace cdeEnergyBase
 {
@@ -179,6 +176,12 @@ namespace cdeEnergyBase
         }
         [OPCUAProperty(UATypeNodeId = "nsu=http://c-labs.com/UA/Energy;i=6012", UAMandatory = true)]
         public double CFAR
+        {
+            get { return CU.CDbl(TT.MemberGetSafePropertyNumber(MyBaseThing)); }
+            set { TT.MemberSetSafePropertyNumber(MyBaseThing, value); }
+        }
+        [OPCUAProperty(UABrowseName = "PowerIn")]
+        public double PowerIn
         {
             get { return CU.CDbl(TT.MemberGetSafePropertyNumber(MyBaseThing)); }
             set { TT.MemberSetSafePropertyNumber(MyBaseThing, value); }

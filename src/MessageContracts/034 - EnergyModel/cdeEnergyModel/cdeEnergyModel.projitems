@@ -10,6 +10,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)cdeEnergyModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)cmyEnergyBaseMeter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)cmyEnergyData.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)emsEnergyMeasurementValueType.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)emsPins.cs" />
   </ItemGroup>
 </Project>

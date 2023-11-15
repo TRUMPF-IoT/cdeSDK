@@ -14,7 +14,7 @@
     <PackageLicenseExpression>MPL-2.0</PackageLicenseExpression>
     <PackageDescription>Energy message contracts</PackageDescription>
     <PackageIcon>toplogo-128.png</PackageIcon>
-
+	  <LangVersion>preview</LangVersion>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <ProjectName>$(AssemblyName).$(TargetFramework)</ProjectName>
   </PropertyGroup>
@@ -49,7 +49,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="C-DEngine" Version="5.*-*" />
+    <PackageReference Include="C-DEngine" Version="5.*" />
   </ItemGroup>
 
   <ItemGroup>
