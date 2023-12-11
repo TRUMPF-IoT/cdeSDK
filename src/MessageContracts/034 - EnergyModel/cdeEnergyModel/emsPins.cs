@@ -20,7 +20,7 @@ namespace cdeEnergyBase
         public const string H2Storage = "H2 Storage";
         public const string ACPowerStorage = "AC Battery";
         public const string DCPowerStorage = "DC Battery";
-        public const string O2Flow = "Oxigen Flow";
+        public const string O2Flow = "nsu=http://c-labs.com/UA/Energy;i=2007";
         public const string Pressure = "Pressure Pin";
     }
 
