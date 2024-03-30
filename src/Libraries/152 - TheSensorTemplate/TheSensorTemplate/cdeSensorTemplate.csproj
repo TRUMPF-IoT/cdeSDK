@@ -25,49 +25,20 @@
     <None Include="..\..\..\toplogo-128.png" Pack="true" PackagePath="" />
   </ItemGroup>
 
-  <ItemGroup>
-    <None Remove="ClientBin\SENSORS\CSS\SensorsDark.css" />
-    <None Remove="ClientBin\SENSORS\CSS\SensorsDark.min.css" />
-    <None Remove="ClientBin\SENSORS\CSS\SensorsDark.SCSS" />
-    <None Remove="ClientBin\SENSORS\CSS\SensorsLite.css" />
-    <None Remove="ClientBin\SENSORS\CSS\SensorsLite.min.css" />
-    <None Remove="ClientBin\SENSORS\CSS\SensorsLite.scss" />
-    <None Remove="ClientBin\SENSORS\CSS\SensorStyles.css" />
-    <None Remove="ClientBin\SENSORS\CSS\SensorStyles.min.css" />
-    <None Remove="ClientBin\SENSORS\CSS\SensorStyles.scss" />
-    <None Remove="ClientBin\SENSORS\Images\SensorLogo_156x78.png" />
-    <None Remove="compilerconfig.json" />
-    <None Remove="compilerconfig.json.defaults" />
-    <None Remove="init.ps1" />
-    <None Remove="TheSensorTemplate.projitems" />
-  </ItemGroup>
+	<ItemGroup>
+		<Content Include="**\*.cs" buildAction="compile" PackagePath="contentFiles\any\any\$(PackageId)" />
+		<Content Remove="obj\**" />
+	</ItemGroup>
 
   <ItemGroup>
-    <!--<Content Include="ClientBin\SENSORS\CSS\SensorsDark.css" buildAction="Content"/>-->
     <Content Include="ClientBin\SENSORS\CSS\SensorsDark.min.css" buildAction="EmbeddedResource" />
-    <Content Include="ClientBin\SENSORS\CSS\SensorsDark.SCSS" buildAction="Content" />
-    <Content Include="ClientBin\SENSORS\CSS\SensorsLite.css" buildAction="Content" />
     <Content Include="ClientBin\SENSORS\CSS\SensorsLite.min.css" buildAction="EmbeddedResource" />
-    <Content Include="ClientBin\SENSORS\CSS\SensorsLite.scss" buildAction="Content" />
-    <Content Include="ClientBin\SENSORS\CSS\SensorStyles.css" buildAction="Content" />
     <Content Include="ClientBin\SENSORS\CSS\SensorStyles.min.css" buildAction="EmbeddedResource" />
-    <Content Include="ClientBin\SENSORS\CSS\SensorStyles.scss" buildAction="Content" />
-    <!--<Content Include="ClientBin\SENSORS\Images\SensorLogo_156x78.png" buildAction="EmbeddedResource"/>-->
-    <!--<Content Include="ClientBin\SENSORS\Images\SensorLogo_156x78.png" buildAction="EmbeddedResource"  target="lib/net45" />-->
     <Content Include="ClientBin\SENSORS\Images\SensorLogo_156x78.png" buildAction="EmbeddedResource" />
-    <!--<Content Include="build\CDESensorTemplateShared.targets" buildAction="build" PackagePath="build" />
-    <Content Include="CDESensorTemplateShared.nuspec">
-      <PackagePath>tools</PackagePath>
-      <buildAction>tools</buildAction>
-    </Content>
-    <Content Include="init.ps1" buildAction="tools" PackagePath="tools" />--> 
-    <!--Package="true" PackagePath="tools"-->
 
-    <!--<Content Include="ClientBin\SENSORS\Images\SensorLogo_156x78.png" buildAction="EmbeddedResource" Package="true" PackagePath="lib" />-->
-    <!--<Content Include="ClientBin\SENSORS\Images\SensorLogo_156x78.png" buildAction="EmbeddedResource" copyToOutput="true" target="contentFiles/any/any/ClientBin/SENSORS/CSS"/>-->
   </ItemGroup>
   <ItemGroup>
-	  <PackageReference Include="C-DEngine" Version="6.104.0-beta.2" />
+	  <PackageReference Include="C-DEngine" Version="6.*-*" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\MessageContracts\034 - EnergyModel\cdeEnergyData\cdeEnergyContractsShared.csproj" />

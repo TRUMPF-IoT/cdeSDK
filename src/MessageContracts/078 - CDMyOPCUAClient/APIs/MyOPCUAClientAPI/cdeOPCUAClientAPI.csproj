@@ -21,7 +21,12 @@
     <ProjectName>$(AssemblyName).$(TargetFramework)</ProjectName>
   </PropertyGroup>
 
-  <ItemGroup>
+	<ItemGroup>
+		<Content Include="**\*.cs" buildAction="compile" PackagePath="contentFiles\any\any\$(PackageId)" />
+		<Content Remove="obj\**" />
+	</ItemGroup>
+
+	<ItemGroup>
     <None Remove="MyOPCUAClientAPI.projitems" />
   </ItemGroup>
 
@@ -30,7 +35,7 @@
   </ItemGroup>
 
   <ItemGroup>
-	  <PackageReference Include="C-DEngine" Version="6.104.0-beta.2" />
+	  <PackageReference Include="C-DEngine" Version="6.*-*" />
   </ItemGroup>
 
   <Import Project="..\MyOPCUAClientContracts\MyOPCUAClientContracts.projitems" Label="Shared" />

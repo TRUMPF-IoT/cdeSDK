@@ -8,7 +8,7 @@
     <OutputType>library</OutputType>
     <PackageId>cdeEventConvertersShared</PackageId>
     <Version>6.104.0</Version>
-    <TargetFrameworks>netstandard2.1</TargetFrameworks>
+    <TargetFramework>netstandard2.1</TargetFramework>
     <Authors>Markus Horstmann</Authors>
     <Company>C-Labs</Company>
     <Copyright>Copyright © 2015-2024 TRUMPF Laser GmbH, authors: C-Labs</Copyright>
@@ -23,19 +23,20 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="*.cs" />
-    <Content Include="**\*.cs" buildAction="Compile" PackagePath="content\Shared\$(PackageId)" />
-    <Content Include="**\*.cs" buildAction="Compile" PackagePath="contentFiles\cs\netstandard2.1\Shared\$(PackageId)" />
-
-    <Compile Include="*.cs" />
-    <Content Remove="obj\**" />
+    <None Remove="TheEventConverters.projitems" />
   </ItemGroup>
-  <ItemGroup>
+
+	<ItemGroup>
+		<Content Include="**\*.cs" buildAction="compile" PackagePath="contentFiles\any\any\$(PackageId)" />
+		<Content Remove="obj\**" />
+	</ItemGroup>
+
+	<ItemGroup>
     <None Include="..\..\..\toplogo-128.png" Pack="true" PackagePath="" />
   </ItemGroup>
 
   <ItemGroup>
-	  <PackageReference Include="C-DEngine" Version="6.104.0-beta.2" />
+	  <PackageReference Include="C-DEngine" Version="6.*-*" />
   </ItemGroup>
 
   <ItemGroup>

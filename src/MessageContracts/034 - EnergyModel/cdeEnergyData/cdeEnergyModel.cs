@@ -1,5 +1,4 @@
-﻿using CDMyEnergy.ViewModels;
-using nsCDEngine.BaseClasses;
+﻿using nsCDEngine.BaseClasses;
 using nsCDEngine.Engines;
 using nsCDEngine.Engines.ThingService;
 using nsCDEngine.ViewModels;

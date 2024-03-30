@@ -98,8 +98,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "cdeThingMatcherShared", "Li
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tools", "Tools", "{F32A0417-74E9-4185-9538-DA83B59F7124}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PackagerInstaller", "..\BuildTools\PackagerInstaller\PackagerInstaller.csproj", "{869E2A4C-3B33-4460-B570-91298197E66A}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "cdeLicenseTool", "Tools\cdeLicenseTool\cdeLicenseTool.csproj", "{C3287A61-CC6B-46E4-BACB-CC5A1E1581C5}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "cdeTelnetShared", "Libraries\215 - Shared Telnet\cdeTelnet\cdeTelnetShared.csproj", "{4AB3ADF1-CFDD-4F59-A740-0E09ED7296B4}"
@@ -200,10 +198,6 @@ Global
 		{0F2F7A87-9683-4E2B-BDD8-702132C3C9A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0F2F7A87-9683-4E2B-BDD8-702132C3C9A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0F2F7A87-9683-4E2B-BDD8-702132C3C9A8}.Release|Any CPU.Build.0 = Release|Any CPU
-		{869E2A4C-3B33-4460-B570-91298197E66A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{869E2A4C-3B33-4460-B570-91298197E66A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{869E2A4C-3B33-4460-B570-91298197E66A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{869E2A4C-3B33-4460-B570-91298197E66A}.Release|Any CPU.Build.0 = Release|Any CPU
 		{C3287A61-CC6B-46E4-BACB-CC5A1E1581C5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{C3287A61-CC6B-46E4-BACB-CC5A1E1581C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C3287A61-CC6B-46E4-BACB-CC5A1E1581C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -258,7 +252,6 @@ Global
 		{73D62673-E255-48AA-894C-26180B20E323} = {E5DC19DA-228B-4F0E-9CF4-D3C60A6C2B62}
 		{E5DC19DA-228B-4F0E-9CF4-D3C60A6C2B62} = {BE921EAC-572E-4DF4-824B-33DE6F58BA52}
 		{0F2F7A87-9683-4E2B-BDD8-702132C3C9A8} = {E5DC19DA-228B-4F0E-9CF4-D3C60A6C2B62}
-		{869E2A4C-3B33-4460-B570-91298197E66A} = {85560D2C-AD99-4FDA-81F3-EDCC8FBBD036}
 		{C3287A61-CC6B-46E4-BACB-CC5A1E1581C5} = {F32A0417-74E9-4185-9538-DA83B59F7124}
 		{4AB3ADF1-CFDD-4F59-A740-0E09ED7296B4} = {BE921EAC-572E-4DF4-824B-33DE6F58BA52}
 		{3FB2F987-C1E8-4874-93B2-35B7E7E0BF13} = {0E73ECE9-B340-4AA3-9A18-BE10AC15CF84}
@@ -284,7 +277,6 @@ Global
 		Libraries\185 - SenderAndReceiverBase\TheConnectionBase\TheConnectionBase.projitems*{9c8cc825-09b6-4320-a34b-22029f085012}*SharedItemsImports = 13
 		Libraries\199 - CDE-WebConnect\TheWebConnect\TheWebConnect.projitems*{9ccd5c30-05ca-4fa6-98c9-e3e881c1692e}*SharedItemsImports = 13
 		Libraries\185 - SenderAndReceiverBase\TheReceiverBase\TheReceiverBase.projitems*{d2fb39c4-e828-4184-8e3b-342f61cb154f}*SharedItemsImports = 13
-		MessageContracts\034 - EnergyModel\cdeEnergyModel\cdeEnergyModel.projitems*{de3d7742-bca2-4432-aea1-50466618a940}*SharedItemsImports = 5
 		Libraries\185 - SenderAndReceiverBase\TheSenderBase\TheSenderBase.projitems*{ea4fffbc-c803-4b10-ba13-1587a1fc0f06}*SharedItemsImports = 13
 	EndGlobalSection
 EndGlobal
