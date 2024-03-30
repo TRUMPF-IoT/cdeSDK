@@ -274,6 +274,7 @@ Global
 	EndGlobalSection
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		Libraries\324 - NMIHelper\cdeNMIHelper\cdeNMIHelper.projitems*{0a36cc69-09a8-42fb-a17e-b1ee39656f85}*SharedItemsImports = 13
+		MessageContracts\078 - CDMyOPCUAClient\APIs\MyOPCUAClientContracts\MyOPCUAClientContracts.projitems*{37f9af8f-d273-4a2b-972a-957e045bd4ed}*SharedItemsImports = 5
 		Libraries\185 - SenderAndReceiverBase\TheThingMatcher\TheThingMatcher.projitems*{3cdeda4c-c6d3-4255-9324-475e6764431a}*SharedItemsImports = 13
 		MessageContracts\034 - EnergyModel\cdeEnergyModel\cdeEnergyModel.projitems*{3ee1ffda-231d-40b8-9441-ef2d3481730f}*SharedItemsImports = 13
 		Libraries\185 - SenderAndReceiverBase\TheEventConverters\TheEventConverters.projitems*{4652f20e-c456-4536-8d2f-85c2422cfc58}*SharedItemsImports = 13

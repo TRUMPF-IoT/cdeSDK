@@ -1,5 +1,5 @@
 <!--
- SPDX-FileCopyrightText: 2009-2020 TRUMPF Laser GmbH, authors: C-Labs
+ SPDX-FileCopyrightText: 2009-2024 TRUMPF Laser GmbH, authors: C-Labs
  SPDX-License-Identifier: MPL-2.0
  -->
 <Project Sdk="Microsoft.NET.Sdk">
@@ -7,54 +7,27 @@
   <PropertyGroup>
     <OutputType>library</OutputType>
     <PackageId>cdeSenderBaseShared</PackageId>
-    <Version>1.0.1.11</Version>
-    <TargetFrameworks>netstandard2.0</TargetFrameworks>
+    <Version>6.104.0</Version>
+    <TargetFrameworks>netstandard2.1</TargetFrameworks>
     <Authors>Markus Horstmann</Authors>
     <Company>C-Labs</Company>
-    <Copyright>Copyright © 2015-2022 TRUMPF Laser GmbH, authors: C-Labs</Copyright>
+    <Copyright>Copyright © 2015-2024 TRUMPF Laser GmbH, authors: C-Labs</Copyright>
     <PackageDescription>SenderBase Library for C-DEngine</PackageDescription>
     <PackageIcon>toplogo-128.png</PackageIcon>
 
     <PackageLicenseExpression>MPL-2.0</PackageLicenseExpression>
 
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+	  <PackageOutputPath>$(SolutionDir)Nugets</PackageOutputPath>
     <ProjectName>$(AssemblyName).$(TargetFramework)</ProjectName>
   </PropertyGroup>
-
-  <ItemGroup>
-    <Compile Remove="**\*.cs" />
-    <Content Include="**\*.cs" buildAction="Compile" PackagePath="content\Shared\$(PackageId)" />
-    <Content Include="**\*.cs" buildAction="Compile" PackagePath="contentFiles\cs\netstandard2.0\Shared\$(PackageId)" />
-    <Content Include="**\*.cs" buildAction="Compile" PackagePath="contentFiles\cs\net45\Shared\$(PackageId)" />
-    <Content Include="**\*.cs" buildAction="Compile" PackagePath="contentFiles\cs\net35\Shared\$(PackageId)" />
-    <Content Include="**\*.cs" buildAction="Compile" PackagePath="contentFiles\cs\net4\Shared\$(PackageId)" />
-
-    <Compile Include="**\*.cs" />
-    <Content Remove="obj\**" />
-   
-  </ItemGroup>
 
   <ItemGroup>
     <None Include="..\..\..\toplogo-128.png" Pack="true" PackagePath="" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="C-DEngine" Version="5.*" />
-    <PackageReference Include="jnm2.ReferenceAssemblies.net35" Version="1.0.1" Condition="'$(TargetFramework)'=='net35'">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
-  </ItemGroup>
-
-  <ItemGroup Condition="'$(TargetFramework)'=='net4'">
-    <PackageReference Include="AsyncBridge" Version="0.1.1.0" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Compile Remove="obj\**" />
-    <Content Remove="obj\**" />
-    <EmbeddedResource Remove="obj\**" />
-    <None Remove="obj\**" />
+	  <PackageReference Include="C-DEngine" Version="6.104.0-beta.2" />
   </ItemGroup>
 
   <ItemGroup>
