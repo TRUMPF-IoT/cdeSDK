@@ -76,7 +76,7 @@ namespace TheSensorTemplate
     }
     public partial class TheDefaultSensor<T> : TheThingBase where T : TheMetaDataBase, System.ComponentModel.INotifyPropertyChanged, new()
     {
-        internal TheSensorHistorian<T> MyHistorian;
+        public TheSensorHistorian<T> MyHistorian;
         protected TheBucketChart<T> mBucket = null;
         protected IBaseEngine MyBaseEngine;
         public bool IsConnected

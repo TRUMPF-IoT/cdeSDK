@@ -14,7 +14,7 @@ namespace TheSensorTemplate
     public partial class TheDefaultSensor<T> : ICDEThing where T : TheMetaDataBase, System.ComponentModel.INotifyPropertyChanged, new()
     {
         protected bool IsUXReady = false;
-        internal TheFormInfo SensorForm = null;
+        public TheFormInfo SensorForm = null;
         internal TheFieldInfo ValueField = null;
         internal TheFieldInfo LiveChartFld = null;
         internal TheFieldInfo BucketChartFld = null;
