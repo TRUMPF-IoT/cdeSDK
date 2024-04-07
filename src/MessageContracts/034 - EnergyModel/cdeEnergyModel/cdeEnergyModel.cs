@@ -104,7 +104,7 @@ namespace cdeEnergyBase
     }
 
     [OPCUAVariable(cdePName = "IsOnline", UATypeNodeId = "nsu=http://c-labs.com/UA/Energy;i=6028", UAMandatory = true)]
-    [OPCUAVariable(cdePName = "StatusLevel", UATypeNodeId = "nsu=http://c-labs.com/UA/Energy;i=6056", UAMandatory = true)]
+    [OPCUAVariable(cdePName = "StatusLevel", UATypeNodeId = "nsu=http://c-labs.com/UA/Energy;i=6008", UAMandatory = true)]
     public class TheEnergyBase : TheThingBase
     {
         public static readonly List<TheEnergyDeviceInfo> Energy = new List<TheEnergyDeviceInfo>
@@ -118,7 +118,7 @@ namespace cdeEnergyBase
         };
 
         [OPCUAProperty(UATypeNodeId = "nsu=http://c-labs.com/UA/Energy;i=6056", UAMandatory = true)]
-        public virtual string Status
+        public virtual string StatusText
         {
             get 
             {
