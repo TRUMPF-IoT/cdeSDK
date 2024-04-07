@@ -1,0 +1,40 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>library</OutputType>
+    <PackageId>cdeAchievementsShared</PackageId>
+    <Version>6.104.0</Version>
+    <TargetFrameworks>netstandard2.1</TargetFrameworks>
+    <Authors>Chris Muench</Authors>
+    <Company>C-Labs</Company>
+    <Copyright>Copyright © 2023-2024 Hyviva</Copyright>
+    <PackageLicenseExpression>MPL-2.0</PackageLicenseExpression>
+    <PackageDescription>Achievement contracts</PackageDescription>
+    <PackageIcon>toplogo-128.png</PackageIcon>
+	  <LangVersion>preview</LangVersion>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+	  <PackageOutputPath>$(SolutionDir)Nugets</PackageOutputPath>
+    <ProjectName>$(AssemblyName).$(TargetFramework)</ProjectName>
+  </PropertyGroup>
+	
+	<ItemGroup>
+		<Content Include="**\*.cs" buildAction="compile" PackagePath="contentFiles\any\any\$(PackageId)" />
+		<Compile Remove="bin\**" />
+		<Content Remove="bin\**" />
+		<Content Remove="obj\**" />
+		<EmbeddedResource Remove="bin\**" />
+		<None Remove="bin\**" />
+	</ItemGroup>
+	
+	<ItemGroup>
+	  <None Remove="AchievementContracts.projitems" />
+	</ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\..\..\toplogo-128.png" Pack="true" PackagePath="" />
+  </ItemGroup>
+
+  <ItemGroup>
+	  <PackageReference Include="C-DEngine" Version="6.*-*" />
+  </ItemGroup>
+
+</Project>

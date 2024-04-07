@@ -111,6 +111,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "cdePackager", "cdePackager"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "cdeNMIHelperstShared", "Libraries\324 - NMIHelper\cdeNMIHelper\cdeNMIHelperstShared.csproj", "{63FB3AFA-B028-4A19-B424-73CA02D74B13}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "cdeAchievementsShared", "MessageContracts\326 - AchievementContracts\AchievementContracts\cdeAchievementsShared.csproj", "{A191D4B2-1E47-4C03-B2D6-B7D2A90071DD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -211,6 +213,10 @@ Global
 		{63FB3AFA-B028-4A19-B424-73CA02D74B13}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{63FB3AFA-B028-4A19-B424-73CA02D74B13}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{63FB3AFA-B028-4A19-B424-73CA02D74B13}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A191D4B2-1E47-4C03-B2D6-B7D2A90071DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A191D4B2-1E47-4C03-B2D6-B7D2A90071DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A191D4B2-1E47-4C03-B2D6-B7D2A90071DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A191D4B2-1E47-4C03-B2D6-B7D2A90071DD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -250,6 +256,7 @@ Global
 		{DE3D7742-BCA2-4432-AEA1-50466618A940} = {ED82BA02-E0A9-4935-BCCC-C3FAD112A4CB}
 		{A055FA5C-A748-4450-88EA-B02E4C757335} = {7D441A72-A796-4DC8-8E00-732C7B6F65AE}
 		{63FB3AFA-B028-4A19-B424-73CA02D74B13} = {BE921EAC-572E-4DF4-824B-33DE6F58BA52}
+		{A191D4B2-1E47-4C03-B2D6-B7D2A90071DD} = {ED82BA02-E0A9-4935-BCCC-C3FAD112A4CB}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {75C94C50-175D-4EFC-B610-B4B9A3584DE7}
