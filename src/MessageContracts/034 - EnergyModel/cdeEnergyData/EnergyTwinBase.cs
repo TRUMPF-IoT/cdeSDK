@@ -36,7 +36,8 @@ namespace cdeEnergyBase
             {
                 if (value != IsOnline)
                 {
-                    HasNMIRelevantUpdates = true;
+                    if (MyBaseThing.IsInit())
+                        HasNMIRelevantUpdates = true;
                     TT.MemberSetSafePropertyBool(MyBaseThing, value);
                 }
             }

@@ -2,32 +2,48 @@
  SPDX-FileCopyrightText: 2009-2024 TRUMPF Laser GmbH, authors: C-Labs
  SPDX-License-Identifier: MPL-2.0
  -->
-<Project Sdk="Microsoft.NET.Sdk">
-  <PropertyGroup>
-    <OutputType>library</OutputType>
-    <PackageId>cdeEnergyContractsShared</PackageId>
-    <Version>6.104.0</Version>
-    <TargetFrameworks>netstandard2.1</TargetFrameworks>
-    <Authors>Chris Muench</Authors>
-    <Company>C-Labs</Company>
-    <Copyright>Copyright © 2015-2024 TRUMPF Laser GmbH, authors: C-Labs</Copyright>
-    <PackageLicenseExpression>MPL-2.0</PackageLicenseExpression>
-    <PackageDescription>Energy message contracts</PackageDescription>
-    <PackageIcon>toplogo-128.png</PackageIcon>
-	  <LangVersion>preview</LangVersion>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-	  <PackageOutputPath>$(SolutionDir)Nugets</PackageOutputPath>
-    <ProjectName>$(AssemblyName).$(TargetFramework)</ProjectName>
-  </PropertyGroup>
-	
+
+<Project>
+
+	<Import Project="Sdk.props" Sdk="Microsoft.NET.Sdk" />
+	<PropertyGroup>
+		<OutputType>library</OutputType>
+		<ProjectName>$(AssemblyName).$(TargetFramework)</ProjectName>
+		<Version>6.104.0</Version>
+		<LangVersion>preview</LangVersion>
+		<TargetFramework>netstandard2.1</TargetFramework>
+		<Authors>Chris Muench</Authors>
+		<Company>C-Labs</Company>
+		<Copyright>Copyright © 2015-2024 TRUMPF Laser GmbH, authors: C-Labs</Copyright>
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+
+		<PackageId>cdeEnergyContractsShared</PackageId>
+		<PackageDescription>Energy message contracts</PackageDescription>
+		<PackageIcon>toplogo-128.png</PackageIcon>
+		<PackageLicenseExpression>MPL-2.0</PackageLicenseExpression>
+		<PackageOutputPath>$(SolutionDir)Nugets</PackageOutputPath>
+		<GenerateTargetFrameworkAttribute>false</GenerateTargetFrameworkAttribute>
+		<IncludeBuildOutput>false</IncludeBuildOutput>
+		<ContentTargetFolders>contentFiles</ContentTargetFolders>
+		<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+		<NoBuild>true</NoBuild>
+		<NoWarn>CS8021</NoWarn>
+	</PropertyGroup>
+
 	<ItemGroup>
-		<Content Include="**\*.cs" buildAction="compile" PackagePath="contentFiles\any\any\$(PackageId)" />
-		<Content Remove="obj\**" />
+		<Compile Update="@(Compile)">
+			<Pack>true</Pack>
+			<PackagePath>$(ContentTargetFolders)\cs\netstandard2.1\$(PackageId)\%(RecursiveDir)\</PackagePath>
+		</Compile>
+		<EmbeddedResource Update="@(EmbeddedResource)">
+			<Pack>true</Pack>
+			<PackagePath>$(ContentTargetFolders)\any\any\$(PackageId)\%(RecursiveDir)\</PackagePath>
+		</EmbeddedResource>
 	</ItemGroup>
 	
 	<ItemGroup>
 	  <None Remove="cdeEnergyData.projitems" />
-	  <None Remove="cdeEnergyModel.projitems" />
+	  <None Remove="cdeEnergyModel.projitems" /> 
 	</ItemGroup>
 
   <ItemGroup>
@@ -38,4 +54,8 @@
 	  <PackageReference Include="C-DEngine" Version="6.*-*" />
   </ItemGroup>
 
+	<Import Project="Sdk.targets" Sdk="Microsoft.NET.Sdk" />
+
+	<Target Name="Compile" />
+	<Target Name="CopyFilesToOutputDirectory" />
 </Project>
