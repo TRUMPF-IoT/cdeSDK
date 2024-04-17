@@ -10,6 +10,7 @@
 # User-specific files
 *.suo
 *.user
+*.swp
 *.sln.docstates
 
 # Build results
