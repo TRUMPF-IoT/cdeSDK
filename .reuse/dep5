@@ -430,3 +430,7 @@ License: MPL-2.0
 Files: src/MessageContracts/326 - AchievementContracts/*
 Copyright: 2009-2024 TRUMPF Laser GmbH, authors: C-Labs
 License: MPL-2.0
+
+Files: src/.cdeSDK.sln.swp
+Copyright: 2009-2024 TRUMPF Laser GmbH, authors: C-Labs
+License: MPL-2.0
