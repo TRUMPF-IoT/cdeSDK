@@ -19,7 +19,7 @@ namespace cdeEnergyBase
         bool _nmiUpdates;
         public bool HasNMIRelevantUpdates
         {
-            private set { _nmiUpdates = value; }
+            protected set { _nmiUpdates = value; }
             get 
             {
                 var t = _nmiUpdates;

@@ -57,9 +57,9 @@ namespace cdeEnergyBase
             NMIPinWidth = 64;
             MyPins = new List<ThePin>
             {
-                new ThePin { PinName = "VA", Units = "VA", PinProperty="emsVA", NMIPinTopPosition=-1 },
-                new ThePin { PinName = "Volts", Units = "v", PinProperty="emsVolts", NMIPinTopPosition=-1, EURange = new UARange { High = 240, Low = 110 } },
-                new ThePin { PinName = "Ampere", Units = "a", PinProperty="emsAmps", NMIPinTopPosition=-1 },
+                new ThePin { PinName = "VA", Units = "VA", PinProperty="emsVA", NMIPinPosition=-1 },
+                new ThePin { PinName = "Volts", Units = "v", PinProperty="emsVolts", NMIPinPosition=-1, EURange = new UARange { High = 240, Low = 110 } },
+                new ThePin { PinName = "Ampere", Units = "a", PinProperty="emsAmps", NMIPinPosition=-1 },
             };
         }
     }
@@ -75,13 +75,13 @@ namespace cdeEnergyBase
             };
             Units = "w";
 
-            NMIIsPinRight = true;
-            NMIPinTopPosition = 5;
+            NMIPinLocation = ePinLocation.Right;
+            NMIPinPosition = 5;
             NMIPinWidth = 64;
             MyPins = new List<ThePin>
             {
-                new ThePin { PinName = "Volts", Units = "v", PinProperty="emsVolts", NMIPinTopPosition=-1, EURange = new UARange { High = 48, Low = 24 } },
-                new ThePin { PinName = "Ampere", Units = "a", PinProperty="emsAmps", NMIPinTopPosition=-1  },
+                new ThePin { PinName = "Volts", Units = "v", PinProperty="emsVolts", NMIPinPosition=-1, EURange = new UARange { High = 48, Low = 24 } },
+                new ThePin { PinName = "Ampere", Units = "a", PinProperty="emsAmps", NMIPinPosition=-1  },
             };
         }
     }
@@ -110,7 +110,7 @@ namespace cdeEnergyBase
             };
             Units = "l/h H2O";
 
-            NMIPinTopPosition = 2;
+            NMIPinPosition = 2;
         }
     }
 
@@ -126,7 +126,7 @@ namespace cdeEnergyBase
             };
             Units = "nl/h H2";
 
-            NMIPinTopPosition = 1;
+            NMIPinPosition = 1;
         }
     }
 }
