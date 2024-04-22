@@ -1,43 +1,49 @@
 <!--
- SPDX-FileCopyrightText: 2009-2020 TRUMPF Laser GmbH, authors: C-Labs
+ SPDX-FileCopyrightText: 2009-2024 TRUMPF Laser GmbH, authors: C-Labs
  SPDX-License-Identifier: MPL-2.0
  -->
-<Project Sdk="Microsoft.NET.Sdk">
+
+<Project>
+
+	<Import Project="Sdk.props" Sdk="Microsoft.NET.Sdk" />
 
   <PropertyGroup>
     <OutputType>library</OutputType>
     <PackageId>cdeWebConnect</PackageId>
-    <Version>1.0.1.11</Version>
-    <TargetFrameworks>netstandard2.0</TargetFrameworks>
+    <Version>6.104.0</Version>
+    <TargetFramework>netstandard2.1</TargetFramework>
     <Authors>Chris Muench</Authors>
     <Company>C-Labs</Company>
-    <Copyright>Copyright © 2015-2022 TRUMPF Laser GmbH, authors: C-Labs</Copyright>
+    <Copyright>Copyright © 2015-2024 TRUMPF Laser GmbH, authors: C-Labs</Copyright>
     <PackageDescription>Web-Connect Library for C-DEngine</PackageDescription>
     <PackageIcon>toplogo-128.png</PackageIcon>
     <PackageLicenseExpression>MPL-2.0</PackageLicenseExpression>
 
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+	  <PackageOutputPath>$(SolutionDir)Nugets</PackageOutputPath>
     <ProjectName>$(AssemblyName).$(TargetFramework)</ProjectName>
+
+	  <GenerateTargetFrameworkAttribute>false</GenerateTargetFrameworkAttribute>
+	  <IncludeBuildOutput>false</IncludeBuildOutput>
+	  <ContentTargetFolders>contentFiles</ContentTargetFolders>
+	  <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+	  <NoBuild>true</NoBuild>
+	  <NoWarn>CS8021</NoWarn>
   </PropertyGroup>
+
+	<ItemGroup>
+		<Compile Update="@(Compile)">
+			<Pack>true</Pack>
+			<PackagePath>$(ContentTargetFolders)\cs\netstandard2.1\$(PackageId)\%(RecursiveDir)\</PackagePath>
+		</Compile>
+		<EmbeddedResource Update="@(EmbeddedResource)">
+			<Pack>true</Pack>
+			<PackagePath>$(ContentTargetFolders)\any\any\$(PackageId)\%(RecursiveDir)\</PackagePath>
+		</EmbeddedResource>
+	</ItemGroup>
 
   <ItemGroup>
     <None Remove="TheWebConnect.projitems" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Compile Remove="**\*.cs" />
-    <Compile Remove="obj\**" />
-    <Content Include="**\*.cs" buildAction="Compile" PackagePath="content\Shared\$(PackageId)" />
-    <Content Include="**\*.cs" buildAction="Compile" PackagePath="contentFiles\cs\netstandard2.0\Shared\$(PackageId)" />
-    <Content Include="**\*.cs" buildAction="Compile" PackagePath="contentFiles\cs\net45\Shared\$(PackageId)" />
-    <Compile Include="**\*.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Compile Remove="obj\**" />
-    <Content Remove="obj\**" />
-    <EmbeddedResource Remove="obj\**" />
-    <None Remove="obj\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -48,6 +54,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="C-DEngine" Version="5.*" />
+	  <PackageReference Include="C-DEngine" Version="6.*-*" />
   </ItemGroup>
+
+	<Import Project="Sdk.targets" Sdk="Microsoft.NET.Sdk" />
+
+	<Target Name="Compile" />
+	<Target Name="CopyFilesToOutputDirectory" />
 </Project>

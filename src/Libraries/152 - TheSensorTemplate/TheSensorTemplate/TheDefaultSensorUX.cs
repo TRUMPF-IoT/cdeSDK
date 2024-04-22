@@ -14,7 +14,7 @@ namespace TheSensorTemplate
     public partial class TheDefaultSensor<T> : ICDEThing where T : TheMetaDataBase, System.ComponentModel.INotifyPropertyChanged, new()
     {
         protected bool IsUXReady = false;
-        internal TheFormInfo SensorForm = null;
+        public TheFormInfo SensorForm = null;
         internal TheFieldInfo ValueField = null;
         internal TheFieldInfo LiveChartFld = null;
         internal TheFieldInfo BucketChartFld = null;
@@ -128,7 +128,7 @@ namespace TheSensorTemplate
             TheNMIEngine.AddSmartControl(MyBaseThing, tMyForm, eFieldType.CollapsibleGroup, 12030, 2, 0, $"Live Chart", null, new nmiCtrlCollapsibleGroup() { ParentFld = 12000, TileWidth = 6, NoTE = true, Background = "transparent", Foreground = "black", FontSize = 10, IsSmall = true, HorizontalAlignment = "left" });//LabelClassName = "cdeTileGroupHeaderSmall SensorGroupLabel", LabelForeground = "white",
             LiveChartFld = TheNMIEngine.AddSmartControl(MyBaseThing, tMyForm, eFieldType.UserControl, 12031, 2, 0, $"{tQVN} Chart", "QValue", new ThePropertyBag()
                 {
-                    "ControlType=Live Chart",
+                    "ControlType=Live Chart", "EngineName=CDMyC3.TheC3Service",
                     "ParentFld=12030", "NoTE=true", $"Title={tQVN}",
                     "SeriesNames=[{ \"name\":\"Current Temp\", \"lineColor\":\"rgba(0,255,0,0.39)\"}, { \"name\":\"Max Temp\", \"lineColor\":\"rgba(0,0,255,0.64)\"}]", "TileWidth=6", "TileHeight=4", "Speed=500", $"MaxValue={TheThing.GetSafePropertyNumber(MyBaseThing, "StateSensorMaxValue")}", "Delay=0", "Background=rgba(0,0,0,0.01)"
                 });

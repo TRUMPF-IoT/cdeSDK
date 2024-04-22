@@ -32,20 +32,20 @@ class cdeThingDeviceTypeA : TheThingBase
     // Also recommended, the use of the 'GetSafe...' and 'SetSafe...' methods.
     public bool IsConnected
     {
-        get { return TheThing.MemberGetSafePropertyBool(MyBaseThing); }
-        set { TheThing.MemberSetSafePropertyBool(MyBaseThing, value); }
+        get { return TT.MemberGetSafePropertyBool(MyBaseThing); }
+        set { TT.MemberSetSafePropertyBool(MyBaseThing, value); }
     }
 
     [ConfigProperty]
     public bool AutoConnect
     {
-        get { return TheThing.MemberGetSafePropertyBool(MyBaseThing); }
-        set { TheThing.MemberSetSafePropertyBool(MyBaseThing, value); }
+        get { return TT.MemberGetSafePropertyBool(MyBaseThing); }
+        set { TT.MemberSetSafePropertyBool(MyBaseThing, value); }
     }
 
-    public cdeThingDeviceTypeA(TheThing tBaseThing, IBaseEngine pPluginBase)
+    public cdeThingDeviceTypeA(TT tBaseThing, IBaseEngine pPluginBase)
     {
-        MyBaseThing = tBaseThing ?? new TheThing();
+        MyBaseThing = tBaseThing ?? new TT();
         MyBaseEngine = pPluginBase;
         MyBaseThing.EngineName = MyBaseEngine.GetEngineName();
         MyBaseThing.SetIThingObject(this);

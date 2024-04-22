@@ -8,8 +8,8 @@ using nsCDEngine.Engines.ThingService;
 using nsCDEngine.ViewModels;
 using System;
 
-// TODO: Make sure plugin file name starts with either CDMy or C-DMy
 using NMI = nsCDEngine.Engines.NMIService.TheNMIEngine;
+using TT = nsCDEngine.Engines.ThingService.TheThing;
 
 namespace $rootnamespace$
 {
