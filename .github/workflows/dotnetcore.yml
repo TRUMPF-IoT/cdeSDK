@@ -101,4 +101,4 @@ jobs:
       # this should work, but doesn't:
       #run: dotnet nuget push './artifacts/**/*.nupkg' -s Source -k ${{secrets.GITHUB_TOKEN}}
       # workaround:
-      run: "Get-ChildItem ./artifacts/*.nupkg -File -Recurse | Foreach { $retryCount=0; do { if ($retryCount -gt 0) {start-sleep 30}; dotnet nuget push $_.fullname -s https://api.nuget.org/v3/index.json -k ${{secrets.NUGETORG_APIKEY}}; $retryCount = $retryCount + 1 } while (($retryCount -lt 10) -and ($LastExitCode -ne 0)); if ($retryCount -ge 10) { throw(\"Error pushing to NuGet: \"+$LastExitCode) } }"
+      run: "Get-ChildItem ./artifacts/*.nupkg -File -Recurse | Foreach { $retryCount=0; do { if ($retryCount -gt 0) {start-sleep 30}; dotnet nuget push $_.fullname --skip-duplicate -s https://api.nuget.org/v3/index.json -k ${{secrets.NUGETORG_APIKEY}}; $retryCount = $retryCount + 1 } while (($retryCount -lt 10) -and ($LastExitCode -ne 0)); if ($retryCount -ge 10) { throw(\"Error pushing to NuGet: \"+$LastExitCode) } }"
