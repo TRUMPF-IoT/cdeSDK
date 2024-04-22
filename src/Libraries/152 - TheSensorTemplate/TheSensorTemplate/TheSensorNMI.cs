@@ -11,7 +11,7 @@ using System.Collections.Generic;
 
 namespace TheSensorTemplate
 {
-    static class TheSensorNMI
+    public static class TheSensorNMI
     {
         static public TheFormInfo CreateSensorForm(TheThing MyBaseThing, string pSensorFace = "/pages/ThingFace.html", string pReportName = "Sensor Report", string pCategory = null)
         {

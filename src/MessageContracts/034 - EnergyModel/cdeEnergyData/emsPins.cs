@@ -1,6 +1,4 @@
-﻿// SPDX-FileCopyrightText: 2009-2023 TRUMPF Laser GmbH, authors: C-Labs
-//
-// SPDX-License-Identifier: MPL-2.0
+﻿using nsCDEngine.BaseClasses;
 using nsCDEngine.Engines.ThingService;
 using System.Collections.Generic;
 
@@ -20,7 +18,7 @@ namespace cdeEnergyBase
         public const string H2Storage = "H2 Storage";
         public const string ACPowerStorage = "AC Battery";
         public const string DCPowerStorage = "DC Battery";
-        public const string O2Flow = "nsu=http://c-labs.com/UA/Energy;i=2007";
+        public const string O2Flow = "nsu=http://c-labs.com/UA/Energy;i=2007"; //O2 Flow
         public const string Pressure = "Pressure Pin";
     }
 
@@ -59,9 +57,9 @@ namespace cdeEnergyBase
             NMIPinWidth = 64;
             MyPins = new List<ThePin>
             {
-                new ThePin { PinName = "VA", Units = "VA", PinProperty="emsVA", NMIPinTopPosition=-1 },
-                new ThePin { PinName = "Volts", Units = "v", PinProperty="emsVolts", NMIPinTopPosition=-1, EURange = new UARange { High = 240, Low = 110 } },
-                new ThePin { PinName = "Ampere", Units = "a", PinProperty="emsAmps", NMIPinTopPosition=-1 },
+                new ThePin { PinName = "VA", Units = "VA", PinProperty="emsVA", NMIPinPosition=-1 },
+                new ThePin { PinName = "Volts", Units = "v", PinProperty="emsVolts", NMIPinPosition=-1, EURange = new UARange { High = 240, Low = 110 } },
+                new ThePin { PinName = "Ampere", Units = "a", PinProperty="emsAmps", NMIPinPosition=-1 },
             };
         }
     }
@@ -77,13 +75,13 @@ namespace cdeEnergyBase
             };
             Units = "w";
 
-            NMIIsPinRight = true;
-            NMIPinTopPosition = 5;
+            NMIPinLocation = ePinLocation.Right;
+            NMIPinPosition = 5;
             NMIPinWidth = 64;
             MyPins = new List<ThePin>
             {
-                new ThePin { PinName = "Volts", Units = "v", PinProperty="emsVolts", NMIPinTopPosition=-1, EURange = new UARange { High = 48, Low = 24 } },
-                new ThePin { PinName = "Ampere", Units = "a", PinProperty="emsAmps", NMIPinTopPosition=-1  },
+                new ThePin { PinName = "Volts", Units = "v", PinProperty="emsVolts", NMIPinPosition=-1, EURange = new UARange { High = 48, Low = 24 } },
+                new ThePin { PinName = "Ampere", Units = "a", PinProperty="emsAmps", NMIPinPosition=-1  },
             };
         }
     }
@@ -110,9 +108,9 @@ namespace cdeEnergyBase
             {
                 eEmsPinTypeName.WaterFlow
             };
-            Units = "l/min";
+            Units = "l/h H2O";
 
-            NMIPinTopPosition = 2;
+            NMIPinPosition = 2;
         }
     }
 
@@ -126,9 +124,9 @@ namespace cdeEnergyBase
             {
                 eEmsPinTypeName.H2Flow
             };
-            Units = "nl/h";
+            Units = "nl/h H2";
 
-            NMIPinTopPosition = 1;
+            NMIPinPosition = 1;
         }
     }
 }

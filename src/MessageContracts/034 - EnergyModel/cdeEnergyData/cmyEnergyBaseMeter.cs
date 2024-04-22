@@ -1,7 +1,4 @@
-﻿// SPDX-FileCopyrightText: 2009-2023 TRUMPF Laser GmbH, authors: C-Labs
-//
-// SPDX-License-Identifier: MPL-2.0
-using nsCDEngine.BaseClasses;
+﻿using nsCDEngine.BaseClasses;
 using nsCDEngine.Engines;
 using nsCDEngine.Engines.NMIService;
 using nsCDEngine.Engines.ThingService;

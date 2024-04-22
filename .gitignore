@@ -10,6 +10,7 @@
 # User-specific files
 *.suo
 *.user
+*.swp
 *.sln.docstates
 
 # Build results
@@ -233,3 +234,4 @@ project.assets.json
 /src/SDK/Tools/cdeLicenseTool/Licenses/C-DEngine.cdel
 /BuildTools/real.sign
 /BuildTools/AzureSign/azuresign.bat
+/src/Nugets/

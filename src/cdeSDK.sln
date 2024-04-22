@@ -37,12 +37,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libraries", "Libraries", "{
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MessageContracts", "MessageContracts", "{ED82BA02-E0A9-4935-BCCC-C3FAD112A4CB}"
 EndProject
-Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "MyOPCUAClientAPI", "MessageContracts\078 - CDMyOPCUAClient\APIs\MyOPCUAClientAPI\MyOPCUAClientAPI.shproj", "{9469B76A-32E9-4917-A9B5-E133E0666CC7}"
-EndProject
-Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "MyOPCUAClientContracts", "MessageContracts\078 - CDMyOPCUAClient\APIs\MyOPCUAClientContracts\MyOPCUAClientContracts.shproj", "{56DD1F1C-6644-4298-A132-C3254096B72E}"
-EndProject
-Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "TheCommonMessageContracts", "MessageContracts\144 - TheCommonMessageContracts\TheCommonMessageContracts\TheCommonMessageContracts.shproj", "{5B124834-F6F1-493D-9B3E-FF0F072F8183}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "VSTemplates", "VSTemplates", "{0E73ECE9-B340-4AA3-9A18-BE10AC15CF84}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Item.cdeConnectedThingBase", "CDEngineSDKTemplates\CDEngineSDKTemplates.Item.cdeConnectedThingBase\Item.cdeConnectedThingBase.csproj", "{D31B43A2-D081-40B3-8CA9-035BF7F8F464}"
@@ -98,30 +92,39 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "cdeThingMatcherShared", "Li
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tools", "Tools", "{F32A0417-74E9-4185-9538-DA83B59F7124}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PackagerInstaller", "..\BuildTools\PackagerInstaller\PackagerInstaller.csproj", "{869E2A4C-3B33-4460-B570-91298197E66A}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "cdeLicenseTool", "Tools\cdeLicenseTool\cdeLicenseTool.csproj", "{C3287A61-CC6B-46E4-BACB-CC5A1E1581C5}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "cdeTelnetShared", "Libraries\215 - Shared Telnet\cdeTelnet\cdeTelnetShared.csproj", "{4AB3ADF1-CFDD-4F59-A740-0E09ED7296B4}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Project.CDMyPlugin", "CDEngineSDKTemplates\CDEngineSDKTemplates.project.CDMyPlugin\Project.CDMyPlugin.csproj", "{3FB2F987-C1E8-4874-93B2-35B7E7E0BF13}"
 EndProject
-Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "TheWebConnect", "Libraries\199 - CDE-WebConnect\TheWebConnect\TheWebConnect.shproj", "{9CCD5C30-05CA-4FA6-98C9-E3E881C1692E}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "cdeWebConnect", "Libraries\199 - CDE-WebConnect\TheWebConnect\cdeWebConnect.csproj", "{2BA62F57-77D9-4BB7-8159-8B3D66B1CD37}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "cdeEnergyContractsShared", "MessageContracts\034 - EnergyModel\cdeEnergyData\cdeEnergyContractsShared.csproj", "{DE3D7742-BCA2-4432-AEA1-50466618A940}"
 EndProject
-Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "cdeNMIHelper", "Libraries\324 - NMIHelper\cdeNMIHelper\cdeNMIHelper.shproj", "{0A36CC69-09A8-42FB-A17E-B1EE39656F85}"
-EndProject
-Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "cdeEnergyModel", "MessageContracts\034 - EnergyModel\cdeEnergyModel\cdeEnergyModel.shproj", "{3EE1FFDA-231D-40B8-9441-EF2D3481730F}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "cdePackager", "cdePackager", "{A055FA5C-A748-4450-88EA-B02E4C757335}"
 	ProjectSection(SolutionItems) = preProject
 		..\BuildTools\cdePackager\C-DEngine.dll = ..\BuildTools\cdePackager\C-DEngine.dll
+		..\BuildTools\cdePackager\cdePackager.deps.json = ..\BuildTools\cdePackager\cdePackager.deps.json
+		..\BuildTools\cdePackager\cdePackager.dll = ..\BuildTools\cdePackager\cdePackager.dll
+		..\BuildTools\cdePackager\cdePackager.dll.config = ..\BuildTools\cdePackager\cdePackager.dll.config
 		..\BuildTools\cdePackager\cdePackager.exe = ..\BuildTools\cdePackager\cdePackager.exe
+		..\BuildTools\cdePackager\cdePackager.runtimeconfig.json = ..\BuildTools\cdePackager\cdePackager.runtimeconfig.json
 		..\BuildTools\cdePackager\cdePackagerTask.dll = ..\BuildTools\cdePackager\cdePackagerTask.dll
+		..\BuildTools\cdePackager\Microsoft.Build.dll = ..\BuildTools\cdePackager\Microsoft.Build.dll
+		..\BuildTools\cdePackager\Microsoft.Build.Framework.dll = ..\BuildTools\cdePackager\Microsoft.Build.Framework.dll
+		..\BuildTools\cdePackager\Microsoft.Build.Utilities.Core.dll = ..\BuildTools\cdePackager\Microsoft.Build.Utilities.Core.dll
+		..\BuildTools\cdePackager\Microsoft.NET.StringTools.dll = ..\BuildTools\cdePackager\Microsoft.NET.StringTools.dll
+		..\BuildTools\cdePackager\PackagePlugIn.targets = ..\BuildTools\cdePackager\PackagePlugIn.targets
+		..\BuildTools\cdePackager\System.Configuration.ConfigurationManager.dll = ..\BuildTools\cdePackager\System.Configuration.ConfigurationManager.dll
+		..\BuildTools\cdePackager\System.Diagnostics.EventLog.dll = ..\BuildTools\cdePackager\System.Diagnostics.EventLog.dll
+		..\BuildTools\cdePackager\System.Reflection.MetadataLoadContext.dll = ..\BuildTools\cdePackager\System.Reflection.MetadataLoadContext.dll
+		..\BuildTools\cdePackager\System.Security.Cryptography.ProtectedData.dll = ..\BuildTools\cdePackager\System.Security.Cryptography.ProtectedData.dll
 	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "cdeNMIHelperstShared", "Libraries\324 - NMIHelper\cdeNMIHelper\cdeNMIHelperstShared.csproj", "{63FB3AFA-B028-4A19-B424-73CA02D74B13}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "cdeAchievementsShared", "MessageContracts\326 - AchievementContracts\AchievementContracts\cdeAchievementsShared.csproj", "{A191D4B2-1E47-4C03-B2D6-B7D2A90071DD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -200,10 +203,6 @@ Global
 		{0F2F7A87-9683-4E2B-BDD8-702132C3C9A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0F2F7A87-9683-4E2B-BDD8-702132C3C9A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0F2F7A87-9683-4E2B-BDD8-702132C3C9A8}.Release|Any CPU.Build.0 = Release|Any CPU
-		{869E2A4C-3B33-4460-B570-91298197E66A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{869E2A4C-3B33-4460-B570-91298197E66A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{869E2A4C-3B33-4460-B570-91298197E66A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{869E2A4C-3B33-4460-B570-91298197E66A}.Release|Any CPU.Build.0 = Release|Any CPU
 		{C3287A61-CC6B-46E4-BACB-CC5A1E1581C5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{C3287A61-CC6B-46E4-BACB-CC5A1E1581C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C3287A61-CC6B-46E4-BACB-CC5A1E1581C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -223,6 +222,14 @@ Global
 		{DE3D7742-BCA2-4432-AEA1-50466618A940}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DE3D7742-BCA2-4432-AEA1-50466618A940}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DE3D7742-BCA2-4432-AEA1-50466618A940}.Release|Any CPU.Build.0 = Release|Any CPU
+		{63FB3AFA-B028-4A19-B424-73CA02D74B13}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{63FB3AFA-B028-4A19-B424-73CA02D74B13}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{63FB3AFA-B028-4A19-B424-73CA02D74B13}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{63FB3AFA-B028-4A19-B424-73CA02D74B13}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A191D4B2-1E47-4C03-B2D6-B7D2A90071DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A191D4B2-1E47-4C03-B2D6-B7D2A90071DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A191D4B2-1E47-4C03-B2D6-B7D2A90071DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A191D4B2-1E47-4C03-B2D6-B7D2A90071DD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -232,9 +239,6 @@ Global
 		{FA29E83A-5184-4315-894A-6A07B95FFD20} = {BE921EAC-572E-4DF4-824B-33DE6F58BA52}
 		{19B834C0-0A48-42BB-B538-A556BADFA1DE} = {ED82BA02-E0A9-4935-BCCC-C3FAD112A4CB}
 		{85560D2C-AD99-4FDA-81F3-EDCC8FBBD036} = {7D441A72-A796-4DC8-8E00-732C7B6F65AE}
-		{9469B76A-32E9-4917-A9B5-E133E0666CC7} = {ED82BA02-E0A9-4935-BCCC-C3FAD112A4CB}
-		{56DD1F1C-6644-4298-A132-C3254096B72E} = {ED82BA02-E0A9-4935-BCCC-C3FAD112A4CB}
-		{5B124834-F6F1-493D-9B3E-FF0F072F8183} = {ED82BA02-E0A9-4935-BCCC-C3FAD112A4CB}
 		{D31B43A2-D081-40B3-8CA9-035BF7F8F464} = {0E73ECE9-B340-4AA3-9A18-BE10AC15CF84}
 		{83EEABD3-3CCF-48AA-BB33-EF66FF09E8CC} = {0E73ECE9-B340-4AA3-9A18-BE10AC15CF84}
 		{7A0CAACB-7DB3-4113-A0B5-E96A58CB26E6} = {0E73ECE9-B340-4AA3-9A18-BE10AC15CF84}
@@ -258,32 +262,24 @@ Global
 		{73D62673-E255-48AA-894C-26180B20E323} = {E5DC19DA-228B-4F0E-9CF4-D3C60A6C2B62}
 		{E5DC19DA-228B-4F0E-9CF4-D3C60A6C2B62} = {BE921EAC-572E-4DF4-824B-33DE6F58BA52}
 		{0F2F7A87-9683-4E2B-BDD8-702132C3C9A8} = {E5DC19DA-228B-4F0E-9CF4-D3C60A6C2B62}
-		{869E2A4C-3B33-4460-B570-91298197E66A} = {85560D2C-AD99-4FDA-81F3-EDCC8FBBD036}
 		{C3287A61-CC6B-46E4-BACB-CC5A1E1581C5} = {F32A0417-74E9-4185-9538-DA83B59F7124}
 		{4AB3ADF1-CFDD-4F59-A740-0E09ED7296B4} = {BE921EAC-572E-4DF4-824B-33DE6F58BA52}
 		{3FB2F987-C1E8-4874-93B2-35B7E7E0BF13} = {0E73ECE9-B340-4AA3-9A18-BE10AC15CF84}
-		{9CCD5C30-05CA-4FA6-98C9-E3E881C1692E} = {BE921EAC-572E-4DF4-824B-33DE6F58BA52}
 		{2BA62F57-77D9-4BB7-8159-8B3D66B1CD37} = {BE921EAC-572E-4DF4-824B-33DE6F58BA52}
 		{DE3D7742-BCA2-4432-AEA1-50466618A940} = {ED82BA02-E0A9-4935-BCCC-C3FAD112A4CB}
-		{0A36CC69-09A8-42FB-A17E-B1EE39656F85} = {BE921EAC-572E-4DF4-824B-33DE6F58BA52}
-		{3EE1FFDA-231D-40B8-9441-EF2D3481730F} = {BE921EAC-572E-4DF4-824B-33DE6F58BA52}
 		{A055FA5C-A748-4450-88EA-B02E4C757335} = {7D441A72-A796-4DC8-8E00-732C7B6F65AE}
+		{63FB3AFA-B028-4A19-B424-73CA02D74B13} = {BE921EAC-572E-4DF4-824B-33DE6F58BA52}
+		{A191D4B2-1E47-4C03-B2D6-B7D2A90071DD} = {ED82BA02-E0A9-4935-BCCC-C3FAD112A4CB}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {75C94C50-175D-4EFC-B610-B4B9A3584DE7}
 	EndGlobalSection
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
-		Libraries\324 - NMIHelper\cdeNMIHelper\cdeNMIHelper.projitems*{0a36cc69-09a8-42fb-a17e-b1ee39656f85}*SharedItemsImports = 13
+		MessageContracts\078 - CDMyOPCUAClient\APIs\MyOPCUAClientContracts\MyOPCUAClientContracts.projitems*{37f9af8f-d273-4a2b-972a-957e045bd4ed}*SharedItemsImports = 5
 		Libraries\185 - SenderAndReceiverBase\TheThingMatcher\TheThingMatcher.projitems*{3cdeda4c-c6d3-4255-9324-475e6764431a}*SharedItemsImports = 13
-		MessageContracts\034 - EnergyModel\cdeEnergyModel\cdeEnergyModel.projitems*{3ee1ffda-231d-40b8-9441-ef2d3481730f}*SharedItemsImports = 13
 		Libraries\185 - SenderAndReceiverBase\TheEventConverters\TheEventConverters.projitems*{4652f20e-c456-4536-8d2f-85c2422cfc58}*SharedItemsImports = 13
-		MessageContracts\078 - CDMyOPCUAClient\APIs\MyOPCUAClientContracts\MyOPCUAClientContracts.projitems*{56dd1f1c-6644-4298-a132-c3254096b72e}*SharedItemsImports = 13
-		MessageContracts\144 - TheCommonMessageContracts\TheCommonMessageContracts\TheCommonMessageContracts.projitems*{5b124834-f6f1-493d-9b3e-ff0f072f8183}*SharedItemsImports = 13
-		MessageContracts\078 - CDMyOPCUAClient\APIs\MyOPCUAClientAPI\MyOPCUAClientAPI.projitems*{9469b76a-32e9-4917-a9b5-e133e0666cc7}*SharedItemsImports = 13
 		Libraries\185 - SenderAndReceiverBase\TheConnectionBase\TheConnectionBase.projitems*{9c8cc825-09b6-4320-a34b-22029f085012}*SharedItemsImports = 13
-		Libraries\199 - CDE-WebConnect\TheWebConnect\TheWebConnect.projitems*{9ccd5c30-05ca-4fa6-98c9-e3e881c1692e}*SharedItemsImports = 13
 		Libraries\185 - SenderAndReceiverBase\TheReceiverBase\TheReceiverBase.projitems*{d2fb39c4-e828-4184-8e3b-342f61cb154f}*SharedItemsImports = 13
-		MessageContracts\034 - EnergyModel\cdeEnergyModel\cdeEnergyModel.projitems*{de3d7742-bca2-4432-aea1-50466618a940}*SharedItemsImports = 5
 		Libraries\185 - SenderAndReceiverBase\TheSenderBase\TheSenderBase.projitems*{ea4fffbc-c803-4b10-ba13-1587a1fc0f06}*SharedItemsImports = 13
 	EndGlobalSection
 EndGlobal
